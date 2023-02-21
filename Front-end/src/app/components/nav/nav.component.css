@@ -1,0 +1,65 @@
+* {
+  font-family: "Product Sans", sans-serif;
+  color: white;
+}
+nav{
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.menu{
+  width: 100%;
+  position: absolute;
+}
+
+.menu > ul {
+  display: flex;
+  justify-content: right;
+}
+
+.menu > ul > li {
+  margin: 0 20px;
+  list-style: none;
+}
+img {
+  width: 60px;
+  height: 60px;
+  vertical-align: middle;
+  padding: 20px;
+}
+.menu > ul > li > a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: auto;
+  padding: 10px 20px;
+}
+
+.menu > ul > hr {
+  color: #2d2d2d;
+  margin: 0;
+}
+
+.menu > ul > li > button {
+  width: auto;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+#btnRegister{
+  background-color: #1a1a1a;
+}
+
+#btnLogin{
+  background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);
+}
+
+.menu > ul > li > a:hover {
+  background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);
+  border: none;
+  color: white;
+  border-radius: 20px;
+}
