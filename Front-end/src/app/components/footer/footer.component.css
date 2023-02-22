@@ -1,0 +1,136 @@
+
+
+*{ 
+    font-family: 'Product Sans', sans-serif;
+}
+.accesos{
+    display: grid;
+
+}
+
+.suscription{
+    background-image: url(../../../assets/footer/Cubo.png);
+    background-size: 100% 100%;
+    height: 400px;
+    padding: 30px ;
+    margin: 50px 50px  80px;
+
+
+}
+h2{
+    text-align: center;
+    font-size: 45px;
+    margin-bottom: 0;
+    font-family: 'Outer Limits Solid', sans-serif;
+    font-weight: 200;
+                                                
+    
+                                                
+}
+
+.suscription > p{
+    text-align: center;
+
+}
+.data{
+    width: 600px;
+    height: 50px;
+    background-color: black;
+    border-radius: 15px;
+    padding-left: 20px;
+    margin-left: 250px;
+    border: none;
+
+}
+
+.suscription input{
+    width: 541px;
+    height: 48px;
+    border-radius: 15px;
+    border: none;
+
+} 
+
+.suscription input::placeholder{
+padding: 20px;
+color: black;
+font-size: 15px;
+}
+.suscription img{
+    width: 20px;
+    height: 20px;
+    padding: 10px ;
+    margin-right: 15px;
+    vertical-align: middle;
+
+}
+
+.boton-input {
+    position: relative;
+  }
+  
+  .boton-input input[type="text"] {
+    padding-right: 40px; /* Dejar espacio para el botón */
+  }
+  
+  .boton-input button {
+    position: absolute;
+    top: -8px;
+    right: 20px;
+    height: 35px;
+    background-color: black;
+    border: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 15px;
+    font-size: 20px;
+    width: 150px;
+    font-family: 'Outer Limits Solid', sans-serif;
+    font-weight: 400;
+  }
+  
+img{
+    width: 50px;
+    height: 50px;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    font-size: 15px;
+    list-style-type:none;
+    margin-bottom: 50px;
+
+    
+}
+.container img{
+    margin-left: 40%;
+}
+.social{
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    width: 140px;
+    height: 20px;
+    background-color: rgba(173, 173, 173, 0.721);
+    border-radius: 15px;
+    padding: 8px;
+    margin-left: 50px;
+    padding-right: 30px;
+    
+}
+
+.social img{
+    width: 20px;
+    height: 20px;
+}
+
+.terminosyCondiciones{
+    display: grid;
+    grid-template-columns: 33% 33% 33% ;
+    width: 600px;
+    padding: 30px;
+    margin-left: 30%;
+    margin-bottom: 30px;
+    
+
+}
