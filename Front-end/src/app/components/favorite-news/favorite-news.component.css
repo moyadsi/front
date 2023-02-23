@@ -1,0 +1,117 @@
+*{
+    font-family: 'Product Sans', sans-serif;
+}
+
+/* ESTILO TITULOS H*/
+h2{
+    font-family: 'Outer Limits Solid', sans-serif;
+    padding-top: 60px;
+    margin: 15px;
+}
+
+h5{
+    position: absolute;
+    margin-left: 420px;
+    
+}
+
+.new-conteiner h4{
+    position: absolute;
+    margin-top: -110px;
+    width: 300px;
+    padding: 10px;
+    margin-left: 20px;
+}
+
+/* ESTILO CONTENEDORES*/
+
+.conteiner{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 90%;
+    margin: auto;
+    }
+
+    .new-conteiner{
+        margin: 50px;
+        width: 90%;
+        position: relative;
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+
+    .news{
+        display: grid;
+        grid-template-rows: 50% 50%;
+        position: relative;
+    }
+
+    /* ESTILO IMAGENES */
+    .news img{
+        width: 500px;
+        height: 150px ;
+        margin-bottom: 20px;
+    
+    }
+    img{
+        width: 500px;
+        height: 320px;
+        border-radius: 15px;
+        margin-left: 20px;
+    }
+
+    /* ESTILO PARRAFOS */
+
+    .new-conteiner p{
+        position: absolute;
+        margin-top: -80px;
+        width: 300px;
+        padding: 10px;
+        margin-left: 20px;
+    }
+    .conteiner p{
+        margin: 10px;
+        width: 500px;
+    }
+
+    /* ESTILO BOTONES */
+    .conteiner button{
+        width: 100px;
+        height: 30px;
+        border-radius: 15px;
+        background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);
+        text-align: center;
+        font-size: 15px;
+        position: absolute;
+        margin-left: 900px;
+        margin-top: 50px;
+    }
+    
+    .new-conteiner button{
+        position: absolute;
+        margin-top: 20%;
+        margin-left: -120px;
+        padding: 5px;
+        border-radius: 10px;
+        background-color: rgba(98, 98, 97, 0.648);
+        border: none;
+        width: 100px;
+        color: white;
+    
+    }
+    
+    label{
+        background-color: rgba(98, 98, 97, 0.648);
+        border: none;
+        border-radius: 10px;
+        margin-left: 45%;
+    }
+
+    .btn{
+        background-color: transparent;
+        border: none;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        width: 40px;
+    }
