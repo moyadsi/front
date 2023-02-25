@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const conexion = require('./config/conexion')
+const bcrypt = require('bcrypt')
 
 //Asignamos rutas
 
@@ -27,10 +28,11 @@ router.get('/:id',(req,res)=>{
 });
 
 // Agregar Usuario
-router.post('/',(req,res)=>{
+router.post('/' , async(req,res)=>{
     const {firstname, lastname, phone, email, accesscode} = req.body
+    const paswordcrack = await bcrypt.hash(accesscode,10)
     let sql = `insert into tb_user (firstname, lastname, phone, email, accesscode)values ('${firstname}','${lastname}', '${phone}', '${email}', '${accesscode}')`
-    conexion.query(sql,(err,rows,fields)=>{
+    conexion.query(sql, (err,rows,fields)=>{
         if(err) throw err;
         else{
             res.json({status: 'Usuario Agregado'})
@@ -70,5 +72,23 @@ router.put('/:id',(req,res)=>{
     })
 });
 
+
+// Login
+router.post('/login',(req,res)=>{
+    const {email, accesscode} = req.body
+    let sql = 'select firstname, id from tb_user where email =  ?'
+    conexion.query(sql,[email],(err,rows,fields)=>{
+        if(err) throw err;
+        else{
+            console.log(rows)
+            if (rows.length == 1) {
+               res.json(rows) 
+            }else{
+                res.json({response:"User does not exist"})
+            }
+            
+        }
+    })
+});
 
 module.exports = router;

@@ -19,10 +19,13 @@
     "target": "es2020",
     "module": "es2020",
     "useDefineForClassFields": false,
-    "lib": [
-      "es2020",
-      "dom"
-    ]
+    "lib": ["es2018", "dom"],
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "moduleResolution": "node",
+    "resolveJsonModule": true
+
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

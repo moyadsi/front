@@ -1,19 +1,19 @@
 require('./config/conexion');
 const express = require('express');
-//const cors = require('cors');
+const cors = require('cors');
 const { prependListener } = require('./config/conexion');
 const port = (process.env.port || 3000);
 
 
 // Express
 const app = express();
-//app.use(cors({origin: 'http://localhost:3000'}));
+app.use(cors());
 
 //Admitir
-app.use(express.json())
+app.use(express.json());
 
 //Configuracion
-app.set('port',port)
+app.set('port',port);
 
 // Rutas
 app.use('/api',require('./rutas'))
