@@ -3,7 +3,7 @@ const conexion = mysql.createConnection({
     host:'localhost',
     user:'root',
     password:'',
-    database:'db_meta'
+    database:'MetAnimation'
 });
 
 conexion.connect((err)=>{

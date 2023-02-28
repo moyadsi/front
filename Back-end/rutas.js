@@ -30,8 +30,9 @@ router.get('/:id',(req,res)=>{
 // Agregar Usuario
 router.post('/' , async(req,res)=>{
     const {firstname, lastname, phone, email, accesscode} = req.body
-    const paswordcrack = await bcrypt.hash(accesscode,10)
-    let sql = `insert into tb_user (firstname, lastname, phone, email, accesscode)values ('${firstname}','${lastname}', '${phone}', '${email}', '${accesscode}')`
+    const passwordcrack = await bcrypt.hash(accesscode,10)
+    let sql = `insert into tb_user (firstname, lastname, phone, email, accesscode) values ('${firstname}','${lastname}', '${phone}', '${email}', '${accesscode}')`
+    console.log(sql);
     conexion.query(sql, (err,rows,fields)=>{
         if(err) throw err;
         else{

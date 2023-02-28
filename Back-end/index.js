@@ -1,13 +1,16 @@
+const morgan = require('morgan')
 require('./config/conexion');
 const express = require('express');
 const cors = require('cors');
 const { prependListener } = require('./config/conexion');
 const port = (process.env.port || 3000);
 
-
 // Express
 const app = express();
 app.use(cors());
+
+// Morgan
+app.use(morgan('dev'))
 
 //Admitir
 app.use(express.json());
