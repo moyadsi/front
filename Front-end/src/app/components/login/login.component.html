@@ -1,62 +1,23 @@
-<p>login works!</p>
 <link href="https://fonts.cdnfonts.com/css/product-sans" rel="stylesheet">
 <div class="container">
   <div class="header">
     <div class="header-left">
-      <span>Empieza a explorar gratis</span>
-      <h2>CREAR UNA NUEVA CUENTA</h2>
+      <span>Hola de nuevo</span>
+      <h2>INICIA SESION</h2>
     </div>
     <div class="header-rigth">
-      <p>¿Ya eres miembro? <a href="">Inicia sesión</a></p>
+      <p>¿Eres nuevo? <br><a href="">Crea una cuenta</a></p>
     </div>
   </div>
   <hr />
   <div class="main">
-    <section class="section-left">
-      <button></button>
-      <div class="slide"><hr /></div>
-      <div class="information">
-        <p>Paso 1 de 4</p>
-        <h2>CON TU INFORMACION BÁSICA YA SERÁS PARTE</h2>
-      </div>
-    </section>
-    <section class="section-right">
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <button id="btnGoogle">Resgitrate con Google</button>
-        <div class="optionRegister">
+    <section class="section-log">
+      <form>
+        <button id="btnGoogleLog">Iniciar sesion con Google</button>
+        <div class="optionLogin">
           <hr/>
-          <span>O resgitrate con</span>
+          <span>O inicia con</span>
           <hr/>
-        </div>
-        <div class="namesAndLastNames">
-          <div class="names">
-            <span>Nombres</span>
-            <input
-              type="text"
-              formControlName="names"
-              id=""
-              placeholder="Ingresa tu nombre"
-            />
-          </div>
-          <div class="lastName">
-            <span>Apellido</span>
-            <input
-              type="text"
-              formControlName="lastnames"
-              id=""
-              placeholder="Ingres tu apellido"
-            />
-          </div>
-        </div>
-        <div class="number">
-          <span>Número</span>
-          <input
-            type="text"
-            formControlName="phone"
-            id=""
-            placeholder="Ingresa tu número"
-            class="input-large"
-          />
         </div>
         <div class="email">
           <span>Email</span>
@@ -77,15 +38,9 @@
             placeholder="Ingresa tu contraseña"
             class="input-large"
           />
+          <span><a href="#">Olvide mi contraseña</a></span>
         </div>
         <button type="submit">Continuar</button>
-        <div class="termsAndConditions">
-          <input type="checkbox" name="iAgree" id="" />
-          <p>
-            Deseo recibir noticias, promociones, ofertas e información de nuevos
-            productos
-          </p>
-        </div>
       </form>
     </section>
   </div>
