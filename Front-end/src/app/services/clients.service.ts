@@ -6,14 +6,6 @@ import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
 })
 export class ClientsService {
 
-  url='http://localhost:3000/'// Ruta del Servididor
-
-  //Utilizar canquetacion para las rutas de iniciar sesion o registrar
-  /* Example:
-  getProducts():Observable<any>{
-    return this.http.get(this.url+register);
-  }
- */
   constructor(private http: HttpClient) {}
 
   getRequest(route: string, queries?: Record<string, string>, headers?: Record<string, string>) {

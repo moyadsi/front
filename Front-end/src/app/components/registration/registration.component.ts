@@ -29,7 +29,7 @@ export class RegistrationComponent implements OnInit {
     if (this.form.valid) {
       this.clients
         .postRequest(
-          'http://localhost:10101/register',
+          'http://localhost:10101//register',
           {
             name: this.form.value.names,
             lastname: this.form.value.lastnames,
@@ -38,7 +38,10 @@ export class RegistrationComponent implements OnInit {
             password: this.form.value.password,
           },
           undefined,
-          { Authorization: `Bearer ${localStorage.getItem('token')}` }
+          {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+            AccessControl:  `AllowOrigin`
+          }
         )
         .subscribe(
           (response: any) => {
