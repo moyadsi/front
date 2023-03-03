@@ -18,6 +18,8 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FrequentQuestionsComponent } from './components/frequent-questions/frequent-questions.component';
 import { MembershipComponent } from './components/membership/membership.component';
+import { HomeComponent } from './components/home/home.component';
+import { NewsMetaComponent } from './components/news-meta/news-meta.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { MembershipComponent } from './components/membership/membership.componen
     LoginComponent,
     ProfileComponent,
     FrequentQuestionsComponent,
-    MembershipComponent
+    MembershipComponent,
+    HomeComponent,
+    NewsMetaComponent
   ],
   imports: [
     BrowserModule,

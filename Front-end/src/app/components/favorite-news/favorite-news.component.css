@@ -1,5 +1,6 @@
 *{
     font-family: 'Product Sans', sans-serif;
+
 }
 
 /* ESTILO TITULOS H*/
@@ -11,60 +12,142 @@ h2{
 
 h5{
     position: absolute;
-    margin-left: 420px;
-    
+    margin-left: 400px;
+    background-color: rgba(0, 0, 0, 0.349);
+    border-radius: 15px;
+    padding: 10px;
+    width: 70px; 
+    text-align: center;
 }
 
-.new-conteiner h4{
+
+.news-two h5{
     position: absolute;
-    margin-top: -110px;
+    margin-left: 400px;
+    background-color: rgba(0, 0, 0, 0.349);
+    border-radius: 15px;
+    padding: 10px;
+    width: 70px; 
+    text-align: center;
+    margin-top: -26px;
+}
+.news-three h5{
+    position: absolute;
+    margin-left: 400px;
+    background-color: rgba(0, 0, 0, 0.349);
+    border-radius: 15px;
+    padding: 10px;
+    width: 70px; 
+    text-align: center;
+    margin-top: 10px;
+}
+.news-one h4{
+    position: absolute;
+    margin-top: 40%;
     width: 300px;
     padding: 10px;
     margin-left: 20px;
 }
 
+.news-two h4{
+    position: absolute;
+    margin-top: 5%;
+    width: 300px;
+    padding: 10px;
+    margin-left: 20px;
+}
+.news-three h4{
+    position: absolute;
+    margin-top: 10%;
+    width: 300px;
+    padding: 10px;
+    margin-left: 20px;
+}
 /* ESTILO CONTENEDORES*/
 
 .conteiner{
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 45% 45%;
+    grid-template-rows: none;
     width: 90%;
-    margin: auto;
+    margin: 0px;
+    align-content: end;
     }
 
     .new-conteiner{
-        margin: 50px;
+        margin-left: 10px;
+        margin-top: 50px;
         width: 90%;
         position: relative;
         display: grid;
         grid-template-columns: 50% 50%;
     }
 
-    .news{
+    .news-one{
         display: grid;
         grid-template-rows: 50% 50%;
         position: relative;
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxduf7I-yEvixxEcs31BhcI83Ks4AUbkAS8Q&usqp=CAU");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        width: 500px;
+        height: 300px ;
+        margin-bottom: 20px;
+        border-radius: 20px;
     }
 
-    /* ESTILO IMAGENES */
-    .news img{
+    
+    .news-two{
+        display: grid;
+        grid-template-rows: 50% 50%;
+        position: relative;
+        background-image: url("https://sobreverso.com/wp-content/uploads/2022/08/Captura-de-pantalla-249-1024x574.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
         width: 500px;
         height: 150px ;
-        margin-bottom: 20px;
-    
+        border-radius: 20px;
     }
-    img{
+
+    .news-three{
+        display: grid;
+        grid-template-rows: 50% 50%;
+        position: relative;
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOkmklpHHfRxjJCjGqSUvF-V8k9GqMhLS1cQ&usqp=CAU");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
         width: 500px;
-        height: 320px;
-        border-radius: 15px;
-        margin-left: 20px;
+        height: 150px ;
+        border-radius: 20px;
+        margin-top: 80px;
+    }
+    .new-suscription{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: none;
+        margin: 30px;
+
     }
 
     /* ESTILO PARRAFOS */
 
-    .new-conteiner p{
+    .news-one p{
         position: absolute;
-        margin-top: -80px;
+        margin-top: 45%;
+        width: 300px;
+        padding: 10px;
+        margin-left: 20px;
+    }
+    .news-two p{
+        position: absolute;
+        margin-top: 10%;
+        width: 300px;
+        padding: 10px;
+        margin-left: 20px;
+    }
+    .news-three p{
+        position: absolute;
+        margin-top: 15%;
         width: 300px;
         padding: 10px;
         margin-left: 20px;
@@ -72,6 +155,12 @@ h5{
     .conteiner p{
         margin: 10px;
         width: 500px;
+    }
+      .new-suscription p{
+       width: 300px;
+       margin: 50px;
+       align-items:flex-end;
+       margin-top:120px;
     }
 
     /* ESTILO BOTONES */
@@ -82,24 +171,46 @@ h5{
         background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);
         text-align: center;
         font-size: 15px;
-        position: absolute;
-        margin-left: 900px;
-        margin-top: 50px;
+
     }
     
-    .new-conteiner button{
+    .news-one button{
         position: absolute;
-        margin-top: 20%;
-        margin-left: -120px;
+        margin-top: 50%;
+        margin-left: 75%;
         padding: 5px;
         border-radius: 10px;
         background-color: rgba(98, 98, 97, 0.648);
         border: none;
-        width: 100px;
+        width: 115px;
+        height: 35px;
         color: white;
-    
     }
     
+    .news-two button{
+        position: absolute;
+        margin-top: 20%;
+        margin-left: -9%;
+        padding: 5px;
+        border-radius: 10px;
+        background-color: rgba(98, 98, 97, 0.648);
+        border: none;
+        width: 115px;
+        height: 35px;
+        color: white;
+    }
+    .news-three button{
+        position: absolute;
+        margin-top: 20%;
+        margin-left: 75%;
+        padding: 5px;
+        border-radius: 10px;
+        background-color: rgba(98, 98, 97, 0.648);
+        border: none;
+        width: 115px;
+        height: 35px;
+        color: white;
+    }
     label{
         background-color: rgba(98, 98, 97, 0.648);
         border: none;
@@ -107,11 +218,64 @@ h5{
         margin-left: 45%;
     }
 
-    .btn{
+    .btnR{
         background-color: transparent;
+        background-image: url(../../../assets/new/ArrowR.png);
+        background-size: 20% 20%;
+        background-repeat: no-repeat;
+        background-position: center;
         border: none;
         color: white;
         padding: 20px;
         text-align: center;
-        width: 40px;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
     }
+.btnL{
+    background-color: transparent;
+    background-image: url(../../../assets/new/Arrow_L.png);
+    background-size: 20% 20%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+    .new-suscription button{
+        margin-left: 150px;
+        margin-top: 120px;
+        height: 50px;
+        width: 100px;
+    }
+
+    hr{
+        width: 35%;
+        margin-top: -4%;
+        margin-right: 20%;
+
+        }
+
+        main{
+            padding: 50px;
+            margin-left: 30px;
+        }
+
+        .new-conteiner img{
+            width:10px;
+            height:10px ;
+            margin-left: 81%;
+            margin-top: 7%;
+        }
+        
+        .news-two img{
+            width:10px;
+            height:10px ;
+            margin-left: 81%;
+            margin-top: 5%;
+        }
+        
