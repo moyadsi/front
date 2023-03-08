@@ -31,7 +31,7 @@ router.get('/:id',(req,res)=>{
 router.post('/Register' , async(req,res)=>{
     const {Name, lastname, phone, email, Password} = req.body
     const BcryptPassword = await bcrypt.hash(Password,10)
-    let sql = `insert into Person (Name, lastname, phone, email, Password) values ('${Name}','${lastname}', '${phone}', '${email}', '${Password}')`
+    let sql = `insert into Person (Name, lastname, phone, email, Password) values ('${Name}','${lastname}', '${phone}', '${email}', '${BcryptPassword}')`
     console.log(sql);
     conexion.query(sql, (err,rows,fields)=>{
         if(err) throw err;
@@ -60,9 +60,9 @@ router.put('/:id',(req,res)=>{
     const{Name, lastname, phone, email, Password}= req.body
     let sql =   `update Person set
                 Name ='${Name}',
-                lastname = '${lastname}',
-                phone = '${phone}', 
-                email = '${email}', 
+                LastName = '${lastname}',
+                Phone = '${phone}', 
+                Email = '${email}', 
                 Password = '${Password}'
                 where id = '${id}'`
     conexion.query(sql,(err,rows,fields)=>{
@@ -77,31 +77,30 @@ router.put('/:id',(req,res)=>{
 // Login
 router.post('/login', (req,res)=>{
     let sql = 'select Name, id from Person where email =  ?'
-    conexion.query(sql,[req.body.email],async(err,rows,fields)=>{
-        console.log(rows)
-        if(err) throw err;
-        else{
-            if(rows.length == 1){
-                let sqlPassword = 'select Name,id from Person where Password = ?'
-                
-                const PasswordFound = conexion.query(sqlPassword,[req.body.Password],(err)=>{
-                    
-                    if(err)return res.status(401).json({message:"password Incorrect"});
-
-                console.log(PasswordFound.sql);
-                console.log(PasswordFound.values);
-
-                    bcrypt.compare(req.body.Password, PasswordFound.values.toString(),(err,fields)=>{
-
-                    if(err)return res.status(401).json({message:"password Incorrect"});
-                    
+    let sqlP = 'select Password from Person where email =  ?'
+    
+    const UserFound = conexion.query(sql,[req.body.email],(err, rows,fields) => {
+        if(rows.length == 1){
+            console.log("authorized");
+            conexion.query(sqlP,[req.body.email],(err,rows)=>{
+                const Password = rows[0].Password
+        
+                bcrypt.compare(req.body.Password,Password,(err,hash)=>{
+                    if(err) throw err;  
+                    console.log(hash);
+                    if(hash){
+                        console.log("Sign in successful");
+                        res.status(201).json({message:"Sign in successful"})
+                    }else{
+                        console.log("Password Incorrect");
+                        res.status(401).json({message:"Password Incorrect"})
+                    }
                 })
-                })
-            }else{
-                
-                res.json({response:"User does not exist"})
+            })
+        }else{
+            
+            res.status(401).json({response:"User does not exist"})
 
-            }
         }
     })
 });
