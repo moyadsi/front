@@ -1,16 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
+import { Person } from '../interface/Person';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientsService {
 
+  ApiPerson='http://localhost:8080/api/Profile/'
+
   constructor(private http: HttpClient) {}
 
-  url="http://localhost:8080/api/Profile"
 
-  
+  CreatePerson(Person:Person):Observable<any>{
+    return this.http.post<Person>(this.ApiPerson+'Register',Person)
+  }
+
 
   getRequest(route: string, queries?: Record<string, string>, headers?: Record<string, string>) {
     let reqHeaders = new HttpHeaders();

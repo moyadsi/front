@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClientsService } from '../../services/clients.service';
-
+import { Person } from '../../interface/Person'
 
 @Component({
   selector: 'app-registration',
@@ -11,48 +11,38 @@ import { ClientsService } from '../../services/clients.service';
 export class RegistrationComponent implements OnInit {
   form: FormGroup;
 
+  Person:Person=new Person;
+
   constructor(private fb: FormBuilder, private clients: ClientsService) {
     this.form = this.fb.group({
-      names: ['', Validators.required],
-      lastnames: ['', Validators.required],
+      Name: ['', Validators.required],
+      lastname: ['', Validators.required],
       phone: ['', Validators.required],
       email: ['', Validators.required],
-      password: ['', Validators.required],
+      Password: ['', Validators.required],
     });
   }
 
   ngOnInit(): void {
-    localStorage.setItem('token', 'abcdefghijklmnopqrstuvwxyz');
   }
 
   onSubmit() {
-    if (this.form.valid) {
-      this.clients
-        .postRequest(
-          'http://localhost:10101//register',
-          {
-            name: this.form.value.names,
-            lastname: this.form.value.lastnames,
-            phone: this.form.value.phone,
-            email: this.form.value.email,
-            password: this.form.value.password,
-          },
-          undefined,
-          {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-            AccessControl:  `AllowOrigin`
-          }
-        )
-        .subscribe(
-          (response: any) => {
-            console.log(response);
-          },
-          (error: any) => {
-            console.log('error');
-          }
-        );
-    } else {
-      console.log('Verifique sus datos');
-    }
+
+      const PersonSave:Person={
+        Name: this.form.get('Name')?.value,
+        lastname: this.form.get('lastname')?.value,
+        phone: this.form.get('phone')?.value,
+        email: this.form.get('email')?.value,
+        Password: this.form.get('Password')?.value
+      }
+
+      this.clients.CreatePerson(PersonSave).subscribe(data=>{
+        console.log(data);
+        console.log("User created");
+        
+      })
+
+      console.log(PersonSave);
+    
   }
 }
