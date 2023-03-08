@@ -8,6 +8,10 @@ export class ClientsService {
 
   constructor(private http: HttpClient) {}
 
+  url="http://localhost:8080/api/Profile"
+
+  
+
   getRequest(route: string, queries?: Record<string, string>, headers?: Record<string, string>) {
     let reqHeaders = new HttpHeaders();
     let reqParams = new HttpParams();
