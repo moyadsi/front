@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClientsService } from '../../services/clients.service';
-
+import { Person } from '../../interface/Person'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -11,7 +12,9 @@ import { ClientsService } from '../../services/clients.service';
 export class RegistrationComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private clients: ClientsService) {
+  Person:Person=new Person;
+
+  constructor(private fb: FormBuilder, private clients: ClientsService, private router:Router) {
     this.form = this.fb.group({
       names: ['', Validators.required],
       lastnames: ['', Validators.required],
@@ -23,6 +26,15 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     localStorage.setItem('token', 'abcdefghijklmnopqrstuvwxyz');
+  }
+
+  Guardar(){
+    this.clients.CreatePerson(this.Person)
+    .subscribe(data=>{
+      console.log(data);
+      
+      alert("Se Agrego con Exito...!!!");
+    })
   }
 
   onSubmit() {

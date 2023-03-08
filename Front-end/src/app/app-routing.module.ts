@@ -4,7 +4,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 
 const routes: Routes = [
   {
-    path: 'Resgitro',
+    path: 'Registro',
     component: RegistrationComponent,
   },
   

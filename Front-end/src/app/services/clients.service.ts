@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
+import { Person } from '../interface/Person';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientsService {
 
-  url='http://localhost:3000/'// Ruta del Servididor
+  ApiPerson='http://localhost:8080/api/Profile'
 
-  //Utilizar canquetacion para las rutas de iniciar sesion o registrar
-  /* Example:
-  getProducts():Observable<any>{
-    return this.http.get(this.url+register);
-  }
- */
   constructor(private http: HttpClient) {}
+
+
+  CreatePerson(Person:Person){
+    return this.http.post<Person>(this.ApiPerson ,Person)
+  }
+
 
   getRequest(route: string, queries?: Record<string, string>, headers?: Record<string, string>) {
     let reqHeaders = new HttpHeaders();
