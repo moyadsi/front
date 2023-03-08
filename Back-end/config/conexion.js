@@ -1,10 +1,11 @@
-const mysql = require('mysql2');
+const mysql = require('mysql');
 require('dotenv').config()
 
+
 const conexion = mysql.createConnection({
-    host:'localhost'||process.env.hostNumber,
-    user:process.env.user||'root',
-    password:'' || process.env.password,
+    host:'localhost',
+    user:'root',
+    password:'',
     database:'MetAnimation'
 });
 

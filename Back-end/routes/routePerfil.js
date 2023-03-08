@@ -1,12 +1,12 @@
 const router = require('express').Router()
-const conexion = require('./config/conexion')
+const conexion = require('../config/conexion')
 const bcrypt = require('bcrypt')
 
 //Asignamos rutas
 
 // Mostrar Todos
 router.get('/',(req,res)=>{
-    let sql = 'select * from tb_user'
+    let sql = 'select * from Person'
     conexion.query(sql,(err,rows,fields)=>{
         if(err) throw err;
         else{
@@ -28,10 +28,10 @@ router.get('/:id',(req,res)=>{
 });
 
 // Agregar Usuario
-router.post('/' , async(req,res)=>{
-    const {firstname, lastname, phone, email, accesscode} = req.body
-    const passwordcrack = await bcrypt.hash(accesscode,10)
-    let sql = `insert into tb_user (firstname, lastname, phone, email, accesscode) values ('${firstname}','${lastname}', '${phone}', '${email}', '${accesscode}')`
+router.post('/Register' , async(req,res)=>{
+    const {Name, lastname, phone, email, Password} = req.body
+    const BcryptPassword = await bcrypt.hash(Password,10)
+    let sql = `insert into Person (Name, lastname, phone, email, Password) values ('${Name}','${lastname}', '${phone}', '${email}', '${Password}')`
     console.log(sql);
     conexion.query(sql, (err,rows,fields)=>{
         if(err) throw err;
@@ -44,7 +44,7 @@ router.post('/' , async(req,res)=>{
 // Eliminar Usuario
 router.delete('/:id',(req,res)=>{
     const {id} = req.params
-    let sql = `delete from tb_user where id = '${id}'`
+    let sql = `delete from Person where id = '${id}'`
     conexion.query(sql,(err,rows,fields)=>{
         if(err) throw err;
         else{
@@ -57,13 +57,13 @@ router.delete('/:id',(req,res)=>{
 // Modificar Usuario
 router.put('/:id',(req,res)=>{
     const {id} = req.params
-    const{firstname, lastname, phone, email, accesscode}= req.body
-    let sql =   `update tb_user set
-                firstname ='${firstname}',
+    const{Name, lastname, phone, email, Password}= req.body
+    let sql =   `update Person set
+                Name ='${Name}',
                 lastname = '${lastname}',
                 phone = '${phone}', 
                 email = '${email}', 
-                accesscode = '${accesscode}'
+                Password = '${Password}'
                 where id = '${id}'`
     conexion.query(sql,(err,rows,fields)=>{
         if(err) throw err;
@@ -75,19 +75,33 @@ router.put('/:id',(req,res)=>{
 
 
 // Login
-router.post('/login',(req,res)=>{
-    const {email, accesscode} = req.body
-    let sql = 'select firstname, id from tb_user where email =  ?'
-    conexion.query(sql,[email],(err,rows,fields)=>{
+router.post('/login', (req,res)=>{
+    let sql = 'select Name, id from Person where email =  ?'
+    conexion.query(sql,[req.body.email],async(err,rows,fields)=>{
+        console.log(rows)
         if(err) throw err;
         else{
-            console.log(rows)
-            if (rows.length == 1) {
-               res.json(rows) 
+            if(rows.length == 1){
+                let sqlPassword = 'select Name,id from Person where Password = ?'
+                
+                const PasswordFound = conexion.query(sqlPassword,[req.body.Password],(err)=>{
+                    
+                    if(err)return res.status(401).json({message:"password Incorrect"});
+
+                console.log(PasswordFound.sql);
+                console.log(PasswordFound.values);
+
+                    bcrypt.compare(req.body.Password, PasswordFound.values.toString(),(err,fields)=>{
+
+                    if(err)return res.status(401).json({message:"password Incorrect"});
+                    
+                })
+                })
             }else{
+                
                 res.json({response:"User does not exist"})
+
             }
-            
         }
     })
 });
