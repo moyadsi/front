@@ -1,9 +1,9 @@
 const morgan = require('morgan')
-require('./config/conexion');
 const express = require('express');
 const cors = require('cors');
-const { prependListener } = require('./config/conexion');
-const port = (process.env.port || 3000);
+require('dotenv').config()
+
+const port = process.env.port || 3000 ;
 
 // Express
 const app = express();
@@ -19,7 +19,7 @@ app.use(express.json());
 app.set('port',port);
 
 // Rutas
-app.use('/api',require('./rutas'))
+app.use('/api/Profile',require('./routes/routePerfil'))
 
 //Iniciar express
 app.listen(app.get('port'),(error)=>{
