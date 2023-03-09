@@ -2,15 +2,15 @@ drop database if exists MetAnimation;
 create database MetAnimation;
 use MetAnimation;
 
-CREATE TABLE Person(
-    Id INT PRIMARY KEY,
+CREATE TABLE Person (
+    Id INT PRIMARY KEY auto_increment,
     Name CHAR(50) NOT NULL,
     LastName CHAR(50) NOT NULL,
     Phone CHAR(30) DEFAULT '',
-    Email CHAR(100) NOT NULL,
+    Email CHAR(100) NOT NULL UNIQUE,
     Password CHAR(100) NOT NULL,
     Status BOOLEAN DEFAULT TRUE,
-    Date DATETIME
+    Date DATETIME DEFAULT NOW()
 );
 
 CREATE TABLE Company (

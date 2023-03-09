@@ -3,18 +3,19 @@ const conexion = require('../config/conexion')
 const bcrypt = require('bcrypt')
 
 // Mostrar Todos
-export const GetAll= (req,res)=>{
-    let sql = 'select * from Person'
-    conexion.query(sql,(err,rows,fields)=>{
-        if(err) throw err;
-        else{
-            res.json(rows)
-        }
-    })
-};
+function GetAll(req, res) {
+  let sql = 'select * from Person';
+  conexion.query(sql, (err, rows, fields) => {
+    if (err)
+      throw err;
+    else {
+      res.json(rows);
+    }
+  });
+}
 
 // Leer Usuario
-export const Get= (req,res)=>{
+function Get(req,res){
     const {id} = req.params
     let sql = 'select * from tb_user where id = ?'
     conexion.query(sql,[id],(err,rows,fields)=>{
@@ -26,21 +27,35 @@ export const Get= (req,res)=>{
 };
 
 // Agregar Usuario
-export const SignUp=async(req,res)=>{
+async function SignUp(req,res){
+  
     const {Name, lastname, phone, email, Password} = req.body
-    const BcryptPassword = await bcrypt.hash(Password,10)
-    let sql = `insert into Person (Name, lastname, phone, email, Password) values ('${Name}','${lastname}', '${phone}', '${email}', '${BcryptPassword}')`
-    console.log(sql);
-    conexion.query(sql, (err,rows,fields)=>{
-        if(err) throw err;
-        else{
-            res.json({status: 'Usuario Agregado'})
-        }
-    })
+
+    let sqlEmail = `select id,Name,email from Person where email = ?`;
+
+    conexion.query(sqlEmail,email, async(err,rows,fields)=>{
+      if(err) throw err;
+      if(rows[0]=== undefined){
+        const BcryptPassword = await bcrypt.hash(Password,10)
+
+        let sql = `insert into Person (Name, lastname, phone, email, Password) values ('${Name}','${lastname}', '${phone}', '${email}', '${BcryptPassword}')`
+        console.log(sql);
+        conexion.query(sql, (err,rows,fields)=>{
+            if(err) throw err;
+            else{
+                res.json({status: 'Usuario Agregado'})
+            }
+        })
+      }
+      else if(rows[0].email=email){
+        res.status(400).json({Mesage: 'email registered'});
+      }
+  })   
+        
 };
 
 // Eliminar Usuario
-export const DeleteUser = (req,res)=>{
+function DeleteUser (req,res){
     const {id} = req.params
     let sql = `delete from Person where id = '${id}'`
     conexion.query(sql,(err,rows,fields)=>{
@@ -52,8 +67,8 @@ export const DeleteUser = (req,res)=>{
 };
 
 
-// Modificar Usuario
-export const ModifyUser = async(req,res)=>{
+// Modify User
+function ModifyUser(req,res){
     const {id} = req.params
     const{Name, lastname, phone, email,NewPassword}= req.body
     let sqlPassword = `select Password from Person where id=${req.params.id}`;
@@ -84,7 +99,8 @@ export const ModifyUser = async(req,res)=>{
     })
 };
 
-export const ModifyPassword=(req,res)=>{
+// Modify Password
+function ModifyPassword(req,res){
     const {id} = req.params
     const{NewPassword}= req.body
     let sqlPassword = `select Password from Person where id=${req.params.id}`;
@@ -117,11 +133,14 @@ export const ModifyPassword=(req,res)=>{
 
 
 // Login
-export const SignIn = (req,res)=>{
+function SignIn(req,res){
     let sql = 'select Name, id from Person where email =  ?'
     let sqlP = 'select Password from Person where email =  ?'
     
     conexion.query(sql,[req.body.email],(err, rows,fields) => {
+        
+        console.log(req.body.email);
+        console.log(rows);
         if(err) throw err;
         if(rows.length == 1){
             console.log("authorized");
@@ -147,3 +166,5 @@ export const SignIn = (req,res)=>{
         }
     })
 };
+
+module.exports = {Get,GetAll,ModifyPassword,SignIn,SignUp,ModifyUser,DeleteUser}

@@ -1,10 +1,10 @@
 const router = require('express').Router()
 
-import * as ProCtrl from '../controllers/Profile.controller'
+const ProCtrl=require ('../controllers/Profile.controller')
 
 router.get('/',ProCtrl.GetAll)
 router.get('/:id',ProCtrl.Get)
-router.delete('/:id',ProCtrl.DeleteUserProfile)
+router.delete('/:id',ProCtrl.DeleteUser)
 router.put('/:id',ProCtrl.ModifyUser)
 router.put('/:id',ProCtrl.ModifyPassword)
 router.post('/SignUp',ProCtrl.SignUp)
