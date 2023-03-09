@@ -1,6 +1,7 @@
-const router = require('express').Router()
+const Jwt =  require('jsonwebtoken')
 const conexion = require('../config/conexion')
 const bcrypt = require('bcrypt')
+require('dotenv').config()
 
 // Mostrar Todos
 function GetAll(req, res) {
@@ -151,8 +152,11 @@ function SignIn(req,res){
                     if(err) throw err;  
                     console.log(hash);
                     if(hash){
+                        const Token = Jwt.sign({email},process.env.SecretJWT,{
+                            expiresIn:3600
+                        })
                         console.log("Sign in successful");
-                        res.status(201).json({message:"Sign in successful"})
+                        res.status(201).json({message:"Sign in successful",Token:Token})
                     }else{
                         console.log("Password Incorrect");
                         res.status(401).json({message:"Password Incorrect"})

@@ -3,21 +3,13 @@ create database MetAnimation;
 use MetAnimation;
 
 CREATE TABLE Person (
-<<<<<<< HEAD
-    Id INT PRIMARY KEY auto_increment,
-=======
     Id INT PRIMARY KEY AUTO_INCREMENT,
->>>>>>> 3a71f0a0effb97f5819c8eae66911d12dc40f16d
     Name CHAR(50) NOT NULL,
     LastName CHAR(50) NOT NULL,
     Phone CHAR(30) DEFAULT '',
     Email CHAR(100) NOT NULL UNIQUE,
     Password CHAR(100) NOT NULL,
     Status BOOLEAN DEFAULT TRUE,
-<<<<<<< HEAD
-=======
-    Token char(250),
->>>>>>> 3a71f0a0effb97f5819c8eae66911d12dc40f16d
     Date DATETIME DEFAULT NOW()
 );
 
