@@ -1,5 +1,4 @@
 const router = require('express').Router()
-
 const ProCtrl=require ('../controllers/Profile.controller')
 
 router.get('/',ProCtrl.GetAll)
