@@ -135,22 +135,20 @@ function ModifyPassword(req,res){
 
 // Login
 function SignIn(req,res){
+    const email = req.body.email
     let sql = 'select Name, id from Person where email =  ?'
     let sqlP = 'select Password from Person where email =  ?'
     
-    conexion.query(sql,[req.body.email],(err, rows,fields) => {
+    conexion.query(sql,[email],(err, rows,fields) => {
         
-        console.log(req.body.email);
-        console.log(rows);
         if(err) throw err;
         if(rows.length == 1){
             console.log("authorized");
-            conexion.query(sqlP,[req.body.email],(err,rows)=>{
+            conexion.query(sqlP,[email],(err,rows)=>{
                 const Password = rows[0].Password
         
                 bcrypt.compare(req.body.Password,Password,(err,hash)=>{
                     if(err) throw err;  
-                    console.log(hash);
                     if(hash){
                         const Token = Jwt.sign({email},process.env.SecretJWT,{
                             expiresIn:3600
@@ -171,4 +169,6 @@ function SignIn(req,res){
     })
 };
 
-module.exports = {Get,GetAll,ModifyPassword,SignIn,SignUp,ModifyUser,DeleteUser}
+module.exports = {
+    Get,GetAll,ModifyPassword,SignIn,SignUp,ModifyUser,DeleteUser
+}
