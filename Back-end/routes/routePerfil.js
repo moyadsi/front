@@ -2,8 +2,6 @@ const router = require('express').Router()
 const conexion = require('../config/conexion')
 const bcrypt = require('bcrypt')
 
-//Asignamos rutas
-
 // Mostrar Todos
 router.get('/',(req,res)=>{
     let sql = 'select * from Person'
@@ -55,23 +53,67 @@ router.delete('/:id',(req,res)=>{
 
 
 // Modificar Usuario
-router.put('/:id',(req,res)=>{
+router.put('/Update/:id',(req,res)=>{
     const {id} = req.params
-    const{Name, lastname, phone, email, Password}= req.body
-    let sql =   `update Person set
-                Name ='${Name}',
-                LastName = '${lastname}',
-                Phone = '${phone}', 
-                Email = '${email}', 
-                Password = '${Password}'
-                where id = '${id}'`
-    conexion.query(sql,(err,rows,fields)=>{
-        if(err) throw err;
-        else{
-            res.json({status: 'Usuario Modificado'})
-        }
+    const{Name, lastname, phone, email,NewPassword}= req.body
+    let sqlPassword = `select Password from Person where id=${req.params.id}`;
+    conexion.query(sqlPassword,[id],(err,rows,fields)=>{
+        
+        if(err ) throw err;
+
+        const BcryptPassword= rows[0].Password;
+        
+        bcrypt.compare(req.body.Password,BcryptPassword,async(err,hash)=>{
+
+            const PasswordEncrypted = await bcrypt.hash(NewPassword,10)
+
+            let sqlId =   `update Person set Name ='${Name}',lastname = '${lastname}',phone = '${phone}', email = '${email}', Password = '${PasswordEncrypted}'where id = '${id}'`
+            if(err) throw err;  
+            if(hash){
+                conexion.query(sqlId,(err,rows,fields)=>{
+                    if(err) throw err;
+                    
+                    res.status(201).json({message:"User modify in successful"})
+                })
+            }else{
+                console.log("Password Incorrect");
+                res.status(401).json({message:"Password Incorrect"})
+            }
+        })
+    
     })
 });
+
+router.put('/updatePassword/:id',(req,res)=>{
+    const {id} = req.params
+    const{NewPassword}= req.body
+    let sqlPassword = `select Password from Person where id=${req.params.id}`;
+    conexion.query(sqlPassword,[id],(err,rows,fields)=>{
+        
+        if(err ) throw err;
+
+        const BcryptPassword= rows[0].Password;
+        
+        bcrypt.compare(req.body.Password,BcryptPassword,async(err,hash)=>{
+
+            const PasswordEncrypted = await bcrypt.hash(NewPassword,10)
+
+            let sqlId =   `update Person set Password = '${PasswordEncrypted}'where id = '${id}'`
+            if(err) throw err;  
+            if(hash){
+                conexion.query(sqlId,(err,rows,fields)=>{
+                    if(err) throw err;
+                    
+                    res.status(201).json({message:"Password modify in successful"})
+                })
+            }else{
+                console.log("Password Incorrect");
+                res.status(401).json({message:"Password Incorrect"})
+            }
+        })
+    
+    })
+})
 
 
 // Login
@@ -79,7 +121,8 @@ router.post('/login', (req,res)=>{
     let sql = 'select Name, id from Person where email =  ?'
     let sqlP = 'select Password from Person where email =  ?'
     
-    const UserFound = conexion.query(sql,[req.body.email],(err, rows,fields) => {
+    conexion.query(sql,[req.body.email],(err, rows,fields) => {
+        if(err) throw err;
         if(rows.length == 1){
             console.log("authorized");
             conexion.query(sqlP,[req.body.email],(err,rows)=>{
