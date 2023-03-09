@@ -1,6 +1,9 @@
 const router = require('express').Router()
 const conexion = require('../config/conexion')
 const bcrypt = require('bcrypt')
+const Jwt = require('jsonwebtoken')
+
+require('dotenv').config()
 
 // Mostrar Todos
 router.get('/',(req,res)=>{
@@ -29,12 +32,12 @@ router.get('/:id',(req,res)=>{
 router.post('/Register' , async(req,res)=>{
     const {Name, lastname, phone, email, Password} = req.body
     const BcryptPassword = await bcrypt.hash(Password,10)
+    //estudiar validators con express validator para validar datos en la request del cliente
     let sql = `insert into Person (Name, lastname, phone, email, Password) values ('${Name}','${lastname}', '${phone}', '${email}', '${BcryptPassword}')`
-    console.log(sql);
     conexion.query(sql, (err,rows,fields)=>{
         if(err) throw err;
         else{
-            res.json({status: 'Usuario Agregado'})
+            res.json({status: 'Usuario Agregado',token:Token})
         }
     })
 });
@@ -54,9 +57,11 @@ router.delete('/:id',(req,res)=>{
 
 // Modificar Usuario
 router.put('/Update/:id',(req,res)=>{
+
     const {id} = req.params
     const{Name, lastname, phone, email,NewPassword}= req.body
     let sqlPassword = `select Password from Person where id=${req.params.id}`;
+
     conexion.query(sqlPassword,[id],(err,rows,fields)=>{
         
         if(err ) throw err;
@@ -68,7 +73,9 @@ router.put('/Update/:id',(req,res)=>{
             const PasswordEncrypted = await bcrypt.hash(NewPassword,10)
 
             let sqlId =   `update Person set Name ='${Name}',lastname = '${lastname}',phone = '${phone}', email = '${email}', Password = '${PasswordEncrypted}'where id = '${id}'`
+            
             if(err) throw err;  
+
             if(hash){
                 conexion.query(sqlId,(err,rows,fields)=>{
                     if(err) throw err;
@@ -76,7 +83,7 @@ router.put('/Update/:id',(req,res)=>{
                     res.status(201).json({message:"User modify in successful"})
                 })
             }else{
-                console.log("Password Incorrect");
+                
                 res.status(401).json({message:"Password Incorrect"})
             }
         })
@@ -84,59 +91,77 @@ router.put('/Update/:id',(req,res)=>{
     })
 });
 
+// Modify password
 router.put('/updatePassword/:id',(req,res)=>{
+
     const {id} = req.params
-    const{NewPassword}= req.body
+    let{Password,Confirmed,NewPassword}= req.body
     let sqlPassword = `select Password from Person where id=${req.params.id}`;
+
     conexion.query(sqlPassword,[id],(err,rows,fields)=>{
         
         if(err ) throw err;
 
         const BcryptPassword= rows[0].Password;
-        
-        bcrypt.compare(req.body.Password,BcryptPassword,async(err,hash)=>{
 
-            const PasswordEncrypted = await bcrypt.hash(NewPassword,10)
+        if(Password = Confirmed){
+            bcrypt.compare(Password,BcryptPassword,async(err,hash)=>{
 
-            let sqlId =   `update Person set Password = '${PasswordEncrypted}'where id = '${id}'`
-            if(err) throw err;  
-            if(hash){
-                conexion.query(sqlId,(err,rows,fields)=>{
-                    if(err) throw err;
-                    
-                    res.status(201).json({message:"Password modify in successful"})
-                })
-            }else{
-                console.log("Password Incorrect");
-                res.status(401).json({message:"Password Incorrect"})
-            }
-        })
+                const PasswordEncrypted = await bcrypt.hash(NewPassword,10)
     
+                let sqlId =`update Person set Password = '${PasswordEncrypted}'where id = '${id}'`
+
+                if(err) throw err;  
+
+                if(hash){
+                    conexion.query(sqlId,(err,rows,fields)=>{
+                        if(err) throw err;
+                        
+                        res.status(201).json({message:"Password modify in successful"})
+                    })
+                }else{
+                    
+                    res.status(401).json({message:"Password Incorrect"})
+                }
+            })
+        }else return res.status(401).json({message:"Password different"})
     })
 })
 
 
 // Login
 router.post('/login', (req,res)=>{
+
     let sql = 'select Name, id from Person where email =  ?'
     let sqlP = 'select Password from Person where email =  ?'
-    
+
+    const email = req.body.email
+
     conexion.query(sql,[req.body.email],(err, rows,fields) => {
         if(err) throw err;
+
         if(rows.length == 1){
-            console.log("authorized");
+
             conexion.query(sqlP,[req.body.email],(err,rows)=>{
+
                 const Password = rows[0].Password
-        
+                
+                const Token = Jwt.sign({email}, process.env.SecretJWT, {
+                    expiresIn:3600
+                })
+
                 bcrypt.compare(req.body.Password,Password,(err,hash)=>{
+
                     if(err) throw err;  
-                    console.log(hash);
+
                     if(hash){
                         console.log("Sign in successful");
-                        res.status(201).json({message:"Sign in successful"})
+                        res.status(201).json({message:"Sign in successful",Token:Token})
+
                     }else{
-                        console.log("Password Incorrect");
+
                         res.status(401).json({message:"Password Incorrect"})
+
                     }
                 })
             })

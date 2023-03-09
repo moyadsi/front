@@ -2,16 +2,19 @@ drop database if exists MetAnimation;
 create database MetAnimation;
 use MetAnimation;
 
-CREATE TABLE Person(
-    Id INT PRIMARY KEY,
+CREATE TABLE Person (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
     Name CHAR(50) NOT NULL,
     LastName CHAR(50) NOT NULL,
     Phone CHAR(30) DEFAULT '',
     Email CHAR(100) NOT NULL,
     Password CHAR(100) NOT NULL,
     Status BOOLEAN DEFAULT TRUE,
-    Date DATETIME
+    Token char(250),
+    Date DATETIME DEFAULT NOW()
 );
+
+select * from Person;
 
 CREATE TABLE Company (
     Id_Company INT PRIMARY KEY,
@@ -192,8 +195,6 @@ CREATE TABLE qualification (
         REFERENCES course(id_Course)
 );
 
-
-/*Table Example*/
 create table tb_user(
 	id int not null auto_increment primary key,
     firstname varchar(50),
