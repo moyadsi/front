@@ -20,6 +20,9 @@ import { FrequentQuestionsComponent } from './components/frequent-questions/freq
 import { MembershipComponent } from './components/membership/membership.component';
 import { HomeComponent } from './components/home/home.component';
 import { NewsMetaComponent } from './components/news-meta/news-meta.component';
+import { UsComponent } from './components/us/us.component';
+import { SuscriptionComponent } from './components/suscription/suscription.component';
+import { TeamComponent } from './components/team/team.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { NewsMetaComponent } from './components/news-meta/news-meta.component';
     FrequentQuestionsComponent,
     MembershipComponent,
     HomeComponent,
-    NewsMetaComponent
+    NewsMetaComponent,
+    UsComponent,
+    SuscriptionComponent,
+    TeamComponent
   ],
   imports: [
     BrowserModule,

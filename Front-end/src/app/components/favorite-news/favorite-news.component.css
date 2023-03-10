@@ -218,7 +218,7 @@ h5{
         margin-left: 45%;
     }
 
-    .btnR{
+    .btnR {
         background-color: transparent;
         background-image: url(../../../assets/new/ArrowR.png);
         background-size: 20% 20%;
@@ -227,7 +227,6 @@ h5{
         border: none;
         color: white;
         padding: 20px;
-        text-align: center;
         width: 50px;
         height: 50px;
         cursor: pointer;

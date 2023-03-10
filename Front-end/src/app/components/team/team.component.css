@@ -1,0 +1,66 @@
+*{
+    font-family: 'Product Sans', sans-serif;
+}
+
+.team{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    justify-content: space-evenly;
+    margin-left: -30%;
+    
+}
+
+.team > img{
+    width: 300px;
+    height: 150px;
+    border-radius: 15px;
+    margin: 0px 50px 0px;
+}
+
+.team > h2{
+    display: inline-block;
+    text-align: end;
+    margin: 15px 20px 0px;
+    font-family: 'Outer Limits Solid', sans-serif;
+    font-size: 25px;
+}
+label > hr{
+    height:20vh;
+    width:.1vw;
+    border-width:0;
+    background-color:#837f7f;
+    margin: 1% 0 2% 5%;
+   }
+
+   .members{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    margin: 5% 0 0 5%;
+    border: 1px white solid;
+    border-radius: 20px;
+    padding: 50px;
+    width: 80%;
+   }
+
+   div > hr{
+    width:55%;
+    margin: 10px 0 0 0;
+   }
+
+   .info-members > h4{
+    margin: 10px 0 0 0;
+   }
+
+   .info-members > h5{
+    font-family: 'Outer Limits Solid', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    margin: 0;
+   }
+   .info-members > img{
+    width: 60%;
+   }
+
+   .info-members {
+    margin: 50px 0 50px 70px ;
+   }
