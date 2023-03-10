@@ -14,7 +14,7 @@ export class ClientsService {
 
 
   CreatePerson(Person:Person):Observable<any>{
-    return this.http.post<Person>(this.ApiPerson+'Register',Person)
+    return this.http.post<Person>(this.ApiPerson+'SignUp',Person)
   }
 
 

@@ -5,31 +5,42 @@ require('dotenv').config()
 
 // Mostrar Todos
 function GetAll(req, res) {
-  let sql = 'select * from Person';
-  conexion.query(sql, (err, rows, fields) => {
-    if (err)
-      throw err;
-    else {
-      res.json(rows);
+    try {
+        let sql = 'select * from Person';
+
+        conexion.query(sql, (err, rows, fields) => {
+          if (err)
+            throw err;
+          else {
+            res.json(rows);
+          }
+        });
+    } catch (error) {
+        return res.status(500).json({error});
     }
-  });
+ 
 }
 
 // Leer Usuario
 function Get(req,res){
-    const {id} = req.params
-    let sql = 'select * from tb_user where id = ?'
-    conexion.query(sql,[id],(err,rows,fields)=>{
-        if(err) throw err;
-        else{
-            res.json(rows)
-        }
-    })
+    try { 
+        const {id} = req.params
+        let sql = 'select * from tb_user where id = ?'
+        conexion.query(sql,[id],(err,rows,fields)=>{
+            if(err) throw err;
+            else{
+                res.json(rows)
+            }
+        })
+    } catch (error) {
+        return res.status(500).json({error});
+    }
+   
 };
 
 // Agregar Usuario
 async function SignUp(req,res){
-  
+  try {
     const {Name, lastname, phone, email, Password} = req.body
 
     let sqlEmail = `select id,Name,email from Person where email = ?`;
@@ -53,10 +64,15 @@ async function SignUp(req,res){
       }
   })   
         
+  } catch (error) {
+    return res.status(500).json({error});
+  } 
 };
 
 // Eliminar Usuario
 function DeleteUser (req,res){
+    try {
+        
     const {id} = req.params
     let sql = `delete from Person where id = '${id}'`
     conexion.query(sql,(err,rows,fields)=>{
@@ -65,11 +81,16 @@ function DeleteUser (req,res){
             res.json({status: 'Usuario Eliminado'})
         }
     })
+    } catch (error) {
+        return res.status(500).json({error})
+    }
 };
 
 
 // Modify User
 function ModifyUser(req,res){
+    try {
+        
     const {id} = req.params
     const{Name, lastname, phone, email,NewPassword}= req.body
     let sqlPassword = `select Password from Person where id=${req.params.id}`;
@@ -98,10 +119,15 @@ function ModifyUser(req,res){
         })
     
     })
+    } catch (error) {
+        return res.status(500).json({error})
+    }
 };
 
 // Modify Password
 function ModifyPassword(req,res){
+    try {
+        
     const {id} = req.params
     const{NewPassword}= req.body
     let sqlPassword = `select Password from Person where id=${req.params.id}`;
@@ -129,12 +155,17 @@ function ModifyPassword(req,res){
             }
         })
     
-    })
+    })   
+    } catch (error) {
+        return res.status(500).json({error})
+    }
 };
 
 
 // Login
 function SignIn(req,res){
+    try {
+        
     const email = req.body.email
     let sql = 'select Name, id from Person where email =  ?'
     let sqlP = 'select Password from Person where email =  ?'
@@ -167,6 +198,9 @@ function SignIn(req,res){
 
         }
     })
+    } catch (error) {
+        return res.status(500).json({error})
+    }
 };
 
 module.exports = {

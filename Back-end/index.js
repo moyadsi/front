@@ -19,7 +19,7 @@ app.use(express.json());
 app.set('port',port);
 
 // Rutas
-app.use('/api/Profile',require('./routes/routePerfil'))
+app.use('/api/Profile',require('./routes/Profile.router'))
 
 //Iniciar express
 app.listen(app.get('port'),(error)=>{
