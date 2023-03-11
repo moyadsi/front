@@ -1,6 +1,7 @@
 const Jwt =  require('jsonwebtoken')
 const conexion = require('../config/conexion')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const Joi = require('joi');
 require('dotenv').config()
 
 // Mostrar Todos
@@ -65,7 +66,7 @@ async function SignUp(req,res){
   })   
         
   } catch (error) {
-    return res.status(500).json({error});
+    return res.status(500).json({error:"XD"});
   } 
 };
 
