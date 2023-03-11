@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
 import { Person } from '../interface/Person';
+import { Login } from '../interface/login';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -15,6 +16,11 @@ export class ClientsService {
 
   CreatePerson(Person:Person):Observable<any>{
     return this.http.post<Person>(this.ApiPerson+'SignUp',Person)
+  }
+
+  login(Login:Login):Observable<any> {
+    const body = { email:String, Password:String };
+    return this.http.post<Login>(this.ApiPerson+'login', this.login);
   }
 
 

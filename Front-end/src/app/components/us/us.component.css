@@ -1,0 +1,89 @@
+*{
+    font-family: 'Product Sans', sans-serif;
+
+}
+
+h4{
+    display: inline-block;
+    font-family: 'Outer Limits Solid', sans-serif;
+    background: linear-gradient(104deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 76%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    margin: 0% 0% 0% 37%;
+}
+
+h5{
+    display: inline-block;
+    font-size: 15px;
+    margin: 5px;
+
+    
+}
+h2{
+    font-size: 60px;
+    font-family: 'Outer Limits Solid', sans-serif;
+    margin: 0;
+    text-align: center;
+}
+h3{
+    font-family: 'Outer Limits Solid', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    font-weight:bold;
+    float:left;
+}
+
+p{
+    text-align: justify;
+    padding: 0;
+    margin: 5vh;
+}
+
+main{
+    width: 80%;
+    margin-left: 10%;
+
+}
+.sumergete{
+    width: 90%;
+    object-position: center;
+
+}
+
+.us-parrafo{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 90%;
+    justify-content: space-evenly;
+}
+.logo{
+    width: 50px;
+    margin:20% 45% 0% ;
+}
+.logoB{
+    width: 30px;
+    margin: 15% 45% 5%;
+    
+}
+
+.linea {
+    margin:0px 40px 0px;
+    width:90px;    
+    border-top:1px solid #615e5e;
+    position: relative;
+    top:22px;
+    float:left;
+}
+
+.us{
+    margin-left: 30%;
+}
+
+hr{
+    height:20vh;
+    width:.1vw;
+    border-width:0;
+    background-color:#251515;
+    margin-top: -5%;
+   }
