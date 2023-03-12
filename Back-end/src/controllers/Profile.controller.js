@@ -1,7 +1,9 @@
 const Jwt =  require('jsonwebtoken')
 const conexion = require('../config/conexion')
 const bcrypt = require('bcrypt');
-const Joi = require('joi');
+const {SignUpSchema, SigninSchema,ModifyPasswordSchema, ModifyUserSchema}= require('../validators/profile.validators');
+
+
 require('dotenv').config()
 
 // Mostrar Todos
@@ -40,8 +42,12 @@ function Get(req,res){
 };
 
 // Agregar Usuario
-async function SignUp(req,res){
+async function SignUp(req,res,next){
   try {
+
+    
+    await SignUpSchema.validateAsync(req.body)
+
     const {Name, lastname, phone, email, Password} = req.body
 
     let sqlEmail = `select id,Name,email from Person where email = ?`;
@@ -66,7 +72,13 @@ async function SignUp(req,res){
   })   
         
   } catch (error) {
-    return res.status(500).json({error:"XD"});
+
+    if(error.isJoi===true) Value = error.status=422;
+
+    next(error);
+    
+    return res.status(Value).json({error})
+
   } 
 };
 
@@ -89,11 +101,13 @@ function DeleteUser (req,res){
 
 
 // Modify User
-function ModifyUser(req,res){
+async function ModifyUser(req,res){
     try {
+
+        await ModifyUserSchema.validateAsync(req.body)
         
     const {id} = req.params
-    const{Name, lastname, phone, email,NewPassword}= req.body
+    const{Name, lastname, phone, email}= req.body
     let sqlPassword = `select Password from Person where id=${req.params.id}`;
     conexion.query(sqlPassword,[id],(err,rows,fields)=>{
         
@@ -103,9 +117,7 @@ function ModifyUser(req,res){
         
         bcrypt.compare(req.body.Password,BcryptPassword,async(err,hash)=>{
 
-            const PasswordEncrypted = await bcrypt.hash(NewPassword,10)
-
-            let sqlId =   `update Person set Name ='${Name}',lastname = '${lastname}',phone = '${phone}', email = '${email}', Password = '${PasswordEncrypted}'where id = '${id}'`
+            let sqlId =   `update Person set Name ='${Name}',lastname = '${lastname}',phone = '${phone}', email = '${email}' where id = '${id}'`
             if(err) throw err;  
             if(hash){
                 conexion.query(sqlId,(err,rows,fields)=>{
@@ -121,53 +133,74 @@ function ModifyUser(req,res){
     
     })
     } catch (error) {
-        return res.status(500).json({error})
+        if(error.isJoi===true) Value = error.status=422;
+
+        next(error);
+
+        return res.status(Value).json({error})
     }
 };
 
 // Modify Password
-function ModifyPassword(req,res){
+async function ModifyPassword(req,res,next){
     try {
+        await ModifyPasswordSchema.validateAsync(req.body)
         
-    const {id} = req.params
-    const{NewPassword}= req.body
-    let sqlPassword = `select Password from Person where id=${req.params.id}`;
-    conexion.query(sqlPassword,[id],(err,rows,fields)=>{
+        const {id} = req.params
+    
+        const{NewPassword}= req.body
+    
+        let sqlPassword = `select Password from Person where id=${req.params.id}`;
+    
+        conexion.query(sqlPassword,[id],(err,rows,fields)=>{
         
         if(err ) throw err;
 
-        const BcryptPassword= rows[0].Password;
+            const BcryptPassword= rows[0].Password;
+            
+            bcrypt.compare(req.body.Password,BcryptPassword,async(err,hash)=>{
+
+                const PasswordEncrypted = await bcrypt.hash(NewPassword,10)
+
+                let sqlId =   `update Person set Password = '${PasswordEncrypted}'where id = '${id}'`
+
+                if(err) throw err;  
+                
+                if(hash){
+                    conexion.query(sqlId,(err,rows,fields)=>{
+                        if(err) throw err;
+                        
+                        res.status(201).json({message:"Password modify in successful"})
+                
+                    })
+                }else{
+                
+                    console.log("Password Incorrect");
+                
+                    res.status(401).json({message:"Password Incorrect"})
+                }
+            })
         
-        bcrypt.compare(req.body.Password,BcryptPassword,async(err,hash)=>{
-
-            const PasswordEncrypted = await bcrypt.hash(NewPassword,10)
-
-            let sqlId =   `update Person set Password = '${PasswordEncrypted}'where id = '${id}'`
-            if(err) throw err;  
-            if(hash){
-                conexion.query(sqlId,(err,rows,fields)=>{
-                    if(err) throw err;
-                    
-                    res.status(201).json({message:"Password modify in successful"})
-                })
-            }else{
-                console.log("Password Incorrect");
-                res.status(401).json({message:"Password Incorrect"})
-            }
-        })
-    
     })   
     } catch (error) {
-        return res.status(500).json({error})
+        if(error.isJoi===true) Value = error.status=422;
+
+        next(error);
+
+        return res.status(Value).json({error})
     }
 };
 
 
 // Login
-function SignIn(req,res){
+async function SignIn(req,res,next){
     try {
-        
+    
+    await SigninSchema.validateAsync(req.body)
+       
+    
     const email = req.body.email
+
     let sql = 'select Name, id from Person where email =  ?'
     let sqlP = 'select Password from Person where email =  ?'
     
@@ -200,10 +233,20 @@ function SignIn(req,res){
         }
     })
     } catch (error) {
-        return res.status(500).json({error})
+        if(error.isJoi===true) Value = error.status=422;
+
+        next(error);
+    
+        return res.status(Value).json({error})
     }
 };
 
 module.exports = {
-    Get,GetAll,ModifyPassword,SignIn,SignUp,ModifyUser,DeleteUser
+    Get,
+    GetAll,
+    ModifyPassword,
+    SignIn,
+    SignUp,
+    ModifyUser,
+    DeleteUser
 }
