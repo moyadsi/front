@@ -3,7 +3,7 @@ create database MetAnimation;
 use MetAnimation;
 
 CREATE TABLE Person (
-    Id INT PRIMARY KEY AUTO_INCREMENT,
+    Id INT PRIMARY KEY,
     Name CHAR(50) NOT NULL,
     LastName CHAR(50) NOT NULL,
     Phone CHAR(30) DEFAULT '',
@@ -13,24 +13,29 @@ CREATE TABLE Person (
     Date DATETIME DEFAULT NOW()
 );
 
-select * from Person;
+select * from person;
+
 
 CREATE TABLE Company (
-    Id_Company INT PRIMARY KEY,
+    Id_Company INT PRIMARY KEY auto_increment,
     NameCompany CHAR(200) DEFAULT '',
     PhoneCompany CHAR(50) DEFAULT '',
     EmailCompany CHAR(100) DEFAULT '',
     Addres CHAR(100) NOT NULL,
-    Date DATETIME,
+    PasswordCompany CHAR(100) NOT NULL,
+    Date DATETIME DEFAULT NOW(),
     Id_Membreys INT,
     Id_Place INT,
     Id_Cities INT
 );
 
+
+
 CREATE TABLE Rol (
     Id_Rol INT PRIMARY KEY AUTO_INCREMENT,
-    DescriptionRol CHAR(50) NOT NULL,
-    CONSTRAINT FK_Rol_Person FOREIGN KEY (Id_Rol)
+    Rolid int,
+    DescriptionRol CHAR(50) NOT NULL default 'User',
+    CONSTRAINT FK_Rol_Person FOREIGN KEY (Rolid)
         REFERENCES Person (Id)
 );
 
@@ -194,6 +199,8 @@ CREATE TABLE qualification (
         REFERENCES course(id_Course)
 );
 
+
+/*Table Example*/
 create table tb_user(
 	id int not null auto_increment primary key,
     firstname varchar(50),
