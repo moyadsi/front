@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const ProCtrl=require ('../controllers/Profile.controller')
-const { verifyTokenEmail, verifyTokenPassword } = require('../middlewares/jwt.auth')
+const { verifyTokenEmail, verifyTokenPassword } = require('../middlewares/Profile.auth')
 const { SignUpValidate, SigninValidate, ModifyUserValidate, ModifyPasswordValidate } = require('../validators/profile.validators')
 
 router.get('/',ProCtrl.GetAll)

@@ -2,7 +2,7 @@ const Jwt = require('jsonwebtoken');
 const conexion = require('../config/conexion');
 require('dotenv').config();
 
-const verifyTokenEmail = async (req,res,next)=>{
+const verifyTokenEmailCompany = async (req,res,next)=>{
   try {
     
     const token = req.headers['x-access-token'];
@@ -11,15 +11,15 @@ const verifyTokenEmail = async (req,res,next)=>{
 
     const decode = Jwt.verify(token,process.env.SecretJWT)
 
-    let sql2 = `select email from person where id = ${req.params.id}`
+    let sql2 = `select EmailCompany from Company where Id_Company = ${req.params.id}`
 
-    let sqlEmail = `select email from person where email = ?`
+    let sqlEmail = `select EmailCompany from Company where EmailCompany = ?`
 
-    let FoundEmail = await conexion.query(sql2,[decode.email],async (err,rows)=>{
+    let FoundEmail = await conexion.query(sql2,[decode.EmailCompany],async (err,rows)=>{
       console.log(rows);
-      const validateEmail = await conexion.query(sqlEmail,[decode.email])
+      const validateEmail = await conexion.query(sqlEmail,[decode.EmailCompany])
 
-      if(validateEmail.values!=rows[0].email){
+      if(validateEmail.values!=rows[0].EmailCompany){
         console.log(validateEmail.values);
         console.log(FoundEmail.values);
   
@@ -36,7 +36,7 @@ const verifyTokenEmail = async (req,res,next)=>{
   }
 }
 
-const verifyTokenPassword = async (req,res,next)=>{
+const verifyTokenPasswordCompany = async (req,res,next)=>{
   try {
     
     const token = req.headers['x-access-token'];
@@ -45,13 +45,13 @@ const verifyTokenPassword = async (req,res,next)=>{
 
     const decode = Jwt.verify(token,process.env.SecretJWT)
 
-    let sql2 = `select email from person where id = ${req.params.id}`
+    let sql2 = `select EmailCompany from Company where Id_Company = ${req.params.id}`
 
-    let sqlEmail = `select email from person where email = ?`
+    let sqlEmail = `select EmailCompany from Company where EmailCompany = ?`
 
-    let FoundEmail = await conexion.query(sql2,[decode.email],async (err,rows)=>{
+    let FoundEmail = await conexion.query(sql2,[decode.EmailCompany],async (err,rows)=>{
       console.log(rows);
-      const validateEmail = await conexion.query(sqlEmail,[decode.email])
+      const validateEmail = await conexion.query(sqlEmail,[decode.EmailCompany])
 
       if(validateEmail.values!=rows[0].email){
         console.log(validateEmail.values);
@@ -73,6 +73,6 @@ const verifyTokenPassword = async (req,res,next)=>{
 
 
 module.exports={
-  verifyTokenEmail,
-  verifyTokenPassword
+  verifyTokenEmailCompany,
+  verifyTokenPasswordCompany
 }
