@@ -1,12 +1,14 @@
 const router = require('express').Router()
 const ProCtrl=require ('../controllers/Profile.controller')
+const { verifyTokenEmail, verifyTokenPassword } = require('../middlewares/jwt.auth')
+const { SignUpValidate, SigninValidate, ModifyUserValidate, ModifyPasswordValidate } = require('../validators/profile.validators')
 
 router.get('/',ProCtrl.GetAll)
 router.get('/:id',ProCtrl.Get)
 router.delete('/:id',ProCtrl.DeleteUser)
-router.put('/UpdateUser/:id',ProCtrl.ModifyUser)
-router.put('/UpdatePassword/:id',ProCtrl.ModifyPassword)
-router.post('/SignUp',ProCtrl.SignUp)
-router.post('/SignIn',ProCtrl.SignIn)
+router.put('/UpdateUser/:id',ModifyUserValidate,verifyTokenEmail,ProCtrl.ModifyUser)
+router.put('/UpdatePassword/:id',ModifyPasswordValidate,verifyTokenPassword,ProCtrl.ModifyPassword)
+router.post('/SignUp',SignUpValidate,ProCtrl.SignUp)
+router.post('/SignIn',SigninValidate,ProCtrl.SignIn)
 
 module.exports = router;

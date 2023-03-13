@@ -20,6 +20,7 @@ app.set('port',port);
 
 // Rutas
 app.use('/api/Profile',require('./routes/Profile.router'))
+app.use('/api/Company',require('./routes/Company.router'))
 
 //Iniciar express
 app.listen(app.get('port'),(error)=>{

@@ -8,7 +8,7 @@ require('dotenv').config()
 // Mostrar Todos
 function GetAll(req, res) {
     try {
-        let sql = 'select * from Person';
+        let sql = 'select * from Company';
 
         conexion.query(sql, (err, rows, fields) => {
           if (err)
@@ -27,12 +27,11 @@ function GetAll(req, res) {
 function Get(req,res){
     try { 
         const {id} = req.params
-        let sql = 'select * from person where id = ?'
+        let sql = 'select * from Company where Id_Company  = ?'
         conexion.query(sql,[id],(err,rows,fields)=>{
             if(err) throw err;
             else{
                 res.json(rows)
-                
             }
         })
     } catch (error) {
@@ -45,34 +44,33 @@ function Get(req,res){
 async function SignUp(req,res,next){
   try {
 
-    const {Cedula,Name, lastname, phone, email, Password} = req.body
+    const {NameCompany, PhoneCompany, EmailCompany , Addres,PasswordCompany} = req.body
 
     console.log(req.body);
 
-    let sqlEmail = `select id,Name,email from Person where email = ?`;
+    let sqlEmail = `select Id_Company ,NameCompany,EmailCompany from Company where EmailCompany = ?`;
 
-    conexion.query(sqlEmail,email, async(err,rows,fields)=>{
+    conexion.query(sqlEmail,EmailCompany, async(err,rows,fields)=>{
       if(err) throw err;
       if(rows[0]=== undefined){
-        const BcryptPassword = await bcrypt.hash(Password,10)
+        const BcryptPassword = await bcrypt.hash(PasswordCompany,10)
 
-        let sql = `insert into Person (id,Name, lastname, phone, email, Password) values ('${Cedula}','${Name}','${lastname}', '${phone}', '${email}', '${BcryptPassword}')`
+        let sql = `insert into Company (NameCompany, PhoneCompany, EmailCompany,Addres,PasswordCompany) values ('${NameCompany}','${PhoneCompany}', '${EmailCompany}', '${Addres}','${BcryptPassword}')`
         console.log(sql);
         conexion.query(sql, (err,rows,fields)=>{
             if(err) throw err;
             else{
-                res.status(200).json({status: 'Usuario Agregado'})
                 next()
+                res.json({status: 'Company added successfully'})
             }
         })
       }
       else if(rows[0].email=email){
-        res.status(400).json({Mesage: 'email registered'});
+        res.status(400).json({Mesage: 'Company/email registered'});
       }
   })   
         
   } catch (error) {
-    console.log(error);
     return res.status(400).json({error})
   } 
 };
@@ -87,7 +85,6 @@ function DeleteUser (req,res){
         if(err) throw err;
         else{
             res.json({status: 'Usuario Eliminado'})
-            next()
         }
     })
     } catch (error) {
@@ -119,7 +116,6 @@ async function ModifyUser(req,res){
                     if(err) throw err;
                     
                     res.status(201).json({message:"User modify in successful"})
-                    next()
                 })
             }else{
                 console.log("Password Incorrect");
@@ -163,7 +159,7 @@ async function ModifyPassword(req,res,next){
                         if(err) throw err;
                         
                         res.status(201).json({message:"Password modify in successful"})
-                        next()
+                
                     })
                 }else{
                 
