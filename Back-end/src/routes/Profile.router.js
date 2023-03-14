@@ -5,7 +5,7 @@ const { SignUpValidate, SigninValidate, ModifyUserValidate, ModifyPasswordValida
 
 router.get('/',ProCtrl.GetAll)
 router.get('/:id',ProCtrl.Get)
-router.delete('/:id',ProCtrl.DeleteUser)
+router.delete('/:id',verifyTokenAdministrador,verifyTokenEmail,ProCtrl.DeleteUser)
 router.put('/UpdateUser/:id',ModifyUserValidate,verifyTokenEmail,ProCtrl.ModifyUser)
 router.put('/UpdateUser/Admin/:id',ModifyUserValidate,verifyTokenAdministrador,ProCtrl.ModifyUser)
 router.put('/UpdatePassword/:id',ModifyPasswordValidate,verifyTokenPassword,ProCtrl.ModifyPassword)

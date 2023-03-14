@@ -12,10 +12,10 @@ app.use(cors());
 // Morgan
 app.use(morgan('dev'))
 
-//Admitir
+//Admitir Json
 app.use(express.json());
 
-//Configuracion
+//Configuracion del puerto
 app.set('port',port);
 
 // Rutas

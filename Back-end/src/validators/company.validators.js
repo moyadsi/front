@@ -11,8 +11,6 @@ const CompanySignUpValidate=async(req,res,next)=>{
       RankMem:Joi.string().min(2).max(50).required()
     })
 
-    console.log(req.body);
-    console.log(SignUpSchema.validate);
     await SignUpSchema.validateAsync(req.body)
 
     next()

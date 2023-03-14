@@ -46,8 +46,6 @@ async function SignUp(req,res,next){
 
     const {NameCompany, PhoneCompany, EmailCompany , Addres,PasswordCompany,RankMem} = req.body
 
-    console.log(req.body);
-
     let sqlEmail = `select Id_Company ,NameCompany,EmailCompany from Company where EmailCompany = ?`;
     let sqlType = `select Id from Type where Descripction= ?` 
 
@@ -298,7 +296,6 @@ async function SignIn(req,res,next){
                 })
             })
         }else{
-            console.log(rows[0]);
             res.status(401).json({response:"User does not exist"})
 
         }

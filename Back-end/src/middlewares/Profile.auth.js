@@ -16,9 +16,6 @@ const verifyTokenEmail = async (req,res,next)=>{
 
     let sqlEmail = `select email from person where email = ?`
 
-    console.log(decode);
-
-
     let FoundEmail = conexion.query(sql2,[decode.email],(err,rows)=>{
 
       const validateEmail = conexion.query(sqlEmail,[decode.email])
@@ -50,12 +47,10 @@ const verifyTokenPassword = async (req,res,next)=>{
     let sqlEmail = `select email from person where email = ?`
 
     let FoundEmail = await conexion.query(sql2,[decode.email],async (err,rows)=>{
-      console.log(rows);
+      
       const validateEmail = await conexion.query(sqlEmail,[decode.email])
 
       if(validateEmail.values!=rows[0].email){
-        console.log(validateEmail.values);
-        console.log(FoundEmail.values);
   
         return res.status(401).json({message:"Profile validation failed"})
   

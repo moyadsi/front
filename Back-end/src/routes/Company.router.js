@@ -6,7 +6,7 @@ const { CompanySignUpValidate, CompanySigninValidate, CompanyModifyPasswordValid
 
 router.get('/',ComPCtrl.GetAll) 
 router.get('/:id',ComPCtrl.Get)
-router.delete('/:id',ComPCtrl.DeleteCompany)
+router.delete('/:id',verifyTokenAdministrador,verifyTokenEmailCompany,ComPCtrl.DeleteCompany)
 router.put('/UpdateCompany/Admin/:id',CompanyModifyCompanyValidate,verifyTokenAdministrador,ComPCtrl.ModifyCompany)
 router.put('/UpdateCompany/:id',CompanyModifyCompanyValidate,verifyTokenEmailCompany,ComPCtrl.ModifyCompany)
 router.put('/UpdatePassword/:id',CompanyModifyPasswordValidate,verifyTokenPasswordCompany,ComPCtrl.ModifyPassword)

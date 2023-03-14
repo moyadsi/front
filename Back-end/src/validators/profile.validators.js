@@ -12,8 +12,6 @@ const SignUpValidate=async(req,res,next)=>{
       Rol:Joi.string().min(2)
     })
 
-    console.log(req.body);
-    console.log(SignUpSchema.validate);
     await SignUpSchema.validateAsync(req.body)
 
     next()
