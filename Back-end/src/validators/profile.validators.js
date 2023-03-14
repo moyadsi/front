@@ -8,7 +8,8 @@ const SignUpValidate=async(req,res,next)=>{
       lastname:Joi.string().min(2).max(50).required(),
       phone:Joi.number().min(8).required(),
       email:Joi.string().lowercase().email().required(),
-      Password:Joi.string().min(8).required()
+      Password:Joi.string().min(8).required(),
+      Rol:Joi.string().min(2)
     })
 
     console.log(req.body);
@@ -62,7 +63,8 @@ try {
     lastname:Joi.string().min(2).max(50).required(),
     phone:Joi.number().min(8).required(),
     email:Joi.string().lowercase().email().required(),
-    Password:Joi.string().min(8).required()
+    Password:Joi.string().min(8).required(),
+    Rol:Joi.string().min(2)
   })
 
   await ModifyUserSchema.validateAsync(req.body)

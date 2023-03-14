@@ -6,6 +6,7 @@ const verifyTokenEmail = async (req,res,next)=>{
   try {
     
     const token = req.headers['x-access-token'];
+    const tokenRol = req.headers['x-access-token-rol']
     
     if(!token) return res.status(401).json({message: 'No token provided'})
 
@@ -14,6 +15,9 @@ const verifyTokenEmail = async (req,res,next)=>{
     let sql2 = `select Email from person where id = ${req.params.id}`
 
     let sqlEmail = `select email from person where email = ?`
+
+    console.log(decode);
+
 
     let FoundEmail = conexion.query(sql2,[decode.email],(err,rows)=>{
 
@@ -66,9 +70,32 @@ const verifyTokenPassword = async (req,res,next)=>{
   }
 }
 
+const verifyTokenAdministrador = async (req,res,next)=>{
+  try {
 
+    const tokenRol = req.headers['x-access-token']
+    
+    if(!tokenRol) return res.status(401).json({message: 'No token provided'})
+
+    const decode = Jwt.verify(tokenRol,process.env.SecretJWT)
+    
+    if(decode.Rol=='Administrador'){
+      console.log('Administrador');
+      next()
+    }else if(decode.Rol=='Moderator'){
+      console.log('Moderator');
+      next()
+    }
+    else{
+      return res.status(401).json({message:"Unathorized User"})
+    }
+  } catch (error) {
+    return res.status(401).json({message:"Unathorized"})
+  }
+}
 
 module.exports={
   verifyTokenEmail,
-  verifyTokenPassword
+  verifyTokenPassword,
+  verifyTokenAdministrador
 }
