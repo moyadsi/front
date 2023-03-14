@@ -114,45 +114,106 @@ async function ModifyCompany(req,res){
         const {NameCompany, PhoneCompany, EmailCompany , Addres,PasswordCompany,RankMem} = req.body
 
         let sqlPassword = `select PasswordCompany from Company where Id_Company=?`;
-        
+        let SqlSearchEmail = `select EmailCompany from company where EmailCompany =  ?`
+        let SqlSearchConfirmed=`select EmailCompany from Company where Id_Company = ${req.params.id}`
 
+        conexion.query(SqlSearchConfirmed,(err,rows,fields)=>{
+
+            if(err)throw err;
+    
+            const SearchConfirmed = rows[0].email;
+    
+            conexion.query(SqlSearchEmail,[EmailCompany],(err,rows,fields)=>{
+    
+                if(err)throw err;
+    
+                const SearchEmail =rows[0];
+    
+                if(SearchEmail==undefined){       
+                    
+            conexion.query(sqlPassword,[id],(err,rows,fields)=>{
+
+            if(err ) throw err;
+    
+    
+            const BcryptPassword= rows[0].PasswordCompany;
+            
+            bcrypt.compare(PasswordCompany,BcryptPassword,async(err,hash)=>{
+    
+                if(err) throw err;  
+                if(hash){
+    
+                    let sqlType = `select Id from Type where Descripction= ?` 
+    
+                    conexion.query(sqlType,[RankMem],(err,rows,fields)=>{
+                        const Id_Membreys= rows[0].Id;
+                        
+                        if(rows[0]==undefined){
+                            res.status(400).json({message:"Rank of Membreys is Unvalid"})
+                        }
+                        else{
+                            let sqlId =   `update Company set NameCompany ='${NameCompany}',PhoneCompany = '${PhoneCompany}', EmailCompany = '${EmailCompany}',addres= '${Addres}',Id_Membreys='${Id_Membreys}' where Id_Company = '${id}'`
+                            conexion.query(sqlId,(err,rows,fields)=>{
+                                if(err) throw err;
+                                
+                                res.status(201).json({message:"User modify in successful"})
+                            })
+                        }
+                    })
+                    
+                }else{
+                    console.log("Password Incorrect");
+                    res.status(401).json({message:"Password Incorrect"})
+                }
+            })
+        })
+    }
+        else if(SearchConfirmed==req.body.EmailCompany){
+                    
         conexion.query(sqlPassword,[id],(err,rows,fields)=>{
 
-        if(err ) throw err;
-
-
-        const BcryptPassword= rows[0].PasswordCompany;
-        
-        bcrypt.compare(PasswordCompany,BcryptPassword,async(err,hash)=>{
-
-            if(err) throw err;  
-            if(hash){
-
-                let sqlType = `select Id from Type where Descripction= ?` 
-
-                conexion.query(sqlType,[RankMem],(err,rows,fields)=>{
-                    const Id_Membreys= rows[0].Id;
-                    
-                    if(rows[0]==undefined){
-                        res.status(400).json({message:"Rank of Membreys is Unvalid"})
-                    }
-                    else{
-                        let sqlId =   `update Company set NameCompany ='${NameCompany}',PhoneCompany = '${PhoneCompany}', EmailCompany = '${EmailCompany}',addres= '${Addres}',Id_Membreys='${Id_Membreys}' where Id_Company = '${id}'`
-                        conexion.query(sqlId,(err,rows,fields)=>{
-                            if(err) throw err;
-                            
-                            res.status(201).json({message:"User modify in successful"})
-                        })
-                    }
-                })
-                
-            }else{
-                console.log("Password Incorrect");
-                res.status(401).json({message:"Password Incorrect"})
-            }
-        })
+            if(err ) throw err;
     
-    })
+    
+            const BcryptPassword= rows[0].PasswordCompany;
+            
+            bcrypt.compare(PasswordCompany,BcryptPassword,async(err,hash)=>{
+    
+                if(err) throw err;  
+                if(hash){
+    
+                    let sqlType = `select Id from Type where Descripction= ?` 
+    
+                    conexion.query(sqlType,[RankMem],(err,rows,fields)=>{
+                        const Id_Membreys= rows[0].Id;
+                        
+                        if(rows[0]==undefined){
+                            res.status(400).json({message:"Rank of Membreys is Unvalid"})
+                        }
+                        else{
+                            let sqlId =   `update Company set NameCompany ='${NameCompany}',PhoneCompany = '${PhoneCompany}', EmailCompany = '${EmailCompany}',addres= '${Addres}',Id_Membreys='${Id_Membreys}' where Id_Company = '${id}'`
+                            conexion.query(sqlId,(err,rows,fields)=>{
+                                if(err) throw err;
+                                
+                                res.status(201).json({message:"User modify in successful"})
+                            })
+                        }
+                    })
+                    
+                }else{
+                    console.log("Password Incorrect");
+                    res.status(401).json({message:"Password Incorrect"})
+                }
+            })
+        
+        })
+                }else if(SearchEmail!=SearchConfirmed){
+    
+                    res.status(400).json({message:"Email Unvalid changed"})
+                    
+                }
+            })
+        })
     } catch (error) {
         return res.status(400).json({error})
     }
