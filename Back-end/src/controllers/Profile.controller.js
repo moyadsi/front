@@ -32,7 +32,6 @@ function Get(req,res){
             if(err) throw err;
             else{
                 res.json(rows)
-                
             }
         })
     } catch (error) {
@@ -78,7 +77,7 @@ async function SignUp(req,res,next){
 };
 
 // Eliminar Usuario
-function DeleteUser (req,res){
+function DeleteUser (req,res,next){
     try {
         
     const {id} = req.params
@@ -97,38 +96,58 @@ function DeleteUser (req,res){
 
 
 // Modify User
-async function ModifyUser(req,res){
+async function ModifyUser(req,res,next){
     try {
         
         const {id} = req.params
         const{Name, lastname, phone, email}= req.body
         let sqlPassword = `select Password from Person where id=${req.params.id}`;
+        let SqlSearchEmail = `select email from person where email =  ?`
+        let SqlSearchConfirmed=`select email from person where id = ${req.params.id}`
+
+    conexion.query(SqlSearchConfirmed,(err,rows,fields)=>{
+
+        if(err)throw err;
+
+        const SearchConfirmed = rows[0].email;
+        console.log(SearchConfirmed);
+
+        conexion.query(SqlSearchEmail,[email],(err,rows,fields)=>{
+
+            if(err)throw err;
+            const SearchEmail =rows[0];
+            console.log(SearchEmail);
+            if(SearchEmail==undefined){       
+                conexion.query(sqlPassword,[id],(err,rows,fields)=>{
         
-        conexion.query(sqlPassword,[id],(err,rows,fields)=>{
-
-        if(err ) throw err;
-
-        const BcryptPassword= rows[0].Password;
-        
-        bcrypt.compare(req.body.Password,BcryptPassword,async(err,hash)=>{
-
-            let sqlId =   `update Person set Name ='${Name}',lastname = '${lastname}',phone = '${phone}', email = '${email}' where id = '${id}'`
-            if(err) throw err;  
-            if(hash){
-                conexion.query(sqlId,(err,rows,fields)=>{
-                    if(err) throw err;
+                    if(err ) throw err;
+            
+                    const BcryptPassword= rows[0].Password;
                     
-                    res.status(201).json({message:"User modify in successful"})
-                    next()
+                    bcrypt.compare(req.body.Password,BcryptPassword,async(err,hash)=>{
+            
+                        let sqlId =   `update Person set Name ='${Name}',lastname = '${lastname}',phone = '${phone}', email = '${email}' where id = '${id}'`
+                        if(err) throw err;  
+                        if(hash){
+                            conexion.query(sqlId,(err,rows,fields)=>{
+                                if(err) throw err;
+                                
+                                res.status(201).json({message:"User modify in successful"})
+                                next()
+                            })
+                        }else{
+                            console.log("Password Incorrect");
+                            res.status(401).json({message:"Password Incorrect"})
+                        }
+                    })
                 })
-            }else{
-                console.log("Password Incorrect");
-                res.status(401).json({message:"Password Incorrect"})
+            }else if(SearchEmail!==SearchConfirmed){
+                res.status(400).json({message:"Email Unvalid changed"})
             }
         })
-    
     })
-    } catch (error) {
+} 
+catch (error) {
         return res.status(400).json({error})
     }
 };

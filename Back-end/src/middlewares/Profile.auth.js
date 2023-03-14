@@ -15,20 +15,16 @@ const verifyTokenEmail = async (req,res,next)=>{
 
     let sqlEmail = `select email from person where email = ?`
 
-    let FoundEmail = await conexion.query(sql2,[decode.email],async (err,rows)=>{
-      console.log(rows);
-      const validateEmail = await conexion.query(sqlEmail,[decode.email])
+    let FoundEmail = conexion.query(sql2,[decode.email],(err,rows)=>{
 
-      if(validateEmail.values!=rows[0].email){
-        console.log(validateEmail.values);
-        console.log(FoundEmail.values);
-  
+      const validateEmail = conexion.query(sqlEmail,[decode.email])
+
+      if(validateEmail.values[0]!=FoundEmail.values[0]){
+
         return res.status(401).json({message:"Email validation failed"})
-  
+
       }
-      else{
-        next()
-      }
+        return next()
     })
     
   } catch (error) {

@@ -18,8 +18,6 @@ const SignUpValidate=async(req,res,next)=>{
     next()
   } catch (error) {
     if(error.isJoi===true) Value = error.status=422;
-
-    next(error);
     
     return res.status(Value).json({error})
   } 
@@ -37,8 +35,6 @@ const SigninValidate=async(req,res,next)=>{
     next()
   } catch (error) {
     if(error.isJoi===true) Value = error.status=422;
-
-    next(error);
     
     return res.status(Value).json({error})
   }
@@ -54,8 +50,6 @@ const ModifyPasswordValidate=async(req,res,next)=>{
     next()
   } catch (error) {
     if(error.isJoi===true) Value = error.status=422;
-
-    next(error);
     
     return res.status(Value).json({error})
   }
@@ -75,8 +69,6 @@ try {
   next()
 } catch(error) {
   if(error.isJoi===true) Value = error.status=422;
-
-    next(error);
     
     return res.status(Value).json({error})
 }
