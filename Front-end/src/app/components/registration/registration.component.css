@@ -28,6 +28,7 @@ hr{
 
 .section-left{
   width: 50%;
+  background-image: url(../../../assets/Register/Imagen\ 45.png);
 }
 
 .slide{
@@ -144,3 +145,8 @@ hr{
 .section-right > form > .termsAndConditions > input{
   margin-right: 10px;
 }
+
+@media screen and (max-width:768px) {
+
+}
+
