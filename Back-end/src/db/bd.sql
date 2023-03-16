@@ -10,7 +10,8 @@ CREATE TABLE Person (
     Email CHAR(100) NOT NULL UNIQUE,
     Password CHAR(100) NOT NULL,
     Status BOOLEAN DEFAULT TRUE,
-    Date DATETIME DEFAULT NOW()
+    Date DATETIME DEFAULT NOW(),
+    Rol char(50) default 'User'
 );
 
 select * from person;
