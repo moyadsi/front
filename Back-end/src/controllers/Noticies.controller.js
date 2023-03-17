@@ -18,7 +18,7 @@ const GetNoticie =(req,res)=>{
       
     axios.request(options).then(function (response) {
         const code = response.status;
-        res.status(code).json(response.data);
+        res.status(code).json({Content:response.data.articles});
     }).catch(function (error) {
         const code = error.response.status;
         res.status(code).json({error:error.message})
