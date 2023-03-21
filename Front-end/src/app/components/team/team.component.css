@@ -11,10 +11,10 @@
 }
 
 .team > img{
-    width: 300px;
-    height: 150px;
+    width: 70%;
+    height: 70%;
     border-radius: 15px;
-    margin: 0px 50px 0px;
+    margin: 0px 40px 0px;
 }
 
 .team > h2{
@@ -24,13 +24,7 @@
     font-family: 'Outer Limits Solid', sans-serif;
     font-size: 25px;
 }
-label > hr{
-    height:20vh;
-    width:.1vw;
-    border-width:0;
-    background-color:#837f7f;
-    margin: 1% 0 2% 5%;
-   }
+
 
    .members{
     display: grid;
