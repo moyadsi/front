@@ -15,12 +15,26 @@ const GetCategoryAll = (req,res)=>{
     }
 }
 
+const GetCagoryId = (req,res)=>{
+    try {
+        let sql = `select * from category where Id_Category = ${req.params.id}`
+        conexion.query(sql,(err,rows,fields)=>{
+            if(err)throw err
+            else{
+                res.status(200).json(rows)
+            }
+        })
+    } catch (error) {
+        
+    }
+}
+
 const AddCategory = (req,res) =>{
     try {
-        const {Name,Description,Id_Course} = req.body
-        let sql = `insert into Category (NameCategory,DescriptionCategory,Id_Course) values (?,?,?)`
+        const {Name,Description} = req.body
+        let sql = `call CreateCategory(?,?)`
 
-        conexion.query(sql,[Name,Description,Id_Course],(err,rows,fields)=>{
+        conexion.query(sql,[Name,Description],(err,rows,fields)=>{
             console.log(rows);
             if(err)throw err;
             else{
@@ -36,5 +50,6 @@ const AddCategory = (req,res) =>{
 
 module.exports = {
     AddCategory,
-    GetCategoryAll
+    GetCategoryAll,
+    GetCagoryId
 }

@@ -10,14 +10,13 @@ const SignUpValidate=async(req,res,next)=>{
       email:Joi.string().lowercase().email().required(),
       Password:Joi.string().min(8).required(),
       Rol:Joi.string().min(2),
-      RolAd:Joi.string().min(2)
+      RolAd:Joi.string().min(9)
     })
-
     await SignUpSchema.validateAsync(req.body)
 
     next()
   } catch (error) {
-    if(error.isJoi===true) Value = error.status=422;
+    if(error.isJoi===true) Value = error.status;
     
     return res.status(Value).json({error})
   } 

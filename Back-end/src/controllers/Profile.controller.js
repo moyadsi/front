@@ -53,7 +53,7 @@ async function SignUp(req,res,next){
       if(rows[0]=== undefined){
         const BcryptPassword = await bcrypt.hash(Password,10)
 
-        let sql = `insert into Person (id,Name, lastname, phone, email, Password,Rol,RolAd) values ('${Cedula}','${Name}','${lastname}', '${phone}', '${email}', '${BcryptPassword}','${Rol}','${RolAd}')`
+        let sql = `insert into Person (id,Name, lastname, phone, email, Password,Rol,RolAd) values (${Cedula},'${Name}','${lastname}', '${phone}', '${email}', '${BcryptPassword}','${Rol}','${RolAd}')`
 
     conexion.query(sql, (err,rows,fields)=>{
             
@@ -276,7 +276,7 @@ async function SignIn(req,res,next){
                                 next()
                                 return res.status(201).json({message:"Sign in successful Moderator",Token:TokenRol})
                             }
-                            else if(Rol==''){
+                            else{
                                 next()
                                 return res.status(200).json({message:"Sign in successful",Token:TokenEmail})
                             }
