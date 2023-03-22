@@ -278,3 +278,14 @@ h5{
             margin-top: 5%;
         }
         
+        iframe{
+            margin: 20%;
+        }
+
+        label > hr{
+            height:20vh;
+            width:.1vw;
+            border-width:0;
+            background-color:#837f7f;
+            margin: 5% 0 -2% 1%;
+           }

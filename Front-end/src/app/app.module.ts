@@ -23,6 +23,7 @@ import { NewsMetaComponent } from './components/news-meta/news-meta.component';
 import { UsComponent } from './components/us/us.component';
 import { SuscriptionComponent } from './components/suscription/suscription.component';
 import { TeamComponent } from './components/team/team.component';
+import { BestMetaComponent } from './components/best-meta/best-meta.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { TeamComponent } from './components/team/team.component';
     NewsMetaComponent,
     UsComponent,
     SuscriptionComponent,
-    TeamComponent
+    TeamComponent,
+    BestMetaComponent
   ],
   imports: [
     BrowserModule,
