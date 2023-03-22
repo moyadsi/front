@@ -29,6 +29,7 @@ const verifyTokenEmail = async (req,res,next)=>{
     })
     
   } catch (error) {
+    console.log(error);
     return res.status(400).json({message:"Unathorized"})
   }
 }
@@ -74,10 +75,10 @@ const verifyTokenAdministrador = async (req,res,next)=>{
 
     const decode = Jwt.verify(tokenRol,process.env.SecretJWT)
     
-    if(decode.Rol=='Administrador'){
+    if(decode.RolAd=='Administrador'){
       console.log('Administrador');
       next()
-    }else if(decode.Rol=='Moderator'){
+    }else if(decode.RolAd=='Moderator'){
       console.log('Moderator');
       next()
     }

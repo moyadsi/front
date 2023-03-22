@@ -44,7 +44,7 @@ function Get(req,res){
 async function SignUp(req,res,next){
   try {
 
-    const {Cedula,Name, lastname, phone, email, Password,Rol} = req.body
+    const {Cedula,Name, lastname, phone, email, Password,Rol,RolAd} = req.body
 
     let sqlEmail = `select id,Name,email from Person where email = ?`;
 
@@ -53,7 +53,7 @@ async function SignUp(req,res,next){
       if(rows[0]=== undefined){
         const BcryptPassword = await bcrypt.hash(Password,10)
 
-        let sql = `insert into Person (id,Name, lastname, phone, email, Password,Rol) values ('${Cedula}','${Name}','${lastname}', '${phone}', '${email}', '${BcryptPassword}','${Rol}')`
+        let sql = `insert into Person (id,Name, lastname, phone, email, Password,Rol,RolAd) values ('${Cedula}','${Name}','${lastname}', '${phone}', '${email}', '${BcryptPassword}','${Rol}','${RolAd}')`
 
     conexion.query(sql, (err,rows,fields)=>{
             
@@ -238,12 +238,14 @@ async function SignIn(req,res,next){
     
     const email = req.body.email
 
-    let sqlRol = `select Rol from Person where email = '${email}'`
+    let sqlRol = `select Rol,RolAd from Person where email = '${email}'`
 
     conexion.query(sqlRol,(err,rows,fields)=>{
         
         if(err) throw err;
         const Rol = rows[0].Rol;
+        const RolAd = rows[0].RolAd;
+        console.log(RolAd);
             
         let sql = 'select Name, id from Person where email =  ?'
         let sqlP = 'select Password from Person where email =  ?'
@@ -262,21 +264,21 @@ async function SignIn(req,res,next){
                             const TokenEmail = Jwt.sign({email},process.env.SecretJWT,{
                                 expiresIn:3600
                             })
-                            const TokenRol = Jwt.sign({Rol},process.env.SecretJWT,{
+                            const TokenRol = Jwt.sign({RolAd},process.env.SecretJWT,{
                                 expiresIn:3600
                             })
                             console.log("Sign in successful");
-                            if(Rol=='Administrador'){
-                                res.status(201).json({message:"Sign in successful Administrador",Token:TokenRol})
+                            if(RolAd=='Administrador'){
                                 next()
+                                return res.status(201).json({message:"Sign in successful Administrador",Token:TokenRol})
                             }
-                            if(Rol=='Moderator'){
-                                res.status(201).json({message:"Sign in successful Moderator",Token:TokenRol})
+                            if(RolAd=='Moderator'){
                                 next()
+                                return res.status(201).json({message:"Sign in successful Moderator",Token:TokenRol})
                             }
-                            else{
-                                res.status(201).json({message:"Sign in successful",Token:TokenEmail})
+                            else if(Rol==''){
                                 next()
+                                return res.status(200).json({message:"Sign in successful",Token:TokenEmail})
                             }
                         }else{
                             console.log("Password Incorrect");

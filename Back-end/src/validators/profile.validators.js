@@ -9,7 +9,8 @@ const SignUpValidate=async(req,res,next)=>{
       phone:Joi.number().min(8).required(),
       email:Joi.string().lowercase().email().required(),
       Password:Joi.string().min(8).required(),
-      Rol:Joi.string().min(2)
+      Rol:Joi.string().min(2),
+      RolAd:Joi.string().min(2)
     })
 
     await SignUpSchema.validateAsync(req.body)

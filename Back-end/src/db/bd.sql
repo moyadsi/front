@@ -10,7 +10,8 @@ CREATE TABLE Person (
     Email CHAR(100) NOT NULL UNIQUE,
     Password CHAR(100) NOT NULL,
     Status BOOLEAN DEFAULT TRUE,
-    Date DATETIME DEFAULT NOW()
+    Date DATETIME DEFAULT NOW(),
+    Rol char(100) default 'User'
 );
 
 select * from person;
@@ -27,16 +28,6 @@ CREATE TABLE Company (
     Id_Membreys INT,
     Id_Place INT,
     Id_Cities INT
-);
-
-
-
-CREATE TABLE Rol (
-    Id_Rol INT PRIMARY KEY AUTO_INCREMENT,
-    Rolid int,
-    DescriptionRol CHAR(50) NOT NULL default 'User',
-    CONSTRAINT FK_Rol_Person FOREIGN KEY (Rolid)
-        REFERENCES Person (Id)
 );
 
 CREATE TABLE Departament (
@@ -68,13 +59,15 @@ CREATE TABLE course (
 
 CREATE TABLE Category (
     Id_Category INT PRIMARY KEY AUTO_INCREMENT,
+    NameCategory CHAR(255) NOT NULL,
     DescriptionCategory CHAR(255) NOT NULL,
     Status BOOLEAN DEFAULT TRUE,
-    Date DATETIME,
+    Date DATETIME DEFAULT NOW(),
     Id_Course INT,
     CONSTRAINT FK_Category_Course FOREIGN KEY (Id_course)
         REFERENCES Course (id_Course)
 );
+select * from Category;
 
 CREATE TABLE ContentCourse (
     Id_Content INT PRIMARY KEY AUTO_INCREMENT,
@@ -91,14 +84,12 @@ CREATE TABLE Teacher (
     Experience CHAR(50) NOT NULL,
     Study CHAR(255) NOT NULL,
     Status BOOLEAN DEFAULT TRUE,
-    Id_Course INT,
-    Id_Person INT,
+    Id_Course int ,
     CONSTRAINT FK_Teacher_Course FOREIGN KEY (Id_Course)
         REFERENCES course (id_Course),
-    CONSTRAINT FK_Teacher_Person FOREIGN KEY (Id_Person)
+    CONSTRAINT FK_Teacher_Person FOREIGN KEY (Id_Teacher)
         REFERENCES Person (Id)
 );
-
 
 
 /*Noticias*/
@@ -175,7 +166,7 @@ CREATE TABLE Comment (
 
 CREATE TABLE Type (
     Id INT PRIMARY KEY,
-    Descripction CHAR(255)
+    Descripction CHAR(255) default 'Free'
 );
 
 CREATE TABLE Membreys (
@@ -187,6 +178,9 @@ CREATE TABLE Membreys (
     CONSTRAINT FK_Membreys_Type FOREIGN KEY (IdType)
         REFERENCES Type (Id)
 );
+
+select * from type;
+insert into Type values (1,'Free'),(2,'Advanced'),(3,'Premium');
 
 /*Calificacion Cursos*/
 
@@ -209,3 +203,32 @@ create table tb_user(
     email varchar(50),
     accesscode varchar(50)
 );
+
+
+DELIMITER $$
+CREATE PROCEDURE GetAllCourse()
+BEGIN
+    SELECT course.id_Course, Category.*,ContentCourse.*,Teacher.* 
+    FROM course inner join Category inner join ContentCourse inner join Teacher;
+END$$
+DELIMITER ;
+
+call GetAllCourse();
+
+Delimiter $$
+create procedure GetCourseElement(in Id int)
+begin
+	SELECT course.id_Course, Category.*,ContentCourse.*,Teacher.* 
+    FROM course inner join Category inner join ContentCourse inner join Teacher where course.id_Course=Id;
+end$$
+delimiter ;
+
+Delimiter $$
+create procedure AddTeacher (in Id_Teacher1 int ,in Experience1 char(50), in Study1 char(255))
+begin
+	SET FOREIGN_KEY_CHECKS=0; 
+	update Person set Rol = 'Profesor' where Id = Id_Teacher1;
+	insert into Teacher (Id_Teacher,Experience,Study) values (Id_Teacher1,Experience1,Study1);
+end $$
+
+delimiter ;
