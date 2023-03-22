@@ -1,0 +1,85 @@
+main{
+  width: 100%;
+  height: 70vh;
+  display: flex;
+}
+.leftPart{
+  height: 70vh;
+  width: 30%;
+  overflow: scroll;
+}
+
+.targetNew{
+  position: relative;
+  background-color: #393939;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  margin: 25px;
+}
+
+.targetNew .content{
+  position: relative;
+  width: 60%;
+  padding: 10px 20px;
+}
+
+.content .buttonDate{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttonDate span{
+  font-size: 8pt;
+}
+
+.targetNew button{
+  padding: 0.5rem 2rem;
+  background-color: gray;
+  border-radius: 8px;
+  border: none;
+}
+
+.targetNew hr{
+  position: absolute;
+  top: 30%;
+  width: 90%;
+  height: 2px;
+  border: none;
+  background-color: gray;
+}
+
+.targetNew .titleTarget{
+  font-size: 15pt;
+  font-weight: 400;
+}
+.targetNew .descriptionTarget{
+  font-size: 10pt;
+  font-weight: 400;
+  max-height: 50px;
+  overflow: scroll;
+}
+
+.targetNew img{
+  position: absolute;
+  width: 30%;
+  right: 0;
+  height: 100%;
+  object-fit: cover;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+
+}
+
+.centerPart{
+  height: 70vh;
+  width: 50%;
+  border: 1px solid red;
+}
+
+.rightPart{
+  height: 70vh;
+  width: 20%;
+  border: 1px solid blue;
+}
