@@ -36,8 +36,8 @@ const GetCourseElement = (req,res)=>{
 
 const AddCourse=(req,res)=>{
     try {
-        const {idCurso,DescriptionCurso,Duration,IdTeacher,IdCategory,Lenguaje} =req.body
-        let sql = `call CreateCourse('${idCurso}','${DescriptionCurso}','${Duration}','${IdTeacher}','${IdCategory}','${Lenguaje}')`
+        const {idCurso,DescriptionCurso,Duration,IdTeacher,IdCategory,Lenguaje,Url} =req.body
+        let sql = `call CreateCourse('${idCurso}','${DescriptionCurso}','${Duration}','${IdTeacher}','${IdCategory}','${Lenguaje}','${Url}')`
         conexion.query(sql,(err,rows,fields)=>{
           if(err) throw err
           else{

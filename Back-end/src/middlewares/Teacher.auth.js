@@ -4,16 +4,14 @@ require('dotenv').config();
 
 const verifyTokenEmail = async (req,res,next)=>{
   try {
-    // Peticion del token 
+    // Peticion del token y se guarda el token una constante
     const token = req.headers['x-access-token'];
-    //Validacion del token si existe o no
     if(!token) return res.status(401).json({message: 'No token provided'})
-    //se guarda el token una constante
     const decode = Jwt.verify(token,process.env.SecretJWT)
     //Cadena sql para encontrar el correo en el token
     let sql2 = `select Person.Email from Teacher inner join Person where Teacher.Id_Teacher = ${req.params.id}`
-    // Cadena sql para encontrar el correo en el token junto con la id
     let sqlEmail = `select Person.Email,Teacher.Id_Teacher from Teacher inner join person where Person.email = ?`
+    
     // Se encuentra el correo y lo almacena en una variable temporal
     let FoundEmail = conexion.query(sql2,[decode.email],(err,rows)=>{
       //validacion del correo 

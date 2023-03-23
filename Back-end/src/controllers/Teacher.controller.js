@@ -36,7 +36,6 @@ const AddTeacher = (req,res)=>{
         conexion.query(sql,[PersonId,Experiencia,Estudio],(err,rows,fields)=>{
             if(err)throw err
             else{
-                console.log(rows.affectedRows);
                 res.status(200).json(rows)
             }
         })

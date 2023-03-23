@@ -61,7 +61,8 @@ create table AllCourse(
  durationCourse char(10),
  IdTeacher int,
  IdCate int,
- Lenguaje char(50)
+ Lenguaje char(50),
+  Url char not null
 );
 
 CREATE TABLE course (
@@ -83,6 +84,7 @@ CREATE TABLE ContentCourse (
     Description CHAR(255) NOT NULL,
     Duration CHAR(10) NOT NULL,
     Language char(50) not null,
+    Url char not null,
     Status BOOLEAN DEFAULT TRUE,
     Id_course INT,
     CONSTRAINT FK_Contentcourse_Course FOREIGN KEY (Id_course)
@@ -189,7 +191,6 @@ CREATE TABLE Membreys (
         REFERENCES Type (Id)
 );
 
-select * from type;
 insert into Type values (1,'Free'),(2,'Advanced'),(3,'Premium');
 
 /*Calificacion Cursos*/
@@ -228,21 +229,21 @@ Delimiter $$
 create procedure GetCourseElement(in Id int)
 begin
 	SELECT course.id_Course, Category.*,ContentCourse.*,Teacher.* 
-    FROM course inner join Category inner join ContentCourse inner join Teacher where course.id_Course=Id;
+    FROM course inner join Category inner join ContentCourse inner join Teacher where course.id_Course=Id ;
 end$$
 delimiter ;
 
 Delimiter $$
-create procedure GetTeacherId(in Id_Teacher1 int)
+create procedure GetTeacherId(in Id int)
 begin
-	select Teacher.*,Person.Name,Person.Email,Person.Phone from Teacher inner join Person where Id_Teacher=Id_Teacher1;
+	select Teacher.*,Person.Name,Person.Email,Person.Phone from Teacher inner join Person where Teacher.Id_Teacher=Id and Person.Rol="Profesor" ;
 end $$
 delimiter ;
 
 Delimiter $$
 create procedure GetTeacherAll()
 begin
-	select Teacher.*,Person.Name,Person.Email,Person.Phone from Teacher inner join Person;
+	select Teacher.*,Person.Name,Person.Email,Person.Phone from Teacher inner join Person where Person.Rol="Profesor" ;
 end $$
 delimiter ;
 
@@ -274,12 +275,12 @@ end $$
 delimiter ;
 
 Delimiter $$
-create procedure CreateCourse(in IdCourse int,in DescriptionCourse char(255),in durationCourse char(10),in IdTeacher int,in IdCate int,in Lenguaje char(50))
+create procedure CreateCourse(in IdCourse int,in DescriptionCourse char(255),in durationCourse char(10),in IdTeacher int,in IdCate int,in Lenguaje char(50),in Url char)
 begin
 	SET FOREIGN_KEY_CHECKS=0;
     update Teacher set Id_Course=IdCourse where Id_Teacher=IdTeacher;
     insert into course values (IdCourse);
-    insert into AllCourse(IdCourse,DescriptionCourse,durationCourse,IdTeacher,IdCate,Lenguaje) values  (IdCourse,DescriptionCourse,durationCourse,IdTeacher,IdCate,Lenguaje);
+    insert into AllCourse(IdCourse,DescriptionCourse,durationCourse,IdTeacher,IdCate,Lenguaje,Url) values  (IdCourse,DescriptionCourse,durationCourse,IdTeacher,IdCate,Lenguaje,Url);
 end $$
 delimiter ;
 
