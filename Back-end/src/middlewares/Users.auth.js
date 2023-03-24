@@ -66,6 +66,8 @@ const verifyTokenPassword = async (req,res,next)=>{
   }
 }
 
+/*Perfil: Compañia, portafolio, Roles Membresia*/ 
+
 const verifyTokenAdministrador = async (req,res,next)=>{
   try {
 

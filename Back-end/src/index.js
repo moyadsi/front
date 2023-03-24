@@ -19,7 +19,7 @@ app.use(express.json());
 app.set('port',port);
 
 // Rutas
-app.use('/api/Profile',require('./routes/Profile.router'))
+app.use('/api/Users',require('./routes/Users.router'))
 app.use('/api/Company',require('./routes/Company.router'))
 app.use('/api/Noticie',require('./routes/Noticies.router'))
 app.use('/api/Course',require('./routes/Course.router'))

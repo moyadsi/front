@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const ComPCtrl=require ('../controllers/Company.controller')
 const { verifyTokenEmailCompany, verifyTokenPasswordCompany } = require('../middlewares/Company.auth')
-const { verifyTokenAdministrador } = require('../middlewares/Profile.auth')
+const { verifyTokenAdministrador } = require('../middlewares/Users.auth')
 const { CompanySignUpValidate, CompanySigninValidate, CompanyModifyPasswordValidate, CompanyModifyCompanyValidate } = require('../validators/company.validators')
 
 router.get('/',ComPCtrl.GetAll) 
