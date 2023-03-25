@@ -1,21 +1,36 @@
 main{
-  width: 100%;
-  height: 70vh;
+  width: 95%;
+  height: 95vh;
   display: flex;
+  margin: auto;
 }
 .leftPart{
-  height: 70vh;
+  height: 100%;
   width: 30%;
-  overflow: scroll;
+  overflow-y: scroll;
+  direction: rtl;
+
 }
+
+.leftPart::-webkit-scrollbar{
+  width: 5px;
+  height: 50px;
+}
+
+.leftPart::-webkit-scrollbar-thumb{
+  background: #5ab770;
+  border-radius: 10px ;
+}
+
 
 .targetNew{
   position: relative;
   background-color: #393939;
-  border-radius: 20px;
+  border-radius: 30px;
   display: flex;
   flex-direction: column;
   margin: 25px;
+  direction: ltr;
 }
 
 .targetNew .content{
@@ -58,12 +73,12 @@ main{
   font-size: 10pt;
   font-weight: 400;
   max-height: 50px;
-  overflow: scroll;
+  overflow-y: scroll;
+  direction: ltr;
 }
 
 .targetNew img{
   position: absolute;
-  width: 30%;
   right: 0;
   height: 100%;
   object-fit: cover;
@@ -73,13 +88,128 @@ main{
 }
 
 .centerPart{
-  height: 70vh;
+  height: 100%;
   width: 50%;
-  border: 1px solid red;
+  position: relative;
+  margin: 20px;
+}
+
+.centerPart .imageBackground{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  object-fit: cover;
+  border-radius: 30px;
+}
+
+.categoryAndTitle{
+  display: flex;
+}
+
+.categoryAndTitle button{
+  margin: 20px
+  ;
+}
+
+.tiktokApi{
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  border-radius: 15px;
+  border: 1px solid gray;
+  margin-left: 20px;
+  background-color: #111111;
+}
+
+.headerTikTok{
+  width: 100%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.headerTikTok img{
+  object-fit: cover;
+  width: 30px;
+  height: 30px;
+}
+
+.sectionVideos{
+  width: 100%;
+  height: 80%;
+}
+
+.sectionVideos img{
+  width: 100%;
+  object-fit: cover;
+}
+
+.information{
+  position: absolute;
+  bottom: 10%;
+  margin: 20px;
+}
+
+.targetVideo{
+  display: flex;
+  width: 100%;
+}
+
+.targetVideo .targetVideoMin{
+  width: 25%;
+  margin-right: 30px;
+}
+
+.targetVideo .targetVideoMin a img{
+  width: 100%;
+  object-fit: cover;
+}
+
+.categoryAndTitle{
+  display: flex;
+  align-items: center;
+}
+
+.categoryAndTitle button{
+  height: 30px;
+  padding: 0.5rem 2rem;
+  background-color: gray;
+  border-radius: 8px;
+  border: none;
+}
+
+.categoryAndTitle p{
+  font-size: 28pt;
 }
 
 .rightPart{
   height: 70vh;
   width: 20%;
   border: 1px solid blue;
+}
+
+.buttonsEnd{
+  position: absolute;
+  bottom: 0;
+  display: flex;
+}
+.buttonsEnd a{
+  border-radius: 15px;
+  margin: 20px;
+  padding: 0.8rem 1.8rem;
+  color: white;
+}
+
+.lookVideo{
+  background-color: transparent;
+  border: 1px solid #393939;
+}
+
+.readArticule{
+  background-color: #262626;
+  border: 1px solid #393939;
 }
