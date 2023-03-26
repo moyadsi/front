@@ -75,7 +75,6 @@ h5{
     }
 
     .new-conteiner{
-        margin-left: 10px;
         margin-top: 50px;
         width: 90%;
         position: relative;
@@ -125,7 +124,7 @@ h5{
         display: grid;
         grid-template-columns: 50% 50%;
         grid-template-rows: none;
-        margin: 30px;
+        margin: 0;
 
     }
 
@@ -139,28 +138,21 @@ h5{
         margin-left: 20px;
     }
     .news-two p{
+        margin: 20% 0 0 -80%;
+        width: 60%;
+        display: inline-block;
         position: absolute;
-        margin-top: 10%;
-        width: 300px;
-        padding: 10px;
-        margin-left: 20px;
     }
     .news-three p{
-        position: absolute;
-        margin-top: 15%;
-        width: 300px;
-        padding: 10px;
-        margin-left: 20px;
+        margin: 20% 0 0 5%;
+        width: 60%;
     }
     .conteiner p{
-        margin: 10px;
-        width: 500px;
+        width: 100%;
     }
       .new-suscription p{
-       width: 300px;
-       margin: 50px;
-       align-items:flex-end;
-       margin-top:120px;
+       width: 100%;
+       margin: 45% 0 0 7%;
     }
 
     /* ESTILO BOTONES */
@@ -185,19 +177,32 @@ h5{
         width: 115px;
         height: 35px;
         color: white;
+        background-image: url(../../../assets/new/ArrowR.png);
+        background-size: 6% 30%;
+        background-repeat: no-repeat;
+        background-position:14vh;
     }
     
     .news-two button{
-        position: absolute;
-        margin-top: 20%;
-        margin-left: -9%;
-        padding: 5px;
-        border-radius: 10px;
+        display: inline-block; /* establece el botón como un bloque en línea */
+        width: 25%; /* establece un ancho para el botón */
+        height: 50%; /* establece una altura para el botón */
         background-color: rgba(98, 98, 97, 0.648);
+        border-radius: 10px;
         border: none;
-        width: 115px;
-        height: 35px;
-        color: white;
+        text-align: center;
+        font-size: 16px;
+        margin: 10% 0 0 72%;
+        padding: 10px;
+        background-image: url(../../../assets/new/ArrowR.png);
+        background-size: 6% 25%;
+        background-repeat: no-repeat;
+        background-position:15vh;
+
+    }
+    .new-conteiner button:hover{
+        background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);
+        cursor: pointer;
     }
     .news-three button{
         position: absolute;
@@ -210,18 +215,23 @@ h5{
         width: 115px;
         height: 35px;
         color: white;
+        background-image: url(../../../assets/new/ArrowR.png);
+        background-size: 6% 30%;
+        background-repeat: no-repeat;
+        background-position:14vh;
     }
     label{
         background-color: rgba(98, 98, 97, 0.648);
         border: none;
         border-radius: 10px;
-        margin-left: 45%;
+        margin: 0 0 0 38%;
+       
     }
 
     .btnR {
         background-color: transparent;
         background-image: url(../../../assets/new/ArrowR.png);
-        background-size: 20% 20%;
+        background-size: 10% 20%;
         background-repeat: no-repeat;
         background-position: center;
         border: none;
@@ -234,7 +244,7 @@ h5{
 .btnL{
     background-color: transparent;
     background-image: url(../../../assets/new/Arrow_L.png);
-    background-size: 20% 20%;
+    background-size: 10% 20%;
     background-repeat: no-repeat;
     background-position: center;
     border: none;
@@ -246,22 +256,28 @@ h5{
     cursor: pointer;
 }
     .new-suscription button{
-        margin-left: 150px;
-        margin-top: 120px;
-        height: 50px;
-        width: 100px;
-    }
 
+        height: 20%;
+        width: 50%;
+        color: white;
+        font-size: 17px;
+        font-weight: 300;
+        margin: 45% 0 0 50%;
+        border: none;
+    }
+    .new-suscription button:hover{
+        background: linear-gradient(167deg, rgb(21, 122, 112) 0%, rgb(82, 146, 79) 100%);
+        cursor: pointer;
+    }
     hr{
-        width: 35%;
-        margin-top: -4%;
-        margin-right: 20%;
+        width: 38%;
+        margin: -2% 0 0 42%;
 
         }
 
         main{
-            padding: 50px;
-            margin-left: 30px;
+            width: 80%;
+            margin: 0 auto;
         }
 
         .new-conteiner img{
@@ -288,4 +304,14 @@ h5{
             border-width:0;
             background-color:#837f7f;
             margin: 5% 0 -2% 1%;
+           }
+
+           iframe{
+            border-radius: 20%;
+           }
+
+           a{
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
            }
