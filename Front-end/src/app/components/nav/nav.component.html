@@ -3,6 +3,12 @@
             <img href="#" src="../../../assets/logo.png" >
             <link href="https://fonts.cdnfonts.com/css/product-sans" rel="stylesheet">
         </div>
+        <li *ngIf="auth.isLoggedIn() | async" class="nav-item active">
+            <a class="nav-link" >|Bienvenid@ {{auth.getCourrentUser()}}|<span class="sr-only"></span></a>
+          </li>
+      <li *ngIf="auth.isLoggedIn() | async" class="nav-item active">
+        <a class="nav-link" [routerLink]="['/']" (click)="auth.logout()">Salir<span class="sr-only"></span></a>
+      </li>
         <div class="menu">
             <ul>
                 <li><a routerLink='/'>Inicio</a></li>

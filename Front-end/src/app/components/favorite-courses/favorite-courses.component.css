@@ -49,18 +49,15 @@ main{
         display: grid;
         grid-template-columns: 20% 20% 20% 20% 20%;
         width: 100%;
-        height: 300px ;
+        height: 15% ;
         margin-bottom: 20px;
         border-radius: 20px;
     }
-
     
     .conteiner-3{
-        display: grid;
-        grid-template-rows: 50% 50%;
-        width: 500px;
+        width: 90vh;
         height: 150px ;
-        margin: 20%;
+        margin: 10% 0 0 20%;
     
     }
 
@@ -183,4 +180,11 @@ main{
         .conteiner-2 :hover{
         background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);
         cursor: pointer;
+        cursor: pointer;border-radius: 20px;
+        }
+        
+
+        iframe{
+            width: 100%;
+            border-radius: 15px;
         }

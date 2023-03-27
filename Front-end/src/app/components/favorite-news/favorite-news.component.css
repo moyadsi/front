@@ -11,57 +11,52 @@ h2{
 }
 
 h5{
-    position: absolute;
-    margin-left: 400px;
+    position: relative;
     background-color: rgba(0, 0, 0, 0.349);
     border-radius: 15px;
-    padding: 10px;
-    width: 70px; 
+    width: 20%; 
+    height: 15%;
     text-align: center;
+    margin: -25% 0 30% 79%;
 }
 
 
 .news-two h5{
     position: absolute;
-    margin-left: 400px;
+    margin: -1.5% 0 0 27%;
     background-color: rgba(0, 0, 0, 0.349);
     border-radius: 15px;
-    padding: 10px;
-    width: 70px; 
+    width: 7%; 
+    height: 3%;
     text-align: center;
-    margin-top: -26px;
 }
 .news-three h5{
     position: absolute;
-    margin-left: 400px;
+    margin: -1.5% 0 0 27%;
     background-color: rgba(0, 0, 0, 0.349);
     border-radius: 15px;
-    padding: 10px;
-    width: 70px; 
+    width: 7%; 
+    height: 3%;
     text-align: center;
-    margin-top: 10px;
 }
 .news-one h4{
     position: absolute;
-    margin-top: 40%;
+    margin:  13% 0 0 1.5%;
     width: 300px;
     padding: 10px;
-    margin-left: 20px;
 }
 
 .news-two h4{
     position: absolute;
-    margin-top: 5%;
     width: 300px;
     padding: 10px;
-    margin-left: 20px;
+    margin: 2% 0 0 0;
 }
 .news-three h4{
     position: absolute;
-    margin-top: 10%;
+    margin: 2% 0 0 0;
     width: 300px;
     padding: 10px;
-    margin-left: 20px;
 }
 /* ESTILO CONTENEDORES*/
 
@@ -77,48 +72,39 @@ h5{
     .new-conteiner{
         margin-top: 50px;
         width: 90%;
-        position: relative;
         display: grid;
         grid-template-columns: 50% 50%;
     }
 
     .news-one{
         display: grid;
-        grid-template-rows: 50% 50%;
-        position: relative;
         background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxduf7I-yEvixxEcs31BhcI83Ks4AUbkAS8Q&usqp=CAU");
         background-size: 100% 100%;
         background-repeat: no-repeat;
-        width: 500px;
-        height: 300px ;
+        width:95%;
+        height: 320px ;
         margin-bottom: 20px;
         border-radius: 20px;
     }
 
     
     .news-two{
-        display: grid;
-        grid-template-rows: 50% 50%;
-        position: relative;
         background-image: url("https://sobreverso.com/wp-content/uploads/2022/08/Captura-de-pantalla-249-1024x574.png");
         background-size: 100% 100%;
         background-repeat: no-repeat;
-        width: 500px;
+        width: 95%;
         height: 150px ;
         border-radius: 20px;
     }
 
     .news-three{
-        display: grid;
-        grid-template-rows: 50% 50%;
-        position: relative;
         background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOkmklpHHfRxjJCjGqSUvF-V8k9GqMhLS1cQ&usqp=CAU");
         background-size: 100% 100%;
         background-repeat: no-repeat;
-        width: 500px;
+        width: 98%;
         height: 150px ;
         border-radius: 20px;
-        margin-top: 80px;
+        margin: 10% 0 0 0;
     }
     .new-suscription{
         display: grid;
@@ -132,20 +118,19 @@ h5{
 
     .news-one p{
         position: absolute;
-        margin-top: 45%;
+        margin: 15% 0 0 1.5%;
         width: 300px;
         padding: 10px;
-        margin-left: 20px;
     }
     .news-two p{
-        margin: 20% 0 0 -80%;
-        width: 60%;
+        margin: 7% 0 0 -27.5%;
+        width: 25%;
         display: inline-block;
         position: absolute;
     }
     .news-three p{
-        margin: 20% 0 0 5%;
-        width: 60%;
+        margin: 7% 0 0 -26%;
+        width: 20%;
     }
     .conteiner p{
         width: 100%;
@@ -168,8 +153,7 @@ h5{
     
     .news-one button{
         position: absolute;
-        margin-top: 50%;
-        margin-left: 75%;
+        margin: 18% 0 0 23%;
         padding: 5px;
         border-radius: 10px;
         background-color: rgba(98, 98, 97, 0.648);
@@ -180,7 +164,7 @@ h5{
         background-image: url(../../../assets/new/ArrowR.png);
         background-size: 6% 30%;
         background-repeat: no-repeat;
-        background-position:14vh;
+        background-position:11.5vh;
     }
     
     .news-two button{
@@ -192,12 +176,12 @@ h5{
         border: none;
         text-align: center;
         font-size: 16px;
-        margin: 10% 0 0 72%;
+        margin: 12% 0 0 72%;
         padding: 10px;
         background-image: url(../../../assets/new/ArrowR.png);
         background-size: 6% 25%;
         background-repeat: no-repeat;
-        background-position:15vh;
+        background-position:11vh;
 
     }
     .new-conteiner button:hover{
@@ -206,8 +190,7 @@ h5{
     }
     .news-three button{
         position: absolute;
-        margin-top: 20%;
-        margin-left: 75%;
+        margin: 7% 0 0 -5%;
         padding: 5px;
         border-radius: 10px;
         background-color: rgba(98, 98, 97, 0.648);
@@ -218,7 +201,7 @@ h5{
         background-image: url(../../../assets/new/ArrowR.png);
         background-size: 6% 30%;
         background-repeat: no-repeat;
-        background-position:14vh;
+        background-position:12vh;
     }
     label{
         background-color: rgba(98, 98, 97, 0.648);
