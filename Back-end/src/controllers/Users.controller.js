@@ -127,96 +127,102 @@ function DeleteUser (req,res,next){
     }
 };
 
-
-// Modify User
+// Modificar usuario 
 async function ModifyUser(req,res,next){
     try {
-        
+        //Declaracion del parametro pasado por el usuario
         const {id} = req.params
+        // Declaracion de los varoles pasados para modificar por el usuario
         const{Name, lastname, phone, email,Rol}= req.body
+        // Cadena Sql para encontrar la contraseña
         let sqlPassword = `select Password from Person where id=${req.params.id}`;
+        // Cadena Sql para verificar el email no se encuentre registrado por si el usuario modifica el correo
         let SqlSearchEmail = `select email from person where email =  ?`
+        // Cadena para encontrar el email por medio de la id ingresada
         let SqlSearchConfirmed=`select email from person where id = ${req.params.id}`
-
-    conexion.query(SqlSearchConfirmed,(err,rows,fields)=>{
-
-        if(err)throw err;
-
+        //Ejecucion de la cadena para encontrar el email por medio del id
+        conexion.query(SqlSearchConfirmed,(err,rows,fields)=>{
+        // si hay un error se cancela el procedimiento 
+        if(err)  res.status(400).json({message:err});
+        // Se guarda el email encontrado en una constante
         const SearchConfirmed = rows[0].email;
-
+        // Ejecucion de la cadena para encontrar el email por medio de la email guardada anteriormente
         conexion.query(SqlSearchEmail,[email],(err,rows,fields)=>{
-
-            if(err)throw err;
-
+            // si hay un error se cancela el procedimiento 
+            if(err)  res.status(400).json({message:err});
+            // Se guarda el email encontrado en una constante
             const SearchEmail =rows[0];
-
+            // Si no se encontro el email puede proceder para cambiar el email 
             if(SearchEmail==undefined){       
+                // Ejecucion de la cadena para encontrar la contraseña por medio de la id pasada por el usuario
                 conexion.query(sqlPassword,[id],(err,rows,fields)=>{
-        
-                    if(err ) throw err;
-            
+                    // si hay un error se cancela el procedimiento 
+                    if(err) res.status(400).json({message:err});
+                    // Cuando se haya la contraseña se guarda en una constante para luego validar
                     const BcryptPassword= rows[0].Password;
-                    
+                    // Se compara las contraseñas, una pasada por el usuario y la otra que se encontro por medio de la id
                     bcrypt.compare(req.body.Password,BcryptPassword,async(err,hash)=>{
-            
+                        // Cadena Sql para actualizar el usuario
                         let sqlId =   `update Person set Name ='${Name}',lastname = '${lastname}',phone = '${phone}', email = '${email}',Rol='${Rol}' where id = '${id}'`
-                        
-                        if(err) throw err;  
+                        // si hay un error se cancela el procedimiento 
+                        if(err)  res.status(400).json({message:err});
+                        // Si son iguales la contraseña prosigue
                         if(hash){
+                            // Ejecucion de la cadena para actualizar el usuario
                             conexion.query(sqlId,(err,rows,fields)=>{
-                                if(err) throw err;
-                                
+                                // si hay un error se cancela el procedimiento 
+                                if(err)  res.status(401).json({message:err});
+                                // Si todo esta bien se le envia con exito al usuario 
                                 res.status(201).json({message:"User modify in successful"})
                                 next()
                             })
                         }else{
-                            console.log("Password Incorrect");
+                            // Si la contraseña no son iguales se le manda un error 401
                             res.status(401).json({message:"Password Incorrect"})
                         }
                     })
                 })
             }
+            // Si son iguales el correo ingresado y el que se encontro por medio del procedimiento 
             else if(SearchConfirmed==req.body.email){
-                
+                // Ejecucion de la cadena para encontrar la contraseña por medio de la id
                 conexion.query(sqlPassword,[id],(err,rows,fields)=>{
-        
-                    if(err ) throw err;
-            
+                    // Si hay un error se cancela el procedimiento y se le envia cual fue
+                    if(err ) res.status(400).json({message:err});;
+                    // Cuando se haya la contraseña se guarda en una constante para luego validar
                     const BcryptPassword= rows[0].Password;
-                    
+                    // Se compara las contraseñas, una pasada por el usuario y la otra que se encontro por medio de la id
                     bcrypt.compare(req.body.Password,BcryptPassword,async(err,hash)=>{
-            
+                        // Cadena Sql para actualizar el usuario
                         let sqlId =   `update Person set Name ='${Name}',lastname = '${lastname}',phone = '${phone}', email = '${email}',Rol='${Rol}' where id = '${id}'`
-                        
-                        if(err) throw err;  
-                        
+                        // Si hay un error se cancela el procedimiento y se le envia cual fue
+                        if(err ) res.status(400).json({message:err});;
+                        // Si son iguales la contraseña prosigue
                         if(hash){
-
+                            // Ejecucion de la cadena para actualizar el usuario
                             conexion.query(sqlId,(err,rows,fields)=>{
-                                
-                                if(err) throw err;
-                                
+                                // si hay un error se cancela el procedimiento 
+                                if(err)  res.status(401).json({message:err});
+                                // Si todo esta bien se le envia con exito al usuario 
                                 res.status(201).json({message:"User modify in successful"})
                                 next()
                             })
                         }else{
-
-                            console.log("Password Incorrect");
-
+                            // Si la contraseña no son iguales se le manda un error 401
                             res.status(401).json({message:"Password Incorrect"})
                         }
                     })
                 })
+            // Si se encontro otro email se le niega el acceso para actualizar 
             }else if(SearchEmail!=SearchConfirmed){
-
+                // Se le envia el mensaje que es invalido el cambio de email
                 res.status(400).json({message:"Email Unvalid changed"})
-                
             }
         })
     })
-} 
+}// Si ocurrio un error por parte del servidor
 catch (error) {
-        return res.status(400).json({error})
+        return res.status(500).json({error})
     }
 };
 
@@ -332,7 +338,7 @@ async function SignIn(req,res,next){
             return res.status(400).json({error})
         }
 };
-
+// Exportacion de las funciones
 module.exports = {
     Get,
     GetAll,
