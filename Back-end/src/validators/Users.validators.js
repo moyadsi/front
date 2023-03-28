@@ -16,9 +16,7 @@ const SignUpValidate=async(req,res,next)=>{
 
     next()
   } catch (error) {
-    if(error.isJoi===true) Value = error.status;
-    
-    return res.status(Value).json({error})
+    return res.status(422).json({error})
   } 
   
 }
@@ -33,9 +31,7 @@ const SigninValidate=async(req,res,next)=>{
     await SignInSchema.validateAsync(req.body)
     next()
   } catch (error) {
-    if(error.isJoi===true) Value = error.status=422;
-    
-    return res.status(Value).json({error})
+    return res.status(422).json({error})
   }
 }
 const ModifyPasswordValidate=async(req,res,next)=>{
@@ -48,9 +44,7 @@ const ModifyPasswordValidate=async(req,res,next)=>{
     await ModifyPasswordSchema.validateAsync(req.body)
     next()
   } catch (error) {
-    if(error.isJoi===true) Value = error.status=422;
-    
-    return res.status(Value).json({error})
+    return res.status(422).json({error})
   }
 
 }
@@ -68,9 +62,7 @@ try {
   await ModifyUserSchema.validateAsync(req.body)
   next()
 } catch(error) {
-  if(error.isJoi===true) Value = error.status=422;
-    
-    return res.status(Value).json({error})
+    return res.status(422).json({error})
 }
 }
 

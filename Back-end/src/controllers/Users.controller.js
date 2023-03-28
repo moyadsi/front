@@ -297,46 +297,53 @@ async function SignIn(req,res,next){
             if(rows.length == 1){
                 // Ejecucion de la cadena para encontrar la contraseña con el parametro email
                 conexion.query(sqlP,[email],(err,rows)=>{
+                    // Se guarda la contraseña encontrada por el email de la cuenta
                     const Password = rows[0].Password
-            
+                    // Se compara la contraseña encontrada y la ingresada por el usuario
                     bcrypt.compare(req.body.Password,Password,(err,hash)=>{
-                        if(err) throw err;  
+                        // si hay un error se cancela el procedimiento 
+                        if(err)  res.status(401).json({message:err}); 
+                        // Si las contraseña son iguales se le deja iniciar sesiòn 
                         if(hash){
+                            // Generacion del token por medio del email (Usuario normal)
                             const TokenEmail = Jwt.sign({email},process.env.SecretJWT,{
                                 expiresIn:3600
                             })
+                            // Generacion del token por medio del Rol Administrativo (Moderador, Administrador)
                             const TokenRol = Jwt.sign({RolAd},process.env.SecretJWT,{
                                 expiresIn:3600
                             })
-                            console.log("Sign in successful");
+                            // Si el rol Administrativo es Administrativo pasa por aca y se le manda en un json el siguiente mensaje con el token
                             if(RolAd=='Administrador'){
                                 next()
                                 return res.status(201).json({message:"Sign in successful Administrador",Token:TokenRol})
                             }
+                            // Si el rol Administrativo es Moderador pasa por aca y se le manda en un json el siguiente mensaje con el token
                             if(RolAd=='Moderator'){
                                 next()
                                 return res.status(201).json({message:"Sign in successful Moderator",Token:TokenRol})
                             }
+                            // Si no tiene ningun rol Administrativo el usuario pasa por aca y se le pasa el token normal 
                             else{
                                 next()
                                 return res.status(200).json({message:"Sign in successful",Token:TokenEmail})
                             }
+                            // Si la contraseña no son iguales se le cancela el ingreso
                         }else{
-                            console.log("Password Incorrect");
                             res.status(401).json({message:"Password Incorrect"})
                         }
                     })
                 })
             }else{
-                
-                res.status(401).json({response:"User does not exist"})
-
+                // Si el email pasado no se encuentra se le dira y se le sugiere registrarse en el sistema 
+                res.status(401).json({response:"User does not exist",Message:"Por favor registrese en el sistema"})
             }
         })
     })
-        } catch (error) {
-            return res.status(400).json({error})
-        }
+    //Si hay un error del servidor se manda el mensaje 500
+} catch (error) {
+            return res.status(500).json({error})
+    }
 };
 // Exportacion de las funciones
 module.exports = {

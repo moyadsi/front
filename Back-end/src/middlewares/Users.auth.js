@@ -47,7 +47,7 @@ const verifyTokenPassword = async (req,res,next)=>{
 
     let sqlEmail = `select email from person where email = ?`
 
-    let FoundEmail = await conexion.query(sql2,[decode.email],async (err,rows)=>{
+    await conexion.query(sql2,[decode.email],async (err,rows)=>{
       
       const validateEmail = await conexion.query(sqlEmail,[decode.email])
 

@@ -110,7 +110,7 @@ CREATE TABLE Noticies (
     Id INT PRIMARY KEY,
     Content CHAR(255),
     Fountain CHAR(255),
-    Date DATETIME
+    Date DATETIME default Now()
 );
 
 CREATE TABLE Blog (
@@ -215,6 +215,81 @@ create table tb_user(
     accesscode varchar(50)
 );
 
+/*Creacion de procedimientos Almacenados User*/
+
+/*Procedimiento para obtener Todos los usuarios*/
+delimiter $$
+create procedure GetAllUsers()
+begin  
+	select * from Person;
+end$$
+delimiter;
+
+/*Procedimiento para obtener un usuario por su CC*/
+delimiter $$
+create procedure GetIdUser(in id int)
+begin  
+	select * from Person where Person.Id=id;
+end$$
+delimiter;
+
+/*Procedimiento de validacion de email duplicado*/
+delimiter $$
+create procedure GetEmailUser(in Email char(100))
+begin  
+	select id,Name,email from Person where Person.email = Email;
+end$$
+delimiter;
+
+/*Procedimiento para guardar usuario*/
+delimiter $$
+create procedure SavePerson(in Cedula int,in Nombre Char(50),in Apellido char(50),in Celular char(30),in Email char(100),in Password char(100),in rol char(100),in rolAd char(100))
+begin
+	insert into Person (id,Name, lastname, phone, email, Password,Rol,RolAd) values (Cedula,Nombre,Apellido,Celular,Email,Password,rol,rolAd);
+end$$
+delimiter;
+
+/*Procedimiento Validacion Id duplicado*/
+delimiter $$
+create procedure GetIdValidacionUser(in id int)
+begin  
+	select id from Person where Person.Id = id;
+end$$
+delimiter;
+
+/*Procedimiento Borrar User*/
+delimiter $$
+create procedure DeleterUserId(in id int)
+begin  
+	delete from Person where Person.id =  id;
+end$$
+delimiter;
+
+/*Procedimiento encontrar Contraseña por id
+delimiter $$
+create procedure PasswordUserId(in id int)
+begin  
+	select Password from Person where Person.id=id;
+end$$
+delimiter;
+*/
+/*Procedimiento Borrar User
+delimiter $$
+create procedure SearchUserEmail(in Email char(100))
+begin  
+	select email from person where Person.email = Email;
+end$$
+delimiter;
+*/
+/*Procedimiento buscar email via id User
+delimiter $$
+create procedure SearchUserEmailId(in id int)
+begin  
+	select email from person where Person.id = id;
+end$$
+delimiter;
+*/
+
 
 DELIMITER $$
 CREATE PROCEDURE GetAllCourse()
@@ -223,12 +298,10 @@ BEGIN
 END$$
 DELIMITER ;
 
-call GetAllCourse();
-
 Delimiter $$
 create procedure GetCourseElement(in Id int)
 begin
-	SELECT course.id_Course, Category.*,ContentCourse.*,Teacher.* 
+	SELECT course.id_Course, Category.*,ContentCourse.*,Teacher.*
     FROM course inner join Category inner join ContentCourse inner join Teacher where course.id_Course=Id ;
 end$$
 delimiter ;
@@ -247,15 +320,12 @@ begin
 end $$
 delimiter ;
 
-
 Delimiter $$
 create procedure UpdateTeacher(in Id_Teacher1 int ,in Experience1 char(50), in Study1 char(255))
 begin
     update Teacher set Experience=Experience1, Study=Study1 where Id_Teacher=Id_Teacher1;
 end $$
 delimiter ;
-
-
 
 Delimiter $$
 create procedure AddTeacher (in Id_Teacher1 int ,in Experience1 char(50), in Study1 char(255))
