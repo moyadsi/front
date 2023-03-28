@@ -4,13 +4,13 @@ const SignUpValidate=async(req,res,next)=>{
   try {
     const SignUpSchema = Joi.object({
       Cedula:Joi.number().min(8).required(),
-      Name:Joi.string().min(2).max(50).required(),
-      lastname:Joi.string().min(2).max(50).required(),
-      phone:Joi.number().min(8).required(),
-      email:Joi.string().lowercase().email().required(),
+      Nombre:Joi.string().min(2).max(50).required(),
+      Apellido:Joi.string().min(2).max(50).required(),
+      Celular:Joi.number().min(8).required(),
+      Email:Joi.string().lowercase().email().required(),
       Password:Joi.string().min(8).required(),
-      Rol:Joi.string().min(2),
-      RolAd:Joi.string().min(9)
+      rol:Joi.string().min(2),
+      rolAd:Joi.string().min(9)
     })
     await SignUpSchema.validateAsync(req.body)
 
