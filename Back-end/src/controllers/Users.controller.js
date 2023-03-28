@@ -9,7 +9,7 @@ require('dotenv').config()
 // Mostrar Todos los usuarios
 function GetAll(req, res) {
     try {
-        // cadena del procedimiento Sql
+        // cadena del procedimiento Sql para obtener todos los usuarios
         let sql = 'call GetAllUsers()';
         // Ejecución de la cadena SQl
         conexion.query(sql, (err, rows, fields) => {
@@ -32,7 +32,7 @@ function Get(req,res){
     try { 
         // Declaracion de la Id que se la pasa a la cadena de SQl
         const id = req.params.id
-        // Cadena del procedimiento Almacenado SQL
+        // Cadena del procedimiento SQL para obtener un usuario por su id
         let sql = 'call GetIdUser(?)'
         // Ejecucion de la cadena con la constante Id para buscar al usuario
         conexion.query(sql,[id],(err,rows,fields)=>{
@@ -109,9 +109,9 @@ function DeleteUser (req,res,next){
     try {
         // Declaracion de la id pasada por el usuario
         const {id} = req.params
-        // Cadena del procedimiento Sql
+        // Cadena del procedimiento Sql para borrar el usuario por su id
         let sql = `delete from Person where id = '${id}'`
-        // Ejecucion de la cadena con el parametro
+        // Ejecucion de la cadena con el parametro id
         conexion.query(sql,(err,rows,fields)=>{
             // si hay un error se cancela el procedimiento
             if(err)  res.status(400).json({message:err});
@@ -229,73 +229,73 @@ catch (error) {
 // Modify Password
 async function ModifyPassword(req,res,next){
     try {
-        
-        
+        //Declaracion del parametro pasado por el usuario
         const {id} = req.params
-    
+        //Se guarda el valor de la nueva Contraseña pasada por el usuario
         const{NewPassword}= req.body
-    
-        let sqlPassword = `select Password from Person where id=${req.params.id}`;
-    
+        //Cadena para encontrar la contraseña por medio de la id
+        let sqlPassword = `select Password from Person where id=?`;
+        //Ejecucion de la cadena con el parametro id
         conexion.query(sqlPassword,[id],(err,rows,fields)=>{
-        
-        if(err ) throw err;
-
-            const BcryptPassword= rows[0].Password;
-            
+        // si hay un error se cancela el procedimiento 
+        if(err)  res.status(401).json({message:err});
+        //se guarda la contraseña encontrada
+        const BcryptPassword= rows[0].Password;
+            //se compara la contraseña pasada por el usuario con la que se encontro 
             bcrypt.compare(req.body.Password,BcryptPassword,async(err,hash)=>{
-
+                //se guarda la contraseña si es verdadera con el metodo async
                 const PasswordEncrypted = await bcrypt.hash(NewPassword,10)
-
+                //cadena para poder actualizar la contraseña con el parametro de id
                 let sqlId =   `update Person set Password = '${PasswordEncrypted}'where id = '${id}'`
-
-                if(err) throw err;  
-                
+                // si hay un error se cancela el procedimiento 
+                if(err)  res.status(401).json({message:err});
+                //si son igual la contrasela prosigue
                 if(hash){
+                    //Ejecucion de la cadena para actualizar la contraseña
                     conexion.query(sqlId,(err,rows,fields)=>{
-                        if(err) throw err;
-                        
+                        // si hay un error se cancela el procedimiento 
+                        if(err)  res.status(401).json({message:err});
+                        //si todo salio con exito se le manda un status 201 con el siguiente mensaje
                         res.status(201).json({message:"Password modify in successful"})
                         next()
                     })
+                    //si las contraseñas no son iguales se le niega el acceso
                 }else{
-                
-                    console.log("Password Incorrect");
-                
                     res.status(401).json({message:"Password Incorrect"})
                 }
             })
         
-    })   
+    })//Si hay un error del servidor se manda el mensaje 500
     } catch (error) {
-        return res.status(400).json({error})
+        return res.status(500).json({error})
     }
 };
 
 
 // Login
 async function SignIn(req,res,next){
-    try {   
-    
+    try {
+    // Se guarda en una constante el email pasado por el usuario    
     const email = req.body.email
-
+    // cadena Sql para encontrar los roles del usuario(Puede ser un usuario normal o un profesor)
     let sqlRol = `select Rol,RolAd from Person where email = '${email}'`
-
+    // Ejecucion de la cadena para encontrar los roles del usuario
     conexion.query(sqlRol,(err,rows,fields)=>{
-        
-        if(err) throw err;
-        const Rol = rows[0].Rol;
+        // si hay un error se cancela el procedimiento 
+        if(err)  res.status(401).json({message:err});
+        // Se guarda el rol Administrativo del usuario (Puede ser un moderador o un administrador)
         const RolAd = rows[0].RolAd;
-        console.log(RolAd);
-            
+        // Cadena para encontrar el nombre y la CC por medio del email ingresado
         let sql = 'select Name, id from Person where email =  ?'
+        // Cadena para encontrar la contraseña por medio del email
         let sqlP = 'select Password from Person where email =  ?'
-        
+        // Ejecucion de la cadena para encontrar el nombre y la CC por el medio del parametro email
         conexion.query(sql,[email],(err, rows,fields) => {
-            
-            if(err) throw err;
+            // si hay un error se cancela el procedimiento 
+            if(err)  res.status(401).json({message:err});
+            // Si es verdadero accede 
             if(rows.length == 1){
-                console.log("authorized");
+                // Ejecucion de la cadena para encontrar la contraseña con el parametro email
                 conexion.query(sqlP,[email],(err,rows)=>{
                     const Password = rows[0].Password
             
