@@ -1,29 +1,50 @@
-/* // librerias
-const Jwt =  require('jsonwebtoken')
-const conexion = require('../config/conexion')
-const bcrypt = require('bcrypt');
-const nodemailer= require("nodemailer")
-
-// declaracion del .env 
+const DB = require('../config/db.config')
+const nodemailer = require('nodemailer')
 require('dotenv').config()
 
 
-const EmailPassword = async(req,res)=>{
-  try {
-    const {email}=req.body;
-    let sqlEmail = `select email from Person where email='${req.body.email}'`
-    conexion.query(sqlEmail,(err,rows,fields)=>{
-      const EmailFound = rows[0]
-      if (err) throw err;
-      if(EmailFound==undefined) return res.status(404).json({message:"Email not found"})
-      else{
-        res.json("xd")
-      }
-    })
-} catch (error) {
-  }
+const GetEmailToken = async(req,res)=>{
+    try{
+
+        const {email} = req.body;
+        
+        function token(){
+            min = Math.ceil(000000);
+            max = Math.floor(999999);
+            return Math.floor(Math.random() * (max - min) + min)
+        }
+        const transporter = nodemailer.createTransport({
+            host: 'smtp.ethereal.email',
+            port: 587,
+            auth: {
+                user: 'westley.schmidt84@ethereal.email',
+                pass: 'vsgcz2CdVDjs2nX5NT'
+            }
+        });
+
+        let info = await transporter.sendMail({
+            from:"XD",
+            to:email,
+            subject:"Recuperar Contraseña",
+            text:"Hello",
+            html:`
+            <div>
+                <p>Hello Word</p>
+            </div>`
+        })
+        console.log("Message sent: %s", info.messageId);
+        // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+      
+        // Preview only available when sending through an Ethereal account
+        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+        // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+        res.json(nodemailer.getTestMessageUrl(info))
+  } catch (err) {
+    
+    }
 }
 
 module.exports={
-  EmailPassword
-} */
+    GetEmailToken,
+    EmailPassword
+}

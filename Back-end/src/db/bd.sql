@@ -206,13 +206,10 @@ CREATE TABLE qualification (
 
 
 /*Table Example*/
-create table tb_user(
-	id int not null auto_increment primary key,
-    firstname varchar(50),
-    lastname varchar(50),
-    phone varchar(50),
-    email varchar(50),
-    accesscode varchar(50)
+
+create table EmailToken(
+	Email char(100) primary key,
+    Token int
 );
 
 /*Creacion de procedimientos Almacenados User*/
@@ -272,16 +269,16 @@ begin
 	select Password from Person where Person.id=id;
 end$$
 delimiter;
-*/
-/*Procedimiento Borrar User
+
+Procedimiento Borrar User
 delimiter $$
 create procedure SearchUserEmail(in Email char(100))
 begin  
 	select email from person where Person.email = Email;
 end$$
 delimiter;
-*/
-/*Procedimiento buscar email via id User
+
+Procedimiento buscar email via id User
 delimiter $$
 create procedure SearchUserEmailId(in id int)
 begin  
