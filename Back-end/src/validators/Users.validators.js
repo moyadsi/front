@@ -4,21 +4,19 @@ const SignUpValidate=async(req,res,next)=>{
   try {
     const SignUpSchema = Joi.object({
       Cedula:Joi.number().min(8).required(),
-      Name:Joi.string().min(2).max(50).required(),
-      lastname:Joi.string().min(2).max(50).required(),
-      phone:Joi.number().min(8).required(),
-      email:Joi.string().lowercase().email().required(),
+      Nombre:Joi.string().min(2).max(50).required(),
+      Apellido:Joi.string().min(2).max(50).required(),
+      Celular:Joi.number().min(8).required(),
+      Email:Joi.string().lowercase().email().required(),
       Password:Joi.string().min(8).required(),
-      Rol:Joi.string().min(2)
+      rol:Joi.string().min(2),
+      rolAd:Joi.string().min(9)
     })
-
     await SignUpSchema.validateAsync(req.body)
 
     next()
   } catch (error) {
-    if(error.isJoi===true) Value = error.status=422;
-    
-    return res.status(Value).json({error})
+    return res.status(422).json({error})
   } 
   
 }
@@ -33,9 +31,7 @@ const SigninValidate=async(req,res,next)=>{
     await SignInSchema.validateAsync(req.body)
     next()
   } catch (error) {
-    if(error.isJoi===true) Value = error.status=422;
-    
-    return res.status(Value).json({error})
+    return res.status(422).json({error})
   }
 }
 const ModifyPasswordValidate=async(req,res,next)=>{
@@ -48,9 +44,7 @@ const ModifyPasswordValidate=async(req,res,next)=>{
     await ModifyPasswordSchema.validateAsync(req.body)
     next()
   } catch (error) {
-    if(error.isJoi===true) Value = error.status=422;
-    
-    return res.status(Value).json({error})
+    return res.status(422).json({error})
   }
 
 }
@@ -68,9 +62,7 @@ try {
   await ModifyUserSchema.validateAsync(req.body)
   next()
 } catch(error) {
-  if(error.isJoi===true) Value = error.status=422;
-    
-    return res.status(Value).json({error})
+    return res.status(422).json({error})
 }
 }
 

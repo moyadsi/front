@@ -30,16 +30,6 @@ CREATE TABLE Company (
     Id_Cities INT
 );
 
-
-
-CREATE TABLE Rol (
-    Id_Rol INT PRIMARY KEY AUTO_INCREMENT,
-    Rolid int,
-    DescriptionRol CHAR(50) NOT NULL default 'User',
-    CONSTRAINT FK_Rol_Person FOREIGN KEY (Rolid)
-        REFERENCES Person (Id)
-);
-
 CREATE TABLE Departament (
     Id_Departament INT PRIMARY KEY AUTO_INCREMENT,
     NamePlace CHAR(100) NOT NULL DEFAULT '',
@@ -63,17 +53,28 @@ CREATE TABLE Country (
 );
 /*----------------------------Cursos-----------------------------------*/
 
+create table AllCourse(
+ Id int primary key auto_increment,
+ IdCourse int,
+ DescriptionCourse char(255),
+ durationCourse char(10),
+ IdTeacher int,
+ IdCate int,
+ Lenguaje char(50),
+  Url char not null
+);
+
 CREATE TABLE course (
     id_Course INT PRIMARY KEY
 );
 
 CREATE TABLE Category (
     Id_Category INT PRIMARY KEY AUTO_INCREMENT,
+    NameCategory CHAR(255) NOT NULL,
     DescriptionCategory CHAR(255) NOT NULL,
     Status BOOLEAN DEFAULT TRUE,
-    Date DATETIME,
-    Id_Course INT,
-    CONSTRAINT FK_Category_Course FOREIGN KEY (Id_course)
+    Date DATETIME DEFAULT NOW(),
+    CONSTRAINT FK_Category_Course FOREIGN KEY (Id_Category)
         REFERENCES Course (id_Course)
 );
 
@@ -81,6 +82,8 @@ CREATE TABLE ContentCourse (
     Id_Content INT PRIMARY KEY AUTO_INCREMENT,
     Description CHAR(255) NOT NULL,
     Duration CHAR(10) NOT NULL,
+    Language char(50) not null,
+    Url char not null,
     Status BOOLEAN DEFAULT TRUE,
     Id_course INT,
     CONSTRAINT FK_Contentcourse_Course FOREIGN KEY (Id_course)
@@ -92,14 +95,12 @@ CREATE TABLE Teacher (
     Experience CHAR(50) NOT NULL,
     Study CHAR(255) NOT NULL,
     Status BOOLEAN DEFAULT TRUE,
-    Id_Course INT,
-    Id_Person INT,
+    Id_Course int ,
     CONSTRAINT FK_Teacher_Course FOREIGN KEY (Id_Course)
         REFERENCES course (id_Course),
-    CONSTRAINT FK_Teacher_Person FOREIGN KEY (Id_Person)
+    CONSTRAINT FK_Teacher_Person FOREIGN KEY (Id_Teacher)
         REFERENCES Person (Id)
 );
-
 
 
 /*Noticias*/
@@ -108,7 +109,7 @@ CREATE TABLE Noticies (
     Id INT PRIMARY KEY,
     Content CHAR(255),
     Fountain CHAR(255),
-    Date DATETIME
+    Date DATETIME default Now()
 );
 
 CREATE TABLE Blog (
@@ -176,7 +177,7 @@ CREATE TABLE Comment (
 
 CREATE TABLE Type (
     Id INT PRIMARY KEY,
-    Descripction CHAR(255)
+    Descripction CHAR(255) default 'Free'
 );
 
 CREATE TABLE Membreys (
@@ -188,6 +189,8 @@ CREATE TABLE Membreys (
     CONSTRAINT FK_Membreys_Type FOREIGN KEY (IdType)
         REFERENCES Type (Id)
 );
+
+insert into Type values (1,'Free'),(2,'Advanced'),(3,'Premium');
 
 /*Calificacion Cursos*/
 
@@ -202,11 +205,155 @@ CREATE TABLE qualification (
 
 
 /*Table Example*/
-create table tb_user(
-	id int not null auto_increment primary key,
-    firstname varchar(50),
-    lastname varchar(50),
-    phone varchar(50),
-    email varchar(50),
-    accesscode varchar(50)
+
+create table EmailToken(
+	Email char(100) primary key,
+    Token int
 );
+
+/*Creacion de procedimientos Almacenados User*/
+
+/*Procedimiento para obtener Todos los usuarios*/
+delimiter $$
+create procedure GetAllUsers()
+begin  
+	select * from Person;
+end$$
+delimiter;
+
+/*Procedimiento para obtener un usuario por su CC*/
+delimiter $$
+create procedure GetIdUser(in id int)
+begin  
+	select * from Person where Person.Id=id;
+end$$
+delimiter;
+
+/*Procedimiento de validacion de email duplicado*/
+delimiter $$
+create procedure GetEmailUser(in Email char(100))
+begin  
+	select id,Name,email from Person where Person.email = Email;
+end$$
+delimiter;
+
+/*Procedimiento para guardar usuario*/
+delimiter $$
+create procedure SavePerson(in Cedula int,in Nombre Char(50),in Apellido char(50),in Celular char(30),in Email char(100),in Password char(100),in rol char(100),in rolAd char(100))
+begin
+	insert into Person (id,Name, lastname, phone, email, Password,Rol,RolAd) values (Cedula,Nombre,Apellido,Celular,Email,Password,rol,rolAd);
+end$$
+delimiter;
+
+/*Procedimiento Validacion Id duplicado*/
+delimiter $$
+create procedure GetIdValidacionUser(in id int)
+begin  
+	select id from Person where Person.Id = id;
+end$$
+delimiter;
+
+/*Procedimiento Borrar User*/
+delimiter $$
+create procedure DeleterUserId(in id int)
+begin  
+	delete from Person where Person.id =  id;
+end$$
+delimiter;
+
+/*Procedimiento encontrar Contraseña por id
+delimiter $$
+create procedure PasswordUserId(in id int)
+begin  
+	select Password from Person where Person.id=id;
+end$$
+delimiter;
+
+Procedimiento Borrar User
+delimiter $$
+create procedure SearchUserEmail(in Email char(100))
+begin  
+	select email from person where Person.email = Email;
+end$$
+delimiter;
+
+Procedimiento buscar email via id User
+delimiter $$
+create procedure SearchUserEmailId(in id int)
+begin  
+	select email from person where Person.id = id;
+end$$
+delimiter;
+*/
+
+
+DELIMITER $$
+CREATE PROCEDURE GetAllCourse()
+BEGIN
+   select * from AllCourse;
+END$$
+DELIMITER ;
+
+Delimiter $$
+create procedure GetCourseElement(in Id int)
+begin
+	SELECT course.id_Course, Category.*,ContentCourse.*,Teacher.*
+    FROM course inner join Category inner join ContentCourse inner join Teacher where course.id_Course=Id ;
+end$$
+delimiter ;
+
+Delimiter $$
+create procedure GetTeacherId(in Id int)
+begin
+	select Teacher.*,Person.Name,Person.Email,Person.Phone from Teacher inner join Person where Teacher.Id_Teacher=Id and Person.Rol="Profesor" ;
+end $$
+delimiter ;
+
+Delimiter $$
+create procedure GetTeacherAll()
+begin
+	select Teacher.*,Person.Name,Person.Email,Person.Phone from Teacher inner join Person where Person.Rol="Profesor" ;
+end $$
+delimiter ;
+
+Delimiter $$
+create procedure UpdateTeacher(in Id_Teacher1 int ,in Experience1 char(50), in Study1 char(255))
+begin
+    update Teacher set Experience=Experience1, Study=Study1 where Id_Teacher=Id_Teacher1;
+end $$
+delimiter ;
+
+Delimiter $$
+create procedure AddTeacher (in Id_Teacher1 int ,in Experience1 char(50), in Study1 char(255))
+begin
+	SET FOREIGN_KEY_CHECKS=0; 
+	update Person set Rol = 'Profesor' where Id = Id_Teacher1;
+	insert into Teacher (Id_Teacher,Experience,Study) values (Id_Teacher1,Experience1,Study1);
+end $$
+delimiter ;
+
+Delimiter $$
+create procedure DeleteTeacher(in Id_Teacher1 int)
+begin
+	delete from Teacher where Id_Teacher=Id_Teacher1;
+	update Person set Rol = 'User' where Id = Id_Teacher1;
+end $$
+delimiter ;
+
+Delimiter $$
+create procedure CreateCourse(in IdCourse int,in DescriptionCourse char(255),in durationCourse char(10),in IdTeacher int,in IdCate int,in Lenguaje char(50),in Url char)
+begin
+	SET FOREIGN_KEY_CHECKS=0;
+    update Teacher set Id_Course=IdCourse where Id_Teacher=IdTeacher;
+    insert into course values (IdCourse);
+    insert into AllCourse(IdCourse,DescriptionCourse,durationCourse,IdTeacher,IdCate,Lenguaje,Url) values  (IdCourse,DescriptionCourse,durationCourse,IdTeacher,IdCate,Lenguaje,Url);
+end $$
+delimiter ;
+
+Delimiter $$
+create procedure CreateCategory(NameCat char(255),in DescriptionCate char(255))
+begin
+	SET FOREIGN_KEY_CHECKS=0; 
+	insert into Category (NameCategory,DescriptionCategory) values (NameCat,DescriptionCate);
+end $$
+delimiter ;
