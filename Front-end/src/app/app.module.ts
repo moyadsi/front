@@ -24,6 +24,7 @@ import { UsComponent } from './components/us/us.component';
 import { SuscriptionComponent } from './components/suscription/suscription.component';
 import { TeamComponent } from './components/team/team.component';
 import { BestMetaComponent } from './components/best-meta/best-meta.component';
+import { InicioComponent } from './components/inicio/inicio.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { BestMetaComponent } from './components/best-meta/best-meta.component';
     UsComponent,
     SuscriptionComponent,
     TeamComponent,
-    BestMetaComponent
+    BestMetaComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,

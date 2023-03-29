@@ -13,7 +13,7 @@
   <hr />
   <div class="main">
     <section class="section-log">
-      <form>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <button id="btnGoogleLog">Iniciar sesion con Google</button>
         <div class="optionLogin">
           <hr/>
@@ -30,7 +30,7 @@
             class="input-large"
           />
         </div>
-        <div class="password">
+        <div class="Password">
           <span>Contraseña</span>
           <input
             type="password"

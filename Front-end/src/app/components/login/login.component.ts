@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder, private clients: ClientsService) {
     this.form = this.fb.group({
       email: ['', Validators.required],
-      Password: ['', Validators.required],
+      password: ['', Validators.required],
     });
   }
 
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-
+    
 
     if(this.form.valid) {
       const Login:Login={
@@ -55,10 +55,10 @@ export class LoginComponent implements OnInit {
       //this.auth.login(Response.token)
       //se almacena el nombre del usuario en el almacenamiento de
       //sesion
-      this.auth.setCourrentUser(Response.name)
+     // this.auth.setCourrentUser(Response.name)
       //navegamos de nuevo al home, esta vez como usuario
       //logueado
-      this.route.navigate( ['/']);
+      this.route.navigate( ['/inicio']);
   //},
 
   (error) => {
