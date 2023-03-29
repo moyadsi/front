@@ -1,13 +1,19 @@
-const DB = require('../config/db.config')
+const conexion = require('../config/conexion')
 const nodemailer = require('nodemailer')
 require('dotenv').config()
 
 
-const GetEmailToken = async(req,res)=>{
+const PostEmailToken = async(req,res)=>{
     try{
 
         const {email} = req.body;
-        
+
+        let sqlName = `select Name from Person where Email="${email}"`
+
+        conexion.query(sqlName,async(err,rows,fields)=>{
+            if(err) throw err;
+            const resultName = rows[0].Name
+            
         function token(){
             min = Math.ceil(000000);
             max = Math.floor(999999);
@@ -25,26 +31,24 @@ const GetEmailToken = async(req,res)=>{
         let info = await transporter.sendMail({
             from:"XD",
             to:email,
-            subject:"Recuperar Contraseña",
-            text:"Hello",
+            subject:"Recuperar Contraseña de tu cuenta de MetAnimation",
+            text:"Has solicitado para recuperar tu contraseña de tu cuenta de MetAnimation",
             html:`
             <div>
-                <p>Hello Word</p>
+                <p>Hello ${resultName}</p>
             </div>`
         })
         console.log("Message sent: %s", info.messageId);
-        // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-      
-        // Preview only available when sending through an Ethereal account
+
         console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-        // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+
         res.json(nodemailer.getTestMessageUrl(info))
+        })
   } catch (err) {
-    
+        res.status(500).json({err})
     }
 }
 
 module.exports={
-    GetEmailToken,
-    EmailPassword
+    PostEmailToken
 }
