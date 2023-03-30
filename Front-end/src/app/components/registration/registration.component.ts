@@ -15,11 +15,14 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private clients: ClientsService) {
     this.form = this.fb.group({
-      Name: ['', Validators.required],
-      lastname: ['', Validators.required],
-      phone: ['', Validators.required,Number],
-      email: ['', Validators.required,EmailValidator],
+      Cedula:['',Validators.required],
+      Nombre: ['', Validators.required],
+      Apellido: ['', Validators.required],
+      Celular: ['', Validators.required,Number],
+      Email: ['', Validators.required,EmailValidator],
       Password: ['', Validators.required],
+      Rol:['User'],
+      RolAd:['']
     });
   }
 
@@ -29,10 +32,11 @@ export class RegistrationComponent implements OnInit {
   onSubmit() {
 
       const PersonSave:Person={
-        Name: this.form.get('Name')?.value,
-        lastname: this.form.get('lastname')?.value,
-        phone: this.form.get('phone')?.value,
-        email: this.form.get('email')?.value,
+        Cedula:this.form.get('Cedula')?.value,
+        Nombre: this.form.get('Nombre')?.value,
+        Apellido: this.form.get('Apellido')?.value,
+        Celular: this.form.get('Celular')?.value,
+        Email: this.form.get('Email')?.value,
         Password: this.form.get('Password')?.value
       }
 

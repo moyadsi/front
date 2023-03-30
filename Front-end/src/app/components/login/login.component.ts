@@ -4,7 +4,7 @@ import { Person } from 'src/app/interface/Person';
 import { Login } from 'src/app/interface/login';
 import { ClientsService } from '../../services/clients.service';
 import { AuthService } from 'src/app/services/auth.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,10 +17,10 @@ export class LoginComponent implements OnInit {
   Person:Person=new Person;
   auth: any;
   route: any;
-  constructor(private fb: FormBuilder, private clients: ClientsService) {
+  constructor(private fb: FormBuilder, private clients: ClientsService, private router:Router) {
     this.form = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
+      Email: ['', Validators.required],
+      Password: ['', Validators.required],
     });
   }
 
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 
     if(this.form.valid) {
       const Login:Login={
-      email: this.form.get('email')?.value,
+      email: this.form.get('Email')?.value,
       Password: this.form.get('Password')?.value,
   
     }
@@ -41,8 +41,8 @@ export class LoginComponent implements OnInit {
     
     this.clients.login(Login).subscribe(data=>{
       console.log(data);
-      console.log("loguin");
-      
+      console.log("Inicio");
+      this.router.navigate(['inicio']);
     })
 
     console.log(Login);
@@ -58,7 +58,6 @@ export class LoginComponent implements OnInit {
      // this.auth.setCourrentUser(Response.name)
       //navegamos de nuevo al home, esta vez como usuario
       //logueado
-      this.route.navigate( ['/inicio']);
   //},
 
   (error) => {
