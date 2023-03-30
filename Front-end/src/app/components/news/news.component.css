@@ -88,7 +88,6 @@ main{
 }
 
 .centerPart{
-  height: 100%;
   width: 50%;
   position: relative;
   margin: 20px;
@@ -149,8 +148,6 @@ main{
 }
 
 .information{
-  position: absolute;
-  bottom: 10%;
   margin: 20px;
 }
 
@@ -193,8 +190,6 @@ main{
 }
 
 .buttonsEnd{
-  position: absolute;
-  bottom: 0;
   display: flex;
 }
 .buttonsEnd a{
@@ -211,6 +206,5 @@ main{
 
 .readArticule{
   background-color: #262626;
-  border: 1px solid #393939;
-  
+  border: 1px solid #393939;
 }
