@@ -11,13 +11,8 @@ CREATE TABLE Person (
     Password CHAR(100) NOT NULL,
     Status BOOLEAN DEFAULT TRUE,
     Date DATETIME DEFAULT NOW(),
-<<<<<<< HEAD
-    Rol char(100) default 'User',
-    RolAd char(100)
-=======
     Rol char(50) default 'User' ,
     RolAd char(100) default ''
->>>>>>> main
 );
 
 select * from person;
@@ -213,13 +208,19 @@ CREATE TABLE qualification (
 /*Table Example*/
 
 create table EmailToken(
-<<<<<<< HEAD
-	Email char(100) primary key,
-=======
 	Email char(100),
->>>>>>> main
     Token int
 );
+
+select * from EmailToken;
+
+
+Delimiter $$
+create procedure EmailTokenElminated (in email char(100))
+begin
+	update EmailToken set Token = null where Email=email;
+end $$
+delimiter ;
 
 /*Creacion de procedimientos Almacenados User*/
 
@@ -271,35 +272,6 @@ begin
 end$$
 delimiter;
 
-<<<<<<< HEAD
-/*Procedimiento encontrar Contraseña por id
-delimiter $$
-create procedure PasswordUserId(in id int)
-begin  
-	select Password from Person where Person.id=id;
-end$$
-delimiter;
-
-Procedimiento Borrar User
-delimiter $$
-create procedure SearchUserEmail(in Email char(100))
-begin  
-	select email from person where Person.email = Email;
-end$$
-delimiter;
-
-Procedimiento buscar email via id User
-delimiter $$
-create procedure SearchUserEmailId(in id int)
-begin  
-	select email from person where Person.id = id;
-end$$
-delimiter;
-*/
-
-
-=======
->>>>>>> main
 DELIMITER $$
 CREATE PROCEDURE GetAllCourse()
 BEGIN

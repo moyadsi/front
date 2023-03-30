@@ -3,23 +3,14 @@ const Joi = require('joi')
 const SignUpValidate=async(req,res,next)=>{
   try {
     const SignUpSchema = Joi.object({
-<<<<<<< HEAD:Back-end/src/validators/Users.validators.js
-      Cedula:Joi.number().min(8).required(),
-=======
       Cedula:Joi.string().min(10).max(10).required(),
->>>>>>> main:Back-end/src/validators/profile.validators.js
       Nombre:Joi.string().min(2).max(50).required(),
       Apellido:Joi.string().min(2).max(50).required(),
       Celular:Joi.number().min(8).required(),
       Email:Joi.string().lowercase().email().required(),
       Password:Joi.string().min(8).required(),
-<<<<<<< HEAD:Back-end/src/validators/Users.validators.js
-      rol:Joi.string().min(2),
-      rolAd:Joi.string().min(9)
-=======
       Rol:Joi.string().min(2),
       RolAd:Joi.string()
->>>>>>> main:Back-end/src/validators/profile.validators.js
     })
     await SignUpSchema.validateAsync(req.body)
 

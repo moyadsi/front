@@ -14,10 +14,6 @@ router.post('/SignUp',SignUpValidate,ProCtrl.SignUp)
 router.post('/SignIn',SigninValidate,ProCtrl.SignIn)
 
 //Example
-<<<<<<< HEAD:Back-end/src/routes/Users.router.js
-router.post('/Email/SolicitarCodigo',UserCtrl.GetEmailToken)
-=======
 router.post('/Email/SolicitarCodigo',UserCtrl.PostEmailToken)
->>>>>>> main:Back-end/src/routes/Profile.router.js
 
 module.exports = router;
