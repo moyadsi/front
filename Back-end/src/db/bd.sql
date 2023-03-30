@@ -212,6 +212,16 @@ create table EmailToken(
     Token int
 );
 
+select * from EmailToken;
+
+
+Delimiter $$
+create procedure EmailTokenElminated (in email char(100))
+begin
+	update EmailToken set Token = null where Email=email;
+end $$
+delimiter ;
+
 /*Creacion de procedimientos Almacenados User*/
 
 /*Procedimiento para obtener Todos los usuarios*/

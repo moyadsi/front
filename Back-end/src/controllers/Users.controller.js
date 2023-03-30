@@ -95,7 +95,7 @@ async function SignUp(req,res,next){
                     }
                     // si existe una CC ya existente,se le manda un error 400 
                     else if(Id.id == Cedula) res.status(400).json({message:"Cedula actualmente registrada"})
-                    })
+                })
             })
         }
         else if(rows[0].email=Email){
