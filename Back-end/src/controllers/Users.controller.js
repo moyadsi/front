@@ -54,7 +54,7 @@ function Get(req,res){
 async function SignUp(req,res,next){
   try {
     //Declaracion de las variables que se la pasaran a la cadena de SQL
-    const {Cedula,Nombre,Apellido,Celular,Email,Password,rol,rolAd} = req.body
+    const {Cedula,Nombre,Apellido,Celular,Email,Password,Rol,RolAd} = req.body
     // Cadena Sql para verificar que el email no sea repetido
     let sqlEmail = `call GetEmailUser(?)`;
     //ejecución de la cadena sql con la constante de Email
@@ -76,10 +76,14 @@ async function SignUp(req,res,next){
                     const Id = idTemp[0]
                     // si hay un error se cancela el procedimiento
                     if(err)  res.status(400).json({message:err});
+                    //
+                    let SqlEmailToken = `insert into EmailToken(email) values ('${Email}')`
+                    conexion.query(SqlEmailToken,(err,rows,fields)=>{
+                    if(err) throw err;
                     // Verificacion si no existe ninguna CC 
                     if(Id==undefined){
                         // Ejecucion de la cadena para guardar con los valores pasados por el usuario
-                        conexion.query(sql,[Cedula,Nombre, Apellido, Celular, Email, BcryptPassword,rol,rolAd], (err,rows,fields)=>{
+                        conexion.query(sql,[Cedula,Nombre, Apellido, Celular, Email, BcryptPassword,Rol,RolAd], (err,rows,fields)=>{
                             // si hay un error se cancela el procedimiento
                             if(err)  res.status(400).json({message:err});
                             else{
@@ -91,6 +95,7 @@ async function SignUp(req,res,next){
                     }
                     // si existe una CC ya existente,se le manda un error 400 
                     else if(Id.id == Cedula) res.status(400).json({message:"Cedula actualmente registrada"})
+                })
             })
         }
         else if(rows[0].email=Email){

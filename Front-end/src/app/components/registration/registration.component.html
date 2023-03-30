@@ -13,16 +13,19 @@
   <hr />
   <div class="main">
     <section class="section-left">
-      <button></button>
+      <div class="backgroundImage">
+        <button id="backSlide" class="backSlide"><</button>
+        <img src="../../../assets/Register/Grupo de desplazamiento 9.png" alt="">
+      </div>
       <div class="slide"><hr /></div>
       <div class="information">
         <p>Paso 1 de 4</p>
-        <h2>CON TU INFORMACION BÁSICA YA SERÁS PARTE</h2>
+        <h2>CON TU INFORMACION <br>BÁSICA YA SERÁS PARTE</h2>
       </div>
     </section>
     <section class="section-right">
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <button id="btnGoogle">Resgitrate con Google</button>
+        <button id="btnGoogle"><img src="../../../assets/Register/Google_Icon.png" alt=""> <p>Resgitrate con Google</p></button>
         <div class="optionRegister">
           <hr/>
           <span>O resgitrate con</span>
@@ -61,7 +64,7 @@
         <div class="email">
           <span>Email</span>
           <input
-            type="text"
+            type="email"
             formControlName="email"
             id=""
             placeholder="Ingresa tu correo"
@@ -75,6 +78,16 @@
             formControlName="Password"
             id=""
             placeholder="Ingresa tu contraseña"
+            class="input-large"
+          />
+        </div>
+        <div class="repeatPassword">
+          <span>Confirmar contraseña</span>
+          <input
+            type="password"
+            formControlName="password"
+            id=""
+            placeholder="Confirma tu contraseña"
             class="input-large"
           />
         </div>

@@ -9,12 +9,16 @@
     margin-left: -30%;
     
 }
+.team > p{
+    text-align: justify;
+}
 
 .team > img{
-    width: 300px;
-    height: 150px;
+    width: 60%;
+    height: 60%;
     border-radius: 15px;
-    margin: 0px 50px 0px;
+    margin: 0px 40px 0px;
+    object-fit:cover;
 }
 
 .team > h2{
@@ -24,18 +28,12 @@
     font-family: 'Outer Limits Solid', sans-serif;
     font-size: 25px;
 }
-label > hr{
-    height:20vh;
-    width:.1vw;
-    border-width:0;
-    background-color:#837f7f;
-    margin: 1% 0 2% 5%;
-   }
+
 
    .members{
     display: grid;
     grid-template-columns: 33% 33% 33%;
-    margin: 5% 0 0 5%;
+    margin: -3% 0 0 5%;
     border: 1px white solid;
     border-radius: 20px;
     padding: 50px;

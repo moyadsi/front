@@ -11,8 +11,13 @@ CREATE TABLE Person (
     Password CHAR(100) NOT NULL,
     Status BOOLEAN DEFAULT TRUE,
     Date DATETIME DEFAULT NOW(),
+<<<<<<< HEAD
     Rol char(100) default 'User',
     RolAd char(100)
+=======
+    Rol char(50) default 'User' ,
+    RolAd char(100) default ''
+>>>>>>> main
 );
 
 select * from person;
@@ -208,7 +213,11 @@ CREATE TABLE qualification (
 /*Table Example*/
 
 create table EmailToken(
+<<<<<<< HEAD
 	Email char(100) primary key,
+=======
+	Email char(100),
+>>>>>>> main
     Token int
 );
 
@@ -262,6 +271,7 @@ begin
 end$$
 delimiter;
 
+<<<<<<< HEAD
 /*Procedimiento encontrar Contraseña por id
 delimiter $$
 create procedure PasswordUserId(in id int)
@@ -288,6 +298,8 @@ delimiter;
 */
 
 
+=======
+>>>>>>> main
 DELIMITER $$
 CREATE PROCEDURE GetAllCourse()
 BEGIN

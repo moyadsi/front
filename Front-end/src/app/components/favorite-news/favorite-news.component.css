@@ -11,57 +11,52 @@ h2{
 }
 
 h5{
-    position: absolute;
-    margin-left: 400px;
+    position: relative;
     background-color: rgba(0, 0, 0, 0.349);
     border-radius: 15px;
-    padding: 10px;
-    width: 70px; 
+    width: 20%; 
+    height: 15%;
     text-align: center;
+    margin: -25% 0 30% 79%;
 }
 
 
 .news-two h5{
     position: absolute;
-    margin-left: 400px;
+    margin: -1.5% 0 0 27%;
     background-color: rgba(0, 0, 0, 0.349);
     border-radius: 15px;
-    padding: 10px;
-    width: 70px; 
+    width: 7%; 
+    height: 3%;
     text-align: center;
-    margin-top: -26px;
 }
 .news-three h5{
     position: absolute;
-    margin-left: 400px;
+    margin: -1.5% 0 0 27%;
     background-color: rgba(0, 0, 0, 0.349);
     border-radius: 15px;
-    padding: 10px;
-    width: 70px; 
+    width: 7%; 
+    height: 3%;
     text-align: center;
-    margin-top: 10px;
 }
 .news-one h4{
     position: absolute;
-    margin-top: 40%;
+    margin:  13% 0 0 1.5%;
     width: 300px;
     padding: 10px;
-    margin-left: 20px;
 }
 
 .news-two h4{
     position: absolute;
-    margin-top: 5%;
     width: 300px;
     padding: 10px;
-    margin-left: 20px;
+    margin: 2% 0 0 0;
 }
 .news-three h4{
     position: absolute;
-    margin-top: 10%;
+    margin: 2% 0 0 0;
     width: 300px;
     padding: 10px;
-    margin-left: 20px;
 }
 /* ESTILO CONTENEDORES*/
 
@@ -75,57 +70,47 @@ h5{
     }
 
     .new-conteiner{
-        margin-left: 10px;
         margin-top: 50px;
         width: 90%;
-        position: relative;
         display: grid;
         grid-template-columns: 50% 50%;
     }
 
     .news-one{
         display: grid;
-        grid-template-rows: 50% 50%;
-        position: relative;
         background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxduf7I-yEvixxEcs31BhcI83Ks4AUbkAS8Q&usqp=CAU");
         background-size: 100% 100%;
         background-repeat: no-repeat;
-        width: 500px;
-        height: 300px ;
+        width:95%;
+        height: 320px ;
         margin-bottom: 20px;
         border-radius: 20px;
     }
 
     
     .news-two{
-        display: grid;
-        grid-template-rows: 50% 50%;
-        position: relative;
         background-image: url("https://sobreverso.com/wp-content/uploads/2022/08/Captura-de-pantalla-249-1024x574.png");
         background-size: 100% 100%;
         background-repeat: no-repeat;
-        width: 500px;
+        width: 95%;
         height: 150px ;
         border-radius: 20px;
     }
 
     .news-three{
-        display: grid;
-        grid-template-rows: 50% 50%;
-        position: relative;
         background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOkmklpHHfRxjJCjGqSUvF-V8k9GqMhLS1cQ&usqp=CAU");
         background-size: 100% 100%;
         background-repeat: no-repeat;
-        width: 500px;
+        width: 98%;
         height: 150px ;
         border-radius: 20px;
-        margin-top: 80px;
+        margin: 10% 0 0 0;
     }
     .new-suscription{
         display: grid;
         grid-template-columns: 50% 50%;
         grid-template-rows: none;
-        margin: 30px;
+        margin: 0;
 
     }
 
@@ -133,34 +118,26 @@ h5{
 
     .news-one p{
         position: absolute;
-        margin-top: 45%;
+        margin: 15% 0 0 1.5%;
         width: 300px;
         padding: 10px;
-        margin-left: 20px;
     }
     .news-two p{
+        margin: 7% 0 0 -27.5%;
+        width: 25%;
+        display: inline-block;
         position: absolute;
-        margin-top: 10%;
-        width: 300px;
-        padding: 10px;
-        margin-left: 20px;
     }
     .news-three p{
-        position: absolute;
-        margin-top: 15%;
-        width: 300px;
-        padding: 10px;
-        margin-left: 20px;
+        margin: 7% 0 0 -26%;
+        width: 20%;
     }
     .conteiner p{
-        margin: 10px;
-        width: 500px;
+        width: 100%;
     }
       .new-suscription p{
-       width: 300px;
-       margin: 50px;
-       align-items:flex-end;
-       margin-top:120px;
+       width: 100%;
+       margin: 45% 0 0 7%;
     }
 
     /* ESTILO BOTONES */
@@ -176,8 +153,7 @@ h5{
     
     .news-one button{
         position: absolute;
-        margin-top: 50%;
-        margin-left: 75%;
+        margin: 18% 0 0 23%;
         padding: 5px;
         border-radius: 10px;
         background-color: rgba(98, 98, 97, 0.648);
@@ -185,24 +161,36 @@ h5{
         width: 115px;
         height: 35px;
         color: white;
+        background-image: url(../../../assets/new/ArrowR.png);
+        background-size: 6% 30%;
+        background-repeat: no-repeat;
+        background-position:11.5vh;
     }
     
     .news-two button{
-        position: absolute;
-        margin-top: 20%;
-        margin-left: -9%;
-        padding: 5px;
-        border-radius: 10px;
+        display: inline-block; /* establece el botón como un bloque en línea */
+        width: 25%; /* establece un ancho para el botón */
+        height: 50%; /* establece una altura para el botón */
         background-color: rgba(98, 98, 97, 0.648);
+        border-radius: 10px;
         border: none;
-        width: 115px;
-        height: 35px;
-        color: white;
+        text-align: center;
+        font-size: 16px;
+        margin: 12% 0 0 72%;
+        padding: 10px;
+        background-image: url(../../../assets/new/ArrowR.png);
+        background-size: 6% 25%;
+        background-repeat: no-repeat;
+        background-position:11vh;
+
+    }
+    .new-conteiner button:hover{
+        background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);
+        cursor: pointer;
     }
     .news-three button{
         position: absolute;
-        margin-top: 20%;
-        margin-left: 75%;
+        margin: 7% 0 0 -5%;
         padding: 5px;
         border-radius: 10px;
         background-color: rgba(98, 98, 97, 0.648);
@@ -210,18 +198,23 @@ h5{
         width: 115px;
         height: 35px;
         color: white;
+        background-image: url(../../../assets/new/ArrowR.png);
+        background-size: 6% 30%;
+        background-repeat: no-repeat;
+        background-position:12vh;
     }
     label{
         background-color: rgba(98, 98, 97, 0.648);
         border: none;
         border-radius: 10px;
-        margin-left: 45%;
+        margin: 0 0 0 38%;
+       
     }
 
     .btnR {
         background-color: transparent;
         background-image: url(../../../assets/new/ArrowR.png);
-        background-size: 20% 20%;
+        background-size: 10% 20%;
         background-repeat: no-repeat;
         background-position: center;
         border: none;
@@ -234,7 +227,7 @@ h5{
 .btnL{
     background-color: transparent;
     background-image: url(../../../assets/new/Arrow_L.png);
-    background-size: 20% 20%;
+    background-size: 10% 20%;
     background-repeat: no-repeat;
     background-position: center;
     border: none;
@@ -246,22 +239,28 @@ h5{
     cursor: pointer;
 }
     .new-suscription button{
-        margin-left: 150px;
-        margin-top: 120px;
-        height: 50px;
-        width: 100px;
-    }
 
+        height: 20%;
+        width: 50%;
+        color: white;
+        font-size: 17px;
+        font-weight: 300;
+        margin: 45% 0 0 50%;
+        border: none;
+    }
+    .new-suscription button:hover{
+        background: linear-gradient(167deg, rgb(21, 122, 112) 0%, rgb(82, 146, 79) 100%);
+        cursor: pointer;
+    }
     hr{
-        width: 35%;
-        margin-top: -4%;
-        margin-right: 20%;
+        width: 38%;
+        margin: -2% 0 0 42%;
 
         }
 
         main{
-            padding: 50px;
-            margin-left: 30px;
+            width: 80%;
+            margin: 0 auto;
         }
 
         .new-conteiner img{
@@ -278,3 +277,24 @@ h5{
             margin-top: 5%;
         }
         
+        iframe{
+            margin: 20%;
+        }
+
+        label > hr{
+            height:20vh;
+            width:.1vw;
+            border-width:0;
+            background-color:#837f7f;
+            margin: 5% 0 -2% 1%;
+           }
+
+           iframe{
+            border-radius: 20%;
+           }
+
+           a{
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
+           }

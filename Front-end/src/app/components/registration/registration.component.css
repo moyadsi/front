@@ -28,7 +28,19 @@ hr{
 
 .section-left{
   width: 50%;
+  background-image: url(../../../assets/Register/Imagen\ 45.png);
 }
+
+.backSlide{
+  position: absolute;
+  width: 30px;
+  height: 25px;
+  text-align: center;
+  color: #646464;
+  background-color: #1A1A1A;
+  border: none;
+}
+
 
 .slide{
   width: 80%;
@@ -130,6 +142,14 @@ hr{
   background: #1A1A1A;
   padding: 10px;
   border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#btnGoogle > p{
+  margin-left: 20px;
+  font-size: 18pt;
 }
 
 .section-right > form > .namesAndLastNames > div > span{
@@ -143,4 +163,13 @@ hr{
 
 .section-right > form > .termsAndConditions > input{
   margin-right: 10px;
+}
+
+@media screen and (max-width:1180px) {
+  .section-left{
+    display: none;
+  }
+  .section-right{
+    width: 100%;
+  }
 }

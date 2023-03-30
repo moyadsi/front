@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EmailValidator, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClientsService } from '../../services/clients.service';
 import { Person } from '../../interface/Person'
 
@@ -17,8 +17,8 @@ export class RegistrationComponent implements OnInit {
     this.form = this.fb.group({
       Name: ['', Validators.required],
       lastname: ['', Validators.required],
-      phone: ['', Validators.required],
-      email: ['', Validators.required],
+      phone: ['', Validators.required,Number],
+      email: ['', Validators.required,EmailValidator],
       Password: ['', Validators.required],
     });
   }
@@ -39,10 +39,10 @@ export class RegistrationComponent implements OnInit {
       this.clients.CreatePerson(PersonSave).subscribe(data=>{
         console.log(data);
         console.log("User created");
-        
+
       })
 
       console.log(PersonSave);
-    
+
   }
 }
