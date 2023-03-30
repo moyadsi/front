@@ -1,22 +1,28 @@
 <app-nav></app-nav>
 <main>
   <section class="leftPart">
-    <div class="targetNew">
+    <div class="targetNew" *ngFor="let date of news">
       <div class="content">
         <div class="buttonDate">
-          <button>Category</button>
-          <span>17 de Marzo de 2022</span>
+          <button>{{date.author}}</button>
         </div>
+<<<<<<< HEAD
         <hr />
         <p class="titleTarget">The last of us</p>
+=======
+        <p class="titleTarget">
+          {{date.title}}
+        </p>
+>>>>>>> 7a8cc1ec00fbf49fc300ccacfb611dfdcb0f5233
         <p class="descriptionTarget">
-          Es un video juego de consola multijugador para toda la familia
+          {{date.description}}
         </p>
       </div>
       <img
-        src="../../../assets/News/News 1/Img_News/Ns_1.png"
+        src={{date.urlToImage}}
         alt=""
       />
+<<<<<<< HEAD
     </div>
     <div class="targetNew">
       <div class="content">
@@ -69,6 +75,9 @@
       />
       </div>
     </div>
+=======
+      </div>
+>>>>>>> 7a8cc1ec00fbf49fc300ccacfb611dfdcb0f5233
   </section>
   <section class="centerPart">
     <img
