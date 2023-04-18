@@ -163,7 +163,7 @@ main{
         border-color: aliceblue  solid;
         margin: 30% 0 0 30%;
        }
-        .category > img {
+        .category > a > img {
         object-fit: contain;
         width: 30px;
         margin: 15% 0 -10% 10%;

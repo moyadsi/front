@@ -11,6 +11,7 @@ import { NewsComponent } from './components/news/news.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { SuscriptionComponent } from './components/suscription/suscription.component';
+import { DetailsCourseComponent } from './components/details-course/details-course.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent},
   { path: 'membership', component: MembershipComponent},
   { path: 'suscription', component: SuscriptionComponent},
-  { path: 'inicio', component: InicioComponent}
+  { path: 'inicio', component: InicioComponent},
+  { path: 'detailsCourse', component: DetailsCourseComponent}
 ];
 
 @NgModule({
