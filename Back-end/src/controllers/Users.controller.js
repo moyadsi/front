@@ -65,6 +65,10 @@ async function SignUp(req,res,next){
         if(rows[0]==''){
             //constante para guardar la encryptacion de la contraseña pasada por el usuario
             const BcryptPassword = await bcrypt.hash(Password,10)
+
+            if(Rol==null){
+                return Rol = "User";
+            }
             //Cadena de sql para Guardar 
             let sql = `call SavePerson(?,?,?,?,?,?,?,?)`
             // Cadena Sql para verificar la CC no este repetida
