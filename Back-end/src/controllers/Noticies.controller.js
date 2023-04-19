@@ -20,8 +20,7 @@ const GetNoticie =(req,res)=>{
         const code = response.status;
         res.status(code).json({Content:response.data.articles});
     }).catch(function (error) {
-        const code = error.response.status;
-        res.status(code).json({error:error.message})
+        res.status(400).json({error:error.message})
         });
 }
 

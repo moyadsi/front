@@ -56,7 +56,7 @@ main{
     
     .conteiner-3{
         width: 90vh;
-        height: 150px ;
+        height: 200px ;
         margin: 10% 0 0 20%;
     
     }
@@ -163,7 +163,7 @@ main{
         border-color: aliceblue  solid;
         margin: 30% 0 0 30%;
        }
-        .category > img {
+        .category > a > img {
         object-fit: contain;
         width: 30px;
         margin: 15% 0 -10% 10%;
@@ -185,6 +185,6 @@ main{
         
 
         iframe{
-            width: 100%;
+            width: 120vh;
             border-radius: 15px;
         }

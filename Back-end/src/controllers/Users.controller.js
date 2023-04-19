@@ -334,8 +334,8 @@ async function SignIn(req,res,next){
                             }
                             // Si no tiene ningun rol Administrativo el usuario pasa por aca y se le pasa el token normal 
                             else{
+                                res.json({message:"Sign in successful",token:TokenEmail})
                                 next()
-                                return res.status(200).json({message:"Sign in successful",Token:TokenEmail})
                             }
                             // Si la contraseña no son iguales se le cancela el ingreso
                         }else{

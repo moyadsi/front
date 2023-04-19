@@ -1,7 +1,8 @@
 export class Person{
-  'Name':String;
-  'lastname':String;
-  'phone':Number;
-  'email':String;
-  'Password':String;
+  "Cedula":String
+  "Nombre": String
+  "Apellido": String
+  "Celular":String
+  "Email":String
+  "Password":String
 }

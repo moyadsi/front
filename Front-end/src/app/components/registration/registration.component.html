@@ -14,7 +14,7 @@
   <div class="main">
     <section class="section-left">
       <div class="backgroundImage">
-        <button id="backSlide" class="backSlide"><</button>
+        <button id="backSlide" class="backSlide"></button>
         <img src="../../../assets/Register/Grupo de desplazamiento 9.png" alt="">
       </div>
       <div class="slide"><hr /></div>
@@ -31,12 +31,23 @@
           <span>O resgitrate con</span>
           <hr/>
         </div>
+        <div class="Cedula">
+          <div class="Cedula">
+            <span>Cedula</span>
+            <input
+              type="text"
+              formControlName="Cedula"
+              id=""
+              placeholder="Cedula"
+            />
+          </div>
+        </div>
         <div class="namesAndLastNames">
           <div class="names">
             <span>Nombres</span>
             <input
               type="text"
-              formControlName="Name"
+              formControlName="Nombre"
               id=""
               placeholder="Ingresa tu nombre"
             />
@@ -45,7 +56,7 @@
             <span>Apellido</span>
             <input
               type="text"
-              formControlName="lastname"
+              formControlName="Apellido"
               id=""
               placeholder="Ingresa tu apellido"
             />
@@ -55,7 +66,7 @@
           <span>Número</span>
           <input
             type="text"
-            formControlName="phone"
+            formControlName="Celular"
             id=""
             placeholder="Ingresa tu número"
             class="input-large"
@@ -65,7 +76,7 @@
           <span>Email</span>
           <input
             type="email"
-            formControlName="email"
+            formControlName="Email"
             id=""
             placeholder="Ingresa tu correo"
             class="input-large"

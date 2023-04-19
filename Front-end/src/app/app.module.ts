@@ -25,6 +25,7 @@ import { SuscriptionComponent } from './components/suscription/suscription.compo
 import { TeamComponent } from './components/team/team.component';
 import { BestMetaComponent } from './components/best-meta/best-meta.component';
 import { InicioComponent } from './components/inicio/inicio.component';
+import { DetailsCourseComponent } from './components/details-course/details-course.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { InicioComponent } from './components/inicio/inicio.component';
     SuscriptionComponent,
     TeamComponent,
     BestMetaComponent,
-    InicioComponent
+    InicioComponent,
+    DetailsCourseComponent
   ],
   imports: [
     BrowserModule,

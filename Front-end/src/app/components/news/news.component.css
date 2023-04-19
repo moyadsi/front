@@ -54,6 +54,8 @@ main{
   background-color: gray;
   border-radius: 8px;
   border: none;
+  max-height: 40px;
+  overflow-y: auto;
 }
 
 .targetNew hr{
@@ -68,12 +70,14 @@ main{
 .targetNew .titleTarget{
   font-size: 15pt;
   font-weight: 400;
+  max-height: 50px;
+  overflow-y: auto;
 }
 .targetNew .descriptionTarget{
   font-size: 10pt;
   font-weight: 400;
   max-height: 50px;
-  overflow-y: scroll;
+  overflow-y: auto;
   direction: ltr;
 }
 
@@ -84,11 +88,10 @@ main{
   object-fit: cover;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-
+  width: 115px;
 }
 
 .centerPart{
-  height: 100%;
   width: 50%;
   position: relative;
   margin: 20px;
@@ -149,8 +152,6 @@ main{
 }
 
 .information{
-  position: absolute;
-  bottom: 10%;
   margin: 20px;
 }
 
@@ -193,8 +194,6 @@ main{
 }
 
 .buttonsEnd{
-  position: absolute;
-  bottom: 0;
   display: flex;
 }
 .buttonsEnd a{
@@ -211,6 +210,5 @@ main{
 
 .readArticule{
   background-color: #262626;
-  border: 1px solid #393939;
-  
+  border: 1px solid #393939
 }
