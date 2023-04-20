@@ -187,12 +187,6 @@ main{
   font-size: 28pt;
 }
 
-.rightPart{
-  height: 70vh;
-  width: 20%;
-  border: 1px solid blue;
-}
-
 .buttonsEnd{
   display: flex;
 }
@@ -211,4 +205,66 @@ main{
 .readArticule{
   background-color: #262626;
   border: 1px solid #393939
+}
+
+.rightPart{
+  height: 70vh;
+  width: 20%;
+}
+
+.containerNav{
+  width: 100%;
+  background-color: #393939;
+}
+
+.navPodcast{
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.navPodcast li{
+  display: flex;
+  list-style: none;
+}
+
+.containerPodcast{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  background-color: #262626;
+}
+
+.podcast{
+  display: flex;
+  border-bottom: 1px solid gray;
+  height: 10vh;
+  margin: 5px;
+  padding: 10px;
+}
+
+.buttonPlay{
+  width: 25%;
+  margin: 10px;
+}
+
+.buttonPlay > button{
+  height: 100%;
+  width: 100%;
+  background-color: #393939;
+  border: none;
+  color: #5ab770;
+  font-size: 22pt;
+  border-radius: 10px;
+}
+
+.informationPodcast{
+  width: 50%;
+  margin: 10px;
+}
+
+.duration{
+  width: 25%;
+  margin: 10px;
 }
