@@ -47,6 +47,21 @@ const AddCourse=(req,res)=>{
     }
 }
 
+const UpdateCourse=(req,res)=>{
+  try {
+    const {DescriptionCurso,Duration,IdTeacher,IdCategory,Lenguaje,Url} =req.body;
+    let SearchCourseId=`select id_Course from course inner join AllCourse where AllCourse.Id=${req.params.id} `
+    conexion.query(SearchCourseId,(err,rows,fields)=>{
+      if(err)throw err;
+      else{
+        let UpdateCourseSql=``
+      }
+    })
+  } catch (error) {
+    
+  }
+}
+
 module.exports ={
     GetCourseAll,
     GetCourseElement,

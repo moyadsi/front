@@ -67,22 +67,56 @@ async function SignUp(req,res,next){
             const BcryptPassword = await bcrypt.hash(Password,10)
 
             if(Rol==null){
-                return Rol = "User";
-            }
+                let RolNull = 'User'
             //Cadena de sql para Guardar 
             let sql = `call SavePerson(?,?,?,?,?,?,?,?)`
             // Cadena Sql para verificar la CC no este repetida
             let sqlId = `call GetIdValidacionUser(?)`
             //Ejecucion de la cadena de verificacion de CC con la constante Cedula
             conexion.query(sqlId,[Cedula],(err,rows,fields)=>{
-                    // Guardando el resultado de la ejecucion de la cadena
-                    const idTemp = rows[0]
-                    const Id = idTemp[0]
-                    // si hay un error se cancela el procedimiento
-                    if(err)  res.status(400).json({message:err});
+                // Guardando el resultado de la ejecucion de la cadena
+                const idTemp = rows[0]
+                const Id = idTemp[0]
+                // si hay un error se cancela el procedimiento
+                if(err)  res.status(400).json({message:err});
                     //
                     let SqlEmailToken = `insert into EmailToken(email) values ('${Email}')`
                     conexion.query(SqlEmailToken,(err,rows,fields)=>{
+                        if(err) throw err;
+                        // Verificacion si no existe ninguna CC 
+                        if(Id==undefined){
+                            // Ejecucion de la cadena para guardar con los valores pasados por el usuario
+                            conexion.query(sql,[Cedula,Nombre, Apellido, Celular, Email, BcryptPassword,RolNull,RolAd], (err,rows,fields)=>{
+                                // si hay un error se cancela el procedimiento
+                                if(err)  res.status(400).json({message:err});
+                                else{
+                                    // si no hubo un error se le manda el mensaje con exito
+                                    res.status(201).json({status: 'Usuario Agregado'})
+                                    next()
+                                }
+                            })
+                        }
+                    // si existe una CC ya existente,se le manda un error 400 
+                    else if(Id.id == Cedula) res.status(400).json({message:"Cedula actualmente registrada"})
+                })
+            })
+            }
+            else if(Rol=='Administrador'|| Rol=='Moderador'){
+                
+            //Cadena de sql para Guardar 
+            let sql = `call SavePerson(?,?,?,?,?,?,?,?)`
+            // Cadena Sql para verificar la CC no este repetida
+            let sqlId = `call GetIdValidacionUser(?)`
+            //Ejecucion de la cadena de verificacion de CC con la constante Cedula
+            conexion.query(sqlId,[Cedula],(err,rows,fields)=>{
+                // Guardando el resultado de la ejecucion de la cadena
+                const idTemp = rows[0]
+                const Id = idTemp[0]
+                // si hay un error se cancela el procedimiento
+                if(err)  res.status(400).json({message:err});
+                //
+                let SqlEmailToken = `insert into EmailToken(email) values ('${Email}')`
+                conexion.query(SqlEmailToken,(err,rows,fields)=>{
                     if(err) throw err;
                     // Verificacion si no existe ninguna CC 
                     if(Id==undefined){
@@ -101,6 +135,7 @@ async function SignUp(req,res,next){
                     else if(Id.id == Cedula) res.status(400).json({message:"Cedula actualmente registrada"})
                 })
             })
+            }
         }
         else if(rows[0].email=Email){
         //si existe un Email ya existente,se le manda un error 400 

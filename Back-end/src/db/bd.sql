@@ -33,14 +33,17 @@ CREATE TABLE Company (
 
 CREATE TABLE Departament (
     Id_Departament INT PRIMARY KEY AUTO_INCREMENT,
+    fk_id_departament int,
     NamePlace CHAR(100) NOT NULL DEFAULT '',
-    CONSTRAINT Fk_Departament_Company FOREIGN KEY (Id_Departament)
+    CONSTRAINT Fk_Departament_Company FOREIGN KEY (fk_id_departament)
         REFERENCES Company (Id_Company)
 );
+
  CREATE TABLE Cities (
     Id_Cities INT PRIMARY KEY AUTO_INCREMENT,
+    fk_id_Cities int,
     NameCities CHAR(100) NOT NULL DEFAULT '',
-    FOREIGN KEY (Id_Cities)
+    FOREIGN KEY (fk_id_Cities)
         REFERENCES Company (Id_Company)
 );
 
@@ -52,6 +55,7 @@ CREATE TABLE Country (
     CONSTRAINT Fk_CountryCode_Person FOREIGN KEY (CountryPerson)
         REFERENCES Person (Id)
 );
+
 /*----------------------------Cursos-----------------------------------*/
 
 create table AllCourse(
@@ -62,11 +66,13 @@ create table AllCourse(
  IdTeacher int,
  IdCate int,
  Lenguaje char(50),
-  Url char not null
+ Url char not null
 );
 
 CREATE TABLE course (
-    id_Course INT PRIMARY KEY
+    id_Course INT PRIMARY KEY,
+    CONSTRAINT Fk_Course_AllCourse FOREIGN KEY (id_Course)
+        REFERENCES AllCourse (Id)
 );
 
 CREATE TABLE Category (
@@ -197,11 +203,11 @@ insert into Type values (1,'Free'),(2,'Advanced'),(3,'Premium');
 
 CREATE TABLE qualification (
     Id INT PRIMARY KEY,
-    IdCourse INT,
     Comment CHAR(255),
+    IdCourse INT,
     qualification DOUBLE DEFAULT 5.0,
-    FOREIGN KEY (IdCourse)
-        REFERENCES course(id_Course)
+    CONSTRAINT Fk_Qualifi_course FOREIGN KEY (IdCourse)
+        REFERENCES AllCourse(Id)
 );
 
 
