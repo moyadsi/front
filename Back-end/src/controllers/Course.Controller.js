@@ -49,12 +49,13 @@ const AddCourse=(req,res)=>{
 
 const UpdateCourse=(req,res)=>{
   try {
+    const {id} = req.params.id
     const {DescriptionCurso,Duration,IdTeacher,IdCategory,Lenguaje,Url} =req.body;
-    let SearchCourseId=`select id_Course from course inner join AllCourse where AllCourse.Id=${req.params.id} `
+    let SearchCourseId=`select id_Course from course inner join AllCourse where AllCourse.Id=${id} `
     conexion.query(SearchCourseId,(err,rows,fields)=>{
       if(err)throw err;
       else{
-        let UpdateCourseSql=``
+        res.status(200).json({rows})
       }
     })
   } catch (error) {
@@ -65,5 +66,6 @@ const UpdateCourse=(req,res)=>{
 module.exports ={
     GetCourseAll,
     GetCourseElement,
-    AddCourse
+    AddCourse,
+    UpdateCourse
 }

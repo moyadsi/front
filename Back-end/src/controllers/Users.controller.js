@@ -14,7 +14,7 @@ function GetAll(req, res) {
         // Ejecución de la cadena SQl
         conexion.query(sql, (err, rows, fields) => {
             // Si hubo un error no se envia nada y se le pasa el codigo de status 404(not found)
-            if(err) res.status(404).json({message:"Usuario no encontrado"});
+            if(err) res.status(404).json({message:"no se encuentra ningun usuario registrado"});
             // si se encuentra algo se le pasa con el status 200
             else {
                 res.json(rows[0]);
