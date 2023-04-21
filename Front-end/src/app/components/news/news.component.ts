@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiPodcastService } from 'src/app/apiPodcast.service';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -8,19 +9,29 @@ import { ApiService } from 'src/app/services/api.service';
 })
 
 export class NewsComponent implements OnInit {
-  public data: any = {} ;
+  public dataNews: any = {} ;
   public news: any[] = [];
-  constructor(private apiService: ApiService) { }
+  public podcast: any[] = [];
+  constructor(private apiService: ApiService, private apiPodcast: ApiPodcastService) { }
 
   ngOnInit(): void {
     this.llenarData()
+    this.traerPodcast()
   }
 
   llenarData(){
-    this.apiService.getData().subscribe(data =>{
-      this.data = data;
-      this.news = this.data.articles
-      console.log(this.news)
+    this.apiService.getData().subscribe(dataNews =>{
+      this.dataNews = dataNews;
+      this.news = this.dataNews.articles
+    })
+  }
+
+  traerPodcast(){
+    this.apiPodcast.getDataPodcast().subscribe(podcast =>{
+      this.podcast = podcast;
+      console.log(podcast)
+      // this.podcast = this.data.articles
+      // console.log(this.podcast)
     })
   }
 }
