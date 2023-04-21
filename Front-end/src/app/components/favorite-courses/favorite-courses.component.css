@@ -3,17 +3,17 @@
     width:.1vw;
     border-width:0;
     background-color:#ffffff;
-    margin-top: -6%;
+    margin: -5% 0 0 45%;
    } 
 
    .logoB{
     width: 30px;
-    margin: 5% 45% 5%;
+    margin: 5% 43% 5%;
     
 }
 .sumergete-img{
-    width: 90%;
-    object-position: center;
+    width: 60%;
+    margin: 0 0 0 15%;
 }
 
 main{
@@ -185,6 +185,6 @@ main{
         
 
         iframe{
-            width: 120vh;
+            width: 100vh;
             border-radius: 15px;
         }

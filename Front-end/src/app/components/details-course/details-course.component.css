@@ -6,7 +6,7 @@
 .course{
     display: grid;
     grid-template-columns: 30% 70%;
-    margin: 0 0 0 5%;
+    margin: 10% 0 0 5%;
 }
 
 .courses {
@@ -58,21 +58,22 @@ height: 15%;
 }
 iframe{
     border-radius: 15px;
-    
+    height: 55vh;
+    width: 90%;
 }
 
 .option-courses{
     display: grid;
-    grid-template-columns: 25% 13% 10% 10% 10% 25%;
+    grid-template-columns: 25% 13% 10% 10% 15% 20%;
     margin: 2% 0 0 5%;
 }
 .attachments{
     display: grid;
-    grid-template-columns: 15% 70%;
+    grid-template-columns: 15% 80%;
     background-color: #1a1a1a;
     border-radius: 15px;
     border: 1px rgb(141, 141, 141) solid;
-    margin: 5% 0 0 20%;
+    margin: 5% 0 0 10%;
 
 }
 .attachments:hover{
@@ -161,12 +162,12 @@ iframe{
     background-color:#1a1a1a;
     border: 1px rgb(141, 141, 141) solid;
     border-radius: 15px;   
-    margin: 8% 0 0 5%; 
-    width: 80%;
+    margin: 5% 0 0 5%; 
+    width: 90%;
     height: 77%;
 }
 .like > button > img{
-    width: 40%;
+    width: 20%;
     object-fit: contain;
     cursor: pointer;
 }
@@ -181,7 +182,7 @@ iframe{
     border: 1px rgb(141, 141, 141) solid;
     border-radius: 15px;   
     margin: 3% 0 0 0; 
-    width: 80%;
+    width: 100%;
     height: 77%;
 }
 .comments > img{
@@ -409,22 +410,23 @@ width: 97%;
         background-color: rgba(153, 153, 153, 0.664);
         border-radius: 10px 0 0 10px;
         border: 3px rgb(150, 149, 149) solid;
+        display: inline-block;
     }
     .write-comments > input::placeholder {
         color: white;
     }
     .write-comments > button{
-        width: 10%;
-        height: 9.1%;
-        margin: -18% 0 0 72%;
+        width: 5.5%;
+        height: 9.4%;
         background-color: rgba(153, 153, 153, 0.664);
         border-radius: 0 10px 10px 0;
         border: 3px rgb(150, 149, 149) solid;
-        display: flex;
+        display: inline;
+        position: relative;
     }
     .write-comments > button >img {
         object-fit: contain;
-        width: 60%;
+        width: 90%;
         margin: 90% 0 0 30%;
     }
     .write-comments > button:hover{
@@ -467,14 +469,147 @@ width: 97%;
     }
 
 
+/* ARCHIVOS Y ENLACES*/
 
-    .links{
+    .conteiner-links{
         width: 95%;
+        height: 100%;
         background-color:#1a1a1a;
         border: 1px rgb(141, 141, 141) solid;
         border-radius: 15px;   
     }
 
+
+    .links{
+        display: grid;
+        grid-template-rows: 33% 33% 33%;
+        background-color: rgba(87, 87, 87, 0.664);
+        border-radius: 15px;
+        width: 90%;
+        height: 40%;
+        margin: 5% 0 0 5%;
+    }
+
+    .links > section > label {
+        display: grid;
+        grid-template-columns:80% 20%;
+    }
+    .links > section > img{
+        object-fit: contain;
+        width: 5%;
+        margin: 5% 0 0 5%;
+    }
+    .links > section > a >hr{
+        display: inline-block;
+        transform: rotate(90deg);
+        width: 10%;
+        margin: 0 0 0 2% ;
+    }
+
+    .links > section >p{
+        display: inline-block;
+        text-align: start;
+        width: 35%;
+        margin: 5% 0 0 0;
+    }
+
+    .links > section > label > article > u {
+        margin: 0 0 0 5%;
+        font-size: 15px;
+        cursor: pointer;
+    }
+    .links > section > label > article > h6{
+        margin: 0 0 0 5%;
+        color:rgba(28,178,162,1) ;
+        cursor: pointer;
+    }
+    .links > section > label > article > h6:hover{
+        color: aliceblue;
+    }
+    .links > section > label > img{
+        object-fit: contain;
+        width: 20%;
+        margin: 0;
+        background-color: #1a1a1a;
+        border-radius: 10px;
+        padding: 10%;
+    }
+    .links > section > label > img:hover{
+        background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);
+        cursor: pointer;
+    }
+    .links > section > hr{
+        width: 85%;
+        margin: 5% 0 10% 5%;
+        border-color: #313131;
+    }
+
+    .files{
+        display: grid;
+        grid-template-rows: 25% 25% 25% 25%;
+        background-color: rgba(87, 87, 87, 0.664);
+        border-radius: 15px;
+        width: 90%;
+        height: 50%;
+        margin: 5% 0 5% 5%;
+    }
+
+    .files > section > img{
+        object-fit: contain;
+        width: 10%;
+        margin: 5% 0 0 5%;
+        vertical-align: bottom;
+    }
+    .files > section > p{
+        width: 25%;
+        margin-top: 5%;
+    }
+    .files > section > a >hr{
+        display: inline-block;
+        transform: rotate(90deg);
+        width: 10%;
+        margin: 0 0 0 2% ;   
+    }
+    .files > section > p{
+         display: inline-block;
+
+    }
+    .files > section > label {
+        display: grid;
+        grid-template-columns:80% 20%;
+        margin: 6% 0 0 0;
+    }
+    .files > section > label > img{
+        object-fit: contain;
+        width: 20%;
+        background-color: #1a1a1a;
+        border-radius: 10px;
+        padding: 10%;
+        display: inline-block;
+        margin: 3% 0 0 0;
+    }
+    .files > section > label > img:hover{
+        background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);
+        cursor: pointer;
+    }
+
+    .files > section > label > article > h6{
+        color:rgba(28,178,162,1);
+        margin: 1% 0 0 5%; 
+        cursor: pointer;  
+    }
+    .files > section > label > article > h6:hover{
+        color: aliceblue;
+    }
+    .files > section > hr{
+        width: 85%;
+        margin: 5% 0 20% 5%;
+        border-color: #313131;
+    }
+    .files > section > label > article > u{
+        margin: 5% 0 0 5%;
+        cursor: pointer;
+    }
     .galery-details{
         background-color:#1a1a1a;
         border: 1px rgb(141, 141, 141) solid;
