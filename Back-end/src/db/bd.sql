@@ -65,7 +65,7 @@ create table AllCourse(
  durationCourse char(10),
  IdTeacher int,
  Lenguaje char(50),
- Url char not null,
+ Url Varchar(200) not null,
  Categoria VARCHAR(255) not null
 );
 
@@ -339,7 +339,7 @@ delimiter ;
 Delimiter $$
 create procedure CreateCategory(NameCat char(255),in DescriptionCate char(255))
 begin
-	SET FOREIGN_KEY_CHECKS=0; 
+	SET FOREIGN_KEY_CHECKS=0;
 	insert into Category (NameCategory,DescriptionCategory) values (NameCat,DescriptionCate);
 end $$
 delimiter ;

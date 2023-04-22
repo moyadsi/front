@@ -49,13 +49,13 @@ const AddCourse=(req,res)=>{
 
 const UpdateCourse=(req,res)=>{
   try {
-    const {id} = req.params.id
-    const {DescriptionCurso,Duration,IdTeacher,IdCategory,Lenguaje,Url} =req.body;
-    let SearchCourseId=`select id_Course from course inner join AllCourse where AllCourse.Id=${id} `
+    const {id} = req.params
+    const {NameCourse,DescriptionCurso,Duration,IdTeacher,Lenguaje,Url,NameCategory} =req.body
+    let SearchCourseId=`select * from  AllCourse where Id=${id}`
     conexion.query(SearchCourseId,(err,rows,fields)=>{
       if(err)throw err;
       else{
-        res.status(200).json({rows})
+        res.status(200).json(rows[0])
       }
     })
   } catch (error) {
