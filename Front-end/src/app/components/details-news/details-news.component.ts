@@ -3,17 +3,17 @@ import { ApiPodcastService } from 'src/app/apiPodcast.service';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
-  selector: 'app-news',
-  templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css']
+  selector: 'app-details-news',
+  templateUrl: './details-news.component.html',
+  styleUrls: ['./details-news.component.css']
 })
-
-export class NewsComponent implements OnInit {
+export class DetailsNewsComponent implements OnInit {
   public dataNews: any = {};
   public news: any[] = [];
   public podcast: any = {};
   public podcastItems: any = {};
   public itemsPodcast: any = {};
+
 
   constructor(private apiService: ApiService, private apiPodcast: ApiPodcastService) { }
 
@@ -37,7 +37,5 @@ export class NewsComponent implements OnInit {
   
     })
   }
-
-
 
 }

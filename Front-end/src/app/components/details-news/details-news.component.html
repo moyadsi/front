@@ -1,0 +1,84 @@
+<app-nav></app-nav>
+<main>
+
+  <section class="sectionShortVideo">
+  </section>
+  <section class="sectionNewInfo">
+    <img
+    class="imageBackground"
+    src="../../../assets/News/News 1/Cajon medio/img/Trazado 68.png"
+    alt=""
+  />
+    <div class="categoryAndTitle">
+      <button>Category</button>
+      <p>The last of us</p>
+    </div>
+    <div class="tiktokApi">
+      <div class="headerTikTok">
+        <img src="../../../assets/News/News 1/Cajon medio/Imagen 59.png" alt="">
+      </div>
+      <div class="sectionVideos">
+        <img src="../../../assets/News/News 1/Cajon medio/Grupo de desplazamiento 14.png" alt="">
+      </div>
+    </div>
+    <div class="information">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione animi
+        quasi tenetur harum corrupti ex ea delectus, architecto consequatur
+        pariatur expedita accusantium aut, velit quibusdam optio dolorum ut
+        officia a! Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+        Amet, eos inventore? Vitae nobis molestiae molestias quod earum id
+        eligendi architecto at, odit nostrum corporis repellendus
+        necessitatibus, et sequi quia unde!
+      </p>
+      <div class="targetVideo">
+        <div class="targetVideoMin">
+          <a href="">
+            <img src="../../../assets/News/News 1/Cajon medio/img/Rectángulo 359.jpg" alt="" />
+          </a>
+        </div>
+        <div class="targetVideoMin">
+          <a href="">
+            <img src="../../../assets/News/News 1/Cajon medio/img/Rectángulo 360.jpg" alt="" />
+          </a>
+        </div>
+        <div class="targetVideoMin">
+          <a href="">
+            <img src="../../../assets/News/News 1/Cajon medio/img/Rectángulo 362.jpg" alt="" />
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="buttonsEnd">
+      <a class="lookVideo" href="">Ver video corto</a>
+      <a class="readArticule" href="">Leer el articulo completo</a>
+    </div>
+  </section>
+  <section class="sectionComments">
+  </section>
+  <section class="rightPart">
+    <div class="containerNav">
+      <ul class="navPodcast">
+        <li class="selected">Popular</li>
+        <li>Reciente</li>
+        <li>Tendencia</li>
+      </ul>
+    </div>
+    <div class="containerPodcast" id="containerPodcast">
+      <div class="podcast" *ngFor="let dataPodcast of podcastItems">
+        <div class="buttonPlay">
+          <audio src="{{dataPodcast.entity.data.audioPreview.url}}" controls preload="auto"></audio>
+        </div>
+        <div class="informationPodcast">
+          <p class="titlePodcast">{{dataPodcast.entity.data.name}}</p>
+        </div>
+        <div class="duration">
+          <p>2:25</p>
+        </div>
+        <div class="audioItem">
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<app-footer></app-footer>
