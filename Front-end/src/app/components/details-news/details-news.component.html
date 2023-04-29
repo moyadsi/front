@@ -1,25 +1,9 @@
 <app-nav></app-nav>
 <main>
-  <section class="leftPart">
-    <div class="targetNew" *ngFor="let date of news">
-      <div class="content">
-        <div class="buttonDate">
-          <button>{{date.author}}</button>
-        </div>
-        <p class="titleTarget">
-          {{date.title}}
-        </p>
-        <p class="descriptionTarget">
-          {{date.description}}
-        </p>
-      </div>
-      <img
-        src={{date.urlToImage}}
-        alt=""
-      />
-      </div>
+
+  <section class="sectionShortVideo">
   </section>
-  <section class="centerPart">
+  <section class="sectionNewInfo">
     <img
     class="imageBackground"
     src="../../../assets/News/News 1/Cajon medio/img/Trazado 68.png"
@@ -69,6 +53,8 @@
       <a class="lookVideo" href="">Ver video corto</a>
       <a class="readArticule" href="">Leer el articulo completo</a>
     </div>
+  </section>
+  <section class="sectionComments">
   </section>
   <section class="rightPart">
     <div class="containerNav">

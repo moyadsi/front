@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class ApiPodcastService {
 
-  private urlApi = 'https://anchor-data-scrapper.p.rapidapi.com/episodes/thewildproject';
+  private urlApi = 'https://spotify23.p.rapidapi.com/podcast_episodes/?id=0ofXAdFIQQRsCYj9754UFx&offset=0&limit=50';
 
   private httpOptions = {
     method: 'GET',
     headers: new HttpHeaders({
       'X-RapidAPI-Key': '21b3734f66msh02d1db7a0cd2c9bp15a13ejsnbc68f6ab8429',
-      'X-RapidAPI-Host': 'anchor-data-scrapper.p.rapidapi.com'
+      'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
     })
   };
 

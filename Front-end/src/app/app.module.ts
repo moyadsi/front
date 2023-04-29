@@ -28,6 +28,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { DetailsCourseComponent } from './components/details-course/details-course.component';
 import { DetailsBriefcaseComponent } from './components/details-briefcase/details-briefcase.component';
 import { BriefcaseProjectComponent } from './components/briefcase-project/briefcase-project.component';
+import { DetailsNewsComponent } from './components/details-news/details-news.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { BriefcaseProjectComponent } from './components/briefcase-project/briefc
     InicioComponent,
     DetailsCourseComponent,
     DetailsBriefcaseComponent,
-    BriefcaseProjectComponent
+    BriefcaseProjectComponent,
+    DetailsNewsComponent
   ],
   imports: [
     BrowserModule,
