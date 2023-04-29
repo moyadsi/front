@@ -73,43 +73,23 @@
   <section class="rightPart">
     <div class="containerNav">
       <ul class="navPodcast">
-        <li>Popular</li>
+        <li class="selected">Popular</li>
         <li>Reciente</li>
         <li>Tendencia</li>
       </ul>
     </div>
-    <div class="containerPodcast">
-      <div class="podcast">
+    <div class="containerPodcast" id="containerPodcast">
+      <div class="podcast" *ngFor="let dataPodcast of podcastItems">
         <div class="buttonPlay">
-          <button>||</button>
+          <audio src="{{dataPodcast.entity.data.audioPreview.url}}" controls preload="auto"></audio>
         </div>
         <div class="informationPodcast">
-          <p class="titlePodcast">CAP 1 : Ejemplo de un podcast</p>
+          <p class="titlePodcast">{{dataPodcast.entity.data.name}}</p>
         </div>
         <div class="duration">
           <p>2:25</p>
         </div>
-      </div>
-      <div class="podcast">
-        <div class="buttonPlay">
-          <button>||</button>
-        </div>
-        <div class="informationPodcast">
-          <p class="titlePodcast">CAP 1 : Ejemplo de un podcast</p>
-        </div>
-        <div class="duration">
-          <p>2:25</p>
-        </div>
-      </div>
-      <div class="podcast">
-        <div class="buttonPlay">
-          <button>||</button>
-        </div>
-        <div class="informationPodcast">
-          <p class="titlePodcast">CAP 1 : Ejemplo de un podcast</p>
-        </div>
-        <div class="duration">
-          <p>2:25</p>
+        <div class="audioItem">
         </div>
       </div>
     </div>
