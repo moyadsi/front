@@ -1,18 +1,3 @@
-
-/*   background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);
-     font-family: 'Outer Limits Solid', sans-serif;
-     border: 2px rgba(28,178,162,1 )solid;
-     background-color: #1a1a1a;
-
-*/
-*{
-  font-family: 'Product Sans', sans-serif;
-}
-main{
-  margin-top: 5%;
-}
-
-/*BUSQUEDA DE PROFESIONAL */
 .professional-search{
   background-image:  linear-gradient(to top, #0303036e 25%, #3f3e3e80 40%), url(https://besthqwallpapers.com/Uploads/21-1-2021/153029/colorful-abstract-background-4k-geometric-shapes-artwork-circles.jpg);
   background-size:100% 160%;
@@ -111,7 +96,7 @@ main{
   margin: 2% 0 0 5%;
 }
 .filter-professional > button{
-  width: 50%;
+  width: 60%;
   background-color: transparent;
   border: none;
   color: white;
@@ -133,6 +118,11 @@ main{
   border-color: #1a1a1a;
 }
 
+a > hr{
+  width: 85%;
+  border-color: #1a1a1a;
+  margin: 1% 0 0 5%;
+}
 .filter-professional > button:hover{
   background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);
   cursor: pointer;
@@ -153,74 +143,130 @@ main{
   vertical-align: middle;
   margin-right: 8%;
 }
+
 .option-prof >button > img{
-object-fit: contain;
-width: 15%;
-}
-.option-prof > a > button > img{
   object-fit: contain;
   width: 15%;
   }
-section > hr{
-  width: 90%;
-  border-color: #1a1a1a;
-}
+  .option-prof > a > button > img{
+    object-fit: contain;
+    width: 15%;
+    }
+  section > hr{
+    width: 95%;
+    border-color: #1a1a1a;
+    margin: 5% 0 0 5%;
+  }
+  
+  .conteiner{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin:  2% 0 0 5%;
+    width: 85%; 
+  }
 
-.professional-profile{
-  display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-  margin: 2% 0 0 5%;
-  width: 95%;
-}
-.professional-profile >section{
-  background-color:#383838;
-  border-radius: 15px;
-  width: 80%;
-  height: 80%;
-}
-.professional-profile >section > img{
-  object-fit: cover;
-  width: 100%;
-  height: 70%;
-  border-radius: 15px;
-}
-.professional-profile >section > h6 {
-  font-size: 15px;
-  margin: -15% 0 0 5%;
-}
-.professional-profile >section > h4{
-  margin: 0 0 5% 5%;
-}
-.professional-profile >section >label{
-  display: grid;
-  grid-template-columns: 20% 40%  20% 20%;
-  width: 95%;
-}
-.professional-profile >section >label > button{
-  height: 40%;
-  margin: 20% 0 0 3%;
-  background-color: #1a1a1a;
-  color: white;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-}
+  .profile-conteiner{
+    display: grid;
+    width: 90%;
+    height: 50%;
+    grid-template-columns: 60% 2% 40%;
+    background-color: #383838;
+    border-radius: 15px;
+    border: 2px #555555 solid;
+  }
 
-.professional-profile >section >label > button:hover{
-  background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);
-  cursor: pointer;
-}
-.professional-profile >section >label >img{
-  object-fit: cover;
-  width: 60%;
-  height: 70%;
-  border-radius: 90%;
-  margin: 10% 0 0 15%;
-  vertical-align: middle;
-}
+  .info-person{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 83.5%;
+    height: 20%;
+  }
+  .person{
+    margin: 20% 0 0 0;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 150%;
+    }
+    .person-perfil{
+        width: 90%;
+        margin: 0 0 0 10%;
+    }
+    .person-perfil > img{
+        object-fit: contain;
+        width: 40%;
+        border-radius: 50%;
+        margin: 0 0 0 6%;
+    }
+  
+    .person-perfil > hr{
+        width: 30%;
+        margin: 5% 0 2% 15%;
+        
+    }
+    .person-perfil > p{
+        margin: 0 0 0 10%;
+        font-size: 13px;
+    }
+    .person > label > h5{
+        font-size: 15px;
+        margin: 2% 0 0 -35%;
+    }
+    
+    .person > label > h3{
+        margin: 0 0 0 -35%;
+        width: 50%;
+        font-size: 15px;
+    }
+    .person > label > hr{
+        width: 60% ;
+        height: 0.01px;
+        margin: 15px;
+        margin: 5% 0 0 -35%;
+    }
+    .person > label > p > img{
+      object-fit: contain;
+      vertical-align: middle;
+      width: 10%;
+      margin: 0 0 0 -35%;
+    }
+  
+    .profile-conteiner > section >label > button{
+      background-color: #555555;
+      margin: 0 0 0 5%;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      width: 25%;   
+    }
 
-.professional-profile >section >label > button >img{
-  object-fit: contain;
-  width: 20%;
-  margin: 0 10% 0 3%;
-}
+    .profile-conteiner > section >label > button > img {
+      object-fit: contain;
+      width: 15%;
+      margin: 0 0 0 5%;
+    }
+
+    .profile-conteiner > section  > p{
+      margin: 3% 0 0 5%;
+      width: 80%;
+    }
+
+    .galery{
+      display: grid;
+      width: 90%;
+      height: 50%;
+      margin: 0;
+      grid-template-rows: 33% 33% 33%;
+    }
+
+    .galery > img {
+      object-fit: cover;
+      width: 95%;
+      height: 90%;
+      margin: 5% 0 0 2%;
+      border-radius: 15px;
+    }
+
+    #galery-hr {
+      height: 45%;
+      border-color: #1a1a1a;
+    }

@@ -3,6 +3,7 @@ main{
   height: 95vh;
   display: flex;
   margin: auto;
+  margin-top: 5%;
 }
 .leftPart{
   height: 100%;

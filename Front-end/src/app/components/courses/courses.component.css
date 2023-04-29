@@ -3,6 +3,23 @@
 
 }
 
+.topics > div {
+    margin:  0 0 0 5%;
+}
+
+.topics > div > input{
+    border-radius: 15px;
+    height: 5%;
+    padding: 3%;
+    width: 80%;
+    background-color: transparent;
+    color: white;
+    
+}
+.topics > div > input::placeholder{
+    padding: 10%;
+    color: white;
+}
 main{
     margin: 5% 0 0 0;
 }
@@ -24,6 +41,7 @@ main{
 .curseDC{
     display: grid;
     grid-template-rows: 20% 70%;
+    margin: 5% 0 0 0;
 }
 
 .conteiner-category{

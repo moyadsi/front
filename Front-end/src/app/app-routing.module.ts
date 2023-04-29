@@ -12,6 +12,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { SuscriptionComponent } from './components/suscription/suscription.component';
 import { DetailsCourseComponent } from './components/details-course/details-course.component';
+import { DetailsBriefcaseComponent } from './components/details-briefcase/details-briefcase.component';
+import { BriefcaseProjectComponent } from './components/briefcase-project/briefcase-project.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -25,7 +27,10 @@ const routes: Routes = [
   { path: 'membership', component: MembershipComponent},
   { path: 'suscription', component: SuscriptionComponent},
   { path: 'inicio', component: InicioComponent},
-  { path: 'detailsCourse', component: DetailsCourseComponent}
+  { path: 'detailsCourse', component: DetailsCourseComponent},
+  { path: 'detailsBriefcase', component: DetailsBriefcaseComponent},
+  { path: 'briefcase-project', component: BriefcaseProjectComponent}
+
 ];
 
 @NgModule({
