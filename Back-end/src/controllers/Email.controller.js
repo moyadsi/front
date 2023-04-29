@@ -1,6 +1,5 @@
 const conexion = require('../config/conexion')
 const nodemailer = require('nodemailer')
-const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
 
@@ -42,24 +41,6 @@ const PostEmailToken = async(req,res)=>{
             conexion.query(sqlTokenSave,async(err,rows,fields)=>{
                 
                 if(err) throw err;
-                /* 
-                const transporter = nodemailer.createTransport({
-                    host: 'smtp.ethereal.email',
-                    port: 587,
-                    auth: {
-                        user: 'westley.schmidt84@ethereal.email',
-                        pass: 'vsgcz2CdVDjs2nX5NT'
-                    }
-                }); */
-
-                /* const transporter = nodemailer.createTransport({
-                    host: 'smtp-mail.outlook.com',
-                    port: 587,
-                    auth: {
-                        user: 'gian-5634@hotmail.com',
-                        pass: 'bgecpmojxrpvkobo'
-                    }
-                }); */
 
                 const transporter = nodemailer.createTransport({
                     host: 'smtp-mail.outlook.com',
@@ -95,6 +76,58 @@ const PostEmailToken = async(req,res)=>{
     }
 }
 
+const ChangePasswordToken=(req,res)=>{
+    try {
+        const {email,token}=req.body;
+
+        let SearchTokenEmailSQL = `select Token from EmailToken where Email='${email}' `
+        conexion.query(SearchTokenEmailSQL,(err,rows,fields)=>{
+            console.log(rows[0])
+            if(token==rows[0].Token){
+                //Se guarda el valor de la nueva Contraseña pasada por el usuario
+                const{NewPassword}= req.body
+                //Cadena para encontrar la contraseña por medio de la id
+                let sqlPassword = `select Password from Person where Email='${email}'`;
+                //Ejecucion de la cadena con el parametro id
+                conexion.query(sqlPassword,[id],(err,rows,fields)=>{
+                // si hay un error se cancela el procedimiento 
+                if(err)  res.status(401).json({message:err});
+                //se guarda la contraseña encontrada
+                const BcryptPassword= rows[0].Password;
+                    //se compara la contraseña pasada por el usuario con la que se encontro 
+                    bcrypt.compare(req.body.Password,BcryptPassword,async(err,hash)=>{
+                        //se guarda la contraseña si es verdadera con el metodo async
+                        const PasswordEncrypted = await bcrypt.hash(NewPassword,10)
+                        //cadena para poder actualizar la contraseña con el parametro de id
+                        let sqlId =   `update Person set Password = '${PasswordEncrypted}'where id = '${id}'`
+                        // si hay un error se cancela el procedimiento 
+                        if(err)  res.status(401).json({message:err});
+                        //si son igual la contrasela prosigue
+                        if(hash){
+                            //Ejecucion de la cadena para actualizar la contraseña
+                            conexion.query(sqlId,(err,rows,fields)=>{
+                                // si hay un error se cancela el procedimiento 
+                                if(err)  res.status(401).json({message:err});
+                                //si todo salio con exito se le manda un status 201 con el siguiente mensaje
+                                res.status(201).json({message:"Password modify in successful"})
+                                next()
+                            })
+                            //si las contraseñas no son iguales se le niega el acceso
+                        }else{
+                            res.status(401).json({message:"Password Incorrect"})
+                        }
+                    })
+                })
+        }else{
+            res.json({message:"Token invalido"})
+        }
+    })
+    } catch (error) {
+        res.status(400).json({error})
+    }
+}
+
 module.exports={
-    PostEmailToken
+    PostEmailToken,
+    ChangePasswordToken
 }

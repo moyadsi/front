@@ -15,5 +15,7 @@ router.post('/SignIn',SigninValidate,ProCtrl.SignIn)
 
 //Example
 router.post('/Email/SolicitarCodigo',UserCtrl.PostEmailToken)
+router.put('/Email/Cambio',UserCtrl.ChangePasswordToken)
+
 
 module.exports = router;

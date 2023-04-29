@@ -4,24 +4,26 @@ require('dotenv').config()
 const UrlApi = `https://api.newscatcherapi.com/v2/search?`
 
 const GetNoticie =(req,res)=>{
-    const ApiKey=req.headers['x-api-key']
-    
-    const {Search,Language,Importan,Page}=req.body;
+    const ApiKey=req.headers['x-api-key']                                                                                                                                                                                                                                                             
+    const {Search,Language}=req.body;
 
     var options = {
         url: UrlApi,
-        params: {q:Search, lang:Language, sort_by:Importan, page:Page},
+        params: {q:Search, lang:Language},
         headers: {
-          'x-api-key': ApiKey
+          "x-api-key" : ApiKey
         }
     };
       
-    axios.request(options).then(function (response) {
-        const code = response.status;
-        res.status(code).json({Content:response.data.articles});
-    }).catch(function (error) {
-        res.status(400).json({error:error.message})
-        });
+    axios.request(options).then(
+        function (response) {
+            res.status(200).json({Content:response.data});
+        }
+    ).catch(
+        function(error) {
+            res.status(400).json(error) 
+        }
+    );
 }
 
 module.exports = {
