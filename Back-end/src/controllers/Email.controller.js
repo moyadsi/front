@@ -21,7 +21,7 @@ const PostEmailToken = async(req,res)=>{
         let identificadorTiempoDeEspera;
 
         function temporizadorDeRetraso() {
-            identificadorTiempoDeEspera = setTimeout(TimeValidateToken, 20000);
+            identificadorTiempoDeEspera = setTimeout(TimeValidateToken, 900000);
         }
         const TimeValidateToken=(Token)=>{
             let sqlTokenTime= `call EmailTokenElminated('${email}')`
@@ -65,13 +65,13 @@ const PostEmailToken = async(req,res)=>{
                     host: 'smtp-mail.outlook.com',
                     port: 587,
                     auth: {
-                        user: 'MetAnimtaion@hotmail.com',
-                        pass: 'uwbjsoqthlntichl'
+                        user: 'MetAnimation@hotmail.com',
+                        pass: 'bdfikmwwopfqilqk'
                     }
                 });
 
                 let info = await transporter.sendMail({
-                    from:"gian-5634@hotmail.com",
+                    from:"metanimation@hotmail.com",
                     to:email,
                     subject:"Recuperar Contraseña de tu cuenta de MetAnimation",
                     text:"Has solicitado para recuperar tu contraseña de tu cuenta de MetAnimation",
@@ -80,8 +80,7 @@ const PostEmailToken = async(req,res)=>{
                         <p>Hola ${resultName}</p>
                         <p>El token para restaurar tu contraseña es ${Token}</p>
                         <p>Recuerda que tienes una hora para poder cambiar tu contraseña</p>
-                        <p>Att: Administracion de MetAnimation</p>
-                        <p>si no eres el destinatario de este correo ignoralo</p>
+                        <p>Tienes 15 minutos para recuperar la contraseña</p>
                     </div>`
                 })
                 console.log("Message sent: %s", info.messageId);
