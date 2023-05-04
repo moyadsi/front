@@ -311,6 +311,11 @@ option :hover{
 
 /*TEMAS*/
 
+.tem > section {
+    display: grid;
+    grid-template-columns: 15% 30% 30% 20%;
+}
+
 .tem > section > img{
     object-fit: contain;
     width: 30px;
@@ -318,41 +323,62 @@ option :hover{
     border-radius: 50%;
     display: inline;
     vertical-align: middle;
-    margin: 1% 0 0 5%;
+    margin: 15% 0 0 15%;
     }
 
     .tem > section > h5{
     display: inline;
-    margin: 0 7% 0 10px;
+    margin: 10% 7% 0 10px;
     }
-    .continue{
+    .tem > section > button.continue{
     object-fit: contain;
-    width: 65px;
-    height: 30px;
+    width: 90%;
+    height: 80%;
     border-radius: 10px;
     border: 1px;
     display: inline;
-    background-color: #575755;
-    background-image: url(../../../assets/portafolio/Seguir.png);
+    background-color:  rgba(36, 146, 135, 0.87);
     background-size: 10% 25%;
     background-repeat: no-repeat;
     background-position:1vh;
     color: white;
     margin: 5% 1% 0 0;
     }
-
-    .foll{
-    background-color: #575755;
-    width: 70px;
-    height: 30px;
-    border-radius: 10px;
-    border: none;
-    color: white;
-    background-image: url(../../../assets/portafolio/Heart-nofollow.png);
-    background-size: 16% 32%;
-    background-repeat: no-repeat;
-    background-position: 1.5vh;
+    .tem > section > button{
+        background-color: #575755;
+        border-radius: 15px;
+        color: white;
+        border: none;
+        height: 60%;
+        margin: 10% 5% 0 10%;
     }
+    .tem > section > button > img{
+        object-fit: contain;
+        width: 15%;
+    }
+.favorite{
+    display: grid;
+    grid-template-columns: 50% 40%;
+    background-color: #575755;
+    width: 90%;
+    height: 60%;
+    margin:  15% 0 0 5%;
+    border-radius: 15px;
+}
+.favorite > button {
+    background-color: #575755;
+    border: none;
+    margin: 0 5% 10% 10%;
+    color: white;
+    border-radius: 10px;
+    width: 90%;
+}
+.favorite > img{
+    margin: 20% 0 0 30%;
+    object-fit: contain;
+    width: 50%;
+} 
+
     .tem{
     display: grid;
     grid-template-rows: 15% 85%;

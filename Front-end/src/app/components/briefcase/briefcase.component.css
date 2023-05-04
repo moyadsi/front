@@ -26,19 +26,19 @@ main{
 }
 
 .professional-search > h3 {
-  width: 25%;
+  width: 35%;
   color: white;
   font-size: 25px;
   font-family: 'Outer Limits Solid', sans-serif;
   font-weight: 300;
   text-align: center;
-  margin: 0 0 0 40% ; 
+  margin: 0 0 0 35% ; 
   padding-top: 7%;
 
 }
 
 .professional-search > p{
-  margin: 0 0 0 38% ; 
+  margin: 0 0 0 32% ; 
   color: white;
   font-size: 15px;
 }
@@ -48,7 +48,7 @@ main{
   border-radius: 20px;
   width: 30%;
   height: 15%;
-  margin: 4% 0 0 38%;
+  margin: 2% 0 0 38%;
   color: white;
 }
 .professional-search > input::placeholder{
@@ -59,10 +59,10 @@ main{
 /* OPCIONES Y FILTRO PROFESIONAL*/
 .option-prof{
   display: grid;
-  grid-template-columns: 12% 12% 12% 12% 12% 3%;
+  grid-template-columns: 13% 13% 13% 13% 15% 3%;
   width: 50%;
   height: 45%;
-  margin: 3% 0 0 38%;
+  margin: 5% 0 0 35%;
 }
 .option-prof > button{
   width: 95%;
@@ -85,7 +85,7 @@ main{
 .option-prof> img{
   object-fit: contain;
   width: 30%;
-  margin: 20% 0 0 10%;
+  margin: 40% 0 0 10%;
 }
 
 #btns{
@@ -93,7 +93,7 @@ main{
   border-radius: 0 15px 15px 0;
   padding: 5%;
   width: 90%;
-  height: 34px;
+  height: 95%;
   margin: 0;
 }
 #filt{
@@ -107,7 +107,7 @@ main{
 }
 .filter-professional{
   display: grid;
-  grid-template-columns: 10% 1% 5% 1% 5% 45% 10% 5% 10%;
+  grid-template-columns: 15% 1% 5% 1% 5% 45% 10% 5% 10%;
   margin: 2% 0 0 5%;
 }
 .filter-professional > button{
@@ -149,7 +149,7 @@ main{
 
 .filter-professional >button > img{
   object-fit: contain;
-  width: 20%;
+  width: 15%;
   vertical-align: middle;
   margin-right: 8%;
 }
@@ -168,14 +168,14 @@ section > hr{
 
 .professional-profile{
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: 30% 30% 30% 30%;
   margin: 2% 0 0 5%;
-  width: 95%;
+  width: 80%;
 }
 .professional-profile >section{
   background-color:#383838;
   border-radius: 15px;
-  width: 80%;
+  width: 85%;
   height: 80%;
 }
 .professional-profile >section > img{
@@ -193,7 +193,7 @@ section > hr{
 }
 .professional-profile >section >label{
   display: grid;
-  grid-template-columns: 20% 40%  20% 20%;
+  grid-template-columns: 20% 30% 25% 25%;
   width: 95%;
 }
 .professional-profile >section >label > button{
@@ -204,11 +204,16 @@ section > hr{
   border-radius: 10px;
   border: none;
   cursor: pointer;
+  font-size: 15px;
 }
 
 .professional-profile >section >label > button:hover{
   background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);
   cursor: pointer;
+}
+
+.professional-profile >section >label > h3{
+  font-size: 15px;
 }
 .professional-profile >section >label >img{
   object-fit: cover;
@@ -221,6 +226,6 @@ section > hr{
 
 .professional-profile >section >label > button >img{
   object-fit: contain;
-  width: 20%;
+  width: 15%;
   margin: 0 10% 0 3%;
 }
