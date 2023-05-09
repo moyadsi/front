@@ -399,14 +399,14 @@ async function SignIn(req,res,next){
                             })
                             // Si el rol Administrativo es Administrador pasa por aca y se le manda en un json el siguiente mensaje con el token
                             if(RolAd=='Administrador'){
-                                return res.status(201).json({message:"Sign in successful Administrador",Token:TokenRol})
+                                return res.status(200).json({message:"Sign in successful Administrador",Token:TokenRol})
                             }
                             // Si el rol Administrativo es Moderador pasa por aca y se le manda en un json el siguiente mensaje con el token
                             if(RolAd=='Moderator'){
-                                return res.status(201).json({message:"Sign in successful Moderator",Token:TokenRol})
+                                return res.status(200).json({message:"Sign in successful Moderator",Token:TokenRol})
                             }
                             if(Rol=='Profesor'){
-                                return res.status(201).json({message:"Sign in successful Profesor",Token:TokenTeacher})
+                                return res.status(200).json({message:"Sign in successful Profesor",Token:TokenTeacher})
                             }
                             // Si no tiene ningun rol Administrativo el usuario pasa por aca y se le pasa el token normal 
                             else{
