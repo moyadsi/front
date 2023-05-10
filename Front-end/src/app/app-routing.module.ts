@@ -14,6 +14,7 @@ import { SuscriptionComponent } from './components/suscription/suscription.compo
 import { DetailsCourseComponent } from './components/details-course/details-course.component';
 import { DetailsBriefcaseComponent } from './components/details-briefcase/details-briefcase.component';
 import { BriefcaseProjectComponent } from './components/briefcase-project/briefcase-project.component';
+import { DetailsNewsComponent } from './components/details-news/details-news.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -29,7 +30,8 @@ const routes: Routes = [
   { path: 'inicio', component: InicioComponent},
   { path: 'detailsCourse', component: DetailsCourseComponent},
   { path: 'detailsBriefcase', component: DetailsBriefcaseComponent},
-  { path: 'briefcase-project', component: BriefcaseProjectComponent}
+  { path: 'briefcase-project', component: BriefcaseProjectComponent},
+  { path: 'details-news', component: DetailsNewsComponent}
 
 ];
 
