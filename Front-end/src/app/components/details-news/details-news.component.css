@@ -8,10 +8,12 @@ main{
 }
 
 .targetVideo{
-  height: 350px;
-  width: 250px;
-  margin: auto;
+  height: 400px;
+  width: 225px;
+  margin: 30px 10px;
   position: relative;
+  border: 1px solid gray;
+  border-radius: 0.70rem;
 }
 
 .targetVideo iframe{
@@ -27,4 +29,82 @@ main{
   position: absolute;
   bottom: 0;
   margin: 15px;
+}
+
+
+.sectionNewInfo{
+  width: 45%;
+  padding-right: 40px;
+  border-right: 2px solid gray;
+  margin-top: 7rem;
+}
+
+.categoryAndDate{
+  display: flex;
+  justify-content: space-between;
+}
+
+.categoryAndDate button{
+  height: 30px;
+  width: 120px;
+  background-color: gray;
+  border: none;
+  border-radius: 0.50rem;
+  display: flex;
+  align-items: center;
+}
+
+.categoryAndDate button div{
+  border-radius: 50%;
+  background-color: green;
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
+
+.slideImages{
+  display: flex;
+}
+
+.imageSlide{
+  width: 150px;
+  margin-right: 20px;
+}
+
+.sectionComments{
+  margin-top: 7rem;
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  position: relative;
+  justify-content: end;
+  padding: 0px 20px;
+}
+
+.sectionCommentarys{
+
+}
+
+.inputCommentary{
+  display: flex; 
+  border: 1px solid gray;
+  border-radius: 0.50rem;
+  box-sizing: border-box;
+}
+
+.inputCommentary input,button{
+  background-color: transparent;
+  border: none;
+}
+
+.inputCommentary input{
+  width: 80%;
+}
+
+.inputCommentary button{
+  width: 20%;
+  border: 1px solid gray;
+  border-top-right-radius: 0.50rem;
+  border-bottom-right-radius: 0.50rem;
+  box-sizing: border-box;
 }
