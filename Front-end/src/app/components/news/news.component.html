@@ -1,6 +1,7 @@
 <app-nav></app-nav>
 <main>
   <section class="leftPart">
+
     <div class="targetNew" *ngFor="let date of news">
       <div class="content">
         <div class="buttonDate">
@@ -13,18 +14,12 @@
           {{date.description}}
         </p>
       </div>
-      <img
-        src={{date.urlToImage}}
-        alt=""
-      />
-      </div>
+      <img src={{date.urlToImage}} alt="" />
+    </div>
+
   </section>
   <section class="centerPart">
-    <img
-    class="imageBackground"
-    src="../../../assets/News/News 1/Cajon medio/img/Trazado 68.png"
-    alt=""
-  />
+    <img class="imageBackground" src="../../../assets/News/News 1/Cajon medio/img/Trazado 68.png" alt="" />
     <div class="categoryAndTitle">
       <button>Category</button>
       <p>The last of us</p>
