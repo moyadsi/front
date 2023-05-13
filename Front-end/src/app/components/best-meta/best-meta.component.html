@@ -33,8 +33,15 @@
             <div class="best-container1">
                 <h4>Vanya Silva</h4>
                 <h3>Directora Creativa en Bunker3022</h3>
-                <button class="seguir"> Seguir</button>
-                <button class="follow">35</button>
+                <button (click)="toggleButton(0)" [ngClass]="{'continue': isActive[0]}">
+                    <img *ngIf="!isActive[0]" src="../../../assets/portafolio/Seguir.png">
+                    {{isActive[0] ? 'Siguiendo!' : 'Seguir'}}
+                </button>
+                <div class="follow">
+                    <img *ngIf="counters[0] > 0" src="../../../assets/portafolio/Heart-follow.png">
+                    <img *ngIf="counters[0] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
+                    <button (click)="toggleFavorite(0)"> {{counters[0]}} </button>
+                </div>
                 <section>
                     <p>Rate-Proyecto</p>
                     <h6>1°</h6>
@@ -45,8 +52,15 @@
                 <div class="best-container2">
                     <h4>Vanya Silva</h4>
                     <h3>Directora Creativa en Bunker3022</h3>
-                    <button class="seguir1"> Seguir</button>
-                    <button class="follow1">18</button>
+                    <button (click)="toggleButton(1)" [ngClass]="{'continue': isActive[1]}">
+                        <img *ngIf="!isActive[1]" src="../../../assets/portafolio/Seguir.png">
+                        {{isActive[1] ? 'Siguiendo!' : 'Seguir'}}
+                    </button>
+                    <div>
+                        <img *ngIf="counters[1] > 0" src="../../../assets/portafolio/Heart-follow.png">
+                        <img *ngIf="counters[1] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
+                        <button (click)="toggleFavorite(1)"> {{counters[1]}} </button>
+                    </div>
                     <section>
                         <p>Rate-Proyecto</p>
                         <h5>Desing Thinkig</h5>
@@ -83,14 +97,14 @@
                 <section>
                     <img src="https://xavierferras.com/wp-content/uploads/2019/02/266-Persona.jpg">
                     <h5>David ferchs</h5>
-                    <button (click)="toggleButton(0)" [ngClass]="{'continue': isActive[0]}">
-                        <img *ngIf="!isActive[0]" src="../../../assets/portafolio/Seguir.png">
-                        {{isActive[0] ? 'Siguiendo!' : 'Seguir'}}
+                    <button (click)="toggleButton(2)" [ngClass]="{'continue': isActive[2]}">
+                        <img *ngIf="!isActive[2]" src="../../../assets/portafolio/Seguir.png">
+                        {{isActive[2] ? 'Siguiendo!' : 'Seguir'}}
                     </button>
                     <div class="favorite">
-                        <img *ngIf="counters[0] > 0" src="../../../assets/portafolio/Heart-follow.png">
-                        <img *ngIf="counters[0] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
-                        <button (click)="toggleFavorite(0)"> {{counters[0]}} </button>
+                        <img *ngIf="counters[2] > 0" src="../../../assets/portafolio/Heart-follow.png">
+                        <img *ngIf="counters[2] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
+                        <button (click)="toggleFavorite(2)"> {{counters[2]}} </button>
                     </div>
                 </section>
                 <img
@@ -103,14 +117,14 @@
                     <img
                         src="http://prelocomunicacao.com.br/wp-content/uploads/2021/02/Como-definir-a-minha-persona.jpg">
                     <h5>Agyness Deyn</h5>
-                    <button (click)="toggleButton(1)" [ngClass]="{'continue': isActive[1]}">
-                        <img *ngIf="!isActive[1]" src="../../../assets/portafolio/Seguir.png">
-                        {{isActive[1] ? 'Siguiendo!' : 'Seguir'}}
+                    <button (click)="toggleButton(3)" [ngClass]="{'continue': isActive[3]}">
+                        <img *ngIf="!isActive[3]" src="../../../assets/portafolio/Seguir.png">
+                        {{isActive[3] ? 'Siguiendo!' : 'Seguir'}}
                     </button>
                     <div class="favorite">
-                        <img *ngIf="counters[1] > 0" src="../../../assets/portafolio/Heart-follow.png">
-                        <img *ngIf="counters[1] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
-                        <button (click)="toggleFavorite(1)"> {{counters[1]}} </button>
+                        <img *ngIf="counters[3] > 0" src="../../../assets/portafolio/Heart-follow.png">
+                        <img *ngIf="counters[3] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
+                        <button (click)="toggleFavorite(3)"> {{counters[3]}} </button>
                     </div>
                 </section>
                 <img
@@ -122,14 +136,14 @@
                 <section>
                     <img src="https://xavierferras.com/wp-content/uploads/2019/02/266-Persona.jpg">
                     <h5>Bella Hadid</h5>
-                    <button (click)="toggleButton(2)" [ngClass]="{'continue': isActive[2]}">
-                        <img *ngIf="!isActive[2]" src="../../../assets/portafolio/Seguir.png">
-                        {{isActive[2] ? 'Siguiendo!' : 'Seguir'}}
+                    <button (click)="toggleButton(4)" [ngClass]="{'continue': isActive[4]}">
+                        <img *ngIf="!isActive[4]" src="../../../assets/portafolio/Seguir.png">
+                        {{isActive[4] ? 'Siguiendo!' : 'Seguir'}}
                     </button>
                     <div class="favorite">
-                        <img *ngIf="counters[2] > 0" src="../../../assets/portafolio/Heart-follow.png">
-                        <img *ngIf="counters[2] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
-                        <button (click)="toggleFavorite(2)"> {{counters[2]}} </button>
+                        <img *ngIf="counters[4] > 0" src="../../../assets/portafolio/Heart-follow.png">
+                        <img *ngIf="counters[4] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
+                        <button (click)="toggleFavorite(4)"> {{counters[4]}} </button>
                     </div>
                 </section>
                 <img
@@ -142,14 +156,14 @@
                     <img
                         src="http://prelocomunicacao.com.br/wp-content/uploads/2021/02/Como-definir-a-minha-persona.jpg">
                     <h5>Alex McQueen</h5>
-                    <button (click)="toggleButton(3)" [ngClass]="{'continue': isActive[3]}">
-                        <img *ngIf="!isActive[3]" src="../../../assets/portafolio/Seguir.png">
-                        {{isActive[3] ? 'Siguiendo!' : 'Seguir'}}
+                    <button (click)="toggleButton(5)" [ngClass]="{'continue': isActive[5]}">
+                        <img *ngIf="!isActive[5]" src="../../../assets/portafolio/Seguir.png">
+                        {{isActive[5] ? 'Siguiendo!' : 'Seguir'}}
                     </button>
                     <div class="favorite">
-                        <img *ngIf="counters[3] > 0" src="../../../assets/portafolio/Heart-follow.png">
-                        <img *ngIf="counters[3] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
-                        <button (click)="toggleFavorite(3)"> {{counters[3]}} </button>
+                        <img *ngIf="counters[5] > 0" src="../../../assets/portafolio/Heart-follow.png">
+                        <img *ngIf="counters[5] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
+                        <button (click)="toggleFavorite(5)"> {{counters[5]}} </button>
                     </div>
                 </section>
                 <img

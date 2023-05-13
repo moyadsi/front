@@ -11,7 +11,7 @@ selectedValue: any;
   constructor() { }
 
   /*MANEJO BOTON FAVORITOS*/
-  counters= [0,0,0,0];
+  counters= [0,0,0,0,0,0];
   favoriteCount = 0;
 
   toggleFavorite(index: number) {
@@ -26,7 +26,7 @@ selectedValue: any;
 }
 
 /* MANEJO BOTON DE SEGUIR*/
-isActive = [false, false, false];
+isActive = [false, false, false,false,false,false];
 buttonLabel = 'Seguir';
 
 toggleButton(index: number) {

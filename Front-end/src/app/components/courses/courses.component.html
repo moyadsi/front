@@ -100,12 +100,32 @@
                     <h3>Directora Creativa en Bunker3022</h3>
                     <hr>
                     <div class="qualification">
-                        <img src="../../../assets/cursos/Star.png">
-                        <img src="../../../assets/cursos/Star.png">
-                        <img src="../../../assets/cursos/Star.png">
-                        <img src="../../../assets/cursos/Star.png">
-                        <img src="../../../assets/cursos/Star_1.png">
-                        </div>      
+
+                        <button (click)="toggleQualification(0)" >
+                        <img *ngIf="counters[0] > 0" src="../../../assets/cursos/Star.png">
+                        <img *ngIf="counters[0] === 0" src="../../../assets/cursos/Star_1.png">
+                        </button>
+
+
+                        <button (click)="toggleQualification(1)" > 
+                        <img *ngIf="counters[1] > 0" src="../../../assets/cursos/Star.png">
+                        <img *ngIf="counters[1] === 0" src="../../../assets/cursos/Star_1.png">
+                        </button>
+                    
+                        <button (click)="toggleQualification(2)"> 
+                        <img *ngIf="counters[2] > 0" src="../../../assets/cursos/Star.png">
+                        <img *ngIf="counters[2] === 0" src="../../../assets/cursos/Star_1.png">
+                        </button>
+
+                        <button (click)="toggleQualification(3)">
+                        <img *ngIf="counters[3] > 0" src="../../../assets/cursos/Star.png">
+                        <img *ngIf="counters[3] === 0" src="../../../assets/cursos/Star_1.png">
+                        </button>
+                        <button (click)="toggleQualification(4)">
+                        <img *ngIf="counters[4] > 0" src="../../../assets/cursos/Star.png">
+                        <img *ngIf="counters[4] === 0" src="../../../assets/cursos/Star_1.png">
+                        </button>
+                    </div>   
                     </label>
                 </div>
                             
@@ -186,7 +206,12 @@
     <h5>Un curso de Mattias Adolfsson</h5>
 </div>
 
-<img src="../../../assets/cursos/Star_1.png"> <p>4,9</p>
+
+<button> 
+    <img (click)="toggleCourse(0)" *ngIf="countersCourse[0] === 0" src="../../../assets/cursos/Star_1.png">
+    <img *ngIf="countersCourse[0] > 0" src="../../../assets/cursos/Star.png">
+    </button>
+    <p>{{countersCourse[0]}}</p>
 </label>
 <p>Descubre el mercado de los NFTs, aprende a comercializar tus obras digitales y crea estrategias de venta para impulsar tu trabajo</p>
 <button>Obtener Curso > </button>
@@ -200,7 +225,11 @@
     <h5>Un curso de Mattias Adolfsson</h5>
 </div>
 
-<img src="../../../assets/cursos/Star_1.png"> <p>4,9</p>
+    <button  (click)="toggleCourse(1)" > 
+    <img *ngIf="countersCourse[1] === 0" src="../../../assets/cursos/Star_1.png">
+    <img *ngIf="countersCourse[1] > 0" src="../../../assets/cursos/Star.png">
+    </button>
+    <p>{{countersCourse[1]}}</p>
 </label>
 <p>Descubre el mercado de los NFTs, aprende a comercializar tus obras digitales y crea estrategias de venta para impulsar tu trabajo</p>
 <button>Obtener Curso > </button>
@@ -214,7 +243,11 @@
     <h5>Un curso de Mattias Adolfsson</h5>
 </div>
 
-<img src="../../../assets/cursos/Star_1.png"> <p>4,9</p>
+<button (click)="toggleCourse(2)"  > 
+    <img *ngIf="countersCourse[2] === 0" src="../../../assets/cursos/Star_1.png">
+    <img *ngIf="countersCourse[2] > 0" src="../../../assets/cursos/Star.png">
+    </button>
+    <p>{{countersCourse[2]}}</p>
 </label>
 <p>Descubre el mercado de los NFTs, aprende a comercializar tus obras digitales y crea estrategias de venta para impulsar tu trabajo</p>
 <button>Obtener Curso > </button>
@@ -227,7 +260,11 @@
     <h3>CREACION DE NFT:</h3>
     <h5>Un curso de Mattias Adolfsson</h5>
 </div>
-<img src="../../../assets/cursos/Star_1.png"> <p>4,9</p>
+    <button (click)="toggleCourse(3)"> 
+    <img *ngIf="countersCourse[3] === 0" src="../../../assets/cursos/Star_1.png">
+    <img *ngIf="countersCourse[3] > 0" src="../../../assets/cursos/Star.png">
+    </button>
+    <p>{{countersCourse[3]}}</p>
 </label>
 <p>Descubre el mercado de los NFTs, aprende a comercializar tus obras digitales y crea estrategias de venta para impulsar tu trabajo</p>
 <button>Obtener Curso > </button>
@@ -243,7 +280,11 @@
         <h5>Un curso de Mattias Adolfsson</h5>
     </div>
     
-    <img src="../../../assets/cursos/Star_1.png"> <p>4,9</p>
+        <button (click)="toggleCourse(4)" > 
+        <img *ngIf="countersCourse[4] > 0" src="../../../assets/cursos/Star_1.png">
+        <img *ngIf="countersCourse[4] === 0" src="../../../assets/cursos/Star.png">
+        </button>
+        <p>{{countersCourse[4]}}</p>
     </label>
     <p>Descubre el mercado de los NFTs, aprende a comercializar tus obras digitales y crea estrategias de venta para impulsar tu trabajo</p>
     <button>Obtener Curso > </button>

@@ -65,6 +65,27 @@ height: 30%;
   color: white;
 }
 
+.profile >  section  > div {
+  width: 20%;
+  height: 4%;
+  background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);
+  border-radius: 10px;
+  border: none;
+  margin: 0 -20% 0 25%;
+  color: white;
+  display: inline-block;
+}
+.profile >  section  > div > button{
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+.profile >  section  > div  > img{
+  object-fit: contain;
+  width: 20%;
+  vertical-align: bottom;
+  margin: 0 0 0 10%;
+}
 .profile >  section  > button > img{
   object-fit: contain;
   width: 15%;
@@ -157,6 +178,7 @@ height: 30%;
     width: 40%;
     height: 40%;
     padding: 10px;
+    cursor: pointer;
   }
   .details-brice > section > button {
     background: transparent;
@@ -255,7 +277,7 @@ height: 30%;
 
 .option-prof > button:hover{
   background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);
- }
+}
 
 .project-profile{
   display: grid;
@@ -279,6 +301,7 @@ width: 90%;
 }
 .profile-project > h4{
 margin: 0 0 0 5%;
+font-size: 15px;
 }
 .profile-project > label > h3{
   margin: 0 0 0 5%;
@@ -316,10 +339,37 @@ margin: 0 0 0 3%;
 cursor: pointer;
 font-size: 10px;
 }
-
+.profile-project > label > div {
+  background-color: #464646;
+  display: inline-block;
+  color: white;
+  border: 1px #464646 solid;
+  border-radius: 15px;
+  width: 20%;
+  margin: 0 0 0 3%;
+  cursor: pointer;
+  font-size: 10px;
+  }
+  .profile-project > label > div > button{
+    background-color: transparent;
+    color: white;
+    border: none;
+  }
+  .profile-project > label > div  > img{
+    object-fit: contain;
+    width: 20%;
+    margin: 0 0 0 10%;
+  }
 .profile-project > label > button:hover{
  background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);
 border: none;
+}
+.profile-project > label > button.continue {
+  width: 30%;
+  height: 8%;
+  border-radius: 10px;
+  background-color: rgba(36, 146, 135, 0.87);
+  color: white;
 }
 .profile-project > label > button > img{
   object-fit: contain;

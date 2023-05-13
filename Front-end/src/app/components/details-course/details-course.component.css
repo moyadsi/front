@@ -695,3 +695,32 @@ width: 97%;
         width: 5%;
         cursor: pointer;
     }
+    /* MODULOS*/
+
+    .section-modules{
+      display: grid;
+      grid-template-rows: 33% 33% 33%;
+    }
+
+    .section-modules > section {
+      display: grid;
+      grid-template-columns: 20% 40% 20%;
+      background-color:#313131;
+      width: 90%;
+      border-radius: 15px;
+      margin: 5% 0 0 5%;
+    }
+
+    .section-modules > section > label > h4{
+      font-size: 15px;
+      margin: 0 0 10% 0;
+    }
+
+    .section-modules > section > label > h3{
+      
+      margin: 10% 0 0 0;
+    }
+
+    .section-modules > section > img{
+        margin: 50% 0 0 100%;
+    }

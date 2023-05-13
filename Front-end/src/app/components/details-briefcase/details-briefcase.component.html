@@ -11,8 +11,15 @@
       <section>
         <h6>Rate-Proyecto</h6>
         <h4>Mini Frogy Collection</h4>
-        <button><img src="../../../assets/portafolio/Seguir.png">Seguir</button>
-        <button><img src="../../../assets/portafolio/Heart-nofollow.png">35</button>
+        <button (click)="toggleButton(0)" [ngClass]="{'continue': isActive[0]}">
+          <img *ngIf="!isActive[0]" src="../../../assets/portafolio/Seguir.png">
+          {{isActive[0] ? 'Siguiendo!' : 'Seguir'}}
+      </button>
+      <div class="follow">
+        <img *ngIf="counters[0] > 0" src="../../../assets/portafolio/Heart-follow.png">
+        <img *ngIf="counters[0] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
+        <button (click)="toggleFavorite(0)"> {{counters[0]}} </button>
+    </div>
       </section>
       <p>Publicado el 04/2023</p>
       <div class="info-person">
@@ -77,9 +84,6 @@
         <img src="https://ksr-ugc.imgix.net/assets/038/888/936/f1fe4fad1f781a841daf00dc4f4510e9_original.png?ixlib=rb-4.0.2&crop=faces&w=1552&h=873&fit=crop&v=1665612118&auto=format&frame=1&q=92&s=4f639f6d6dfef944b1445871793e1edc">
         <img src="https://as2.ftcdn.net/v2/jpg/04/97/27/23/1000_F_497272364_ApuRyJNkduOKLIjmepBieXF5bEGuZpQn.jpg">
         <img src="https://ksr-ugc.imgix.net/assets/034/849/960/e6f5790055f09febfab967746216ee80_original.jpg?ixlib=rb-4.0.2&crop=faces&w=1552&h=873&fit=crop&v=1631474108&auto=format&frame=1&q=92&s=4736d3e5383462661f49c43993232532">
-        <img src="">
-        <img src="">
-        <img src="">
       </div>
       <div class="project-similar">
         <section>
@@ -102,8 +106,15 @@
           <label>
             <img src="https://estudiantes.ucontinental.edu.pe/wp-content/uploads/2020/09/Madurez-emocional-7.jpg">
             <h3>David ferchs</h3>
-            <button><img src="../../../assets/portafolio/Seguir.png">Seguir</button>
-            <button><img src="../../../assets/portafolio/Heart-nofollow.png">35</button>
+            <button (click)="toggleButton(1)" [ngClass]="{'continue': isActive[1]}">
+              <img *ngIf="!isActive[1]" src="../../../assets/portafolio/Seguir.png">
+              {{isActive[1] ? 'Siguiendo!' : 'Seguir'}}
+          </button>
+          <div class="follow">
+            <img *ngIf="counters[1] > 0" src="../../../assets/portafolio/Heart-follow.png">
+            <img *ngIf="counters[1] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
+            <button (click)="toggleFavorite(1)"> {{counters[1]}} </button>
+        </div>
           </label>
         </section>
         <section class="profile-project" >
@@ -113,8 +124,15 @@
           <label>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTumr-ynIsoOEzb29PmGsYo5Dfem9Yio8dC8Q&usqp=CAU">
             <h3>David ferchs</h3>
-            <button><img src="../../../assets/portafolio/Seguir.png">Seguir</button>
-            <button><img src="../../../assets/portafolio/Heart-nofollow.png">35</button>
+            <button (click)="toggleButton(2)" [ngClass]="{'continue': isActive[2]}">
+              <img *ngIf="!isActive[2]" src="../../../assets/portafolio/Seguir.png">
+              {{isActive[2] ? 'Siguiendo!' : 'Seguir'}}
+          </button>
+          <div class="follow">
+            <img *ngIf="counters[2] > 0" src="../../../assets/portafolio/Heart-follow.png">
+            <img *ngIf="counters[2] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
+            <button (click)="toggleFavorite(2)"> {{counters[2]}} </button>
+        </div>
           </label>
         </section>
         <section class="profile-project">
@@ -124,8 +142,15 @@
           <label>
             <img src="https://estudiantes.ucontinental.edu.pe/wp-content/uploads/2020/09/Madurez-emocional-7.jpg">
             <h3>David ferchs</h3>
-            <button><img src="../../../assets/portafolio/Seguir.png">Seguir</button>
-            <button><img src="../../../assets/portafolio/Heart-nofollow.png">35</button>
+            <button (click)="toggleButton(3)" [ngClass]="{'continue': isActive[3]}">
+              <img *ngIf="!isActive[3]" src="../../../assets/portafolio/Seguir.png">
+              {{isActive[3] ? 'Siguiendo!' : 'Seguir'}}
+          </button>
+          <div class="follow">
+            <img *ngIf="counters[3] > 0" src="../../../assets/portafolio/Heart-follow.png">
+            <img *ngIf="counters[3] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
+            <button (click)="toggleFavorite(3)"> {{counters[3]}} </button>
+        </div>
           </label>
         </section>
       </div>

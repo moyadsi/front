@@ -12,7 +12,34 @@
                 <img src="../../../assets/cursos/vidanegra.png">
                 <h4>Modulos</h4>
                 </section>
-            </div>  
+                <div class="section-modules">
+                    <section>
+                        <img src="">
+                        <label>
+                        <h3>Antes de empezar</h3>
+                        <h4>3 clases</h4>
+                        </label>
+                        <img src="../../../assets/cursos/ionic-ios-arrow-up.png">
+                    </section>
+                    <section>
+                        <img src="">
+                        <label>
+                        <h3>Antes de empezar</h3>
+                        <h4>3 clases</h4>
+                        </label>
+                        <img src="../../../assets/cursos/ionic-ios-arrow-up.png">
+                    </section>
+                    <section>
+                        <img src="">
+                        <label>
+                        <h3>Antes de empezar</h3>   
+                        <h4>3 clases</h4>
+                        </label>
+                        <img src="../../../assets/cursos/ionic-ios-arrow-up.png">
+                    </section>
+                </div>
+
+            </div>
         </section>
         <section>
             <iframe width="860" height="415"  src="https://www.youtube.com/embed/0CWZ6-hWeH8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -201,7 +228,11 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex sed, illum veniam magni, sit dignissimos odit doloremque temporibus nesciunt architecto alias voluptatum.</p>
                 <hr>
                 <a><img src="../../../assets/cursos/comentarios.png">Responder</a>
-                <a><img src="../../../assets/portafolio/Heart-follow.png">Me gusta</a>
+                <div>
+                    <img *ngIf="counters[1] > 0" src="../../../assets/portafolio/Heart-follow.png">
+                    <img *ngIf="counters[1] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
+                    <button (click)="toggleFavorite(1)"> Me gusta</button>
+                </div>
             </label>
         </section>
     </div>
