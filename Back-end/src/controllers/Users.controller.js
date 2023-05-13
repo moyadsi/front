@@ -1,6 +1,6 @@
 // librerias
 const Jwt =  require('jsonwebtoken')
-const conexion = require('../config/conexion')
+const conexion = require('../config/mysql.config')
 const bcrypt = require('bcrypt');
 
 // declaracion del .env 

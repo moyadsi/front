@@ -1,4 +1,4 @@
-const conexion = require('../config/conexion')
+const conexion = require('../config/mysql.config')
 
 const GetAllTeacher = (req,res)=>{
     try {
