@@ -1,31 +1,37 @@
 const axios = require('axios')
+const conexion = require('../config/mysql.config')
 require('dotenv').config()
 
-const UrlApi = `https://api.newscatcherapi.com/v2/search?`
-
 const GetNoticie =(req,res)=>{
-    const ApiKey=req.headers['x-api-key']                                                                                                                                                                                                                                                             
-    const {Search,Language}=req.body;
+    try {
+        let SearchSql=`select * from Noticies`
+        conexion.query(SearchSql,(err,rows,fields)=>{
+            if(err) throw err;
+            else{
+                res.status(200).json(rows[0])
+            }
+        })
+    } catch (error) {
+        return res.status(500).json({error})
+    }
+}
 
-    var options = {
-        url: UrlApi,
-        params: {q:Search, lang:Language},
-        headers: {
-          "x-api-key" : ApiKey
-        }
-    };
-      
-    axios.request(options).then(
-        function (response) {
-            res.status(200).json({Content:response.data});
-        }
-    ).catch(
-        function(error) {
-            res.status(400).json(error) 
-        }
-    );
+const AddNoticie =(req,res)=>{
+    try {
+        const {Content,Fountain}= req.body;
+        let AddNoticie = `insert into Noticies (Content,Fountain) values (?,?)`
+        conexion.query(AddNoticie,[Content,Fountain],(err,rows,fields)=>{
+            if(err)throw err;
+            else{
+                res.status(200).json(rows[0])
+            }
+        })
+    } catch (error) {
+        res.status(500).json(error)
+    }
 }
 
 module.exports = {
-    GetNoticie
+    GetNoticie,
+    AddNoticie
 }

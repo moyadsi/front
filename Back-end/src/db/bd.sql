@@ -107,7 +107,7 @@ CREATE TABLE Teacher (
 /*Noticias*/
 
 CREATE TABLE Noticies (
-    Id INT PRIMARY KEY,
+    Id INT PRIMARY KEY AUTO_INCREMENT,
     Content CHAR(255),
     Fountain CHAR(255),
     Date DATETIME default Now()
