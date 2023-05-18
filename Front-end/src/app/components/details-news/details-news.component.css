@@ -120,15 +120,200 @@ main{
 }
 .inputCommentary button i{
   transition: 0.3s;
+  color: #6f6f6f;
+  cursor: pointer;
 }
 .inputCommentary button i:hover{
   transform: scale(1.3);
 }
 .othersCommentarys .comment{
+}
+
+.othersCommentarys .comment{
   display: flex;
+  width: 100%;
+  word-wrap: break-word; 
 }
 
 .userName{
-  width: 70%;
+  width: 100%;
   color: rgb(156, 156, 156);
+}
+.userName span{
+  width: 70%;
+  color: white;
+}
+
+.viewAllComments{
+  height: 60px;
+  position: relative;
+}
+
+.commentaryIcon{
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform:  translateX(-50%) translateY(-50%);
+  cursor: pointer;
+  color: #6f6f6f;
+}
+
+.viewAllComments button{
+  border-radius: 1rem;
+  width: 100%;
+  height: 100%;
+  background: #272727;
+  cursor: pointer;
+}
+
+.interactionNew{
+  display: flex;
+  margin-top: 10px;
+}
+
+.interactionNew i{
+  font-size: 15pt;
+  color: #6f6f6f;
+  cursor: pointer;
+}
+
+.save , .share {
+  border-radius: 1rem;
+  background: #272727;
+  height: 70px;
+  width: 70px;
+  margin: 5px;
+}
+
+.likeAndDislike{
+  display: flex;
+  border-radius: 1rem;
+  background: #272727;
+  height: 70px;
+  margin: 5px;
+  width: 140px;
+}
+
+.likeAndDislike button{
+  height: 100%;
+  width: 50%;
+}
+
+.likeAndDislike hr{
+  border: 1px solid gray;
+}
+
+.rightPart{
+  height: 100%;
+  width: 20%;
+  background-color: #393939;
+  border-radius: 10px;
+  margin: 7rem 20px 0 0;
+}
+
+.containerNav{
+  width: 100%;
+}
+
+.navPodcast{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  background-color: #393939;
+  padding: 0;
+  margin: 0;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+}
+
+.navPodcast li{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+}
+
+.selected{
+  background-color: #262626;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+}
+
+.containerPodcast{
+  height: 700px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  background-color: #262626;
+  max-height: 100%;
+  overflow-y: auto;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.podcast{
+  display: flex;
+  border-bottom: 1px solid gray;
+  height: 110px;
+  margin: 10px 5px;
+}
+
+.buttonPlay{
+  width: 25%;
+  margin: 10px;
+  position: relative;
+  height: 70px;
+
+}
+
+.buttonPlay > button{
+  height: 100%;
+  width: 100%;
+  background-color: #393939;
+  border: none;
+  color: #5ab770;
+  font-size: 15pt;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.buttonPlay > button:hover{
+transform: scale(1.05);
+}
+
+.informationPodcast{
+  width: 50%;
+  margin: 10px;
+}
+
+.duration{
+  width: 25%;
+  margin: 10px;
+}
+
+.buttonPlay audio{
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  width: 100%;
+  height: 60px;
+}
+
+.bannerAdvertising{
+  height: 200px;
+}
+
+.bannerAdvertising img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
 }
