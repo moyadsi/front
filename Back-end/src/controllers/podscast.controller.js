@@ -34,12 +34,22 @@ const GetPodCastName =async (req,res)=>{
     res.status(200).send(PodCastAwait)
 
   } catch (error) {
-    
+    res.status(500).json(error)
+  }
+}
+
+const deletePodCast =async (req,res)=>{
+  try {
+    await PodsCast.findByIdAndDelete(req.params.id)
+    res.status(200).json({message:"Eliminado exitosamente"})
+  } catch (error) {
+    res.status(500).json(error)
   }
 }
 
 module.exports={
   GetPodCast,
   AddPodCast,
-  GetPodCastName
+  GetPodCastName,
+  deletePodCast
 }

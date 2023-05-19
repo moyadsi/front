@@ -9,6 +9,9 @@ const PodCastSchema = new mongoose.Schema({
   },
   URL:{
     type:String
+  },
+  Image:{
+    type:String
   }
 })
 
