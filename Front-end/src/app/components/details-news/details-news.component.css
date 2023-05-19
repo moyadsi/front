@@ -248,7 +248,6 @@ main{
 }
 
 .containerPodcast{
-  height: 700px;
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -309,6 +308,7 @@ transform: scale(1.05);
 
 .bannerAdvertising{
   height: 200px;
+  margin-top: 20px;
 }
 
 .bannerAdvertising img{
