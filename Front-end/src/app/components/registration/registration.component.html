@@ -84,23 +84,31 @@
         </div>
         <div class="password">
           <span>Contraseña</span>
-          <input
-            type="password"
-            formControlName="Password"
-            id=""
-            placeholder="Ingresa tu contraseña"
-            class="input-large"
-          />
+          <div class="inputAndButtonPassword">
+          <input 
+          type="password"
+           [(ngModel)]="password" 
+           formControlName="Password"
+           name="password" 
+           [attr.type]="showPassword ? 'text' : 'password'" 
+           placeholder="Ingresa tu contraseña"
+            class="input-large"/>
+          <button (click)="togglePasswordVisibility()">{{ showPassword ? 'Ocultar' : 'Mostrar' }}</button>
+          </div>
         </div>
         <div class="repeatPassword">
           <span>Confirmar contraseña</span>
-          <input
-            type="password"
-            formControlName="password"
-            id=""
-            placeholder="Confirma tu contraseña"
-            class="input-large"
-          />
+          <div class="inputAndButtonPassword">
+          <input 
+          type="password"
+           [(ngModel)]="password" 
+           formControlName="Password"
+           name="password" 
+           [attr.type]="showPassword ? 'text' : 'password'" 
+           placeholder="Confirma tu contraseña"
+            class="input-large"/>
+          <button (click)="togglePasswordVisibility()">{{ showPassword ? 'Ocultar' : 'Mostrar' }}</button>
+          </div>
         </div>
         <button type="submit">Continuar</button>
         <div class="termsAndConditions">
