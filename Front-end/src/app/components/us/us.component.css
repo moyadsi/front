@@ -10,16 +10,14 @@ h4{
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    margin: 0 0 0 -20%;
+    text-align: center;
+    margin: 0 0 0 -30%;
 }
 
 h5{
     display: inline-block;
     font-size: 15px;
-    margin: 0 0 0 5px;
-    
-
-    
+    margin: 0 0 0 5px; 
 }
 h2{
     font-size: 60px;

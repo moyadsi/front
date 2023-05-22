@@ -230,6 +230,7 @@ section>hr {
 .person>label>h5 {
   font-size: 15px;
   margin: 2% 0 0 -15%;
+  cursor: pointer;
 }
 
 .person>label>h3 {

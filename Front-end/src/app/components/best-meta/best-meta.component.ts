@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-best-meta',
   templateUrl: './best-meta.component.html',
@@ -9,7 +10,7 @@ export class BestMetaComponent implements OnInit {
 selectedValue: any;
 
   constructor() { }
-
+  nameUser: string ='Vayana Silva'
   /*MANEJO BOTON FAVORITOS*/
   counters= [0,0,0,0,0,0];
   favoriteCount = 0;

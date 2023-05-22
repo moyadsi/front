@@ -42,6 +42,10 @@ h3{
     text-align: center;
     margin: 10px;
 }
+.btn-join > a {
+    text-decoration: none;
+    color: white;
+}
 .btn-join:hover{
     cursor: pointer;
     background: linear-gradient(104deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 76%);

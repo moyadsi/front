@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DetailsBriefcaseComponent } from '../details-briefcase/details-briefcase.component';
 
 @Component({
   selector: 'app-briefcase',

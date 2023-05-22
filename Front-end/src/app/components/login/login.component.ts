@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
     this.clients.login(Login).subscribe(data=>{
       console.log(data);
       console.log("Inicio");
-      this.router.navigate(['inicio']);
+      this.router.navigate(['DashboardComponent']);
     })
 
     console.log(Login);
