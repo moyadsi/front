@@ -108,8 +108,13 @@ CREATE TABLE Teacher (
 
 CREATE TABLE Noticies (
     Id INT PRIMARY KEY AUTO_INCREMENT,
-    Content CHAR(255),
-    Fountain CHAR(255),
+    Title Char(255) not null,
+    Description char(255) not null,
+    Category CHAR(255) not null,
+    Author char(100) not null,
+    PublicationDate date,
+    VideoURL char(255),
+    PodcastURL char(255),
     Date DATETIME default Now()
 );
 
