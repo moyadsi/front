@@ -12,7 +12,34 @@
                 <img src="../../../assets/cursos/vidanegra.png">
                 <h4>Modulos</h4>
                 </section>
-            </div>  
+                <div class="section-modules">
+                    <section>
+                        <img src="">
+                        <label>
+                        <h3>Antes de empezar</h3>
+                        <h4>3 clases</h4>
+                        </label>
+                        <img src="../../../assets/cursos/ionic-ios-arrow-up.png">
+                    </section>
+                    <section>
+                        <img src="">
+                        <label>
+                        <h3>Antes de empezar</h3>
+                        <h4>3 clases</h4>
+                        </label>
+                        <img src="../../../assets/cursos/ionic-ios-arrow-up.png">
+                    </section>
+                    <section>
+                        <img src="">
+                        <label>
+                        <h3>Antes de empezar</h3>   
+                        <h4>3 clases</h4>
+                        </label>
+                        <img src="../../../assets/cursos/ionic-ios-arrow-up.png">
+                    </section>
+                </div>
+
+            </div>
         </section>
         <section>
             <iframe width="860" height="415"  src="https://www.youtube.com/embed/0CWZ6-hWeH8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -49,14 +76,73 @@
 
     <!--SECCION DETALLES INFOERMACION DEL CURSO-->
     <div class="details-course">
-        <section class="links">
-            <label>
+        <div class="conteiner-links">
+            <div class="links">
+            <section>
+                <img src="../../../assets/cursos/sitioweb.png">
+                <a><hr></a>
+                <p><strong>Enlaces necesarios</strong> 2 links</p>
+            </section>
+            <section>
+                <label>
+                    <article>
+                    <u>Open Ai</u>
+                    <h6>www.openai.com</h6>
+                    </article>
+                    <img src="../../../assets/cursos/enlace.png">
+                </label>
+                <hr>
+            </section>
+            <section>
+                <label>
+                    <article>
+                    <u>Descargar adobe lightroom</u>
+                    <h6>www.adobe.com/co/prod.cts/photoshop</h6>
+                    </article>
+                    <img src="../../../assets/cursos/enlace.png">
+                </label>
+                <hr>
+            </section>
+            </div>
+            <div class="files">
+                <section>
+                    <img src="../../../assets/cursos/pdf.png">
+                    <a><hr> </a>
+                    <p><strong>Archivos pdf</strong> 3 archivos</p>
+                </section>
+                <section>
+                    <label>
+                        <article>
+                            <u>Lista de otros programas de edicion</u>
+                            <h6>.pdf</h6>
+                        </article>
+                            <img src="../../../assets/cursos/descarga.png">    
+                    </label>
+                <hr>
+                </section>
+                <section>
+                    <label>
+                        <article>
+                            <u>Lista de otros programas de edicion</u>
+                            <h6>.pdf</h6>
+                        </article>
+                            <img src="../../../assets/cursos/descarga.png">    
+                    </label>
+                <hr>
+                </section>
+                <section>
+                    <label>
+                        <article>
+                            <u>Lista de otros programas de edicion</u>
+                            <h6>.pdf</h6>
+                        </article>
+                            <img src="../../../assets/cursos/descarga.png">    
+                    </label>
+                <hr>
+                </section>
+            </div>
+        </div>
 
-            </label>
-            <label>
-                
-            </label>
-        </section>
         <!--DESCRIPCION DE LOS COMENTARIOS-->
         <section class="description-comments">
             <label>
@@ -142,7 +228,11 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex sed, illum veniam magni, sit dignissimos odit doloremque temporibus nesciunt architecto alias voluptatum.</p>
                 <hr>
                 <a><img src="../../../assets/cursos/comentarios.png">Responder</a>
-                <a><img src="../../../assets/portafolio/Heart-follow.png">Me gusta</a>
+                <div>
+                    <img *ngIf="counters[1] > 0" src="../../../assets/portafolio/Heart-follow.png">
+                    <img *ngIf="counters[1] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
+                    <button (click)="toggleFavorite(1)"> Me gusta</button>
+                </div>
             </label>
         </section>
     </div>

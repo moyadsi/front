@@ -13,10 +13,15 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
-
   Person:Person=new Person;
   auth: any;
   route: any;
+  password: string = '';
+  showPassword: boolean = false;
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
   constructor(private fb: FormBuilder, private clients: ClientsService, private router:Router) {
     this.form = this.fb.group({
       Email: ['', Validators.required],
@@ -42,7 +47,7 @@ export class LoginComponent implements OnInit {
     this.clients.login(Login).subscribe(data=>{
       console.log(data);
       console.log("Inicio");
-      this.router.navigate(['inicio']);
+      this.router.navigate(['DashboardComponent']);
     })
 
     console.log(Login);

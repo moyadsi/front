@@ -60,5 +60,5 @@ export class AuthService {
    isAdmin() : Observable<boolean> {
     return this.admin.asObservable();
    }
-
+   
 }

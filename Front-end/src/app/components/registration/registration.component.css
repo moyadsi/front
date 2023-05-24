@@ -136,6 +136,27 @@ hr{
   cursor: pointer;
 }
 
+.inputAndButtonPassword{
+  display: flex;
+  background: none;
+  border: 1px solid gray;
+  border-radius: 15px;
+  color: #fff;
+}
+
+.inputAndButtonPassword input {
+  border: none;
+  width: 95%;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.inputAndButtonPassword button {
+  border: none;
+  background: transparent;
+  border-left: 1px solid gray;
+  cursor: pointer;
+}
+
 #btnGoogle{
   color: #fff;
   text-decoration: none;

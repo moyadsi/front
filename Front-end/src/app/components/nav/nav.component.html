@@ -1,23 +1,52 @@
-<nav class="nav">
-        <div class="logo">
-            <img href="#" src="../../../assets/logo.png" >
-            <link href="https://fonts.cdnfonts.com/css/product-sans" rel="stylesheet">
-        </div>
-      <!--  -->  <!-- <li *ngIf="auth.isLoggedIn() | async" class="nav-item active">
-            <a class="nav-link" >|Bienvenid@ {{auth.getCourrentUser()}}|<span class="sr-only"></span></a>
-          </li> -->
-<!--       <li *ngIf="auth.isLoggedIn() | async" class="nav-item active">
-        <a class="nav-link" [routerLink]="['/']" (click)="auth.logout()">Salir<span class="sr-only"></span></a>
-      </li> -->
-        <div class="menu">
-            <ul>
-                <li><a routerLink='/'>Inicio</a></li>
-                <li><a routerLink='/briefcase'>Portafolio</a></li>
-                <li><a routerLink='/courses'>Cursos</a></li>
-                <li><a routerLink='/news'>Noticias </a></li>
-                <hr>
-                <li><button routerLink='/registration' id="btnRegister">Registrarse</button></li>
-                <li><button routerLink='/login' id="btnLogin">Ingresar</button></li>
-            </ul>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<nav  class="nav">
+    <a *ngIf="isLoggedIn()" routerLink='/' class="logo">
+        <img src="../../../assets/logo.png" >
+        <link href="https://fonts.cdnfonts.com/css/product-sans" rel="stylesheet">
+    </a>
+
+    <!-- NAV PARA CUANDO NO SE ESTA LOGUEADO-->
+    <div class="menu">
+        <ul *ngIf="isLoggedIn()">
+
+            <li><a routerLink='/'>Inicio</a></li>
+            <li><a (click)="rutas('#news')">Noticias </a></li>
+            <li><a (click)="rutas('#courses')">Cursos</a></li>
+            <li><a (click)="rutas('#briefcase')">Portafolio</a></li>
+            <hr>
+            <li><button routerLink='/registration' id="btnRegister">Registrarse</button></li>
+            <li><button routerLink='/login' id="btnLogin">Ingresar</button></li>
+        </ul>
+    </div>
+
+    <!--NAV CUANDO EL UUARIO YA ESTA LOGUEADO-->
+
+    <div *ngIf="!isLoggedIn()" class="nav-login">
+        <img id="option" src="../../../assets/nav/menu.png">
+        <label>
+        <img routerLink='/' src="../../../assets/nav/logogris.png">
+        </label>
+        <img src="../../../assets/nav/flechaAbajo0.png">
+        <p></p>
+        <aside>
+        <img src="../../../assets/nav/Search.png">
+        <img src="../../../assets/nav/Notify.png">
+        </aside>
+        <hr>
+        <section>
+        <img src="../../../assets/nav/Perfil.png">
+        <a><img routerLink="/profile"  src="../../../assets/nav/flechaAbajo0.png"></a>
+        </section>
+    </div>
 </nav>
+</body>
+</html>

@@ -32,13 +32,17 @@
         </div>
         <div class="Password">
           <span>Contraseña</span>
-          <input
+          <div class="inputAndButtonPassword">
+            <input 
             type="password"
-            formControlName="Password"
-            id=""
-            placeholder="Ingresa tu contraseña"
-            class="input-large"
-          />
+             [(ngModel)]="password" 
+             formControlName="Password"
+             name="password" 
+             [attr.type]="showPassword ? 'text' : 'password'" 
+             placeholder="Ingresa tu contraseña"
+              class="input-large"/>
+            <button (click)="togglePasswordVisibility()">{{ showPassword ? 'Ocultar' : 'Mostrar' }}</button>
+          </div>
           <span><a href="#">Olvide mi contraseña</a></span>
         </div>
         <button type="submit">Continuar</button>
@@ -47,3 +51,4 @@
   </div>
 </div>
 <app-footer></app-footer>
+<script src="https://kit.fontawesome.com/af53cd6931.js" crossorigin="anonymous"></script>

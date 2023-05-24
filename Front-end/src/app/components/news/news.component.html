@@ -1,6 +1,7 @@
 <app-nav></app-nav>
 <main>
   <section class="leftPart">
+
     <div class="targetNew" *ngFor="let date of news">
       <div class="content">
         <div class="buttonDate">
@@ -13,18 +14,12 @@
           {{date.description}}
         </p>
       </div>
-      <img
-        src={{date.urlToImage}}
-        alt=""
-      />
-      </div>
+      <img src={{date.urlToImage}} alt="" />
+    </div>
+
   </section>
   <section class="centerPart">
-    <img
-    class="imageBackground"
-    src="../../../assets/News/News 1/Cajon medio/img/Trazado 68.png"
-    alt=""
-  />
+    <img class="imageBackground" src="../../../assets/News/News 1/Cajon medio/img/Trazado 68.png" alt="" />
     <div class="categoryAndTitle">
       <button>Category</button>
       <p>The last of us</p>
@@ -70,6 +65,29 @@
       <a class="readArticule" href="">Leer el articulo completo</a>
     </div>
   </section>
-  <section class="rightPart"></section>
+  <section class="rightPart">
+    <div class="containerNav">
+      <ul class="navPodcast">
+        <li class="selected">Popular</li>
+        <li>Reciente</li>
+        <li>Tendencia</li>
+      </ul>
+    </div>
+    <div class="containerPodcast" id="containerPodcast">
+      <div class="podcast" *ngFor="let dataPodcast of podcastItems">
+        <div class="buttonPlay">
+          <audio src="{{dataPodcast.entity.data.audioPreview.url}}" controls preload="auto"></audio>
+        </div>
+        <div class="informationPodcast">
+          <p class="titlePodcast">{{dataPodcast.entity.data.name}}</p>
+        </div>
+        <div class="duration">
+          <p>2:25</p>
+        </div>
+        <div class="audioItem">
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 <app-footer></app-footer>

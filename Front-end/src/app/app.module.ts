@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -26,6 +27,10 @@ import { TeamComponent } from './components/team/team.component';
 import { BestMetaComponent } from './components/best-meta/best-meta.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { DetailsCourseComponent } from './components/details-course/details-course.component';
+import { DetailsBriefcaseComponent } from './components/details-briefcase/details-briefcase.component';
+import { BriefcaseProjectComponent } from './components/briefcase-project/briefcase-project.component';
+import { DetailsNewsComponent } from './components/details-news/details-news.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +55,11 @@ import { DetailsCourseComponent } from './components/details-course/details-cour
     TeamComponent,
     BestMetaComponent,
     InicioComponent,
-    DetailsCourseComponent
+    DetailsCourseComponent,
+    DetailsBriefcaseComponent,
+    BriefcaseProjectComponent,
+    DetailsNewsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

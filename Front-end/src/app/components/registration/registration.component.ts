@@ -12,7 +12,12 @@ export class RegistrationComponent implements OnInit {
   form: FormGroup;
 
   Person:Person=new Person;
+  password: string = '';
+  showPassword: boolean = false;
 
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
   constructor(private fb: FormBuilder, private clients: ClientsService) {
     this.form = this.fb.group({
       Cedula:['',Validators.required],

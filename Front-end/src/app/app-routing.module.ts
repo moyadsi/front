@@ -12,9 +12,15 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { SuscriptionComponent } from './components/suscription/suscription.component';
 import { DetailsCourseComponent } from './components/details-course/details-course.component';
+import { DetailsBriefcaseComponent } from './components/details-briefcase/details-briefcase.component';
+import { BriefcaseProjectComponent } from './components/briefcase-project/briefcase-project.component';
+import { DetailsNewsComponent } from './components/details-news/details-news.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
+  {path: '', redirectTo: "/home", pathMatch: "full"},
+  { path: 'home', component: HomeComponent},
   { path: 'registration', component: RegistrationComponent},
   { path: 'briefcase', component: BriefcaseComponent},
   { path: 'courses', component: CoursesComponent},
@@ -25,11 +31,23 @@ const routes: Routes = [
   { path: 'membership', component: MembershipComponent},
   { path: 'suscription', component: SuscriptionComponent},
   { path: 'inicio', component: InicioComponent},
-  { path: 'detailsCourse', component: DetailsCourseComponent}
+  { path: 'detailsCourse', component: DetailsCourseComponent},
+  { path: 'detailsBriefcase', component: DetailsBriefcaseComponent},
+  { path: 'briefcase-project', component: BriefcaseProjectComponent},
+  { path: 'membership', component: MembershipComponent},
+  { path: 'profile', component: ProfileComponent},
+  { path: 'details-news', component: DetailsNewsComponent},
+  { path: 'dashboard', component: DashboardComponent}
+
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  imports: [RouterModule.forRoot(routes, {
+    scrollPositionRestoration: 'enabled',
+    anchorScrolling: 'enabled',
+    scrollOffset: [0, 64], // Ajusta este valor según la altura de tu barra de navegación
+  })],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

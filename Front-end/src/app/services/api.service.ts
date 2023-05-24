@@ -5,9 +5,10 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ApiService {
 
-  private urlApi = 'https://newsapi.org/v2/everything?q=apple&from=2023-03-29&to=2023-03-29&sortBy=popularity&apiKey=d5928f3b929445a986aa4eb8f3d4ddc4';
+   private urlApi = 'https://api.org/v2/everything?q=apple&from=2023-03-29&to=2023-04-05&sortBy=popularity&apiKey=d5928f3b929445a986aa4eb8f3d4ddc4';
 
   constructor(private http: HttpClient) { }
 

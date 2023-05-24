@@ -33,11 +33,11 @@
    .members{
     display: grid;
     grid-template-columns: 33% 33% 33%;
-    margin: -3% 0 0 5%;
+    margin: -3% 0 0 15%;
     border: 1px white solid;
     border-radius: 20px;
     padding: 50px;
-    width: 80%;
+    width: 60%;
    }
 
    div > hr{

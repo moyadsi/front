@@ -17,18 +17,45 @@
                 <h5>Vayana Silva</h5>
                 <h3>Directora Creativa en Bunker3022</h3>
                 <hr>
+                <!--
                 <div class="qualification">
-                    <img src="../../../assets/cursos/Star.png">
-                    <img src="../../../assets/cursos/Star.png">
-                    <img src="../../../assets/cursos/Star.png">
-                    <img src="../../../assets/cursos/Star.png">
-                    <img src="../../../assets/cursos/Star_1.png">
+                    <img *ngIf="counters[0] > 0" src="../../../assets/cursos/Star.png">
+                    <img *ngIf="counters[0] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
+                    <button (click)="toggleFavorite(0)"> </button>
+                </div>
+                -->
+                <div class="qualification">
+
+                        <button >
+                        <img (click)="toggleQualification(0)" *ngIf="counters[0] > 0" src="../../../assets/cursos/Star.png">
+                        <img *ngIf="counters[0] === 0" src="../../../assets/cursos/Star_1.png">
+                        </button>
+
+
+                        <button (click)="toggleQualification(1)" > 
+                        <img *ngIf="counters[1] > 0" src="../../../assets/cursos/Star.png">
+                        <img *ngIf="counters[1] === 0" src="../../../assets/cursos/Star_1.png">
+                        </button>
+                    
+                        <button (click)="toggleQualification(2)"> 
+                        <img *ngIf="counters[2] > 0" src="../../../assets/cursos/Star.png">
+                        <img *ngIf="counters[2] === 0" src="../../../assets/cursos/Star_1.png">
+                        </button>
+
+                        <button (click)="toggleQualification(3)">
+                        <img *ngIf="counters[3] > 0" src="../../../assets/cursos/Star.png">
+                        <img *ngIf="counters[3] === 0" src="../../../assets/cursos/Star_1.png">
+                        </button>
+                        <button (click)="toggleQualification(4)">
+                        <img *ngIf="counters[4] > 0" src="../../../assets/cursos/Star.png">
+                        <img *ngIf="counters[4] === 0" src="../../../assets/cursos/Star_1.png">
+                        </button>
                     </div>
                 </label>
             </section>
         </div>
     <hr>
-        <div class="conteiner-2">
+        <div class="conteiner-2" routerLink="/courses">
             <div class="category">
                 <a routerLink="/courses"><img src="../../../assets/newsMeta/infi.png"></a>
                 <p> Ux/UI</p>

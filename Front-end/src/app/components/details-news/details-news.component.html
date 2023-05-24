@@ -1,0 +1,92 @@
+<app-nav></app-nav>
+<main>
+  <section class="sectionShortVideo">
+    <div class="targetVideo">
+      <iframe src="https://www.youtube.com/embed/8L-FQLajkYY" frameborder="0"></iframe>
+      <p class="titleVideo">Este es un ejemplo de un titulo para una tarjeta</p>
+    </div>
+
+  </section>
+  <section class="sectionNewInfo">
+    <div class="categoryAndDate">
+      <button><div></div> Categoria</button>
+      <p>17 de Marzo de 2023</p>
+    </div>
+    <div class="titleAndInformation">
+      <h2>THE LAST OF US</h2>
+      <hr>
+      <p>By Steven T.Wright on March 5, 2023 at 6:00am pst</p>
+    </div>
+    <div class="parrafAndImages">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad velit delectus, excepturi vitae nobis ducimus necessitatibus id praesentium cupiditate voluptas aut voluptatum explicabo in quasi, rem harum omnis exercitationem animi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit unde magni expedita voluptatem dolor nam cum eligendi, id voluptatibus libero provident voluptatum commodi adipisci, beatae iste cumque labore est dicta.</p>
+      <div class="slideImages">
+        <img class="imageSlide" src="https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2022/11/the-last-of-us-hbo-portada.jpg?fit=1200%2C834&quality=50&strip=all&ssl=1" alt="">
+        <img class="imageSlide" src="https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2022/11/the-last-of-us-hbo-portada.jpg?fit=1200%2C834&quality=50&strip=all&ssl=1" alt="">
+        <img class="imageSlide" src="https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2022/11/the-last-of-us-hbo-portada.jpg?fit=1200%2C834&quality=50&strip=all&ssl=1" alt="">
+      </div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad velit delectus, excepturi vitae nobis ducimus necessitatibus id praesentium cupiditate voluptas aut voluptatum explicabo in quasi, rem harum omnis exercitationem animi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit unde magni expedita voluptatem dolor nam cum eligendi, id voluptatibus libero provident voluptatum commodi adipisci, beatae iste cumque labore est dicta. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, laudantium! Adipisci temporibus provident harum, suscipit distinctio sunt voluptate! Vitae necessitatibus unde aperiam ratione quae, mollitia eaque quis odio! Ea, nisi? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis facilis recusandae earum quasi nesciunt sunt quisquam eos aspernatur, minima iste expedita deleniti similique necessitatibus. Sapiente cupiditate temporibus eos ab esse!</p>
+    </div>
+      
+  </section>
+  <section class="sectionComments">
+    <div class="sectionCommentarys">
+      <p>Interactúa con el artículo <i class="fa-solid fa-chevron-down"></i></p>
+      <hr>
+      <div class="inputCommentary">
+        <input type="text" name="commentary" id="commentary" placeholder="Escribe tu comentario">
+        <button><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+      <hr>
+    </div>
+    <div class="othersCommentarys">
+      <div class="comment">
+        <p class="userName">Usuario x : <span>Hagalo reaaaaaaalAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</span></p>
+      </div>
+      <div class="comment">
+        <p class="userName">Usuario y : <span>Ya estuvooooo</span></p>
+      </div>
+      <div class="viewAllComments">
+        <i class="fa-solid fa-comments commentaryIcon"></i> 
+        <button>Ver todos los comentario(27)</button>
+      </div>
+    </div>
+    <div class="interactionNew">
+      <button class="save" ><i class="fa-solid fa-bookmark"></i></button>
+      <button class="share" ><i class="fa-solid fa-share"></i></button>
+      <div class="likeAndDislike">
+        <button class="like" ><i class="fa-solid fa-heart"></i></button>
+        <hr>
+        <button class="dlike" ><i class="fa-sharp fa-solid fa-heart-crack"></i></button>
+      </div>
+    </div>
+  </section>
+  <section class="rightPart">
+    <div class="containerNav">
+      <ul class="navPodcast">
+        <li class="selected">Popular</li>
+        <li>Reciente</li>
+        <li>Tendencia</li>
+      </ul>
+    </div>
+    <div class="containerPodcast" id="containerPodcast">
+      <div class="podcast" *ngFor="let dataPodcast of podcastItems">
+        <div class="buttonPlay">
+          <audio src="{{dataPodcast.entity.data.audioPreview.url}}" controls preload="auto"></audio>
+        </div>
+        <div class="informationPodcast">
+          <p class="titlePodcast">{{dataPodcast.entity.data.name}}</p>
+        </div>
+        <div class="duration">
+          <p>2:25</p>
+        </div>
+        <div class="audioItem">
+        </div>
+      </div>
+    </div>
+    <div class="bannerAdvertising">
+      <img src="../../../assets/details news/banner ejemplo.avif" alt="">
+    </div>
+  </section>
+</main>
+<app-footer></app-footer>
+
