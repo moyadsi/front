@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, distinctUntilChanged } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class AuthService {
 
   isLogin = new BehaviorSubject<boolean>(this.checkToken());
+  
 
   admin = new BehaviorSubject<boolean>(false);
   profecional = new BehaviorSubject<boolean>(false);
@@ -18,7 +19,6 @@ export class AuthService {
   }
 
   login(token:string) : void {
-
     localStorage.setItem('token', token);
     this.admin.next(true);
     this.isLogin.next(true);
@@ -28,9 +28,6 @@ export class AuthService {
   setCourrentUser(user:string) : void {
     localStorage.setItem('courrentUser', user);
   }
-
-
-
 
   getCourrentUser() : string | null {
     return localStorage.getItem('courrentUser');
@@ -54,7 +51,8 @@ export class AuthService {
   }
 
   isLoggedIn() : Observable<boolean> {
-    return this.isLogin.asObservable();
+    console.log('LOGUEADO');
+    return this.isLogin.asObservable().pipe(distinctUntilChanged());
    }
 
    isAdmin() : Observable<boolean> {

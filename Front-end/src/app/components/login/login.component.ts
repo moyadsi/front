@@ -38,16 +38,15 @@ export class LoginComponent implements OnInit {
 
     if(this.form.valid) {
       const Login:Login={
-      email: this.form.get('Email')?.value,
-      Password: this.form.get('Password')?.value,
-  
-    }
+        email: this.form.get('Email')?.value,
+        Password: this.form.get('Password')?.value,
+      }
 
     
     this.clients.login(Login).subscribe(data=>{
       console.log(data);
       console.log("Inicio");
-      this.router.navigate(['DashboardComponent']);
+      this.router.navigate(['inicio']);
     })
 
     console.log(Login);
