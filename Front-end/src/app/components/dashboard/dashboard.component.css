@@ -108,6 +108,8 @@ main{
   background-color: #272727;
   border-radius: 1.5rem;
   margin: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .sectionTitle{
@@ -168,4 +170,99 @@ main{
   width: fit-content;
   font-size: 10pt;
   height: 30px;
+}
+
+.informationNew{
+  margin: 20px;
+  width: 80%;
+}
+
+.allNews{
+  padding-bottom: 30px;
+  border-bottom: 1px solid #656565;
+}
+
+.allNews i{
+  margin-right: 10px;
+}
+
+.allNews button{
+  color: white;
+  display: flex;
+  align-items: center;
+  border: 1px solid #21b29e;
+  background-color: #141414;
+  border-radius: 0.7rem;
+  padding: 20px 40px;
+  width: fit-content;
+  font-size: 10pt;
+  height: 30px;
+  margin: 20px;
+}
+
+.podcastNew{
+  margin: 20px;
+  display: flex;
+}
+
+.podcastNew img{
+  width: 70px;
+  height: 70px;
+  border-radius: 1rem;
+  margin: 20px 40px 20px 20px;
+}
+
+.informationPodcast{
+  border-left: 1px solid #656565;
+  padding-left: 20px;
+}
+
+.titlePodcast{
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.titlePodcast p{
+  font-weight: 600;
+}
+
+.titlePodcast span{
+  color: #656565;
+  margin-left: 10px;
+}
+
+.rightPart{
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.briefcase{
+  border: 1px solid #656565;
+  background-color: #272727;
+  border-radius: 1.5rem;
+}
+
+.navBriefcase{
+  display: flex;
+  align-items: center;
+  margin: 10px 20px;
+}
+
+.navBriefcase i{
+  margin-right: 1px;
+}
+
+.proyects{
+  margin: 20px;
+  max-height: 250px;
+  border: 1px solid red;
+  display: flex;
+}
+
+.infoAndMore{
+width: 30%;
+margin: 20px;
 }
