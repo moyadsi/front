@@ -258,11 +258,184 @@ main{
 .proyects{
   margin: 20px;
   max-height: 250px;
-  border: 1px solid red;
   display: flex;
 }
 
 .infoAndMore{
-width: 30%;
-margin: 20px;
+  width: 30%;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.infoAndMore p{
+  font-size: 15pt;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+
+.proyectBy{
+  font-size: 8pt !important;
+}
+
+.infoAndMore button{
+  width: 90%;
+  height: 45px;
+  background-color: #141414;
+  border: 1px solid #399d75;
+  border-radius: 1rem;
+  color: white;
+  margin: 20px 0 0 0;
+  cursor: pointer;
+}
+
+.proyectsTarget{
+  max-height: 250px;
+  overflow-y: auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  flex-wrap: 20px;
+}
+
+.target{
+  border-radius: 2rem;
+  background-color: #101010;
+  height: 220px;
+  margin: 10px 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+.targetImgProyect {
+  object-fit: cover;
+  height: 75%;
+  width: 100%;
+  border: none;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
+
+.infoProyect{
+  display: flex;
+  align-items: center;
+  margin: 0 20px;
+}
+
+.infoProyect img{
+  height: 20px;
+  width: 20px;
+  border-radius: 1rem;
+  margin-right: 10px;
+}
+
+.infoProyect p{
+  font-size: 8pt;
+  margin-right: 10px;
+
+}
+
+.buttons{
+  background-color: #424242;
+  border-radius: 0.5rem;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.buttons button{ 
+  background-color: transparent;
+  border: none;
+  display: flex;
+  color: white;
+  font-size: 8pt;
+  align-items: center;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.buttons button i{
+  margin-right: 10px;
+}
+
+.buttons .like{
+  border-left: 2px solid #656565;
+  padding-left: 5px;
+  height: 80%;
+  margin: auto;
+}
+
+.coursesPart{
+  border: 1px solid #656565;
+  background-color: #272727;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  margin: 40px 0;
+}
+
+.navCourses{
+  display: flex;
+  align-items: center;
+  margin: 10px 20px;
+}
+
+.navCourses i{
+  margin-right: 1px;
+}
+
+.containerCourses{
+  display: flex;
+  margin: 20px;
+}
+
+.continue{
+  position: relative;
+  border-radius: 1rem;
+  width: 50%;
+  height: 500px;
+  margin: 0 20px 0 0;
+}
+
+.continue img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+.titleCourse{
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin: 20px;
+}
+
+.titleCourse button{
+  border-radius: 1rem;
+  height: 60px;
+  width: 250px;
+}
+
+.moreCourses{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.activesCourses{
+  border: 1px solid #656565;
+  background-color: #272727;
+  border-radius: 1.5rem;
+  padding: 20px 30px;
+}
+
+.courses{
+  
 }
