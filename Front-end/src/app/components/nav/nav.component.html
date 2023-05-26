@@ -1,12 +1,12 @@
 <nav class="nav">
-  <a *ngIf="!isLogin" routerLink="/" class="logo">
-    <img src="../../../assets/logo.png">
+  <a *ngIf="isLoggedIn()"  class="logo">
+    <a routerLink="/"><img  src="../../../assets/logo.png"></a>
     <link href="https://fonts.cdnfonts.com/css/product-sans" rel="stylesheet">
   </a>
 
   <!-- NAV PARA CUANDO NO SE ESTA LOGUEADO-->
   <div class="menu">
-    <ul *ngIf="!isLogin" [ngClass]="{'continue': isActive}">
+    <ul *ngIf="isLoggedIn()">
       <li><a routerLink="/">Inicio</a></li>
       <li><a (click)="rutas('#news')">Noticias</a></li>
       <li><a (click)="rutas('#courses')">Cursos</a></li>
@@ -16,56 +16,4 @@
       <li><button routerLink="/login" id="btnLogin">Ingresar</button></li>
     </ul>
   </div>
-
-  <!--NAV CUANDO EL USUARIO YA ESTA LOGUEADO-->
-  <div class="loguin" *ngIf="isLogin" [ngClass]="{'continue': !isActive}">
-    <ul class="nav-loguin">
-      <li class="btn-menu">
-        <header class="header">
-          <div class="container">
-          <div #option class="btn-menu">
-            <label for="btn-menu"><img id="option" src="../../../assets/nav/menu.png"></label>
-          </div>
-          </div>
-        </header>
-      </li>
-
-      <li>
-        <label>
-          <img routerLink="/" src="../../../assets/nav/logogris.png">
-        </label>
-      </li>
-      <li>
-        <img src="../../../assets/nav/flechaAbajo0.png">
-      </li>
-      <li>
-        <aside>
-          <img src="../../../assets/nav/Search.png">
-          <img src="../../../assets/nav/Notify.png">
-        </aside>
-      </li>
-      <hr>
-      <li>
-        <section>
-          <img src="../../../assets/nav/Perfil.png">
-          <a><img src="../../../assets/nav/flechaAbajo0.png"></a>
-          <ul class="submenu">
-            <li> <a routerLink="/profile"> Editar Perfil</a></li>
-            <li> <a>Cerrar sesión</a></li>
-          </ul>
-        </section>
-      </li>
-    </ul>
-  </div> 
-  <input type="checkbox" id="btn-menu">
-<div class="container-menu">
-	<div class="cont-menu">
-		<nav>
-      <a (click)="rutas('#news')">Noticias</a>
-      <a (click)="rutas('#courses')">Cursos</a>
-      <a (click)="rutas('#briefcase')">Portafolio</a>
-		</nav>
-		<label for="btn-menu">✖️</label>
-	</div>
-</div>
 </nav>

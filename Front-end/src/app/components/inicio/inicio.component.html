@@ -1,8 +1,57 @@
-<app-nav></app-nav>
-<main>
-    <img class="logo" src="../../../assets/logo.png">
-    <h2>METANIMATION</h2>
-    <h3>BIENVENIDO</h3>
-    <h4>MIRA LO QUE EL METAVERSO TIENE PREPARADO PARA TI</h4>
-    <img src="../../../assets/newsMeta/Hellboy_.png">
-</main>
+ <!--NAV CUANDO EL USUARIO YA ESTA LOGUEADO-->
+ <nav>
+    <div class="loguin" *ngIf="isLoggedIn()">
+       <!--
+       <a id="logo" *ngIf="isLoggedIn()" routerLink="/" class="logo">
+         <img src="../../../assets/nav/logogris.png">
+         <link href="https://fonts.cdnfonts.com/css/product-sans" rel="stylesheet">
+       </a>
+       -->
+       <div class="menu">
+       <ul class="nav-loguin">
+         <li class="btn-menu">
+           <header class="header">
+             <div class="container">
+             <div #option class="btn-menu">
+               <label for="btn-menu"><img id="option" src="../../../assets/nav/menu.png"></label>
+             </div>
+             </div>
+           </header>
+         </li>
+         <li>
+           <aside>
+             <img src="../../../assets/nav/Search.png">
+             <img src="../../../assets/nav/Notify.png">
+           </aside>
+         </li>
+         <hr>
+         <li>
+           <section>
+             <img src="../../../assets/nav/Perfil.png">
+             <a><img src="../../../assets/nav/flechaAbajo0.png"></a>
+             <ul class="submenu">
+               <li> <a routerLink="/profile"> Editar Perfil</a></li>
+               <li> <a (click)="logout()">Cerrar sesión</a></li>
+             </ul>
+           </section>
+         </li>
+       </ul>
+     </div>
+     </div> 
+     <input type="checkbox" id="btn-menu">
+   <div class="container-menu">
+       <div class="cont-menu">
+           <nav>
+         <a routerLink="/news">Noticias</a>
+         <a routerLink="/courses">Cursos</a>
+         <a routerLink="/briefcase">Portafolio</a>
+         <a routerLink="/dashboard">Mi perfil</a>
+           </nav>
+           <label for="btn-menu">      
+         <li>
+           <img src="../../../assets/nav/flechaIzquierda.png">
+         </li>
+     </label>
+       </div>
+   </div>
+   </nav>

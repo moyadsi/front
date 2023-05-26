@@ -2,6 +2,8 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Router } from '@angular/router';
+
 
 
 
@@ -13,19 +15,21 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class NavComponent implements OnInit {
 
-  isLogin = new BehaviorSubject<boolean>(this.checkToken());
-  private checkToken() : boolean {
-    return !!localStorage.getItem('token');
+  constructor(public auth: AuthService, private router: Router, private elementReF: ElementRef){
   }
 
-  login(token:string) : void {
-    localStorage.setItem('token', token);
-    this.isLogin.next(true);
-
+  isLoggedIn(): Observable<boolean>{
+    return this.auth.isLoggedIn();
   }
 
-  constructor(public auth: AuthService, private elementReF: ElementRef){}
-  isActive : boolean = false;
+  logout(): void {
+    this.auth.logout()
+    console.log('Sesion Cerrada')
+    this.router.navigate(['/home']);
+  }
+
+
+
   rutas(ruta: string) {
     const elementNews = this.elementReF.nativeElement.ownerDocument.querySelector(ruta);
     console.log(elementNews);
