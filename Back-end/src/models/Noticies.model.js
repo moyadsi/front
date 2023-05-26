@@ -14,14 +14,17 @@ const NoticieSchema = new mongoose.Schema({
     type: String
   },
   PublicationDate:{
-    type: Date.now()
+    type: String
   },
-  videoURL:[
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Video'
-    }
-  ]
+  videoURL:{
+      type: String
+  },
+  ImagenURL:{
+    type: String
+  },
+  PodCast:{
+    type: String
+  }
 })
 
 module.exports = mongoose.model('Noticie',NoticieSchema)

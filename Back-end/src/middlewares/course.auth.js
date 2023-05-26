@@ -1,5 +1,4 @@
 const Jwt = require('jsonwebtoken');
-const conexion = require('../config/mysql.config')
 require('dotenv').config();
 
 const verifyTokenEmailModifyCouser = async (req,res,next)=>{
@@ -12,7 +11,10 @@ const verifyTokenEmailModifyCouser = async (req,res,next)=>{
     const decode = Jwt.verify(token,process.env.SecretJWT)
 
     if(decode.Rol=='Profesor'){
-      
+      next()
+    }
+    else{
+      res.status(401).json({message:'Invalid User'})
     }
   } catch (error) {
     console.log(error);
