@@ -1,55 +1,43 @@
-const axios = require('axios')
 const conexion = require('../config/mysql.config')
+const Noticie = require('../models/Noticies.model')
 require('dotenv').config()
 
-const GetNoticie =(req,res)=>{
+const GetNoticie =async (req,res)=>{
     try {
-        let SearchSql=`select * from Noticies`
-        conexion.query(SearchSql,(err,rows,fields)=>{
-            if(err) throw err;
-            else{
-                res.status(200).json(rows)
-            }
-        })
+        const NoticieGetAll =await Noticie.find()
+        res.status(200).json({message:NoticieGetAll})
     } catch (error) {
         return res.status(500).json({error})
     }
 }
 
-const AddNoticie =(req,res)=>{
+const AddNoticie =async (req,res)=>{
     try {
-        const {Title,Description,Category,Author,PublicationDate,videoURL,podcastURl}= req.body;
-        let AddNoticie = `insert into Noticies (Title,Description,Category,Author,PublicationDate,videoURL,podcastURl) values (?,?,?,?,?,?,?)`;
-        conexion.query(AddNoticie,[Title,Description,Category,Author,PublicationDate,videoURL,podcastURl],(err,rows,fields)=>{
-            if(err)throw err;
-            else{
-                res.status(200).json(rows[0])
-            }
+
+        const NewNoticie = new Noticie({
+            Title: req.body.Title,
+            Description: req.body.Description,
+            Category: req.body.Category,
+            Author: req.body.Author,
+            PublicationDate: req.body.PublicationDate,
+            videoURL:req.body.VideoURL,
+            ImagenURL:req.body.ImagenURL,
+            PodCast:req.body.podcastURl
         })
+
+        const NoticieSave = await NewNoticie.save()
+
+        res.status(201).send(NoticieSave)
+
     } catch (error) {
         res.status(500).json(error)
     }
 }
 
-const DeleteNoticie  = (req,res)=>{
+const DeleteNoticie =async (req,res)=>{
     try {
-        const {id} = req.params
-        let DeleteNoticie= `Delete from Noticies where id=${id}`
-        let SearchNoticieId= `Select * from Noticies where id=${id}`;
-        conexion.query(SearchNoticieId,(err,rows,fields)=>{
-            if(err)throw err;
-            else if(rows[0]==undefined){
-                res.status(404).json({message:"Noticie not found"})
-            }
-            else if(rows){  
-                conexion.query(DeleteNoticie,(err,rows,fields)=>{
-                if(err)throw err
-                else{
-                    res.status(200).json({message:"Delete Noticie Success"})
-                }
-            })
-            }
-        })
+        await Noticie.findByIdAndDelete(req.params.id)
+        res.status(200).json({message:'Noticia Elminada'})
     } catch (error) {
         res.status(500).json(error)
     }
