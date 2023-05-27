@@ -36,6 +36,7 @@ main{
 
 .topics-curse{
     display:grid ;
+    width: 100%;
     grid-template-columns: 50% 50%;
 }
 .curseDC{
@@ -266,10 +267,12 @@ main{
             border-radius: 10px;
             border: 1px white solid;
             color: white;
-            width: 70%;
+            width: 60%;
             height: 40%;
             font-size: 20px;
             padding: 0 0 20px 0;
+            margin: 0 0 0 22%;
+            text-align: center;
         }
         .topics-curse > label > a > button:hover{
             border: 2px rgba(28,178,162,1 )solid;
@@ -277,7 +280,10 @@ main{
         }
     
         .topics-curse > label > p{
-            margin: 5% 0 0 15%;
+            margin: 5px 0 0 0;
+            text-align: center;
+            font-size: 13px;
+            
         }
 
         .topics-curse {

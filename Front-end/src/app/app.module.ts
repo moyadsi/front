@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,7 +26,6 @@ import { UsComponent } from './components/us/us.component';
 import { SuscriptionComponent } from './components/suscription/suscription.component';
 import { TeamComponent } from './components/team/team.component';
 import { BestMetaComponent } from './components/best-meta/best-meta.component';
-import { InicioComponent } from './components/inicio/inicio.component';
 import { DetailsCourseComponent } from './components/details-course/details-course.component';
 import { DetailsBriefcaseComponent } from './components/details-briefcase/details-briefcase.component';
 import { BriefcaseProjectComponent } from './components/briefcase-project/briefcase-project.component';
@@ -56,7 +54,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     SuscriptionComponent,
     TeamComponent,
     BestMetaComponent,
-    InicioComponent,
     DetailsCourseComponent,
     DetailsBriefcaseComponent,
     BriefcaseProjectComponent,

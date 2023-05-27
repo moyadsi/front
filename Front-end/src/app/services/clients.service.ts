@@ -17,13 +17,10 @@ export class ClientsService {
   CreatePerson(Person:Person):Observable<any>{
     return this.http.post<Person>(this.ApiPerson+'SignUp',Person)
   }
-
-  login(Login:Login):Observable<any> {
-    const body = { email:String, Password:String };
-    return this.http.post<Login>(this.ApiPerson+'SignIn', Login);
+  login(login: Login): Observable<any> {
+    return this.http.post<Login>(this.ApiPerson + 'SignIn', login);
   }
-
-
+  
   getRequest(route: string, queries?: Record<string, string>, headers?: Record<string, string>) {
     let reqHeaders = new HttpHeaders();
     let reqParams = new HttpParams();

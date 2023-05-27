@@ -1,8 +1,6 @@
 *{
     font-family: 'Product Sans', sans-serif;
-
 }
-
 .course{
     display: grid;
     grid-template-columns: 30% 70%;
@@ -35,6 +33,8 @@
     height: 65%;
     width: 80%;
     margin: 4% 0 0 10%;
+    overflow-y: scroll;
+    direction:ltr;
 }
 
 .module > section > h4 {
@@ -417,7 +417,7 @@ width: 97%;
     }
     .write-comments > button{
         width: 5.5%;
-        height: 9.4%;
+        height: 8.8%;
         background-color: rgba(153, 153, 153, 0.664);
         border-radius: 0 10px 10px 0;
         border: 3px rgb(150, 149, 149) solid;
@@ -467,8 +467,37 @@ width: 97%;
     vertical-align: middle;
     cursor: pointer;
     }
+    .write-comments > label > div > img{
+    width: 15%;
+    object-fit: contain;
+    margin: 5px;
+    vertical-align: middle;
+    cursor: pointer;
+    }
+    .write-comments > label > div {
+        display: inline-block;
+        margin: 0 0 0 20%;
+    }
+    .write-comments > label > div > button{
+    background-color: transparent;
+    border: none;
+    color: white;
+    margin-left: -7px;
+    }
 
-
+    .write-comments > label > input{
+        margin: 2% 0 0 5%;
+        width: 80%;
+        height: 30px;
+        background-color: #313131;
+        border-radius: 10px;
+        color: white;
+    }
+    
+    .write-comments > label > input::placeholder{
+        color: white;
+        padding: 5px;
+    }
 /* ARCHIVOS Y ENLACES*/
 
     .conteiner-links{

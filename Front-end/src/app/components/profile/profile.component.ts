@@ -22,6 +22,13 @@ export class ProfileComponent implements OnInit {
       }
     
   }
+  mostrarComponente = [false, false, false];
+
+  toggleComponent(index: number): void {
+    this.mostrarComponente[index] = !this.mostrarComponente[index];
+  }
+  
+  
   
   ngOnInit(): void {
   }

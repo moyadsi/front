@@ -36,6 +36,8 @@ toggleButton(index: number) {
   } 
 }
 
+
+
   ngOnInit(): void {
   }
 

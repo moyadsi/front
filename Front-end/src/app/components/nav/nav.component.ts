@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 
 
@@ -18,16 +18,14 @@ export class NavComponent implements OnInit {
   constructor(public auth: AuthService, private router: Router, private elementReF: ElementRef){
   }
 
-  isLoggedIn(): Observable<boolean>{
-    return this.auth.isLoggedIn();
+  isLoggedIn(): Observable<boolean> {
+    return this.auth.isLoggedIn(); // Llama al método isLoggedIn() del AuthService
   }
 
   logout(): void {
-    this.auth.logout()
-    console.log('Sesion Cerrada')
+    this.auth.logout();
     this.router.navigate(['/home']);
   }
-
 
 
   rutas(ruta: string) {
@@ -36,7 +34,10 @@ export class NavComponent implements OnInit {
     elementNews.scrollIntoView({ behavior: 'smooth' });
   }
 
+
+  activeSection: string = 'inicio';
+
   ngOnInit(): void {
-    
+
   }
 }

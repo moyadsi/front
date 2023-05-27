@@ -1,4 +1,4 @@
-<app-inicio></app-inicio>
+<app-nav></app-nav>
 <main>
     <!--CURSO-->
     <div class="course">
@@ -213,26 +213,37 @@
                 <h4>fernandopinto5:</h4>
                 <p>Que nivel.</p>
                 <hr>
-                <a><img src="../../../assets/cursos/comentarios.png">Responder</a>
-                <a><img src="../../../assets/portafolio/Heart-follow.png">Me gusta</a>
+                <a (click)="setActiveSection(1)"><img src="../../../assets/cursos/comentarios.png">Responder</a>
+                <div>
+                    <img *ngIf="counters[0] > 0" src="../../../assets/portafolio/Heart-follow.png">
+                    <img *ngIf="counters[0] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
+                    <button (click)="toggleFavorite(0)"> Me gusta</button>
+                </div>
+                <input type="text" placeholder="Escribe tu respuesta" *ngIf="activeSectionIndex === 1">
             </label>
             <label>
                 <h4>aaronpelao_:</h4>
                 <p>@fernandopinto5 puro talento mi bro.</p>
                 <hr>
-                <a><img src="../../../assets/cursos/comentarios.png">Responder</a>
-                <a><img src="../../../assets/portafolio/Heart-follow.png">Me gusta</a>
-            </label>
-            <label>
-                <h4>Mon Avellanede:</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex sed, illum veniam magni, sit dignissimos odit doloremque temporibus nesciunt architecto alias voluptatum.</p>
-                <hr>
-                <a><img src="../../../assets/cursos/comentarios.png">Responder</a>
+                <a (click)="setActiveSection(2)"><img src="../../../assets/cursos/comentarios.png">Responder</a>
                 <div>
                     <img *ngIf="counters[1] > 0" src="../../../assets/portafolio/Heart-follow.png">
                     <img *ngIf="counters[1] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
                     <button (click)="toggleFavorite(1)"> Me gusta</button>
                 </div>
+                <input type="text" placeholder="Escribe tu respuesta" *ngIf="activeSectionIndex === 2">
+            </label>
+            <label>
+                <h4>Mon Avellanede:</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex sed, illum veniam magni, sit dignissimos odit doloremque temporibus nesciunt architecto alias voluptatum.</p>
+                <hr>
+                <a (click)="setActiveSection(3)"><img src="../../../assets/cursos/comentarios.png">Responder</a>
+                <div>
+                    <img *ngIf="counters[2] > 0" src="../../../assets/portafolio/Heart-follow.png">
+                    <img *ngIf="counters[2] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
+                    <button (click)="toggleFavorite(2)">Me gusta</button>
+                </div>
+                <input type="text" placeholder="Escribe tu respuesta" *ngIf="activeSectionIndex === 3">
             </label>
         </section>
     </div>

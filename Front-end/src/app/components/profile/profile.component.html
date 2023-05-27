@@ -1,4 +1,4 @@
-<app-inicio></app-inicio>
+<app-nav></app-nav>
 <main>
   <div class="info-profile">
     <div class="people">
@@ -26,9 +26,10 @@
         <h4>Proyectos Creados</h4>
         <h5>por <strong>Antonio J.Manzanedo</strong></h5>
       </section>
+      <button (click)="toggleComponent(0)">Sofeware y herramientas utilizadas</button>
       <section>
         <h6>Sofware y herramientas utilizadas:</h6>
-        <div class="tools">
+        <div class="tools" *ngIf="mostrarComponente[0]">
           <label>
             <p><img src="../../../assets/portafolio/adobe.png">Adobe xd</p>
             <p><img src="../../../assets/portafolio/photoshop.png">Photoshop</p>
@@ -56,6 +57,8 @@
     <button id="seguir">+ Seguir</button>
     <button>Mensaje <img src="../../../assets/cursos/enviar.png"></button>
   </div>
+  <button (click)="toggleComponent(1)">Redes y comentarios</button>
+  <section *ngIf="mostrarComponente[1]">
     <h6>Email y Telefonos</h6>
     <form>
       <p>
@@ -69,6 +72,7 @@
       <p><img src="../../../assets/profile/instagram.png"><input type="text"></p>
       <p><img src="../../../assets/profile/youtube.png"><input type="text"></p>
     </form>
+  </section>
   </div>
 </div>
 <div class="professional-profile">
