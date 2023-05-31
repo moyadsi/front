@@ -25,8 +25,7 @@ export class NewsComponent implements OnInit {
   llenarData() {
     this.apiService.getData().subscribe(dataNews => {
       this.dataNews = dataNews;
-      this.news = this.dataNews.articles
-      console.log(this.news)
+      console.log(this.dataNews)
     })
   }
 

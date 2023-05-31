@@ -8,12 +8,11 @@ import { Observable } from 'rxjs';
 
 export class ApiService {
 
-   private urlApi = 'https://api.org/v2/everything?q=apple&from=2023-03-29&to=2023-04-05&sortBy=popularity&apiKey=d5928f3b929445a986aa4eb8f3d4ddc4';
+   private urlApi = 'http://localhost:5000/api/Noticies/GetNoticie';
 
   constructor(private http: HttpClient) { }
 
   public getData() : Observable<any>{
-
     return this.http.get<any>(this.urlApi);
   }
 }
