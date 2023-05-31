@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiPodcastService } from 'src/app/apiPodcast.service';
+import { ApiPodcastService } from 'src/app/services/apiPodcast.service';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({

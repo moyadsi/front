@@ -22,7 +22,7 @@ app.set('port',port);
 // Rutas
 app.use('/api/Users',require('./routes/Users.router'))
 app.use('/api/Company',require('./routes/Company.router'))
-app.use('/api/Noticie',require('./routes/Noticies.router'))
+app.use('/apicom',require('./routes/Noticies.router'))
 app.use('/api/Course',require('./routes/Course.router'))
 app.use('/api/Category',require('./routes/Category.router'))
 app.use('/api/Teacher',require('./routes/teacher.router'))
