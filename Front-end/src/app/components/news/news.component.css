@@ -31,10 +31,10 @@ main{
   background-color: #393939;
   border-radius: 30px;
   display: flex;
-  flex-direction: column;
   margin: 25px;
   direction: ltr;
   height: 130px;
+  cursor: pointer;
 }
 
 .targetNew .content{
@@ -86,8 +86,6 @@ main{
 }
 
 .targetNew img{
-  position: absolute;
-  right: 0;
   height: 100%;
   object-fit: cover;
   border-top-right-radius: 20px;

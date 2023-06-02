@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class DetailsNewsComponent implements OnInit {
   public dataNews: any = {};
-  public news: any[] = [];
+  public news: any = "";
   public podcast: any = {};
   public podcastItems: any = {};
   public itemsPodcast: any = {};
@@ -23,9 +23,8 @@ export class DetailsNewsComponent implements OnInit {
   }
 
   llenarData() {
-    this.apiService.getData().subscribe(dataNews => {
-      this.dataNews = dataNews;
-      this.news = this.dataNews.articles
+    this.apiService.getnewById().subscribe(news => {
+      this.news = this.news
       console.log(this.news)
     })
   }

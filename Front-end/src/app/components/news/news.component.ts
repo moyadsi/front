@@ -11,6 +11,8 @@ import { ApiService } from 'src/app/services/api.service';
 export class NewsComponent implements OnInit {
   public dataNews: any = {};
   public news: any[] = [];
+  public popularNew: any = "";
+  public idNew : string[] = [];
   public podcast: any = {};
   public podcastItems: any = {};
   public itemsPodcast: any = {};
@@ -25,7 +27,9 @@ export class NewsComponent implements OnInit {
   llenarData() {
     this.apiService.getData().subscribe(dataNews => {
       this.dataNews = dataNews;
-      console.log(this.dataNews)
+      this.news = this.dataNews.message
+      this.popularNew = this.news[0]
+      console.log(this.popularNew)
     })
   }
 
@@ -35,6 +39,11 @@ export class NewsComponent implements OnInit {
       this.podcastItems = this.podcast.data.podcastUnionV2.episodesV2.items
   
     })
+  }
+
+  getId(id){
+    console.log(id)
+    window.location.href = "http://localhost:4200/details-news/"+id
   }
 
 

@@ -2,27 +2,28 @@
 <main>
   <section class="leftPart">
 
-    <div class="targetNew" *ngFor="let date of news">
-      <div class="content">
+    <div class="targetNew" (click)="getId(date._id)" *ngFor="let date of news" [routerLink]="[ '/details-news', date._id ]">
+      <div class="content" id="{{date._id}}">
         <div class="buttonDate">
-          <button>{{date.author}}</button>
+          <button>{{date.Author}}</button>
+          <span>{{date.PublicationDate}}</span>
         </div>
         <p class="titleTarget">
-          {{date.title}}
+          {{date.Title}}
         </p>
         <p class="descriptionTarget">
-          {{date.description}}
+          {{date.Description}}
         </p>
       </div>
-      <img src={{date.urlToImage}} alt="" />
+      <img src={{date.ImagenURL}} alt="" />
     </div>
 
   </section>
-  <section class="centerPart">
+  <section class="centerPart" >
     <img class="imageBackground" src="../../../assets/News/News 1/Cajon medio/img/Trazado 68.png" alt="" />
     <div class="categoryAndTitle">
-      <button>Category</button>
-      <p>The last of us</p>
+      <button>{{popularNew.Category}}</button>
+      <p>{{popularNew.Title}}</p>
     </div>
     <div class="tiktokApi">
       <div class="headerTikTok">
@@ -33,36 +34,28 @@
       </div>
     </div>
     <div class="information">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione animi
-        quasi tenetur harum corrupti ex ea delectus, architecto consequatur
-        pariatur expedita accusantium aut, velit quibusdam optio dolorum ut
-        officia a! Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-        Amet, eos inventore? Vitae nobis molestiae molestias quod earum id
-        eligendi architecto at, odit nostrum corporis repellendus
-        necessitatibus, et sequi quia unde!
-      </p>
+      <p>{{popularNew.Description}}</p>
       <div class="targetVideo">
         <div class="targetVideoMin">
           <a href="">
-            <img src="../../../assets/News/News 1/Cajon medio/img/Rectángulo 359.jpg" alt="" />
+            <img src={{popularNew.ImagenURL}} alt="" />
           </a>
         </div>
         <div class="targetVideoMin">
           <a href="">
-            <img src="../../../assets/News/News 1/Cajon medio/img/Rectángulo 360.jpg" alt="" />
+            <img src={{popularNew.ImagenURL}} alt="" />
           </a>
         </div>
         <div class="targetVideoMin">
           <a href="">
-            <img src="../../../assets/News/News 1/Cajon medio/img/Rectángulo 362.jpg" alt="" />
+            <img src={{popularNew.ImagenURL}} alt="" />
           </a>
         </div>
       </div>
     </div>
     <div class="buttonsEnd">
       <a class="lookVideo" href="">Ver video corto</a>
-      <a class="readArticule" routerLink="/details-news">Leer el articulo completo</a>
+      <a class="readArticule"  [routerLink]="[ '/details-news', popularNew._id ]">Leer el articulo completo</a>
     </div>
   </section>
   <section class="rightPart">

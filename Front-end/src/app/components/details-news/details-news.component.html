@@ -7,24 +7,24 @@
     </div>
 
   </section>
-  <section class="sectionNewInfo">
+  <section class="sectionNewInfo" *ngFor="let date of news">
     <div class="categoryAndDate">
-      <button><div></div> Categoria</button>
-      <p>17 de Marzo de 2023</p>
+      <button><div></div> {{date.Category}}</button>
+      <p>{{date.PublicationDate}}</p>
     </div>
     <div class="titleAndInformation">
-      <h2>THE LAST OF US</h2>
+      <h2>{{date.Title}}</h2>
       <hr>
-      <p>By Steven T.Wright on March 5, 2023 at 6:00am pst</p>
+      <p>By {{date.Author}} on {{date.PublicationDate}}</p>
     </div>
     <div class="parrafAndImages">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad velit delectus, excepturi vitae nobis ducimus necessitatibus id praesentium cupiditate voluptas aut voluptatum explicabo in quasi, rem harum omnis exercitationem animi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit unde magni expedita voluptatem dolor nam cum eligendi, id voluptatibus libero provident voluptatum commodi adipisci, beatae iste cumque labore est dicta.</p>
+      <p>{{date.Description}}</p>
       <div class="slideImages">
-        <img class="imageSlide" src="https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2022/11/the-last-of-us-hbo-portada.jpg?fit=1200%2C834&quality=50&strip=all&ssl=1" alt="">
-        <img class="imageSlide" src="https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2022/11/the-last-of-us-hbo-portada.jpg?fit=1200%2C834&quality=50&strip=all&ssl=1" alt="">
-        <img class="imageSlide" src="https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2022/11/the-last-of-us-hbo-portada.jpg?fit=1200%2C834&quality=50&strip=all&ssl=1" alt="">
+        <img class="imageSlide" src={{date.ImagenURL}} alt="">
+        <img class="imageSlide" src={{date.ImagenURL}} alt="">
+        <img class="imageSlide" src={{date.ImagenURL}} alt="">
       </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad velit delectus, excepturi vitae nobis ducimus necessitatibus id praesentium cupiditate voluptas aut voluptatum explicabo in quasi, rem harum omnis exercitationem animi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit unde magni expedita voluptatem dolor nam cum eligendi, id voluptatibus libero provident voluptatum commodi adipisci, beatae iste cumque labore est dicta. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, laudantium! Adipisci temporibus provident harum, suscipit distinctio sunt voluptate! Vitae necessitatibus unde aperiam ratione quae, mollitia eaque quis odio! Ea, nisi? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis facilis recusandae earum quasi nesciunt sunt quisquam eos aspernatur, minima iste expedita deleniti similique necessitatibus. Sapiente cupiditate temporibus eos ab esse!</p>
+      <p>{{date.Description}}</p>
     </div>
       
   </section>

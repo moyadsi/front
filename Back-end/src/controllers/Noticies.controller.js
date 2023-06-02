@@ -67,9 +67,22 @@ const UpdateNoticie=(req,res)=>{
     }
 }
 
+
+const GetNoticiesID =async (req,res)=>{
+    try {
+      const NoticieAwait=await Noticie.find({_id:req.params.id})
+      res.status(200).send(NoticieAwait)
+  
+    } catch (error) {
+      res.status(500).json(error)
+    }
+  }
+  
+
 module.exports = {
     GetNoticie,
     AddNoticie,
     DeleteNoticie,
-    UpdateNoticie
+    UpdateNoticie,
+    GetNoticiesID
 }
