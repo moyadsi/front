@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 
 export class ApiService {
 
-   private urlApi = 'http://localhost:5000/api/Noticies/GetNoticie';
+   private urlApi = 'localhost:5000/api/Noticies/';
 
   constructor(private http: HttpClient) { }
 

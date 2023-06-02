@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadInfoUser } from 'src/app/services/load-info-user.service';
+import { LoadInfoUserService } from 'src/app/services/load-info-user.service';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { LoadInfoUser } from 'src/app/services/load-info-user.service';
 export class DashboardComponent implements OnInit {
   public dataUser: any = {};
 
-  constructor(private loadInfoUser: LoadInfoUser) { }
+  constructor(private loadInfoUser: LoadInfoUserService) { }
 
   ngOnInit(): void {
     this.completarInfo()
