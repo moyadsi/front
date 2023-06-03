@@ -1,0 +1,157 @@
+.main{
+  display: flex;
+  width: 100%;
+  border: 1px solid #656565;
+  background-color: #272727;
+  border-radius: 1rem;
+
+}
+
+.info{
+  width: 40%;
+  border-right: 1px solid #656565;
+}
+
+.form{
+  width: 60%;
+  
+}
+
+.topSection{
+  display: flex;
+  padding: 20px;
+  border-bottom: 1px solid #656565;
+}
+
+.sectionStep{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.steps{
+display: flex;
+justify-content: space-evenly;
+}
+
+.step{
+  width: 25%;
+  margin: 0 20px 0 0;
+}
+
+.step p{
+  color: #656565;
+}
+
+.iconHr{
+  display: flex;
+}
+
+.iconHr hr{
+  width: 100%;
+  margin-left: 20px;
+}
+
+.active{
+  color: #30b491;
+}
+
+.activeText{
+  color: white !important;
+}
+
+.buttonNext{
+  border-left: 1px solid gray;
+  display: flex;
+}
+
+.buttonNext button{
+  margin: 0 0px 0 20px;
+  border: none;
+  height: 100%;
+  width: 50%;
+  border-radius: 0.5rem;
+  font-size: 22pt;
+  cursor: pointer;
+  background-color: transparent;
+  color: white;
+}
+
+.none{
+  display: none;
+}
+
+.sectionForm{
+  width: 100%;
+  overflow: hidden;
+}
+
+.containerForm{
+  width: 300%;
+}
+
+.box{
+  width: 33.3%;
+  display: flex;
+}
+
+.box div{
+  margin: 20px;
+}
+
+.uploadImage{
+  width: 50%;
+  display: flex;
+}
+
+#file-upload{
+  display: none;
+}
+
+.custom-file-upload {
+  display: flex;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #2e2e2e;
+  color: white;
+  border: none;
+  border-radius: 1rem;
+  font-size: 22pt;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 30px;
+}
+
+.custom-file-upload i{
+  margin-right: 10px;
+}
+
+.custom-file-upload:hover {
+  background-color: #656565;
+}
+
+.infoCourse{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.infoCourse input,select, textarea{
+  resize: none;
+  margin: 10px 0;
+  width: 350px;
+  padding: 5px 0 5px 10px;
+  border: 1px solid #656565;
+  background-color: #272727;
+  border-radius: 1rem;
+  color: white;
+}
+
+.infoCourse select{
+  width: 365px;
+}
+
+.infoCourse textarea{
+  height: 150px;
+}

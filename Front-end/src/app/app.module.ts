@@ -32,6 +32,7 @@ import { BriefcaseProjectComponent } from './components/briefcase-project/briefc
 import { DetailsNewsComponent } from './components/details-news/details-news.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoadCourseComponent } from './components/load-course/load-course.component';
+import { FilterDashboardComponent } from './components/filter-dashboard/filter-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { LoadCourseComponent } from './components/load-course/load-course.compon
     BriefcaseProjectComponent,
     DetailsNewsComponent,
     DashboardComponent,
-    LoadCourseComponent
+    LoadCourseComponent,
+    FilterDashboardComponent
   ],
   imports: [
     BrowserModule,

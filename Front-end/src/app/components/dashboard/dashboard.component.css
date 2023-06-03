@@ -486,3 +486,16 @@ main{
   margin: 20px 0 0 0;
   cursor: pointer;
 }
+
+.secondPart{
+  display: flex;
+  margin: 20px;
+}
+
+app-filter-dashboard{
+  width: 25%;
+}
+
+app-load-course{
+  width: 80%;
+}

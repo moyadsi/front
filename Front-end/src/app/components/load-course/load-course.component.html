@@ -4,16 +4,65 @@
   </div>
   <div class="form">
     <div class="topSection">
-      <p>Continua el proceso para subir tu curso nuevo</p>
-      <div class="steps">
-        <div class="step">
-          1 paso: Personalización
+      <div class="sectionStep">
+        <p>Continua el proceso para subir tu curso nuevo</p>
+        <div class="steps">
+          <div class="step">
+            <div class="iconHr">
+              <i [ngClass]="{'active' : colorDiamont >= 1}" class="fa-solid fa-diamond"></i>
+              <hr>
+            </div>
+            <p [ngClass]="{'activeText' : colorText >= 1}" >1 paso:<br> Personalización</p>
+          </div>
+          <div class="step">
+            <div class="iconHr">
+              <i [ngClass]="{'active' : colorDiamont >= 2}" class="fa-solid fa-diamond "></i>
+              <hr>
+            </div>
+            <p [ngClass]="{'activeText' : colorText >= 2}" >2 paso:<br> Personalización</p>
+          </div>
+          <div class="step">
+            <div class="iconHr">
+              <i [ngClass]="{'active' : colorDiamont >= 3}" class="fa-solid fa-diamond"></i>
+              <hr>
+            </div>
+            <p [ngClass]="{'activeText' : colorText >= 3}" >3 paso:<br> Personalización</p>
+          </div>
+          <div class="buttonNext">
+            <button (click)="previousStep()"><i class="fa-solid fa-chevron-left"></i></button>
+
+            <button (click)="nextStep()"><i class="fa-solid fa-{{textoBoton}}"></i></button>
+          </div>
         </div>
-        <div class="step">
-          2 paso: Personalización
+      </div>
+
+    </div>
+    <div class="sectionForm">
+      <div class="containerForm">
+        <div class="box">
+          <div class="uploadImage">
+            <label for="file-upload" class="custom-file-upload">
+              <i class="fa-solid fa-file-arrow-up"></i> Subir Imagen
+            </label>
+            <input id="file-upload" type="file" (change)="onFileSelected($event)">
+          </div>
+          <div class="infoCourse">
+            <input name="courseName" placeholder="Nombre del curso" type="text">
+            <select name="" id="">
+              <option value="" disabled selected>Selecciona una categoria</option>
+            </select>
+            <select name="" id="">
+              <option value="" disabled selected>Selecciona una nivel</option>
+            </select>
+            <textarea name="courseDescription" placeholder="Descripcion del curso" type="text"></textarea>
+          </div>
+
         </div>
-        <div class="step">
-          3 paso: Personalización
+        <div class="box">
+        
+        </div>
+        <div class="box">
+        
         </div>
       </div>
     </div>
