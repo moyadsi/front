@@ -1,29 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiPodcastService } from 'src/app/services/apiPodcast.service';
 import { ApiService } from 'src/app/services/api.service';
-
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-details-news',
   templateUrl: './details-news.component.html',
+  template: 'El ID de la noticia es: {{ _id }}',
   styleUrls: ['./details-news.component.css']
 })
 export class DetailsNewsComponent implements OnInit {
-  public dataNews: any = {};
+  _id: string = "";
   public news: any = "";
   public podcast: any = {};
   public podcastItems: any = {};
-  public itemsPodcast: any = {};
 
 
-  constructor(private apiService: ApiService, private apiPodcast: ApiPodcastService) { }
+  constructor(private route: ActivatedRoute, private apiService: ApiService, private apiPodcast: ApiPodcastService) { }
 
   ngOnInit(): void {
+    const idParam = this.route.snapshot.paramMap.get('id');
+    this._id = idParam !== null ? idParam : '';
+    console.log(this._id)
     this.llenarData()
     this.traerPodcast()
   }
 
   llenarData() {
-    this.apiService.getnewById().subscribe(news => {
+    this.apiService.getnewById(this._id).subscribe(news => {
       this.news = this.news
       console.log(this.news)
     })

@@ -110,7 +110,7 @@
           <button (click)="togglePasswordVisibility()">{{ showPassword ? 'Ocultar' : 'Mostrar' }}</button>
           </div>
         </div>
-        <button type="submit">Continuar</button>
+        <button type="submit" [routerLink]="[ '/login']">Continuar</button>
         <div class="termsAndConditions">
           <input type="checkbox" name="iAgree" id="" />
           <p>

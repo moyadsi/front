@@ -10,14 +10,13 @@ export class ApiService {
 
    private urlNew = 'http://localhost:5000/api/noticies/';
 
-
   constructor(private http: HttpClient) { }
 
   public getData() : Observable<any>{
     return this.http.get<any>(this.urlNew);
   }
 
-  public getnewById() : Observable<any>{
-    return this.http.get<any>(`${this.urlNew}`);
+  public getnewById(_id: string) : Observable<any>{
+    return this.http.get<any>(`${this.urlNew}/${_id}`);
   }
 }
