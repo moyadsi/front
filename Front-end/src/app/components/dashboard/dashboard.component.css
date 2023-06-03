@@ -1,7 +1,13 @@
 main{
   margin-top: 7rem;
   display: flex;
+  flex-direction: column;
 }
+
+.firstPart{
+  display: flex;
+}
+
 .leftPart{
   width: 25%;
 }

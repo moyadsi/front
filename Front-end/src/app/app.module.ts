@@ -31,6 +31,7 @@ import { DetailsBriefcaseComponent } from './components/details-briefcase/detail
 import { BriefcaseProjectComponent } from './components/briefcase-project/briefcase-project.component';
 import { DetailsNewsComponent } from './components/details-news/details-news.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoadCourseComponent } from './components/load-course/load-course.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     DetailsBriefcaseComponent,
     BriefcaseProjectComponent,
     DetailsNewsComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoadCourseComponent
   ],
   imports: [
     BrowserModule,
