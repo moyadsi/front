@@ -47,8 +47,8 @@ main{
 
     .conteiner-2{
         display: flex; /* Cambiar a flexbox */
-        width: 100%;
-        height: 15%;
+        width: 80%;
+        height: 20%;
         margin: 5% 0 0 10px;
         border-radius: 20px;
         overflow-x: auto; /* Mostrar scroll horizontal */
@@ -56,8 +56,9 @@ main{
     }
 
     .conteiner-2::-webkit-scrollbar {
-        width: 5px; /* Ancho del scrollbar */
+        width: 8px; /* Ancho del scrollbar */
         height: 5px;
+        margin: 10px;
       }
       
       .conteiner-2::-webkit-scrollbar-track {
@@ -65,8 +66,7 @@ main{
       }
       
       .conteiner-2::-webkit-scrollbar-thumb {
-        background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);
-        /* Color del thumb (manija) del scrollbar */
+        background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);/* Color del thumb (manija) del scrollbar */
         border-radius: 4px; /* Bordes redondeados del thumb */
       }
       
@@ -79,7 +79,7 @@ main{
         height: 200px ;
         display: flex;
         position: relative;
-        margin: -115% 0 0 110%;
+        margin: -100% 0 0 110%;
     }
 
 
@@ -124,22 +124,23 @@ main{
 
         .person-perfil > hr{
             width: 30%;
-            margin-left: 20%;
+            margin: -20% 0 0 20%;
         }
         .person-perfil > p{
-            width: 10px;
-            margin: 0 0 0 12%;
+            margin: 20% 0 0 -40px;
+            text-align: center;
         }
         .person > label > h5{
             font-size: 15px;
             display: inline-block;
-            margin-top: 30%;
+            margin-top: 55%;
+
         }
         
         .person > label > h3{
             display: inline-block;
-            margin: 0 0 0 0;
-            width: 150%;
+            margin: 20% 0 0 0;
+            width: 100%;
         }
 
         .person > label{
@@ -185,16 +186,16 @@ main{
        .category{
         background-color: #1a1a1a;
         border-radius: 20px;
-        flex: 0 10% 20%; 
+        flex: 0 0 20%; 
         display: flex; 
         padding: 10px;
         box-sizing: border-box;
-        margin: 0 0 5px 10px;
+        margin: 0 0 10px 10px;
        }
         .category  > img {
         object-fit: contain;
         width: 20px;
-        vertical-align: text-bottom;
+        margin: -25% 0 0 0;
         }
        .conteiner > hr {
         height: 80%;
@@ -203,7 +204,7 @@ main{
 
        .category > p {
         text-align: center;
-        margin: 5px 0 0 5px;
+        margin: 20px 0 0 10px;
         }
 
         .conteiner-2 :hover{
