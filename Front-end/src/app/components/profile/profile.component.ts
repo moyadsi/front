@@ -8,6 +8,16 @@ import { Component, OnInit } from '@angular/core';
 export class ProfileComponent implements OnInit {
 
   constructor() { }
+
+  /*variables*/
+  cantProjects: number = 0 
+  likes:number = 0
+  followers:number = 0 // Seguidores
+  followed: number = 0 // seguidos
+  nameUsers:string= 'Antonio J prueba'
+  description:string = ''
+  city:string=''
+
     /*MANEJO BOTON FAVORITOS*/
     counters= [0,0,0,0,0,0,0,0,0,0,0,0];
     favoriteCount = 0;

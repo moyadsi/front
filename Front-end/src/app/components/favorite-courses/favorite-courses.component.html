@@ -4,18 +4,18 @@
         <div class="conteiner-1">
             <section class="principal">
                 <img src="../../../assets/cursos/vida.png">
-                <h4>CREACION DE NFT:</h4>
-                <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero delectus nam provident in repellat</p>
+                <h4>DESCRIPCIÓN DEL CURSO:</h4>
+                <p> {{descripcionCurso }}</p>
             </section>
             <section class="person">
-                <div class="person-perfil">
+                <div class="person-perfil" *ngIf="profesores && profesores.length > 0">
                 <img src="https://xavierferras.com/wp-content/uploads/2019/02/266-Persona.jpg">
                 <hr>
-                <p>03/2023</p>
+                <p> Experiencia: <br>{{experienciaSeleccionada}}</p>
                 </div>
                 <label>
-                <h5>Vayana Silva</h5>
-                <h3>Directora Creativa en Bunker3022</h3>
+                <h5>{{nombreProfeSeleccionado}}</h5>
+                <h3>{{profesionSeleccionada}}</h3>
                 <hr>
                 <!--
                 <div class="qualification">
@@ -55,32 +55,18 @@
             </section>
         </div>
     <hr>
-        <div class="conteiner-2" routerLink="/courses">
-            <div class="category">
-                <a routerLink="/courses"><img src="../../../assets/newsMeta/infi.png"></a>
-                <p> Ux/UI</p>
-            </div>
-            <div class="category">
-                <a routerLink="/courses"><img src="../../../assets/cursos/vida.png"> </a>
-                <p> Creacion de NFT</p>
-            </div>
-            <div class="category">
-                <a routerLink="/courses"><img src="../../../assets/newsMeta/infi.png"></a>
-                <p> Animacion 2D</p>
-            </div>
-            <div class="category">
-                <a routerLink="/courses"> <img src="../../../assets/newsMeta/infi.png"></a>
-                <p> escultura digital</p>
-             </div>
-             <div class="category">
-                <a routerLink="/courses"><img src="../../../assets/newsMeta/infi.png"></a>
-                <p> Programación Bk</p>
-            </div>
-            <div class="conteiner-3">
-                <iframe width="860" height="415"  src="https://www.youtube.com/embed/xemOM7jfdrA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
+    <div class="conteiner-2">
+        <div  *ngFor="let categoria of categorias"  class="category" (click)="obtenerCursos(categoria.id)">
+          <img src="../../../assets/newsMeta/infi.png">
+          <p > {{categoria.nombre }} </p>
         </div>
+    </div> 
+    
+    <div class="conteiner-3">
+        <iframe width="880" height="415" [src]=" getSafeVideoUrl()" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
+    </div>
+
         <div class="sumergete">
             <img class="logoB" src="../../../assets/logoblanco.png">
             <img class="sumergete-img" src="../../../assets/Grupo702.png" >

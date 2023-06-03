@@ -4,15 +4,16 @@
     <div class="people">
       <img src="../../../assets/profile/Perfil.jpg">
       <hr>
-      <h5>Antonio J. Manzanedo</h5>
+      <h5>{{nameUsers}}</h5>
       <h3>ARTISTA FREELANCE</h3>
       <a><hr></a>
       <p>Yo soy: <br>
+        {{description}}
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim ab iste nostrum cumque eveniet suscipit recusandae temporibus et cupiditate eum animi accusantium sequi, 
       doloremque pariatur facilis obcaecati deleniti? Perspiciatis, veniam!</p>
       <label>
         <img src="../../../assets/portafolio/ubicacion.png">
-        <p>Medellin, Colombia</p>
+        <p> {{city}}Medellin, Colombia</p>
       </label>
       <section>
         <button>Arte digital <img src="../../../assets/portafolio/rojo.png"></button>
@@ -21,15 +22,15 @@
       </section>
     </div>
     <div class="project">
-      <section>
-        <h2>50</h2>
+      <article>
+        <h2>{{cantProjects}}</h2>
         <h4>Proyectos Creados</h4>
         <h5>por <strong>Antonio J.Manzanedo</strong></h5>
-      </section>
-      <button (click)="toggleComponent(0)">Sofeware y herramientas utilizadas</button>
+        <button (click)="toggleComponent(0)">Software y herramientas utilizadas</button>
+      </article>
       <section>
-        <h6>Sofware y herramientas utilizadas:</h6>
         <div class="tools" *ngIf="mostrarComponente[0]">
+          <h6>Software y herramientas utilizadas:</h6>
           <label>
             <p><img src="../../../assets/portafolio/adobe.png">Adobe xd</p>
             <p><img src="../../../assets/portafolio/photoshop.png">Photoshop</p>
@@ -47,17 +48,17 @@
       </section>
     </div>
   <div class="info-person">
-    <div>
+    <div class="person-details">
     <h5>Antonio J. Manzanedo</h5>
     <section>
-      <p><strong>120</strong> likes</p>
-      <p><strong>300</strong> seguidores</p>
-      <p><strong>9mil</strong> seguidos</p>
+      <p><strong>{{likes}}</strong> likes</p>
+      <p><strong>{{followers}}</strong> seguidores</p>
+      <p><strong>{{followed}}</strong> seguidos</p>
     </section>
     <button id="seguir">+ Seguir</button>
-    <button>Mensaje <img src="../../../assets/cursos/enviar.png"></button>
+    <button id="mensaje">Mensaje <img src="../../../assets/cursos/enviar.png"></button>
+    <button (click)="toggleComponent(1)">Redes y comentarios</button>
   </div>
-  <button (click)="toggleComponent(1)">Redes y comentarios</button>
   <section *ngIf="mostrarComponente[1]">
     <h6>Email y Telefonos</h6>
     <form>
