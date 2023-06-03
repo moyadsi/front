@@ -9,7 +9,7 @@
             </section>
             <section class="person">
                 <div class="person-perfil" *ngIf="profesores && profesores.length > 0">
-                <img src="https://xavierferras.com/wp-content/uploads/2019/02/266-Persona.jpg">
+                <img src="https://xavierferras.com/wp-content/uploads/2019/02/266-Persona.jpg" routerLink='/courses'>
                 <hr>
                 <p> Experiencia: <br>{{experienciaSeleccionada}}</p>
                 </div>
@@ -17,15 +17,7 @@
                 <h5>{{nombreProfeSeleccionado}}</h5>
                 <h3>{{profesionSeleccionada}}</h3>
                 <hr>
-                <!--
                 <div class="qualification">
-                    <img *ngIf="counters[0] > 0" src="../../../assets/cursos/Star.png">
-                    <img *ngIf="counters[0] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
-                    <button (click)="toggleFavorite(0)"> </button>
-                </div>
-                -->
-                <div class="qualification">
-
                         <button >
                         <img (click)="toggleQualification(0)" *ngIf="counters[0] > 0" src="../../../assets/cursos/Star.png">
                         <img *ngIf="counters[0] === 0" src="../../../assets/cursos/Star_1.png">
@@ -50,12 +42,12 @@
                         <img *ngIf="counters[4] > 0" src="../../../assets/cursos/Star.png">
                         <img *ngIf="counters[4] === 0" src="../../../assets/cursos/Star_1.png">
                         </button>
-                    </div>
+                </div>
                 </label>
             </section>
         </div>
     <hr>
-    <div class="conteiner-2">
+    <div class="conteiner-2" >
         <div  *ngFor="let categoria of categorias"  class="category" (click)="obtenerCursos(categoria.id)">
           <img src="../../../assets/newsMeta/infi.png">
           <p > {{categoria.nombre }} </p>

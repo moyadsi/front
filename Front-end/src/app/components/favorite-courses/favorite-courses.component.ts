@@ -56,9 +56,9 @@ obtenerCursos(idCategoria: string) {
 
   this.http.get<any[]>(url).subscribe(
     (response) => {
-      this.cursos = response.filter(curso => curso.IdCourse === idCategoria).map(curso => {
+      this.cursos = response.filter(curso => curso.Id=== idCategoria).map(curso => {
         return {
-          id: curso.IdCourse,
+          id: curso.Id,
           url: curso.Url,
           descripcion: curso.DescriptionCourse,
           idteacher: curso.IdTeacher
@@ -88,6 +88,8 @@ getSafeVideoUrl(): SafeResourceUrl {
     return ''; // O cualquier otro valor predeterminado en caso de que no haya URL seleccionada
   }
   const videoUrl = 'https://www.youtube.com/embed/' + this.urlSeleccionada;
+  console.log(videoUrl)
+
   return this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
 }
 
