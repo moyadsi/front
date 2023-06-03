@@ -12,7 +12,7 @@ export class NewsComponent implements OnInit {
   public dataNews: any = {};
   public news: any[] = [];
   public popularNew: any = "";
-  public idNew : string[] = [];
+  public shortDescription: any = "";
   public podcast: any = {};
   public podcastItems: any = {};
   public itemsPodcast: any = {};

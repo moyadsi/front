@@ -2,29 +2,29 @@
 <main>
   <section class="sectionShortVideo">
     <div class="targetVideo">
-      <iframe src="https://www.youtube.com/embed/8L-FQLajkYY" frameborder="0"></iframe>
+      <iframe [src]="safeUrl"></iframe>
       <p class="titleVideo">Este es un ejemplo de un titulo para una tarjeta</p>
     </div>
 
   </section>
-  <section class="sectionNewInfo" *ngFor="let date of news">
+  <section class="sectionNewInfo" >
     <div class="categoryAndDate">
-      <button><div></div> {{date.Category}}</button>
-      <p>{{date.PublicationDate}}</p>
+      <button><div></div> {{news.Category}}</button>
+      <p>{{news.PublicationDate}}</p>
     </div>
     <div class="titleAndInformation">
-      <h2>{{date.Title}}</h2>
+      <h2>{{news.Title}}</h2>
       <hr>
-      <p>By {{date.Author}} on {{date.PublicationDate}}</p>
+      <p>By {{news.Author}} on {{news.PublicationDate}}</p>
     </div>
     <div class="parrafAndImages">
-      <p>{{date.Description}}</p>
+      <p>{{description[0]}}</p>
       <div class="slideImages">
-        <img class="imageSlide" src={{date.ImagenURL}} alt="">
-        <img class="imageSlide" src={{date.ImagenURL}} alt="">
-        <img class="imageSlide" src={{date.ImagenURL}} alt="">
+        <img class="imageSlide" src={{news.Images[1].imageUrl}} alt="">
+        <img class="imageSlide" src={{news.Images[2].imageUrl}} alt="">
+        <img class="imageSlide" src={{news.Images[3].imageUrl}} alt="">
       </div>
-      <p>{{date.Description}}</p>
+      <p>{{description[1]}}</p>
     </div>
       
   </section>

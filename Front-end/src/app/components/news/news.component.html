@@ -12,15 +12,15 @@
           {{date.Title}}
         </p>
         <p class="descriptionTarget">
-          {{date.Description}}
+          {{date.Description.split(". ")[0]}}
         </p>
       </div>
-      <img src={{date.ImagenURL}} alt="" />
+      <img src={{date.Images[1].imageUrl}} alt="" />
     </div>
 
   </section>
   <section class="centerPart" >
-    <img class="imageBackground" src="../../../assets/News/News 1/Cajon medio/img/Trazado 68.png" alt="" />
+    <img class="imageBackground" src={{popularNew.Images[0].imageUrl}} alt="" />
     <div class="categoryAndTitle">
       <button>{{popularNew.Category}}</button>
       <p>{{popularNew.Title}}</p>
@@ -38,17 +38,17 @@
       <div class="targetVideo">
         <div class="targetVideoMin">
           <a href="">
-            <img src={{popularNew.ImagenURL}} alt="" />
+            <img src={{popularNew.Images[1].imageUrl}} alt="" />
           </a>
         </div>
         <div class="targetVideoMin">
           <a href="">
-            <img src={{popularNew.ImagenURL}} alt="" />
+            <img src={{popularNew.Images[2].imageUrl}} alt="" />
           </a>
         </div>
         <div class="targetVideoMin">
           <a href="">
-            <img src={{popularNew.ImagenURL}} alt="" />
+            <img src={{popularNew.Images[3].imageUrl}} alt="" />
           </a>
         </div>
       </div>
