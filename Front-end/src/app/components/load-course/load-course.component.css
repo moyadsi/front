@@ -88,6 +88,8 @@ justify-content: space-evenly;
 
 .containerForm{
   width: 300%;
+  display: flex;
+  overflow: auto;
 }
 
 .box{
@@ -137,7 +139,7 @@ justify-content: space-evenly;
   flex-direction: column;
 }
 
-.infoCourse input,select, textarea{
+.box input,select, textarea{
   resize: none;
   margin: 10px 0;
   width: 350px;
@@ -148,10 +150,10 @@ justify-content: space-evenly;
   color: white;
 }
 
-.infoCourse select{
+.box select{
   width: 365px;
 }
 
-.infoCourse textarea{
+.box textarea{
   height: 150px;
 }
