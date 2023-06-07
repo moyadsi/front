@@ -20,7 +20,10 @@ export class CoursesService {
     const url = `${this.apiUrl}/course/?categoria=${idCategoria}`;
     return this.http.get<any[]>(url);
   }
-
+  obtenerAllCursos(): Observable<any[]> {
+    const url = `${this.apiUrl}/course`;
+    return this.http.get<any[]>(url);
+  }
   obtenerProfesor(idProfesor: string): Observable<any[]> {
     const url = `${this.apiUrl}/teacher/${idProfesor}`;
     return this.http.get<any[]>(url);
