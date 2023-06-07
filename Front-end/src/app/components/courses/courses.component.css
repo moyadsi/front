@@ -88,31 +88,42 @@ main{
     border-color: aliceblue  solid;
     margin: 0 0 0 5%;
     height: 70%;
+    overflow-x: hidden; /* Mostrar scroll horizontal */
+    overflow-y: auto; /* Ocultar scroll vertical */
+    padding-bottom: 6px;
+    cursor: pointer;
    }
+
+   .category:hover{
+    border: 2px rgba(28,178,162,1 )solid;
+   }
+
+   .category::-webkit-scrollbar {
+    height: 3px; /* Ancho del scrollbar */
+  }
+  
+  .category::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+  
     .category > img {
     object-fit:contain;
     width: 90%;
     height: 90%;
     border-radius: 15px;
-    margin: 5% 0 0 10%;
+    margin: -25% 0 0 10%;
     }
     
     .category > label > p{
-        margin: -15px 0 0 10px;
+        margin: -5px 0 10px 10px;
         font-size: 13px;
-        width: 80%;
+        width: 90%;
+        text-align: start;
     }
     .category > label > h5{
-        margin: 10% 0 5% 10px;
+        margin: 5% 0 5% 10px;
 
     }
-
-    .conteiner-category :hover{
-    background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);
-    cursor: pointer;
-    cursor: pointer;border-radius: 20px;
-    }
-
 
     .detail-curse{ 
         background-color: #1a1a1a;
@@ -382,28 +393,49 @@ main{
         display: grid;
         grid-template-columns: 33% 33% 33%;
         width: 90%;
+    }    
+      .conteiner-new-challenge::-webkit-scrollbar {
+        width: 3px; /* Ancho del scrollbar */
+      }
+      
+      .conteiner-new-challenge::-webkit-scrollbar-thumb {
+        background: transparent;
+      }
+        
 
-    }
     .section-challenge{
         display: grid;
         grid-template-rows: 20% 80%;
         margin: 0 0 0 5%;
+
     }
+
     .new-challenge{
         width: 95%;
         background-image: linear-gradient(to top, #030303af 25%, #3f3e3ecb 40%),url("https://d1don5jg7yw08.cloudfront.net/filters:quality(70)/nft-images/20211120/Black_White_Bored_Ape__1637458806918.jpeg");
         background-size:cover;
         background-repeat: no-repeat;
         border-radius: 15px;
-        margin: 5% 0 0 0;
-        
+        margin: 5% 0 0 5%;
+        overflow-x: hidden; /* Mostrar scroll horizontal */
+        overflow-y: auto; /* Ocultar scroll vertical */
+        padding-bottom: 6px;
+        display: inline-block;
     }
+    .new-challenge::-webkit-scrollbar {
+        width: 3px; /* Ancho del scrollbar */
+      }
+      
+      .new-challenge::-webkit-scrollbar-thumb {
+        background: transparent;
+      }
+
     .new-challenge > h5{
-        font-size: 15px;
+        font-size: 13px;
         margin:  15% 0 0 10%;
     }
-    .new-challenge > h4{
-        font-size: 15px;
+    .new-challenge > p{
+        font-size: 10px;
         margin:  1% 0 0 10%;
     }
     .new-challenge > time{
@@ -418,12 +450,12 @@ main{
         font-size: 10px;
         border-radius: 5px;
         width: 10%;
-        height: 25%;
+        height: 20%;
         background-color: transparent;
         display: flex;
         background-image: url(../../../assets/new/ArrowR.png);
         border: 1px rgba(28,178,162,1 )solid;
-        background-size:25% 50%;
+        background-size:20% 40%;
         background-repeat: no-repeat;
         background-position: center;
     }
@@ -466,6 +498,7 @@ main{
     cursor: pointer;
     border: 1px rgba(28,178,162,1 )solid;
     }
+    
 .conteiner-challenge{
     display: grid;
     grid-template-columns: 30% 22% 22% 22%;
@@ -477,7 +510,7 @@ main{
     width: 90%;
     display: grid;
     grid-template-rows: 45% 15% 20% 10%;
-    margin: 0;
+    margin: 0 0 20px 0;
 }
 
 .challenge > img{
@@ -509,21 +542,27 @@ margin: 2% 0 0 44%;
 }
 .challenge > label > h3{
 margin: -1% 0 0 0;
+width: 90%;
+font-size: 13px;
+height: 10%;
 }
 .challenge > label > p{
-margin: -2% 0 0 0;
+margin: 10px 0 0 0;
 }
 .challenge > p{
-margin: 0 0 0 10%;
+margin: 5% 0 45% 10%;
 text-align: justify;
 width: 80%;
 font-size: 12px;
 }
 .challenge > label > div > h5{
-margin: 0;
+margin: 0 0 5px 0;
+height: 10%;
 }
 .challenge > label > div > h3{
-margin: 0;
+margin: 0 0 10px 0;
+width: 90%;
+font-size: 15px;
 }
 
 .challenge > button{
@@ -541,3 +580,16 @@ margin: 0 0 0 10%;
 cursor: pointer;
 border: 3px rgba(28,178,162,1 )solid;
 }
+
+
+.conteiner-new-challenge {
+  overflow-x: scroll;
+  text-align: left;
+  white-space: nowrap;
+}
+
+  
+  .challenge-container {
+    display: inline-block;
+  }
+  

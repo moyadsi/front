@@ -20,25 +20,11 @@
         </div>
         <div class="curseDC">
         <div class="conteiner-category">
-            <div class="category">
+            <div class="category" *ngFor="let curso of primerosCursos">
                 <img src="https://europeodeidiomas.edu.co/wp-content/uploads/2020/07/virtual.png">
                <label>
-                <h5> Creacion de NFT</h5>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, adipisci similique.</p>
-                </label>
-            </div>
-            <div class="category">
-                 <img src="https://europeodeidiomas.edu.co/wp-content/uploads/2020/07/virtual.png">
-                 <label>
-                    <h5> Creacion de NFT</h5>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, adipisci similique.</p>
-                 </label>
-            </div>
-            <div class="category">
-                <img src="https://europeodeidiomas.edu.co/wp-content/uploads/2020/07/virtual.png">
-                <label>
-                    <h5> Creacion de NFT</h5>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, adipisci similique.</p>
+                <h5>{{curso.name}} </h5>
+                <p>{{curso.description}}</p>
                 </label>
             </div>
         </div>
@@ -130,37 +116,29 @@
 </label>
 <section class="section-challenge">
  <h3>Nuevos cursos, nuevos retos</h3>
-<div class="conteiner-new-challenge">
-<label class="new-challenge">
-    <h5>Marketing</h5>
-    <h4>Diseñado Growth Loops</h4>
-    <time><img src="../../../assets/cursos/tiempo.png">22:04</time>
-    <button></button>
-</label>
-<label class="new-challenge">
-    <h5>Marketing</h5>
-    <h4>Diseñado Growth Loops</h4>
-    <time><img src="../../../assets/cursos/tiempo.png">22:04</time>
-    <button></button>
-</label>
-<label class="new-challenge">
-    <h5>Marketing</h5>
-    <h4>Diseñado Growth Loops</h4>
-    <time><img src="../../../assets/cursos/tiempo.png">22:04</time>
-    <button></button>
-</label>
-</div>
+ <div class="conteiner-new-challenge">
+    <div class="challenge-container">
+      <div class="new-challenge" *ngFor="let curso of ultimosCursos">
+        <h5>{{curso.name}}</h5>
+        <p>{{curso.description}}</p>
+        <time><img src="../../../assets/cursos/tiempo.png">22:04</time>
+        <button></button>
+      </div>
+    </div>
+  </div>
+  
 </section>
 </div>
-<label class="category-challenge">
-    <p>Nuevos cursos, nuevos retos</p>
-    <hr>
-    <p>20/14</p>
-    <label>
-    <button><img src="../../../assets/new/Arrow_L.png"></button>
-    <button><img src="../../../assets/new/ArrowR.png"></button>
-    </label>
-</label>
+    <label class="category-challenge">
+        <p>Nuevos cursos, nuevos retos</p>
+        <hr>
+        <p>20/14</p>
+        <label>
+          <button (click)="slideContainerLeft()"><img src="../../../assets/new/Arrow_L.png"></button>
+          <button (click)="slideContainerRight()"><img src="../../../assets/new/ArrowR.png"></button>
+        </label>
+      </label>
+  
 <!--SECCION DONDE SE VE LISTADO DE NUEVOS CURSOSO Y RETOS-->
 <div class="conteiner-challenge">
 <div class="challenge" *ngFor="let curso of cursos">
@@ -169,9 +147,9 @@
 <img src="../../../assets/cursos/vidaverde.png">
 <div>
     <h3>{{curso.name}}</h3>
-    <h5>Un curso de Mattias Adolfsson</h5>
+   <!--<h5>Un curso de: {{nombreProfeSeleccionado}}</h5>--> 
 </div>
-<button> 
+    <button> 
     <img (click)="toggleCourse(0)" *ngIf="countersCourse[0] === 0" src="../../../assets/cursos/Star_1.png">
     <img *ngIf="countersCourse[0] > 0" src="../../../assets/cursos/Star.png">
     </button>
