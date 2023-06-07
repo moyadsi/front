@@ -19,29 +19,27 @@ export class FavoriteCoursesComponent implements OnInit {
   profesionSeleccionada: any;
   categorias: { id: any; nombre: any; }[] | undefined;
   urlSeleccionada: string | undefined;
+  public videoUrl: SafeResourceUrl | undefined;
 
   constructor(private cursosService: CoursesService, private sanitizer: DomSanitizer) {}
-
+ /*OBTENER INFORMACION DE LAS CATEGORIAS */
   obtenerCategorias() {
     this.cursosService.obtenerCategorias().subscribe(
       (response) => {
         this.categorias = response.map(({ Id_Category: id, NameCategory: nombre }) => ({ id, nombre }));
         this.nombreCategoria = this.categorias[0]?.nombre; // Asignar el valor del primer elemento de la categoría al nombreCategoria
-        console.log(this.categorias)
       },
       (error) => {
         console.error(error);
       }
     );
   }
-
-
-public videoUrl: SafeResourceUrl | undefined;
-
   obtenerNombreCategoria(categoria: any): void {
     this.nombreCategoria = categoria.nombre;
     this.idCategoriaSeleccionada = categoria.id;
   }
+
+  /*OBTENER INFORMACION DE LOS CURSOS */
   obtenerCursos(idCategoria: string) {
     this.cursosService.obtenerCursos(idCategoria).subscribe(
       (response) => {
@@ -63,8 +61,6 @@ public videoUrl: SafeResourceUrl | undefined;
           // Llamar a la función obtenerProfesor con el ID del profesor
           this.obtenerProfesor(idTeacher);
         }
-  
-        console.log(this.cursos);
       },
       (error) => {
         console.error(error);
@@ -91,7 +87,6 @@ public videoUrl: SafeResourceUrl | undefined;
         }
   
         this.profesores = response;
-        console.log(this.profesores);
       },
       (error) => {
         console.error(error);

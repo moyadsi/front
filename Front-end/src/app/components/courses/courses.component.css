@@ -21,7 +21,7 @@
     color: white;
 }
 main{
-    margin: 10% 0 0 0;
+    margin: 5% 0 0 0;
 }
 .curse{
     display: grid;
@@ -30,10 +30,32 @@ main{
 }
 
 .topics-curse {
-    overflow-y: scroll;
-    direction:ltr;
+    display: flex; /* Cambiar a flexbox */
+    width: 80%;
+    height: 40%;
+    margin: 5% 0 0 10px;
+    border-radius: 20px;
+    overflow-x: hidden; /* Mostrar scroll horizontal */
+    overflow-y: auto; /* Ocultar scroll vertical */
 }
-
+.topics-curse::-webkit-scrollbar {
+    width: 8px; /* Ancho del scrollbar */
+    height: 5px;
+    margin: 10px;
+  }
+  
+  .topics-curse::-webkit-scrollbar-track {
+    background: transparent; /* Color del track del scrollbar */
+  }
+  
+  .topics-curse::-webkit-scrollbar-thumb {
+    background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);/* Color del thumb (manija) del scrollbar */
+    border-radius: 4px; /* Bordes redondeados del thumb */
+  }
+  
+  .topics-curse::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color del thumb al pasar el mouse */
+  }
 .topics-curse{
     display:grid ;
     width: 100%;
@@ -262,7 +284,7 @@ main{
             
         }
 
-        .topics-curse > label > a > button{
+        .topics-curse > div > a > button{
             background-color: #1a1a1a;
             border-radius: 10px;
             border: 1px white solid;
@@ -274,16 +296,16 @@ main{
             margin: 0 0 0 22%;
             text-align: center;
         }
-        .topics-curse > label > a > button:hover{
+        .topics-curse > div > a > button:hover{
             border: 2px rgba(28,178,162,1 )solid;
             cursor: pointer;
         }
     
-        .topics-curse > label > p{
-            margin: 5px 0 0 0;
+        .topics-curse > div > p{
+            margin: 5px 0 0 20px;
             text-align: center;
             font-size: 13px;
-            
+            width: 80%;   
         }
 
         .topics-curse {
