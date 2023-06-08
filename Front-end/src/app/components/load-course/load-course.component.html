@@ -4,6 +4,7 @@
   </div>
   <div class="form">
     <div class="topSection">
+      
       <div class="sectionStep">
         <p>Continua el proceso para subir tu curso nuevo</p>
         <div class="steps">
@@ -19,19 +20,19 @@
               <i [ngClass]="{'active' : colorDiamont >= 2}" class="fa-solid fa-diamond "></i>
               <hr>
             </div>
-            <p [ngClass]="{'activeText' : colorText >= 2}" >2 paso:<br> Personalización</p>
+            <p [ngClass]="{'activeText' : colorText >= 2}" >2 paso:<br> Módulos</p>
           </div>
           <div class="step">
             <div class="iconHr">
               <i [ngClass]="{'active' : colorDiamont >= 3}" class="fa-solid fa-diamond"></i>
               <hr>
             </div>
-            <p [ngClass]="{'activeText' : colorText >= 3}" >3 paso:<br> Personalización</p>
+            <p [ngClass]="{'activeText' : colorText >= 3}" >3 paso:<br> Archivos Adjuntos</p>
           </div>
           <div class="buttonNext">
             <button (click)="previousStep()"><i class="fa-solid fa-chevron-left"></i></button>
 
-            <button (click)="nextStep()"><i class="fa-solid fa-{{textoBoton}}"></i></button>
+            <button><i class="fa-solid fa-{{textoBoton}}"></i></button>
           </div>
         </div>
       </div>
@@ -41,20 +42,26 @@
       <div class="containerForm" id="containerForm">
         <div class="box">
           <div class="uploadImage" id="uploadImage">
+            <p>Nombre del curso : </p>
+            <input name="courseName" placeholder="Nombre del curso" type="text">
+            <p>Subir portada : </p>
             <label for="file-upload" class="custom-file-upload">
               <i class="fa-solid fa-file-arrow-up"></i> Subir Imagen
             </label>
             <input id="file-upload" type="file" (change)="onFileSelected($event)">
           </div>
           <div class="infoCourse">
-            <input name="courseName" placeholder="Nombre del curso" type="text">
+            <p>Categoria del curso : </p>
             <select name="" id="">
               <option value="" disabled selected>Selecciona una categoria</option>
             </select>
+            <!-- <p>Nivel del curso : </p>
             <select name="" id="">
               <option value="" disabled selected>Selecciona una nivel</option>
-            </select>
+            </select> -->
+            <p>Descripción del curso : </p>
             <textarea name="courseDescription" placeholder="Descripcion del curso" type="text"></textarea>
+             <button (click)="nextStep()">Siguiente</button>
           </div>
         </div>
         <div class="box">

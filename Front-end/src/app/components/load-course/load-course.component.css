@@ -95,6 +95,8 @@ justify-content: space-evenly;
 .box{
   width: 33.3%;
   display: flex;
+  max-height: 415px;
+  overflow: auto;
 }
 
 .box div{
@@ -104,6 +106,7 @@ justify-content: space-evenly;
 .uploadImage{
   width: 50%;
   display: flex;
+  flex-direction: column;
 }
 
 #file-upload{
@@ -116,13 +119,13 @@ justify-content: space-evenly;
   cursor: pointer;
   background-color: #2e2e2e;
   color: white;
-  border: none;
+  border: 2px dashed gray;
   border-radius: 1rem;
   font-size: 22pt;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  margin: 30px;
+  height: 200px;
+  margin: 10px 0;
 }
 
 .custom-file-upload i{
@@ -139,7 +142,7 @@ justify-content: space-evenly;
   flex-direction: column;
 }
 
-.box input,select, textarea{
+.box input,select, textarea, button{
   resize: none;
   margin: 10px 0;
   width: 350px;
@@ -148,12 +151,27 @@ justify-content: space-evenly;
   background-color: #272727;
   border-radius: 1rem;
   color: white;
+  height: 40px;
+}
+.box select, button{
+  cursor: pointer;
 }
 
 .box select{
   width: 365px;
+  height: 52px;
+}
+
+.box button{
+  background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);
+  border: none;
 }
 
 .box textarea{
   height: 150px;
 }
+
+.box p{
+  margin: 5px 0;
+}
+
