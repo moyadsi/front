@@ -209,6 +209,49 @@ CREATE TABLE qualification (
         REFERENCES AllCourse(Id)
 );
 
+CREATE TABLE detailsCourses (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    IdCourse INT,
+    NameCourses varchar(100),
+    DescriptionCourses varchar(200),
+    Duration varchar(45),
+    UrlVideo varchar(100),
+    CONSTRAINT fk_descripcion_courses FOREIGN KEY (IdCourse)
+        REFERENCES AllCourse(Id)
+);
+
+CREATE TABLE detailsCoursesFiles (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    IdCourse INT,
+    NameFile varchar(100),
+    State int,
+    UrlFile varchar(100),
+    CONSTRAINT fk_files_courses FOREIGN KEY (IdCourse)
+	REFERENCES AllCourse(Id)
+);
+
+CREATE TABLE detailsCoursesLinks(
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    IdCourse INT,
+    NameLink varchar(100),
+    State int,
+    UrlLink varchar(100),
+    CONSTRAINT fk_links_courses FOREIGN KEY (IdCourse)
+	REFERENCES AllCourse(Id)
+);
+
+CREATE TABLE Comments(
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    IdCourse INT,
+    comments varchar(100),
+    State int,
+    PersonId int,
+    likeComments varchar(45), 
+    CONSTRAINT fk_comments_courses FOREIGN KEY (IdCourse)
+	REFERENCES AllCourse(Id) ,
+    CONSTRAINT fk_person_comments FOREIGN KEY (PersonId)
+	REFERENCES person(Id)
+);
 
 /*Table Example*/
 

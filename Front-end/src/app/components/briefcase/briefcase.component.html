@@ -7,11 +7,9 @@
     <input type="text" placeholder="¿Que quieres buscar?">
   </div>
   <section class="option-prof">
-    <button>Arte digital <img src="../../../assets/portafolio/rojo.png"></button>
-    <button>Arte digital <img src="../../../assets/portafolio/azul.png"></button>
-    <button>3d artista <img src="../../../assets/portafolio/rojo.png"></button>
-    <button>Arte digital <img src="../../../assets/portafolio/morado.png"></button>
-    <button>Programador<img src="../../../assets/portafolio/azul.png"></button>
+  <div class="option" *ngFor="let categoria of categorias" (click)="obtenerCategorias()">
+    <button>{{categoria.nombre }}<img src="../../../assets/portafolio/rojo.png"></button>
+  </div>
     <img src="../../../assets/new/ArrowR.png">
   </section>
 <!--OPCIONES Y FILTRO DE PROFESIONALES-->

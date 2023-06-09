@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DetailsBriefcaseComponent } from '../details-briefcase/details-briefcase.component';
+import { CoursesService } from 'src/app/services/courses.service';
 
 @Component({
   selector: 'app-briefcase',
@@ -7,8 +8,37 @@ import { DetailsBriefcaseComponent } from '../details-briefcase/details-briefcas
   styleUrls: ['./briefcase.component.css']
 })
 export class BriefcaseComponent implements OnInit {
+  categorias: { id: any; nombre: any; }[] | undefined;
+  nombreCategoria: any;
+  idCategoriaSeleccionada: any;
 
-  constructor() { }
+  ngOnInit(): void {
+    this.obtenerCategorias();
+  }
+
+  constructor(private cursosService: CoursesService,) { }
+
+
+  obtenerCategorias() {
+    this.cursosService.obtenerCategorias().subscribe(
+      (response) => {
+        this.categorias = response.map(({ Id_Category: id, NameCategory: nombre }) => ({ id, nombre }));
+        this.nombreCategoria = this.categorias[0]?.nombre; // Asignar el valor del primer elemento de la categoría al nombreCategoria
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  obtenerNombreCategoria(categoria: any): void {
+    this.nombreCategoria = categoria.nombre;
+    this.idCategoriaSeleccionada = categoria.id;
+    this.obtenerCursos(categoria.id); // Obtener los cursos de la categoría seleccionada
+  }
+  obtenerCursos(id: any) {
+    throw new Error('Method not implemented.');
+  }
 
     /*MANEJO BOTON FAVORITOS*/
     counters= [0,0,0,0,0,0,0,0,0,0,0,0];
@@ -35,7 +65,6 @@ export class BriefcaseComponent implements OnInit {
     } 
   }
 
-  ngOnInit(): void {
-  }
+
 
 }

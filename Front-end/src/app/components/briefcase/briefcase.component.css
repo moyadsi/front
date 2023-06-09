@@ -58,19 +58,21 @@ main{
 }
 /* OPCIONES Y FILTRO PROFESIONAL*/
 .option-prof{
-  display: grid;
-  grid-template-columns: 13% 13% 13% 13% 15% 3%;
-  width: 50%;
-  height: 45%;
-  margin: 5% 0 0 35%;
+  display: flex;
+  width: 45%;
+  margin: 3% 0 0 28%;
+  overflow-x: auto; /* Mostrar scroll horizontal */
+  overflow-y: hidden; /* Ocultar scroll vertical */
 }
-.option-prof > button{
+.option-prof > div > button{
   width: 95%;
+  height: 50px;
   background-color: #383838;
   color: white;
   border-radius: 8px;
-  padding: 5%;
   border: none;
+  margin: 0 0 10px 50px;
+  text-align: start;
 }
 .option-prof > a > button{
   width: 95%;
@@ -82,10 +84,10 @@ main{
   text-decoration: none;
 }
 
-.option-prof> img{
+.option-prof> div > button > img{
   object-fit: contain;
-  width: 30%;
-  margin: 40% 0 0 10%;
+  width: 10%;
+  margin: 0 0 0 5px;
 }
 
 #btns{
@@ -105,7 +107,7 @@ main{
   background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);
   cursor: pointer;
 }
-.filter-professional{
+.filter-professional {
   display: grid;
   grid-template-columns: 15% 1% 5% 1% 5% 45% 10% 5% 10%;
   margin: 2% 0 0 5%;

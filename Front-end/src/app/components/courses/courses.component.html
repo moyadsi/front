@@ -21,7 +21,7 @@
         <div class="curseDC">
         <div class="conteiner-category">
             <div class="category" *ngFor="let curso of primerosCursos">
-                <img src="https://europeodeidiomas.edu.co/wp-content/uploads/2020/07/virtual.png">
+                <img [src]="curso.imgCourse" alt="Imagen del curso">
                <label>
                 <h5>{{curso.name}} </h5>
                 <p>{{curso.description}}</p>
@@ -110,7 +110,7 @@
     <h3>Actauliza Tu plan,</h3>
     <h2>Plan Bronze</h2>
     <img class="logoVerde" src="../../../assets/logo.png">
-    <u>Solo pulsa aqui para informarte</u>
+    <u routerLink='/membership'>Solo pulsa aqui para informarte</u>
 </label>
     <img>
 </label>
@@ -118,10 +118,10 @@
  <h3>Nuevos cursos, nuevos retos</h3>
  <div class="conteiner-new-challenge">
     <div class="challenge-container">
-      <div class="new-challenge" *ngFor="let curso of ultimosCursos">
+      <div class="new-challenge"  *ngFor="let curso of ultimosCursos">
         <h5>{{curso.name}}</h5>
         <p>{{curso.description}}</p>
-        <time><img src="../../../assets/cursos/tiempo.png">22:04</time>
+        <time><img src="../../../assets/cursos/tiempo.png">{{curso.duracion}} Horas</time>
         <button></button>
       </div>
     </div>
@@ -156,7 +156,7 @@
     <p>{{countersCourse[0]}}</p>
 </label>
 <p>{{curso.description}}</p>
-<button>Obtener Curso > </button>
+<button >Obtener Curso > </button>
 </div>
 </div>
 </main>

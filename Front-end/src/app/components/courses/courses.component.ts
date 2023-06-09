@@ -1,6 +1,7 @@
 import { Component, OnInit, Renderer2 ,ElementRef  } from '@angular/core';
 import { CoursesService } from 'src/app/services/courses.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DetailsCourseComponent } from '../details-course/details-course.component';
 
 
 @Component({
@@ -37,6 +38,8 @@ export class CoursesComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerCategorias();
     this.obtenerAllcourses();
+    const idCategoriaPorDefecto = '10'; // Reemplaza con el ID de la categoría por defecto
+    this.obtenerCursos(idCategoriaPorDefecto);
   }
 
   obtenerCategorias() {
@@ -60,7 +63,7 @@ export class CoursesComponent implements OnInit {
   obtenerCursos(idCategoria: string) {
     this.cursosService.obtenerCursos(idCategoria).subscribe(
       (response) => {
-        this.cursosCategoria = response.filter(curso => curso.Id === idCategoria).map(curso => {
+        this.cursosCategoria = response.filter(curso => curso.Id === Number(idCategoria)).map(curso => {
           return {
             id: curso.Id,
             url: curso.Url,
@@ -72,7 +75,7 @@ export class CoursesComponent implements OnInit {
             idteacher: curso.IdTeacher
           };
         });
-
+  
         // Asignar la primera URL a la variable urlSeleccionada de los cursos de la categoría seleccionada
         if (this.cursosCategoria.length > 0) {
           const idTeacher = this.cursosCategoria[0].idteacher; // Obtener el ID del profesor
@@ -96,7 +99,7 @@ export class CoursesComponent implements OnInit {
   obtenerAllcourses() {
     this.cursosService.obtenerAllCursos().subscribe(
       (response) => {
-        this.cursos = response.map(({ Id: id, NameCourse: name, DescriptionCourse: description, IdTeacher: idTeacher, ImgCourse: imgCourse }) => ({ id, name, description, idTeacher, imgCourse }));
+        this.cursos = response.map(({ Id: id, NameCourse: name, DescriptionCourse: description, IdTeacher: idTeacher, ImgCourse: imgCourse , durationCourse: duracion}) => ({ id, name, description, idTeacher, duracion, imgCourse}));
         this.nameCurso = this.cursos[0]?.name;
 
         // Ordenar los cursos por ID en orden descendente

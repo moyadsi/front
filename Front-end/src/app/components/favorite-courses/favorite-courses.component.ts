@@ -21,6 +21,12 @@ export class FavoriteCoursesComponent implements OnInit {
   urlSeleccionada: string | undefined;
   public videoUrl: SafeResourceUrl | undefined;
 
+
+  ngOnInit(): void {
+    this.obtenerCategorias();
+    const idCategoriaPorDefecto = '10'; // Reemplaza con el ID de la categoría por defecto
+    this.obtenerCursos(idCategoriaPorDefecto);
+  }
   constructor(private cursosService: CoursesService, private sanitizer: DomSanitizer) {}
  /*OBTENER INFORMACION DE LAS CATEGORIAS */
   obtenerCategorias() {
@@ -43,12 +49,12 @@ export class FavoriteCoursesComponent implements OnInit {
   obtenerCursos(idCategoria: string) {
     this.cursosService.obtenerCursos(idCategoria).subscribe(
       (response) => {
-        this.cursos = response.filter(curso => curso.Id=== idCategoria).map(curso => {
+        this.cursos = response.filter(curso => curso.Id === Number(idCategoria)).map(curso => {
           return {
             id: curso.Id,
             url: curso.Url,
             descripcion: curso.DescriptionCourse,
-            idteacher: curso.IdTeacher
+            idteacher: curso.IdTeacher,
           };
         });
   
@@ -57,7 +63,7 @@ export class FavoriteCoursesComponent implements OnInit {
           const idTeacher = this.cursos[0].idteacher; // Obtener el ID del profesor
           this.urlSeleccionada = this.cursos[0].url;
           this.descripcionCurso = this.cursos[0].descripcion;
-  
+
           // Llamar a la función obtenerProfesor con el ID del profesor
           this.obtenerProfesor(idTeacher);
         }
@@ -65,8 +71,10 @@ export class FavoriteCoursesComponent implements OnInit {
       (error) => {
         console.error(error);
       }
+
     );
   }
+  
   getSafeVideoUrl(): SafeResourceUrl {
     if (!this.urlSeleccionada) {
       return ''; // O cualquier otro valor predeterminado en caso de que no haya URL seleccionada
@@ -109,7 +117,5 @@ export class FavoriteCoursesComponent implements OnInit {
         
       }
 
-  ngOnInit(): void {
-    this.obtenerCategorias();
-  }
+
 }
