@@ -7,6 +7,10 @@ import { ClientsService } from './clients.service';
   providedIn: 'root'
 })
 export class AuthService {
+  isAuthenticated(): boolean {
+    return this.checkToken();
+  }
+  
   isLogin = new BehaviorSubject<boolean>(this.checkToken());
   admin = new BehaviorSubject<boolean>(false);
   profecional = new BehaviorSubject<boolean>(false);

@@ -15,6 +15,9 @@ import { DetailsBriefcaseComponent } from './components/details-briefcase/detail
 import { BriefcaseProjectComponent } from './components/briefcase-project/briefcase-project.component';
 import { DetailsNewsComponent } from './components/details-news/details-news.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { GuardGuard } from './guards/guard.guard';
+
+
 
 
 const routes: Routes = [
@@ -26,20 +29,18 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'news', component: NewsComponent},
   { path: 'favorite-news', component: FavoriteNewsComponent},
-  { path: 'profile', component: ProfileComponent},
+  { path: 'profile', component: ProfileComponent ,canActivate: [GuardGuard]},
   { path: 'membership', component: MembershipComponent},
   { path: 'suscription', component: SuscriptionComponent},
-  { path: 'detailsCourse', component: DetailsCourseComponent},
-  { path: 'detailsBriefcase', component: DetailsBriefcaseComponent},
-  { path: 'briefcase-project', component: BriefcaseProjectComponent},
+  { path: 'detailsCourse/:idCurso', component: DetailsCourseComponent ,canActivate: [GuardGuard]},
+  { path: 'detailsBriefcase', component: DetailsBriefcaseComponent ,canActivate: [GuardGuard]},
+  { path: 'briefcase-project', component: BriefcaseProjectComponent ,canActivate: [GuardGuard]},
   { path: 'membership', component: MembershipComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'details-news', component: DetailsNewsComponent},
-  { path: 'dashboard', component: DashboardComponent},
-    { path: '', component: NewsComponent },
-  { path: 'details-news/:id', component: DetailsNewsComponent }
-
-
+  { path: 'dashboard', component: DashboardComponent , canActivate: [GuardGuard]},
+  { path: '', component: NewsComponent },
+  { path: 'details-news/:id', component: DetailsNewsComponent, canActivate: [GuardGuard] }
 ];
 
 @NgModule({

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CoursesService } from 'src/app/services/courses.service';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-details-course',
@@ -20,15 +22,22 @@ export class DetailsCourseComponent implements OnInit {
   valueCourses: any;
   nameCurso: any;
 
-
-  constructor(private cursosService: CoursesService) { }
-  obtenerDetalleCurso(){
-    this.obtenerCursos
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      const idCurso = params.get('idCurso');
+      if (idCurso) {
+        this.obtenerCursos(idCurso); // Llama a la función obtenerCursos con el ID del curso
+      }
+      console.log(idCurso);
+    });
   }
-  obtenerCursos(idCategoria: string) {
-    this.cursosService.obtenerCursos(idCategoria).subscribe(
+  
+  constructor(private cursosService: CoursesService, private route: ActivatedRoute) { }
+  
+  obtenerCursos(idCurso: string) {
+    this.cursosService.obtenerCursos(idCurso).subscribe(
       (response) => {
-        this.cursosCategoria = response.filter(curso => curso.Id === Number(idCategoria)).map(curso => {
+        this.cursosCategoria = response.filter(curso => curso.Id === Number(idCurso)).map(curso => {
           return {
             id: curso.Id,
             url: curso.Url,
@@ -41,18 +50,15 @@ export class DetailsCourseComponent implements OnInit {
           };
         });
   
-        // Asignar la primera URL a la variable urlSeleccionada de los cursos de la categoría seleccionada
         if (this.cursosCategoria.length > 0) {
-          const idTeacher = this.cursosCategoria[0].idteacher; // Obtener el ID del profesor
+          const idTeacher = this.cursosCategoria[0].idteacher;
           this.urlSeleccionada = this.cursosCategoria[0].url;
           this.descripcionCurso = this.cursosCategoria[0].descripcion;
           this.duracion = this.cursosCategoria[0].duracionCourse;
           this.lenguaje = this.cursosCategoria[0].lenguajeCourse;
           this.valueCourses = this.cursosCategoria[0].courseValue;
           this.nameCurso = this.cursosCategoria[0].tema;
-
-          // Llamar a la función obtenerProfesor con el ID del profesor
-          this.obtenerProfesor(idTeacher);
+  
         }
       },
       (error) => {
@@ -60,10 +66,7 @@ export class DetailsCourseComponent implements OnInit {
       }
     );
   }
-  obtenerProfesor(idTeacher: any) {
-    throw new Error('Method not implemented.');
-  }
-
+  
 
   toggleFavorite(index: number) {
     if (this.counters[index] === 0) {
@@ -79,7 +82,5 @@ export class DetailsCourseComponent implements OnInit {
     this.activeSectionIndex = index;
   }
   
-  ngOnInit(): void {
-  }
 
 }

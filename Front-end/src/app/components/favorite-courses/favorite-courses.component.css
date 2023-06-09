@@ -48,7 +48,7 @@ main{
     .conteiner-2{
         display: flex; /* Cambiar a flexbox */
         width: 80%;
-        height: 20%;
+        height: 15%;
         margin: 5% 0 0 10px;
         border-radius: 20px;
         overflow-x: auto; /* Mostrar scroll horizontal */
@@ -79,7 +79,7 @@ main{
         height: 200px ;
         display: flex;
         position: relative;
-        margin: -100% 0 0 110%;
+        margin: -140% 0 0 110%;
     }
 
 
@@ -89,6 +89,8 @@ main{
         background-repeat: no-repeat;
         padding: 10%;
         width: 150%;
+        height: 100%;
+        margin-bottom: 5%;
         }
         .principal >p {
             font-size: 20px;
@@ -104,7 +106,7 @@ main{
 
         
         .principal > img {
-            margin: 20% 0 0 0;
+            margin: 10% 0 0 0;
             width: 10%;
             object-fit: contain;
 }
@@ -217,4 +219,5 @@ main{
         iframe{
             width: 100%;
             border-radius: 15px;
+            margin-top: -10%;
         }

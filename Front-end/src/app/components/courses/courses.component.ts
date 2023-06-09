@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer2 ,ElementRef  } from '@angular/core';
 import { CoursesService } from 'src/app/services/courses.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { DetailsCourseComponent } from '../details-course/details-course.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -33,14 +34,14 @@ export class CoursesComponent implements OnInit {
   ultimosCursos: any[]| undefined;
   primerosCursos: any[]| undefined;
 
-  constructor(private cursosService: CoursesService, private sanitizer: DomSanitizer, private renderer: Renderer2, private elementRef: ElementRef) { }
+  constructor(private cursosService: CoursesService, private sanitizer: DomSanitizer, private renderer: Renderer2, private elementRef: ElementRef, private router: Router) { }
 
   ngOnInit(): void {
     this.obtenerCategorias();
     this.obtenerAllcourses();
     const idCategoriaPorDefecto = '10'; // Reemplaza con el ID de la categoría por defecto
     this.obtenerCursos(idCategoriaPorDefecto);
-  }
+  } 
 
   obtenerCategorias() {
     this.cursosService.obtenerCategorias().subscribe(
@@ -58,6 +59,11 @@ export class CoursesComponent implements OnInit {
     this.nombreCategoria = categoria.nombre;
     this.idCategoriaSeleccionada = categoria.id;
     this.obtenerCursos(categoria.id); // Obtener los cursos de la categoría seleccionada
+  }
+
+         // Redireccionar al componente DetailCoursesComponent con el ID del curso como parámetro de ruta
+  obtenerDetalleCurso(idCurso: string) {
+    this.router.navigate(['detailsCourse', idCurso]);
   }
 
   obtenerCursos(idCategoria: string) {
@@ -78,6 +84,7 @@ export class CoursesComponent implements OnInit {
   
         // Asignar la primera URL a la variable urlSeleccionada de los cursos de la categoría seleccionada
         if (this.cursosCategoria.length > 0) {
+          const idCurso = this.cursosCategoria[0].id; // Obtener el ID del curso
           const idTeacher = this.cursosCategoria[0].idteacher; // Obtener el ID del profesor
           this.urlSeleccionada = this.cursosCategoria[0].url;
           this.descripcionCurso = this.cursosCategoria[0].descripcion;
@@ -85,7 +92,10 @@ export class CoursesComponent implements OnInit {
           this.lenguaje = this.cursosCategoria[0].lenguajeCourse;
           this.valueCourses = this.cursosCategoria[0].courseValue;
           this.nameCurso = this.cursosCategoria[0].tema;
+  
+   
 
+  
           // Llamar a la función obtenerProfesor con el ID del profesor
           this.obtenerProfesor(idTeacher);
         }
@@ -95,6 +105,7 @@ export class CoursesComponent implements OnInit {
       }
     );
   }
+  
 
   obtenerAllcourses() {
     this.cursosService.obtenerAllCursos().subscribe(
