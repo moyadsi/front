@@ -65,10 +65,33 @@
           </div>
         </div>
         <div class="box">
-          <div class="infoCourse" id="modules">
+          <div class="infoCourse">
+            <div class="modules" id="modules">
+
+            </div>
+            <button (click)="createElementModule()" >Agregar módulo</button>
+          </div>
+          <div class="infoClass" id="infoClass">
+            <div class="class">
+              <div class="oneClass" id="class" *ngFor="let clase of arrayClases">
+                <input type="text" value="" class="inputClase" placeholder="Clase :{{clase.nombreClase}} Url : {{clase.urlClase}}" disabled>
+              </div>
+              <div class="formClass">
+                <input class="inputClases" type="text" name="" id="nombreClase" placeholder="Ingresa el nombre del capitulo">
+                <div class="containerUrl">
+                  <p>URL:</p>
+                  <input class="inputClases" type="text" id="urlClase" placeholder="Ingresa la url">
+                </div>
+                <div class="containerButtons">
+                  <button>Cancelar</button>
+                  <button (click)="createOneClass()">Guardar</button>
+                </div>
+              </div>
+
+            </div>
+            <button id="btnCreateClass" (click)="createOneClass()">Agregar una clase</button>
 
           </div>
-          <button (click)="createElementModule()" >Agregar módulo</button>
         </div>
         <div class="box">
         

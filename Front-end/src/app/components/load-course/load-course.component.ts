@@ -10,6 +10,8 @@ export class LoadCourseComponent  {
 
   colorDiamont : number = 1;
   colorText : number = 1;
+
+  numberClass : number  = 1
   textoBoton = 'chevron-right';
   arrayModulos : any[] = [];
   arrayClases : any[] = [];
@@ -30,6 +32,7 @@ export class LoadCourseComponent  {
         containerForm.style.marginLeft = '-'+this.colorDiamont+'00%';
       this.colorDiamont++
       this.colorText++
+      this.createElementModule()
   }
 
   previousStep() {
@@ -69,6 +72,7 @@ export class LoadCourseComponent  {
   }
 
   createElementModule(){
+    //crear input de módulo
     const element: any = document.getElementById("modules") 
     var attributeList = element.attributes;
 
@@ -87,5 +91,24 @@ export class LoadCourseComponent  {
     inputNameModule.setAttribute(attributeName, "")
 
     modules.appendChild(inputNameModule)
+
+  }
+
+  createOneClass(){
+
+    const nombreClase: any = document.getElementById("nombreClase")
+
+    const urlClase: any = document.getElementById("urlClase")
+
+    let dataClase = {
+      "nombreClase" : nombreClase.value,
+      "urlClase": urlClase.value
+    }
+
+    this.arrayClases.push(dataClase)
+
+    nombreClase.value = ""
+    urlClase.value = ""
+
   }
 }
