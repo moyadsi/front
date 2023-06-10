@@ -4,7 +4,7 @@
     <div class="course">
         <section>
             <section class="courses">
-            <h3>CREACION DE NFT:</h3>
+            <h3>{{nameCurso}}</h3>
             <p>{{descripcionCurso}}</p>
             </section> 
             <div class="module">
@@ -42,7 +42,7 @@
             </div>
         </section>
         <section>
-            <iframe width="860" height="415"  src="https://www.youtube.com/embed/0CWZ6-hWeH8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="880" height="415" [src]=" getSafeVideoUrl()" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </section>
     </div>
     <!--OPCIONES INTERACCION DEL CURSO-->
@@ -150,15 +150,15 @@
                <img src="../../../assets/cursos/Star.png"> 
                <p>4,9</p>
                 </section>
-               <h3>CREACION DE NFT:</h3>
-               <img src="../../../assets/new/Punto_verde.png"> 
+               <h3>{{nameCurso}}</h3>
+              <!-- <img src="../../../assets/new/Punto_verde.png"> -->
                <hr>
             </label>
             <label class="price">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat hic ex modi in a ab nostrum molestiae nemo dolorem nulla rerum doloremque necessitatibus tempora tenetur, deserunt voluptates, blanditiis exercitationem nam!</p>
+                <p>{{descripcionCurso}}</p>
                 <div>
                 <hr>
-                <h4>$54.900 Cop</h4>
+                <h4>${{valueCourses}}Cop</h4>
                 <h5>65% Dto. <del>$156.000 cop</del></h5>
                 </div>
                 <button>Obtener curso > </button>
@@ -189,17 +189,15 @@
                     <label>
                         <img src="../../../assets/cursos/mundo.png">
                         <h5>100% online</h5>
-                        <p>Vaya Silva</p>
                     </label>
                     <label>
                         <img src="../../../assets/cursos/tiempo.png">
-                        <h5>12 horas de curso</h5>
+                        <h5>{{duracion}} horas de curso</h5>
                         <p>A tu ritmo</p>
                     </label>
                     <label>
                         <img src="../../../assets/cursos/idioma.png">
-                        <h5>Ingles/ Español</h5>
-                        <p>Vaya Silva</p>
+                        <h5>{{lenguaje}}</h5>
                     </label>
                 </section>
             </div>           

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CoursesService } from 'src/app/services/courses.service';
 import { ActivatedRoute } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 
 @Component({
@@ -32,7 +33,7 @@ export class DetailsCourseComponent implements OnInit {
     });
   }
   
-  constructor(private cursosService: CoursesService, private route: ActivatedRoute) { }
+  constructor(private cursosService: CoursesService, private route: ActivatedRoute, private sanitizer: DomSanitizer) { }
   
   obtenerCursos(idCurso: string) {
     this.cursosService.obtenerCursos(idCurso).subscribe(
@@ -82,5 +83,13 @@ export class DetailsCourseComponent implements OnInit {
     this.activeSectionIndex = index;
   }
   
+  getSafeVideoUrl(): SafeResourceUrl {
+    if (!this.urlSeleccionada) {
+      return ''; // O cualquier otro valor predeterminado en caso de que no haya URL seleccionada
+    }
+    const videoUrl = 'https://www.youtube.com/embed/' + this.urlSeleccionada;
+
+    return this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
+  }
 
 }

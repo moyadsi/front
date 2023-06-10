@@ -34,10 +34,18 @@ h4 {
 }
 
 .filter-carrete {
-  display: grid;
-  grid-template-columns: 14% 14% 14% 14% 14% 14% 14%;
+  display: inline-flex;
   list-style-type: none;
   cursor: pointer;
+  overflow-x: auto; /* Mostrar scroll horizontal */
+  overflow-y: hidden; /* Ocultar scroll vertical */
+  width: 80%;
+}
+  
+li{
+  display: inline;
+  margin: 0 0 0 10px;
+  padding: 5px;
 }
 li:hover {
   background: linear-gradient(
@@ -50,9 +58,28 @@ li:hover {
   text-align: center;
 }
 
-li > img {
-  width: 10%;
+a > li {
+  white-space: nowrap;
+}
+
+a > li::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.a{
+  overflow-x: scroll;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.carrete-conteiner > button > img {
+  width: 10px;
   margin: 5%;
+}
+.carrete-conteiner > button{
+  background-color: transparent;
+  border:  none;
+  margin: 0 0 0 10px;
 }
 .filter > button {
   width: 30%;

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef} from '@angular/core';
+import { CoursesService } from 'src/app/services/courses.service';
 
 
 @Component({
@@ -8,9 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BestMetaComponent implements OnInit {
 selectedValue: any;
+  categorias: { id: any; nombre: any; }[] | undefined;
+  nombreCategoria: any;
+  idCategoriaSeleccionada: any;
 
-  constructor() { }
-  nameUser: string ='Vayana Silva'
+  ngOnInit(): void {
+    this.obtenerCategorias();
+  }
+  constructor(private cursosService: CoursesService, private elementRef: ElementRef) { }
+
+   /*OBTENER INFORMACION DE LAS CATEGORIAS */
+   obtenerCategorias() {
+    this.cursosService.obtenerCategorias().subscribe(
+      (response) => {
+        this.categorias = response.map(({ Id_Category: id, NameCategory: nombre }) => ({ id, nombre }));
+        this.nombreCategoria = this.categorias[0]?.nombre; // Asignar el valor del primer elemento de la categoría al nombreCategoria
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+  obtenerNombreCategoria(categoria: any): void {
+    this.nombreCategoria = categoria.nombre;
+    this.idCategoriaSeleccionada = categoria.id;
+  }
+
   /*MANEJO BOTON FAVORITOS*/
   counters= [0,0,0,0,0,0];
   favoriteCount = 0;
@@ -37,8 +61,14 @@ toggleButton(index: number) {
 }
 
 
-
-  ngOnInit(): void {
+  slideContainerLeft(): void {
+    const container = this.elementRef.nativeElement.querySelector('.filter-carrete');
+    container.style.transform = 'translateX(1%)';
+  }  
+  slideContainerRight(): void {
+    const container = this.elementRef.nativeElement.querySelector('.filter-carrete');
+    container.style.transform = 'translateX(-1%)';
   }
+
 
 }

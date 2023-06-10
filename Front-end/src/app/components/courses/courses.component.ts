@@ -135,6 +135,12 @@ export class CoursesComponent implements OnInit {
   obtenerProfesor(idTeacher: string) {
     this.cursosService.obtenerProfesor(idTeacher).subscribe(
       (response) => {
+        this.profesores = response.filter(profesor => profesor.Id === Number(idTeacher)).map(profesor => {
+          return {
+            id: profesor.Id_Teacher,
+
+          };
+        });
         if (response.length > 0) {
           const primerProfesor = response[0];
           this.nombreProfeSeleccionado = primerProfesor.Name;
