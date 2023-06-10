@@ -38,7 +38,7 @@ const routes: Routes = [
   { path: 'membership', component: MembershipComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'details-news', component: DetailsNewsComponent},
-  { path: 'dashboard', component: DashboardComponent , canActivate: [GuardGuard]},
+  { path: 'dashboard', component: DashboardComponent},
   { path: '', component: NewsComponent },
   { path: 'details-news/:id', component: DetailsNewsComponent, canActivate: [GuardGuard] }
 ];

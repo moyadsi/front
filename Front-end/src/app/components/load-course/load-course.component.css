@@ -142,7 +142,19 @@ justify-content: space-evenly;
   flex-direction: column;
 }
 
-.box input,select, textarea, button{
+.inputBox{
+  resize: none;
+  margin: 10px 0;
+  width: 350px;
+  padding: 5px 0 5px 10px;
+  border: 1px solid #656565;
+  background-color: #272727;
+  border-radius: 1rem;
+  color: white;
+  height: 40px;
+}
+
+select, textarea, button{
   resize: none;
   margin: 10px 0;
   width: 350px;
