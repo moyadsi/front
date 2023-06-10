@@ -63,11 +63,11 @@ toggleButton(index: number) {
 
   slideContainerLeft(): void {
     const container = this.elementRef.nativeElement.querySelector('.filter-carrete');
-    container.style.transform = 'translateX(1%)';
+    container.style.transform = 'translateX(+5%)';
   }  
   slideContainerRight(): void {
     const container = this.elementRef.nativeElement.querySelector('.filter-carrete');
-    container.style.transform = 'translateX(-1%)';
+    container.style.transform = 'translateX(-5%)';
   }
 
 

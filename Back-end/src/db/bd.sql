@@ -14,7 +14,39 @@ CREATE TABLE Person (
     Rol char(50) default 'User' ,
     RolAd char(100) default ''
 );
+CREATE TABLE DetailsPerson (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    IdPerson INT,
+    DescriptionPerson varchar(500),
+    Ocupation varchar(45),
+    telefono varchar(45),
+    Ubication varchar(45),
+    Facebook varchar(45),
+	Instagram varchar(45),
+    Youtube varchar(45),
+    Likes varchar(45),
+    Followers varchar(45),
+    Followed varchar(45),
+    CONSTRAINT FK_details_Perosn FOREIGN KEY (IdPerson)
+	REFERENCES Person (Id),
+    CONSTRAINT FK_City_Perosn FOREIGN KEY (Ubication)
+	REFERENCES country (IdCountry)
+);
 
+CREATE TABLE ToolsPerson (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    IdPerson INT,
+    Tools varchar(500),
+    CONSTRAINT FK_Tools_Perosn FOREIGN KEY (IdPerson)
+	REFERENCES Person (Id)
+);
+CREATE TABLE CategoryPerson (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    IdPerson INT,
+    IdCategory varchar(500),
+    CONSTRAINT FK_caetegory_Perosn FOREIGN KEY (IdCategory)
+	REFERENCES category (Id_Category)
+);
 select * from person;
 
 
@@ -80,17 +112,15 @@ CREATE TABLE Category (
         REFERENCES AllCourse(Id)
 );
 
-CREATE TABLE ContentCourse (
+CREATE TABLE ContentCourseClass (
     Id_Content INT PRIMARY KEY AUTO_INCREMENT,
-    Description CHAR(255) NOT NULL,
-    Duration CHAR(10) NOT NULL,
-    Language char(50) not null,
-    Url char not null,
+    IdDetailsCourses int NOT NULL,
+    Duration varchar(20) NOT NULL,
+    DescriptionClass varchar(50) not null,
+    Url varchar(50) not null,
     Status BOOLEAN DEFAULT TRUE,
-    IdTeacher INT,
-    Categoria VARCHAR(255),
-    CONSTRAINT FK_Contentcourse_Course FOREIGN KEY (IdTeacher)
-        REFERENCES AllCourse(Id)
+    CONSTRAINT FK_Contentcourse_Course FOREIGN KEY (IdDetailsCourses)
+        REFERENCES detailscourses(Id)
 );
 
 CREATE TABLE Teacher (
@@ -103,7 +133,49 @@ CREATE TABLE Teacher (
         REFERENCES Person (Id)
 );
 
+CREATE TABLE detailsCourses (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    IdCourse INT,
+    NameCourses varchar(100),
+    DescriptionCourses varchar(200),
+    Duration varchar(45),
+    UrlVideo varchar(100),
+    CONSTRAINT fk_descripcion_courses FOREIGN KEY (IdCourse)
+        REFERENCES AllCourse(Id)
+);
 
+CREATE TABLE detailsCoursesFiles (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    IdCourse INT,
+    NameFile varchar(100),
+    State int,
+    UrlFile varchar(100),
+    CONSTRAINT fk_files_courses FOREIGN KEY (IdCourse)
+	REFERENCES AllCourse(Id)
+);
+
+CREATE TABLE detailsCoursesLinks(
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    IdCourse INT,
+    NameLink varchar(100),
+    State int,
+    UrlLink varchar(100),
+    CONSTRAINT fk_links_courses FOREIGN KEY (IdCourse)
+	REFERENCES AllCourse(Id)
+);
+
+CREATE TABLE Comments(
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    IdCourse INT,
+    comments varchar(100),
+    State int,
+    PersonId int,
+    likeComments varchar(45), 
+    CONSTRAINT fk_comments_courses FOREIGN KEY (IdCourse)
+	REFERENCES AllCourse(Id) ,
+    CONSTRAINT fk_person_comments FOREIGN KEY (PersonId)
+	REFERENCES person(Id)
+);
 /*Noticias*/
 
 CREATE TABLE Noticies (
@@ -156,8 +228,19 @@ CREATE TABLE StudentCourse (
 
 CREATE TABLE Project (
     IdProject INT PRIMARY KEY,
-    Recourse CHAR(255) NOT NULL,
-    Format CHAR(255)
+    NameProject varchar(100),
+    DescriptionPorject varchar(200),
+    Likes varchar(45),
+    ImgProject varchar(50)
+);
+
+CREATE TABLE RecourseProject (
+    IdRecourse INT PRIMARY KEY AUTO_INCREMENT,
+    IdProject varchar(100),
+    Url varchar(200) ,
+    Status BOOLEAN DEFAULT TRUE,
+        CONSTRAINT FK_Recourse_Project FOREIGN KEY (IdProject)
+        REFERENCES Project (IdProject)
 );
 
 CREATE TABLE Briefcase (
@@ -196,6 +279,7 @@ CREATE TABLE Membreys (
         REFERENCES Type (Id)
 );
 
+
 insert into Type values (1,'Free'),(2,'Advanced'),(3,'Premium');
 
 /*Calificacion Cursos*/
@@ -209,49 +293,7 @@ CREATE TABLE qualification (
         REFERENCES AllCourse(Id)
 );
 
-CREATE TABLE detailsCourses (
-    Id INT PRIMARY KEY AUTO_INCREMENT,
-    IdCourse INT,
-    NameCourses varchar(100),
-    DescriptionCourses varchar(200),
-    Duration varchar(45),
-    UrlVideo varchar(100),
-    CONSTRAINT fk_descripcion_courses FOREIGN KEY (IdCourse)
-        REFERENCES AllCourse(Id)
-);
 
-CREATE TABLE detailsCoursesFiles (
-    Id INT PRIMARY KEY AUTO_INCREMENT,
-    IdCourse INT,
-    NameFile varchar(100),
-    State int,
-    UrlFile varchar(100),
-    CONSTRAINT fk_files_courses FOREIGN KEY (IdCourse)
-	REFERENCES AllCourse(Id)
-);
-
-CREATE TABLE detailsCoursesLinks(
-    Id INT PRIMARY KEY AUTO_INCREMENT,
-    IdCourse INT,
-    NameLink varchar(100),
-    State int,
-    UrlLink varchar(100),
-    CONSTRAINT fk_links_courses FOREIGN KEY (IdCourse)
-	REFERENCES AllCourse(Id)
-);
-
-CREATE TABLE Comments(
-    Id INT PRIMARY KEY AUTO_INCREMENT,
-    IdCourse INT,
-    comments varchar(100),
-    State int,
-    PersonId int,
-    likeComments varchar(45), 
-    CONSTRAINT fk_comments_courses FOREIGN KEY (IdCourse)
-	REFERENCES AllCourse(Id) ,
-    CONSTRAINT fk_person_comments FOREIGN KEY (PersonId)
-	REFERENCES person(Id)
-);
 
 /*Table Example*/
 

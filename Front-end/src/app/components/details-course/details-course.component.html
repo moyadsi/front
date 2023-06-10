@@ -262,31 +262,10 @@
             <button><img src="../../../assets/new/ArrowR.png"></button>
         </section>
         <div class="photo-galery">
-        <section>
-            <img src="https://i.pinimg.com/736x/bc/6c/41/bc6c4148b6e18881680d05acfea14998.jpg">
+        <section *ngFor="let curso of ultimosCursos">
+            <img [src]="curso.imgCourse" alt="Imagen del curso">
             <label>
-            <p> <strong>Daniel Pascal </strong>- Fotografia smrth</p>
-            <img src="../../../assets/portafolio/Heart-follow.png">
-            </label>
-        </section>
-        <section>
-            <img src="https://phantom-marca.unidadeditorial.es/bc8b8557aee720b65c010633ea45c8eb/assets/multimedia/imagenes/2020/04/01/15857360171122.jpg">
-            <label>
-            <p> <strong>losermal</strong>- Fotografia smrth</p>
-            <img src="../../../assets/portafolio/Heart-follow.png">
-            </label>
-        </section>
-        <section>
-            <img src="https://www.infobae.com/new-resizer/IibFZd2trwxGZJ0vjaekl9dSmps=/1200x900/filters:format(webp):quality(85)//cloudfront-us-east-1.images.arcpublishing.com/infobae/7DO3XYSQMVBUFI2B7CZDFAA3OY.jpeg">
-            <label>
-            <p> <strong>Daniel Pascal </strong>- Fotografia smrth</p>
-            <img src="../../../assets/portafolio/Heart-follow.png">
-            </label>
-        </section>
-        <section>
-            <img src="https://fotografias.flooxernow.com/clipping/cmsimages02/2020/04/17/94CF6337-C723-4268-85DB-49829DC9112D/98.jpg?crop=4000,2251,x0,y1099&width=1900&height=1069&optimize=high&format=webply">
-            <label>
-            <p> <strong>losermal </strong>- Fotografia smrth</p>
+            <p><strong>Daniel Pascal </strong>- {{curso.name}}</p>
             <img src="../../../assets/portafolio/Heart-follow.png">
             </label>
         </section>

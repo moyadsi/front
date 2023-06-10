@@ -86,14 +86,22 @@ export class FavoriteCoursesComponent implements OnInit {
   obtenerProfesor(idTeacher: string) {
     this.cursosService.obtenerProfesor(idTeacher).subscribe(
       (response) => {
-        if (response.length > 0) {
-          const primerProfesor = response[0];
-          this.nombreProfeSeleccionado = primerProfesor.Name;
-          this.experienciaSeleccionada = primerProfesor.Experience;
-          this.profesionSeleccionada = primerProfesor.Profesion;
-        }
+        const profesor = response.find((profesor) => profesor.Id_Teacher === Number(idTeacher)); // Filtrar el arreglo de respuesta
   
-        this.profesores = response;
+        if (profesor) {
+          this.profesores = [{
+            Id_Teacher: profesor.Id_Teacher,
+            name: profesor.Name,
+            Profesion: profesor.Profesion,
+            Experience: profesor.Experience
+          }];
+  
+          this.nombreProfeSeleccionado = profesor.Name;
+          this.experienciaSeleccionada = profesor.Experience;
+          this.profesionSeleccionada = profesor.Profesion;
+        } 
+  
+        console.log(this.profesores);
       },
       (error) => {
         console.error(error);

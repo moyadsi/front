@@ -85,19 +85,19 @@ export class CoursesComponent implements OnInit {
         // Asignar la primera URL a la variable urlSeleccionada de los cursos de la categoría seleccionada
         if (this.cursosCategoria.length > 0) {
           const idCurso = this.cursosCategoria[0].id; // Obtener el ID del curso
-          const idTeacher = this.cursosCategoria[0].idteacher; // Obtener el ID del profesor
+          const idTeacher = this.cursosCategoria[0].idteacher.toString(); // Convertir el idTeacher a una cadena
           this.urlSeleccionada = this.cursosCategoria[0].url;
           this.descripcionCurso = this.cursosCategoria[0].descripcion;
           this.duracion = this.cursosCategoria[0].duracionCourse;
           this.lenguaje = this.cursosCategoria[0].lenguajeCourse;
           this.valueCourses = this.cursosCategoria[0].courseValue;
           this.nameCurso = this.cursosCategoria[0].tema;
-  
-   
 
-  
+
+
           // Llamar a la función obtenerProfesor con el ID del profesor
           this.obtenerProfesor(idTeacher);
+          console.log(idTeacher);
         }
       },
       (error) => {
@@ -123,8 +123,6 @@ export class CoursesComponent implements OnInit {
 
         // Obtener los primeros 3 cursos
         this.primerosCursos = this.cursos.slice(0, 3);
-
-        console.log(this.primerosCursos);
       },
       (error) => {
         console.error(error);
@@ -135,27 +133,31 @@ export class CoursesComponent implements OnInit {
   obtenerProfesor(idTeacher: string) {
     this.cursosService.obtenerProfesor(idTeacher).subscribe(
       (response) => {
-        this.profesores = response.filter(profesor => profesor.Id === Number(idTeacher)).map(profesor => {
-          return {
-            id: profesor.Id_Teacher,
-
-          };
-        });
-        if (response.length > 0) {
-          const primerProfesor = response[0];
-          this.nombreProfeSeleccionado = primerProfesor.Name;
-          this.experienciaSeleccionada = primerProfesor.Experience;
-          this.profesionSeleccionada = primerProfesor.Profesion;
-        }
-
-        this.profesores = response;
+        const profesor = response.find((profesor) => profesor.Id_Teacher === Number(idTeacher)); // Filtrar el arreglo de respuesta
+  
+        if (profesor) {
+          this.profesores = [{
+            Id_Teacher: profesor.Id_Teacher,
+            name: profesor.Name,
+            Profesion: profesor.Profesion,
+            Experience: profesor.Experience
+          }];
+  
+          this.nombreProfeSeleccionado = profesor.Name;
+          this.experienciaSeleccionada = profesor.Experience;
+          this.profesionSeleccionada = profesor.Profesion;
+        } 
+  
+        console.log(this.profesores);
       },
       (error) => {
         console.error(error);
       }
     );
   }
-
+  
+  
+  
   getSafeVideoUrl(): SafeResourceUrl {
     if (!this.urlSeleccionada) {
       return ''; // O cualquier otro valor predeterminado en caso de que no haya URL seleccionada

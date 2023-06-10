@@ -732,11 +732,12 @@ width: 97%;
         cursor: pointer;
     }
     .photo-galery > section > label > p{
-        margin: 5% 0 0 5%;
+        margin: 5% 0 0 10%;
         display: inline-block;
+        width: 70%;
     }
     .photo-galery > section > label > img{
-        margin:  0 0 0 20%;
+        margin:  0 0 0 5%;
         object-fit: contain;
         width: 5%;
         cursor: pointer;

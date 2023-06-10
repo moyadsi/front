@@ -24,8 +24,8 @@ export class CoursesService {
     const url = `${this.apiUrl}/course`;
     return this.http.get<any[]>(url);
   }
-  obtenerProfesor(idProfesor: string): Observable<any[]> {
-    const url = `${this.apiUrl}/teacher/${idProfesor}`;
+  obtenerProfesor(idTeacher: string): Observable<any[]> {
+    const url = `${this.apiUrl}/teacher/${idTeacher}`;
     return this.http.get<any[]>(url);
   }
 }

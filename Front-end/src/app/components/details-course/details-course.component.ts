@@ -22,8 +22,11 @@ export class DetailsCourseComponent implements OnInit {
   lenguaje: any;
   valueCourses: any;
   nameCurso: any;
+  cursos: { id: any; name: any; description: any; idTeacher: any; duracion: any; imgCourse: any; }[] | undefined;
+  ultimosCursos: { id: any; name: any; description: any; idTeacher: any; duracion: any; imgCourse: any; }[] | undefined;
 
   ngOnInit(): void {
+    this.obtenerAllcourses();
     this.route.paramMap.subscribe(params => {
       const idCurso = params.get('idCurso');
       if (idCurso) {
@@ -67,7 +70,26 @@ export class DetailsCourseComponent implements OnInit {
       }
     );
   }
-  
+  obtenerAllcourses() {
+    this.cursosService.obtenerAllCursos().subscribe(
+      (response) => {
+        this.cursos = response.map(({ Id: id, NameCourse: name, DescriptionCourse: description, IdTeacher: idTeacher, ImgCourse: imgCourse , durationCourse: duracion}) => ({ id, name, description, idTeacher, duracion, imgCourse}));
+        this.nameCurso = this.cursos[0]?.name;
+
+        // Ordenar los cursos por ID en orden descendente
+        this.cursos.sort((a, b) => b.id - a.id);
+
+        // Obtener los últimos 3 cursos
+        this.ultimosCursos = this.cursos.slice(0, 4);
+        console.log(this.ultimosCursos)
+
+ 
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
 
   toggleFavorite(index: number) {
     if (this.counters[index] === 0) {
