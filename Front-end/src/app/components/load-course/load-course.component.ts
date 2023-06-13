@@ -32,7 +32,6 @@ export class LoadCourseComponent  {
         containerForm.style.marginLeft = '-'+this.colorDiamont+'00%';
       this.colorDiamont++
       this.colorText++
-      this.createElementModule()
   }
 
   previousStep() {
@@ -72,25 +71,17 @@ export class LoadCourseComponent  {
   }
 
   createElementModule(){
-    //crear input de módulo
-    const element: any = document.getElementById("modules") 
-    var attributeList = element.attributes;
+    const nameModule: any = document.getElementById("nameModule")
 
-    var attributeName = attributeList[0].name;
+
     
-    const modules: any = document.getElementById("modules") 
-
-    let inputNameModule = document.createElement("input")
-
-    inputNameModule.className = "inputBox"
+    let dataModulos = {
+      "nombreModulo" : nameModule.value
+    }
     
-    inputNameModule.type = "text"
-    
-    inputNameModule.placeholder = "Ingresa el nombre del módulo"
+    this.arrayModulos.push(dataModulos)
 
-    inputNameModule.setAttribute(attributeName, "")
-
-    modules.appendChild(inputNameModule)
+    nameModule.value = ""
 
   }
 
@@ -110,5 +101,18 @@ export class LoadCourseComponent  {
     nombreClase.value = ""
     urlClase.value = ""
 
+  }
+
+  saveModule(){
+    const classDiv: any = document.querySelector("oneClass")
+    const nameModule: any = document.getElementById("nameModule")
+
+    let dataModulos = {
+      "nombreModulo" : nameModule.value,
+      "clases" : this.arrayClases
+    }
+
+    console.log(classDiv)
+      console.log(dataModulos)
   }
 }

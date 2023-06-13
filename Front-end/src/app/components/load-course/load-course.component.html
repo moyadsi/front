@@ -67,14 +67,14 @@
         <div class="box">
           <div class="infoCourse">
             <div class="modules" id="modules">
-
+              <input class="inputBox" type="text" id="nameModule" placeholder="Ingresa el nombre del módulo">
             </div>
             <button (click)="createElementModule()" >Agregar módulo</button>
           </div>
           <div class="infoClass" id="infoClass">
             <div class="class">
               <div class="oneClass" id="class" *ngFor="let clase of arrayClases">
-                <input type="text" value="" class="inputClase" placeholder="Clase :{{clase.nombreClase}} Url : {{clase.urlClase}}" disabled>
+                <input type="text" value="" class="inputClase" placeholder="Clase :{{clase.nombreClase}} Url :{{clase.urlClase}}" disabled>
               </div>
               <div class="formClass">
                 <input class="inputClases" type="text" name="" id="nombreClase" placeholder="Ingresa el nombre del capitulo">
@@ -87,6 +87,8 @@
                   <button (click)="createOneClass()">Guardar</button>
                 </div>
               </div>
+
+              <button (click)="saveModule()">Guardar módulo</button>
 
             </div>
             <button id="btnCreateClass" (click)="createOneClass()">Agregar una clase</button>

@@ -211,6 +211,9 @@ select, textarea, button{
   height: 40px;
 }
 
+.infoClass{
+  width: 50%;
+}
 
 .containerUrl{
   display: flex;
@@ -229,7 +232,7 @@ select, textarea, button{
 
 .containerUrl p{
   color: #656565;
-  font-size: 18pt;
+  font-size: 12pt;
 }
 
 .formClass input{
