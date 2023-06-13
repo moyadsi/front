@@ -66,6 +66,10 @@ export class CoursesComponent implements OnInit {
     this.router.navigate(['detailsCourse', idCurso]);
   }
 
+  obtenerDetalleCurso2(idCategoriaPorDefecto: string) {
+    this.router.navigate(['detailsCourse', idCategoriaPorDefecto]);
+  }
+
   obtenerCursos(idCategoria: string) {
     this.cursosService.obtenerCursos(idCategoria).subscribe(
       (response) => {
@@ -92,8 +96,6 @@ export class CoursesComponent implements OnInit {
           this.lenguaje = this.cursosCategoria[0].lenguajeCourse;
           this.valueCourses = this.cursosCategoria[0].courseValue;
           this.nameCurso = this.cursosCategoria[0].tema;
-
-
 
           // Llamar a la función obtenerProfesor con el ID del profesor
           this.obtenerProfesor(idTeacher);

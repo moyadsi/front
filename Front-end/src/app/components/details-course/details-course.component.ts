@@ -24,6 +24,10 @@ export class DetailsCourseComponent implements OnInit {
   nameCurso: any;
   cursos: { id: any; name: any; description: any; idTeacher: any; duracion: any; imgCourse: any; }[] | undefined;
   ultimosCursos: { id: any; name: any; description: any; idTeacher: any; duracion: any; imgCourse: any; }[] | undefined;
+  profesores: { Id_Teacher: any; name: any; Profesion: any; Experience: any; }[] | undefined;
+  nombreProfeSeleccionado: any;
+  experienciaSeleccionada: any;
+  profesionSeleccionada: any;
 
   ngOnInit(): void {
     this.obtenerAllcourses();
@@ -62,6 +66,7 @@ export class DetailsCourseComponent implements OnInit {
           this.lenguaje = this.cursosCategoria[0].lenguajeCourse;
           this.valueCourses = this.cursosCategoria[0].courseValue;
           this.nameCurso = this.cursosCategoria[0].tema;
+          this.obtenerProfesor(idTeacher);
   
         }
       },
@@ -91,6 +96,31 @@ export class DetailsCourseComponent implements OnInit {
     );
   }
 
+  obtenerProfesor(idTeacher: string) {
+    this.cursosService.obtenerProfesor(idTeacher).subscribe(
+      (response) => {
+        const profesor = response.find((profesor) => profesor.Id_Teacher === Number(idTeacher)); // Filtrar el arreglo de respuesta
+  
+        if (profesor) {
+          this.profesores = [{
+            Id_Teacher: profesor.Id_Teacher,
+            name: profesor.Name,
+            Profesion: profesor.Profesion,
+            Experience: profesor.Experience
+          }];
+  
+          this.nombreProfeSeleccionado = profesor.Name;
+          this.experienciaSeleccionada = profesor.Experience;
+          this.profesionSeleccionada = profesor.Profesion;
+        } 
+  
+        console.log(this.profesores);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
   toggleFavorite(index: number) {
     if (this.counters[index] === 0) {
       this.counters[index]++;
@@ -114,4 +144,17 @@ export class DetailsCourseComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
   }
 
+  currentSection: number = 0;
+
+  toggleSection(sectionNumber: number) {
+    if (this.currentSection === sectionNumber) {
+      this.currentSection = 0; // Si se hace clic en la misma sección, ocultar el div
+    } else {
+      this.currentSection = sectionNumber; // Mostrar el div correspondiente a la sección
+    }
+  }
 }
+function obtenerUrlDesdeServidor(parametro: string): any {
+  throw new Error('Function not implemented.');
+}
+

@@ -33,32 +33,13 @@
     height: 65%;
     width: 80%;
     margin: 4% 0 0 10%;
-    overflow-x: auto; /* Mostrar scroll horizontal */
-    overflow-y: hidden; /* Ocultar scroll vertical */
+    overflow: scroll;
 }
-.module::-webkit-scrollbar {
-    width: 8px; /* Ancho del scrollbar */
-    height: 5px;
-    margin: 10px;
-  }
-  
-  .module::-webkit-scrollbar-track {
-    background: transparent; /* Color del track del scrollbar */
-  }
-  
-  .module::-webkit-scrollbar-thumb {
-    background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);/* Color del thumb (manija) del scrollbar */
-    border-radius: 4px; /* Bordes redondeados del thumb */
-  }
-  
-  .module::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Color del thumb al pasar el mouse */
-  }
+
 .module > section > h4 {
     border-radius: 10px 10px 0 0;
     display: inline-block;
     margin: 0 0 0 20%;
-    
     
 }
 
@@ -652,9 +633,10 @@ width: 97%;
         margin: 5% 0 20% 5%;
         border-color: #313131;
     }
-    .files > section > label > article > u{
-        margin: 5% 0 0 5%;
+    .files > section > label > article > a{
+        margin: 10% 0 0 5%;
         cursor: pointer;
+        color: white;
     }
     .galery-details{
         background-color:#1a1a1a;
@@ -748,7 +730,24 @@ width: 97%;
       display: grid;
       grid-template-rows: 33% 33% 33%;
     }
-
+    .module::-webkit-scrollbar {
+        width: 8px; /* Ancho del scrollbar */
+        height: 5px;
+        margin: 10px;
+      }
+      
+      .module::-webkit-scrollbar-track {
+        background: transparent; /* Color del track del scrollbar */
+      }
+      
+      .module::-webkit-scrollbar-thumb {
+        background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);/* Color del thumb (manija) del scrollbar */
+        border-radius: 4px; /* Bordes redondeados del thumb */
+      }
+      
+      .module::-webkit-scrollbar-thumb:hover {
+        background: #555; /* Color del thumb al pasar el mouse */
+      }
     .section-modules > section {
       display: grid;
       grid-template-columns: 20% 40% 20%;
@@ -770,4 +769,18 @@ width: 97%;
 
     .section-modules > section > img{
         margin: 50% 0 0 100%;
+    }
+
+    .section-modules > div > p {
+        margin: 2%  0 0 5%;
+        background-color:#313131;
+        border-radius: 15px;
+        width: 82%;
+        height: 20px;
+        padding: 10px;
+    }
+    .section-modules > div {
+        height: 5px;
+        display: inline-block;
+        cursor: pointer;
     }
