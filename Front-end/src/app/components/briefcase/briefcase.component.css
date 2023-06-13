@@ -63,6 +63,26 @@ main{
   margin: 3% 0 0 28%;
   overflow-x: auto; /* Mostrar scroll horizontal */
   overflow-y: hidden; /* Ocultar scroll vertical */
+  cursor: pointer;
+}
+
+.option-prof::-webkit-scrollbar {
+  width: 8px; /* Ancho del scrollbar */
+  height: 5px;
+  margin: 10px;
+}
+
+.option-prof::-webkit-scrollbar-track {
+  background: transparent; /* Color del track del scrollbar */
+}
+
+.option-prof::-webkit-scrollbar-thumb {
+  background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);/* Color del thumb (manija) del scrollbar */
+  border-radius: 4px; /* Bordes redondeados del thumb */
+}
+
+.option-prof::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color del thumb al pasar el mouse */
 }
 .option-prof > div > button{
   width: 95%;
