@@ -66,9 +66,10 @@
         </div>
         <div class="box">
           <div class="infoCourse">
-            <div class="modules" id="modules">
-              <input class="inputBox" type="text" id="nameModule" placeholder="Ingresa el nombre del módulo">
+            <div class="modules" id="modules" *ngFor="let modulo of arrayModulos">
+              <input class="inputBox" type="text" placeholder="Modulo :{{modulo.nombreModulo}}">
             </div>
+            <input class="inputBox" type="text" name="" id="nameModule" placeholder="Ingresa el nombre del modulo">git a
             <button (click)="createElementModule()" >Agregar módulo</button>
           </div>
           <div class="infoClass" id="infoClass">
@@ -77,7 +78,7 @@
                 <input type="text" value="" class="inputClase" placeholder="Clase :{{clase.nombreClase}} Url :{{clase.urlClase}}" disabled>
               </div>
               <div class="formClass">
-                <input class="inputClases" type="text" name="" id="nombreClase" placeholder="Ingresa el nombre del capitulo">
+                <input class="inputClases" type="text" name="" id="nombreClase" placeholder="Ingresa el nombre de a clase">
                 <div class="containerUrl">
                   <p>URL:</p>
                   <input class="inputClases" type="text" id="urlClase" placeholder="Ingresa la url">

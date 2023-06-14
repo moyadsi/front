@@ -10,7 +10,6 @@ export class LoadCourseComponent  {
 
   colorDiamont : number = 1;
   colorText : number = 1;
-
   numberClass : number  = 1
   textoBoton = 'chevron-right';
   arrayModulos : any[] = [];
@@ -107,12 +106,17 @@ export class LoadCourseComponent  {
     const classDiv: any = document.querySelector("oneClass")
     const nameModule: any = document.getElementById("nameModule")
 
-    let dataModulos = {
+    let dataModulo = {
       "nombreModulo" : nameModule.value,
       "clases" : this.arrayClases
     }
 
-    console.log(classDiv)
-      console.log(dataModulos)
+    this.arrayModulos.push(dataModulo)
+  }
+
+  newModule(){
+    const classDiv: any = document.getElementById("class")
+
+    classDiv.removeChild()
   }
 }
