@@ -14,10 +14,16 @@ export class RegistrationComponent implements OnInit {
   Person:Person=new Person;
   password: string = '';
   showPassword: boolean = false;
+  showRepeatPassword: boolean = false;
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
+
+  toggleRepeatPasswordVisibility() {
+    this.showRepeatPassword = !this.showRepeatPassword;
+  }
+
   constructor(private fb: FormBuilder, private clients: ClientsService) {
     this.form = this.fb.group({
       Cedula:['',Validators.required],

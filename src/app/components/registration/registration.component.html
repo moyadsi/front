@@ -102,12 +102,12 @@
           <input 
           type="password"
            [(ngModel)]="password" 
-           formControlName="Password"
-           name="password" 
-           [attr.type]="showPassword ? 'text' : 'password'" 
+           formControlName="repeatPassword"
+           name="repeatPassword" 
+           [attr.type]="showRepeatPassword ? 'text' : 'Password'" 
            placeholder="Confirma tu contraseña"
             class="input-large"/>
-          <button (click)="togglePasswordVisibility()">{{ showPassword ? 'Ocultar' : 'Mostrar' }}</button>
+          <button (click)="toggleRepeatPasswordVisibility()">{{ showRepeatPassword ? 'Ocultar' : 'Mostrar' }}</button>
           </div>
         </div>
         <button type="submit" [routerLink]="[ '/login']">Continuar</button>
