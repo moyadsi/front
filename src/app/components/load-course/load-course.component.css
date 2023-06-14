@@ -258,7 +258,7 @@ select, textarea, button{
   border-radius: 1rem;
   border: none;
   margin: 20px;
-  width: 100%;
+  width: -moz-available;
 }
 
 .inputClase:hover{
