@@ -12,7 +12,7 @@ export class CoursesService {
   constructor(private http: HttpClient) {}
 
   obtenerCategorias(): Observable<any[]> {
-    const url = `${this.apiUrl}/category`;
+    const url = `${this.apiUrl}/Category`;
     return this.http.get<any[]>(url);
   }
 

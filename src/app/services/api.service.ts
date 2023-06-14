@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 
 export class ApiService {
 
-   private urlNew = 'http://localhost:5000/api/noticies/';
+   private urlNew = 'http://localhost:5000/api/Noticie';
 
   constructor(private http: HttpClient) { }
 
