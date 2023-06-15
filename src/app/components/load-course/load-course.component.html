@@ -66,16 +66,22 @@
         </div>
         <div class="box">
           <div class="infoCourse">
-            <div class="modules" id="modules" *ngFor="let modulo of arrayModulos">
-              <input class="inputBox" type="text" placeholder="Modulo :{{modulo.nombreModulo}}">
+            <div class="modules" id="modules" >
+              <input class="inputBox" type="text" *ngFor="let modulo of arrayModulos; let i = index" value="Modulo: {{modulo.nombreModulo}}" (click)="loadInfoCourse(i)" readonly>
             </div>
             <input class="inputBox" type="text" name="" id="nameModule" placeholder="Ingresa el nombre del modulo">
-            <button (click)="createElementModule()" >Agregar módulo</button>
+            <button (click)="saveModule()" >Agregar módulo</button>
           </div>
           <div class="infoClass" id="infoClass">
             <div class="class">
-              <div class="oneClass" id="class" *ngFor="let clase of arrayClases">
-                <input type="text" value="" class="inputClase" placeholder="Clase :{{clase.nombreClase}} Url :{{clase.urlClase}}" disabled>
+              <div class="oneClass" id="class">
+                <!-- <input type="text" value="" *ngFor="let clase of arrayClases; let i = index"  class="inputClase"  value="Clase: {{clase.nombreClase}} Url: {{clase.urlClase}}">                -->
+                <div class="inputClase" *ngFor="let clase of arrayClases; let i = index">
+                  <p>Clase:</p>
+                  <input type="text" name="" id="" value="{{clase.nombreClase}}"  [readonly]="!editableFields[i]">
+                  <p>Url:</p>
+                  <input type="text" name="" id="" value="{{clase.urlClase}}"  [readonly]="!editableFields[i]">
+                </div>
               </div>
               <div class="formClass">
                 <input class="inputClases" type="text" name="" id="nombreClase" placeholder="Ingresa el nombre de a clase">
@@ -89,7 +95,7 @@
                 </div>
               </div>
 
-              <button (click)="saveModule()">Guardar módulo</button>
+              <button (click)="nextStep()">Siguiente</button>
 
             </div>
             <button id="btnCreateClass" (click)="createOneClass()">Agregar una clase</button>

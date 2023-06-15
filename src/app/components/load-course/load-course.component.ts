@@ -6,43 +6,43 @@ import { Component } from '@angular/core';
 })
 
 
-export class LoadCourseComponent  {
+export class LoadCourseComponent {
 
-  colorDiamont : number = 1;
-  colorText : number = 1;
-  numberClass : number  = 1
+  colorDiamont: number = 1;
+  colorText: number = 1;
+  numberClass: number = 1
   textoBoton = 'chevron-right';
-  arrayModulos : any[] = [];
-  arrayClases : any[] = [];
+  arrayModulos: any[] = [];
+  arrayClases: any[] = [];
+  editableFields: boolean[] = [];
 
 
-   nextStep() {
-     if(this.colorDiamont == 2 || this.colorText == 2 ){
-       this.createElementModule() 
-       this.textoBoton = ' none'
-      }
-      if(this.colorDiamont == 3 || this.colorText == 3 ){
-          this.colorDiamont = 1
-          this.colorText = 1
-          this.textoBoton = 'chevron-right'
-          return
-      }
-        const containerForm: any = document.getElementById("containerForm") 
-        containerForm.style.marginLeft = '-'+this.colorDiamont+'00%';
-      this.colorDiamont++
-      this.colorText++
+  nextStep() {
+    if (this.colorDiamont == 2 || this.colorText == 2) {
+      this.textoBoton = ' none'
+    }
+    if (this.colorDiamont == 3 || this.colorText == 3) {
+      this.colorDiamont = 1
+      this.colorText = 1
+      this.textoBoton = 'chevron-right'
+      return
+    }
+    const containerForm: any = document.getElementById("containerForm")
+    containerForm.style.marginLeft = '-' + this.colorDiamont + '00%';
+    this.colorDiamont++
+    this.colorText++
   }
 
   previousStep() {
-    const containerForm: any = document.getElementById("containerForm") 
-    if(this.colorDiamont == 3 || this.colorText == 3){
+    const containerForm: any = document.getElementById("containerForm")
+    if (this.colorDiamont == 3 || this.colorText == 3) {
       containerForm.style.marginLeft = '-100%';
     }
 
-    if(this.colorDiamont == 2 || this.colorText == 2){
+    if (this.colorDiamont == 2 || this.colorText == 2) {
       containerForm.style.marginLeft = '0';
     }
-    if(this.colorDiamont == 1 || this.colorText == 1){
+    if (this.colorDiamont == 1 || this.colorText == 1) {
       this.colorDiamont = 1
       this.colorText = 1
       return
@@ -53,70 +53,76 @@ export class LoadCourseComponent  {
   }
 
   onFileSelected(event: any) {
-  const file: File = event.target.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = (e: any) => {
-      const fileContent = e.target.result;
-      console.log(fileContent)
+    const file: File = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        const fileContent = e.target.result;
         const myElement = document.getElementById("uploadImage");
-        console.log(myElement)
         let img = document.createElement("img")
-          img.src = fileContent
-          myElement?.appendChild(img)
+        img.src = fileContent
+        myElement?.appendChild(img)
       };
       reader.readAsText(file);
     }
   }
 
-  createElementModule(){
-    const nameModule: any = document.getElementById("nameModule")
-
-
-    
-    let dataModulos = {
-      "nombreModulo" : nameModule.value
-    }
-    
-    this.arrayModulos.push(dataModulos)
-
-    nameModule.value = ""
-
-  }
-
-  createOneClass(){
+  createOneClass() {
 
     const nombreClase: any = document.getElementById("nombreClase")
 
     const urlClase: any = document.getElementById("urlClase")
 
-    let dataClase = {
-      "nombreClase" : nombreClase.value,
-      "urlClase": urlClase.value
+    if (nombreClase.value != "" && urlClase.value != "") {
+      let dataClase = {
+        "nombreClase": nombreClase.value,
+        "urlClase": urlClase.value
+      }
+      this.arrayClases.push(dataClase)
+      nombreClase.value = ""
+      urlClase.value = ""
+
+    } else {
+      alert("Por favor completa los campos de la clase")
     }
 
-    this.arrayClases.push(dataClase)
-
-    nombreClase.value = ""
-    urlClase.value = ""
 
   }
 
-  saveModule(){
-    const classDiv: any = document.querySelector("oneClass")
-    const nameModule: any = document.getElementById("nameModule")
-
-    let dataModulo = {
-      "nombreModulo" : nameModule.value,
-      "clases" : this.arrayClases
-    }
-
-    this.arrayModulos.push(dataModulo)
-  }
-
-  newModule(){
+  saveModule() {
     const classDiv: any = document.getElementById("class")
+    const nameModule: any = document.getElementById("nameModule")
+    const nombreClase: any = document.getElementById("nombreClase")
+    const urlClase: any = document.getElementById("urlClase")
+    if (nameModule.value != "") {
+      if (classDiv.childNodes.length > 1){
 
-    classDiv.removeChild()
+        let dataModulo = {
+          "nombreModulo": nameModule.value,
+          "clases": this.arrayClases
+        }
+        this.arrayModulos.push(dataModulo)
+        nameModule.value = "";
+        this.arrayClases = [];
+
+      }else{ 
+        alert("Por favor completa los campos de la clase")
+      }
+    } else {
+      alert("Por favor dale un nombre al modulo")
+    }
+  }
+
+  loadInfoCourse(index){
+    this.arrayModulos[index].clases.readonly = false  
+
+    this.arrayClases = this.arrayModulos[index].clases
+    
+    const divModule: any = document.getElementById("modules")
+
+    divModule.childNodes[0].removeAttribute("readonly")
+
+    this.editableFields[index] = !this.editableFields[index];
+  
   }
 }

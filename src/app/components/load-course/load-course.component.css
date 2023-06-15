@@ -150,6 +150,7 @@ justify-content: space-evenly;
   border-radius: 1rem;
   color: white;
   height: 40px;
+  cursor: pointer;
 }
 
 select, textarea, button{
@@ -259,6 +260,16 @@ select, textarea, button{
   border: none;
   margin: 20px;
   width: -moz-available;
+  display: flex;
+  overflow-x: auto;
+}
+
+.inputClase input{
+  background-color: transparent;
+  width: fit-content;
+  border: none;
+  color: #5c5c5c;
+  margin-right: 5px;
 }
 
 .inputClase:hover{
