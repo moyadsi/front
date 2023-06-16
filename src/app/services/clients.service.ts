@@ -20,7 +20,8 @@ export class ClientsService {
   login(login: Login): Observable<any> {
     return this.http.post<Login>(this.ApiPerson + 'SignIn', login);
   }
-  
+
+
   getRequest(route: string, queries?: Record<string, string>, headers?: Record<string, string>) {
     let reqHeaders = new HttpHeaders();
     let reqParams = new HttpParams();
@@ -69,4 +70,14 @@ export class ClientsService {
       withCredentials: true,
     });
   }
+
+  getUserDetails(): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http.get<any>(this.ApiPerson + 'UserDetails', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  }
+  
 }

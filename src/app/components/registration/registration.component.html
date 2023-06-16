@@ -85,31 +85,17 @@
         <div class="password">
           <span>Contraseña</span>
           <div class="inputAndButtonPassword">
-          <input 
-          type="password"
-           [(ngModel)]="password" 
-           formControlName="Password"
-           name="password" 
-           [attr.type]="showPassword ? 'text' : 'password'" 
-           placeholder="Ingresa tu contraseña"
-            class="input-large"/>
+            <input type="password" formControlName="Password" placeholder="Ingresa tu contraseña" class="input-large" />
           <button (click)="togglePasswordVisibility()">{{ showPassword ? 'Ocultar' : 'Mostrar' }}</button>
           </div>
         </div>
         <div class="repeatPassword">
           <span>Confirmar contraseña</span>
           <div class="inputAndButtonPassword">
-          <input 
-          type="password"
-           [(ngModel)]="password" 
-           formControlName="repeatPassword"
-           name="repeatPassword" 
-           [attr.type]="showRepeatPassword ? 'text' : 'Password'" 
-           placeholder="Confirma tu contraseña"
-            class="input-large"/>
-          <button (click)="toggleRepeatPasswordVisibility()">{{ showRepeatPassword ? 'Ocultar' : 'Mostrar' }}</button>
+            <input type="password" formControlName="repeatPassword" placeholder="Confirma tu contraseña" class="input-large" />
+            <button (click)="toggleRepeatPasswordVisibility()">{{ showRepeatPassword ? 'Ocultar' : 'Mostrar' }}</button>
           </div>
-        </div>
+        </div>        
         <button type="submit" [routerLink]="[ '/login']">Continuar</button>
         <div class="termsAndConditions">
           <input type="checkbox" name="iAgree" id="" />

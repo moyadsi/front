@@ -39,9 +39,25 @@ margin:  3% 0 0 10%;
   border-color: #575755;
 }
 
-.people > p {
+.people > input {
   width: 80%;
   margin: 3% 0 0 10% ;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #575755;
+  outline: none;
+  color: white;
+}
+.people > button{
+  margin: 2% 0 0 80%;
+  background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);
+  border-radius: 10px;
+  width: 13%;
+  height: 5%;
+  color: white;
+}
+.people > p {
+    margin: 3% 0 0 10% ;
 }
 .people > label > img{
 object-fit: contain;

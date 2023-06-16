@@ -7,10 +7,11 @@
       <h5>{{nameUsers}}</h5>
       <h3>ARTISTA FREELANCE</h3>
       <a><hr></a>
-      <p>Yo soy: <br>
-        {{description}}
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim ab iste nostrum cumque eveniet suscipit recusandae temporibus et cupiditate eum animi accusantium sequi, 
-      doloremque pariatur facilis obcaecati deleniti? Perspiciatis, veniam!</p>
+      <p>Yo soy:</p>
+      <button (click)="habilitarEdicion()">Editar</button>
+      <input type="text" [(ngModel)]="campoTexto" [disabled]="!campoHabilitado">
+      <button (click)="guardarCambios()" *ngIf="mostrarBotonGuardar">Guardar</button>
+      
       <label>
         <img src="../../../assets/portafolio/ubicacion.png">
         <p> {{city}}Medellin, Colombia</p>
@@ -75,90 +76,6 @@
     </form>
   </section>
   </div>
-</div>
-<div class="professional-profile">
-  <section>
-    <img src="https://preview.redd.it/z52xeztt3qh21.jpg?auto=webp&s=adfc8d03e98d5125b4bbb85117d4cf2fc54ddb0a">
-    <h6>Rate- Proyecto</h6>
-    <h4>Desing Thinking</h4>
-    <div>
-      <img *ngIf="counters[4] > 0" src="../../../assets/portafolio/Heart-follow.png">
-      <img *ngIf="counters[4] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
-      <button (click)="toggleFavorite(4)"> {{counters[4]}} </button>
-  </div>
-  </section>
-  <section>
-    <img src="https://c.wallhere.com/photos/37/16/2048x1280_px_General-535318.jpg!s">
-    <h6>Rate- Proyecto</h6>
-    <h4>Desing Thinking</h4>
-    <div>
-      <img *ngIf="counters[5] > 0" src="../../../assets/portafolio/Heart-follow.png">
-      <img *ngIf="counters[5] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
-      <button (click)="toggleFavorite(5)"> {{counters[5]}} </button>
-  </div>
-  </section>
-  <section>
-    <img src="https://c.wallhere.com/photos/37/16/2048x1280_px_General-535318.jpg!s">
-    <h6>Rate- Proyecto</h6>
-    <h4>Desing Thinking</h4>
-    <div>
-      <img *ngIf="counters[5] > 0" src="../../../assets/portafolio/Heart-follow.png">
-      <img *ngIf="counters[5] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
-      <button (click)="toggleFavorite(5)"> {{counters[5]}} </button>
-  </div>
-  </section>
-  <section>
-    <img src="https://www.altosempresarios.com/images/Noticias_2022/que-es-el-metaverso.jpg">
-    <h6>Rate- Proyecto</h6>
-    <h4>Desing Thinking</h4>
-    <div>
-      <img *ngIf="counters[7] > 0" src="../../../assets/portafolio/Heart-follow.png">
-      <img *ngIf="counters[7] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
-      <button (click)="toggleFavorite(7)"> {{counters[7]}} </button>
-  </div>
-  </section>
-</div>
-<div class="professional-profile">
-  <section>
-    <img src="https://preview.redd.it/z52xeztt3qh21.jpg?auto=webp&s=adfc8d03e98d5125b4bbb85117d4cf2fc54ddb0a">
-    <h6>Rate- Proyecto</h6>
-    <h4>Desing Thinking</h4>
-    <div>
-      <img *ngIf="counters[4] > 0" src="../../../assets/portafolio/Heart-follow.png">
-      <img *ngIf="counters[4] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
-      <button (click)="toggleFavorite(4)"> {{counters[4]}} </button>
-  </div>
-  </section>
-  <section>
-    <img src="https://c.wallhere.com/photos/37/16/2048x1280_px_General-535318.jpg!s">
-    <h6>Rate- Proyecto</h6>
-    <h4>Desing Thinking</h4>
-    <div>
-      <img *ngIf="counters[5] > 0" src="../../../assets/portafolio/Heart-follow.png">
-      <img *ngIf="counters[5] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
-      <button (click)="toggleFavorite(5)"> {{counters[5]}} </button>
-  </div>
-  </section>
-  <section>
-    <img src="https://c.wallhere.com/photos/37/16/2048x1280_px_General-535318.jpg!s">
-    <h6>Rate- Proyecto</h6>
-    <h4>Desing Thinking</h4>
-    <div>
-      <img *ngIf="counters[5] > 0" src="../../../assets/portafolio/Heart-follow.png">
-      <img *ngIf="counters[5] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
-      <button (click)="toggleFavorite(5)"> {{counters[5]}} </button>
-  </div>
-  </section>
-  <section>
-    <img src="https://www.altosempresarios.com/images/Noticias_2022/que-es-el-metaverso.jpg">
-    <h6>Rate- Proyecto</h6>
-    <h4>Desing Thinking</h4>
-    <div>
-      <img *ngIf="counters[7] > 0" src="../../../assets/portafolio/Heart-follow.png">
-      <img *ngIf="counters[7] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
-      <button (click)="toggleFavorite(7)"> {{counters[7]}} </button>
-  </div>
-  </section>
 </div>
 <div class="professional-profile">
   <section>

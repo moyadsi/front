@@ -12,45 +12,18 @@
                 <img src="../../../assets/cursos/vidanegra.png">
                 <h4>Modulos</h4>
                 </section>
-                <div class="section-modules">
-                    <section>
+                <div class="section-modules" *ngFor="let detalleCurso of detallesCurso">
+                    <section *ngIf="detallesCargados" >
                       <img src="">
                       <label>
-                        <h3>Antes de empezar</h3>
-                        <h4>1 clases</h4>
+                        <h3>{{ detalleCurso.NameCourses }}</h3>
                       </label>
-                      <img src="../../../assets/cursos/ionic-ios-arrow-up.png" (click)="toggleSection(1)">
+                      <button (click)="toggleMostrarClases(detalleCurso.Id)"><img src="../../../assets/cursos/ionic-ios-arrow-up.png" ></button>
+                      <div *ngIf="mostrarClases && detalleCursoSeleccionado === detalleCurso.Id">
+                        <p *ngFor="let clase of contenidoCurso" (click)="obtenerUrlVideo(clase)">{{ clase.DescriptionCourses }}</p>
+                    </div>
                     </section>
-                    <div *ngIf="currentSection === 1">
-                        <p>Clase 1</p> 
-                      </div>
-                    <section>
-                      <img src="">
-                      <label>
-                        <h3>Antes de empezar</h3>
-                        <h4>2 clases</h4>
-                      </label>
-                      <img src="../../../assets/cursos/ionic-ios-arrow-up.png" (click)="toggleSection(2)">
-                    </section>
-                    <div *ngIf="currentSection === 2">
-                        <p>Clase 1/2</p>
-                        <p>Clase 2/2</p>
-                      </div>
-                    <section>
-                      <img src="">
-                      <label>
-                        <h3>Antes de empezar</h3>   
-                        <h4>3 clases</h4>
-                      </label>
-                      <img src="../../../assets/cursos/ionic-ios-arrow-up.png" (click)="toggleSection(3)">
-                    </section>
-                    <div *ngIf="currentSection === 3">
-                        <p>Clase 1/3</p>
-                        <p>Clase 2/3</p>
-                        <p>Clase 3/3</p>
-                      </div>
-                  </div>
-                  
+                  </div>                    
             </div>
         </section>
         <section>
@@ -96,25 +69,16 @@
                 <p><strong>Enlaces necesarios</strong> 2 links</p>
             </section>
             <section>
-                <label>
-                    <article>
-                    <u>Open Ai</u>
-                    <h6>www.openai.com</h6>
-                    </article>
-                    <a href="https://openai.com/"><img src="../../../assets/cursos/enlace.png"></a>
+                <label *ngFor="let link of linksCurso">
+                  <article>
+                    <u>{{ link.NameLink }}</u>
+                    <h6>{{ link.UrlLink }}</h6>
+                  </article>
+                  <a [href]="link.UrlLink" target="_blank"><img src="../../../assets/cursos/enlace.png"></a>
                 </label>
                 <hr>
-            </section>
-            <section>
-                <label>
-                    <article>
-                    <u>Descargar adobe lightroom</u>
-                    <h6>www.adobe.com/co/prod.cts/photoshop</h6>
-                    </article>
-                    <a href="https://www.adobe.com/co/error-pages/404.html"><img src="../../../assets/cursos/enlace.png"></a>
-                </label>
-                <hr>
-            </section>
+              </section>
+              
             </div>
             <div class="files">
                 <section>
@@ -123,35 +87,15 @@
                     <p><strong>Archivos pdf</strong> 3 archivos</p>
                 </section>
                 <section>
-                    <label>
-                        <article>
-                            <a href="../../../assets/anexos/Cursillo Tecnicatura- Introduccion a la programacion 2020.pdf" download>Introduccion a la programacion</a>
-                            <h6>.pdf</h6>
-                        </article>
-                            <img src="../../../assets/cursos/descarga.png">    
+                    <label *ngFor="let file of filesCurso">
+                      <article>
+                        <a [href]="file.UrlFile" download>{{ file.NameFile }}</a>
+                        <h6>{{ getFileExtension(file.UrlFile) }}</h6>
+                      </article>
+                      <img src="../../../assets/cursos/descarga.png">
                     </label>
-                <hr>
-                </section>
-                <section>
-                    <label>
-                        <article>
-                            <a href="../../../assets/anexos/FP.pdf" download>Fundamentos de la programacion </a>
-                            <h6>.pdf</h6>
-                        </article>
-                            <img src="../../../assets/cursos/descarga.png">    
-                    </label>
-                <hr>
-                </section>
-                <section>
-                    <label>
-                        <article>
-                            <a href="../../../assets/anexos/Lógica.pdf" download>Logica de programacion</a>
-                            <h6>.pdf</h6>
-                        </article>
-                            <img src="../../../assets/cursos/descarga.png">    
-                    </label>
-                <hr>
-                </section>
+                    <hr>
+                  </section>
             </div>
         </div>
 
@@ -219,42 +163,18 @@
             <input type="text" placeholder="Escribe tu comentario">
             <button><img src="../../../assets/cursos/enviar.png"></button>
             <hr>
-            <label>
-                <h4>fernandopinto5:</h4>
-                <p>Que nivel.</p>
+            <label *ngFor="let comment of comentsCurso; let i = index">
+                <h4>{{ comment.PersonFullName }}:</h4>
+                <p>{{ comment.comments }}</p>
                 <hr>
-                <a (click)="setActiveSection(1)"><img src="../../../assets/cursos/comentarios.png">Responder</a>
+                <a (click)="setActiveSection(i)"><img src="../../../assets/cursos/comentarios.png">Responder</a>
                 <div>
-                    <img *ngIf="counters[0] > 0" src="../../../assets/portafolio/Heart-follow.png">
-                    <img *ngIf="counters[0] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
-                    <button (click)="toggleFavorite(0)"> Me gusta</button>
+                  <img *ngIf="counters[i] > 0" src="../../../assets/portafolio/Heart-follow.png">
+                  <img *ngIf="counters[i] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
+                  <button (click)="toggleFavorite(i)"> Me gusta</button>
                 </div>
-                <input type="text" placeholder="Escribe tu respuesta" *ngIf="activeSectionIndex === 1">
-            </label>
-            <label>
-                <h4>aaronpelao_:</h4>
-                <p>@fernandopinto5 puro talento mi bro.</p>
-                <hr>
-                <a (click)="setActiveSection(2)"><img src="../../../assets/cursos/comentarios.png">Responder</a>
-                <div>
-                    <img *ngIf="counters[1] > 0" src="../../../assets/portafolio/Heart-follow.png">
-                    <img *ngIf="counters[1] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
-                    <button (click)="toggleFavorite(1)"> Me gusta</button>
-                </div>
-                <input type="text" placeholder="Escribe tu respuesta" *ngIf="activeSectionIndex === 2">
-            </label>
-            <label>
-                <h4>Mon Avellanede:</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex sed, illum veniam magni, sit dignissimos odit doloremque temporibus nesciunt architecto alias voluptatum.</p>
-                <hr>
-                <a (click)="setActiveSection(3)"><img src="../../../assets/cursos/comentarios.png">Responder</a>
-                <div>
-                    <img *ngIf="counters[2] > 0" src="../../../assets/portafolio/Heart-follow.png">
-                    <img *ngIf="counters[2] === 0" src="../../../assets/portafolio/Heart-nofollow.png">
-                    <button (click)="toggleFavorite(2)">Me gusta</button>
-                </div>
-                <input type="text" placeholder="Escribe tu respuesta" *ngIf="activeSectionIndex === 3">
-            </label>
+                <input type="text" placeholder="Escribe tu respuesta" *ngIf="activeCommentIndex === i">
+              </label> 
         </section>
     </div>
     <!--SECCION DE GALERIA-->

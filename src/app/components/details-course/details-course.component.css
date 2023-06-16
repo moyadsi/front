@@ -774,34 +774,48 @@ width: 97%;
       grid-template-columns: 20% 40% 20%;
       background-color:#313131;
       width: 90%;
+      height: 50px;
       border-radius: 15px;
-      margin: 5% 0 0 5%;
+      margin: 5% 0 8% 5%;
     }
-
-    .section-modules > section > label > h4{
-      font-size: 15px;
-      margin: 0 0 10% 0;
+    .section-modules  {
+        overflow-y: scroll;
+        background-color: transparent;
     }
 
     .section-modules > section > label > h3{
-      
-      margin: 10% 0 0 0;
+      margin: 10% 0 0 -35%;
+      font-size: 15px;
+      width: 120%;
     }
 
-    .section-modules > section > img{
-        margin: 50% 0 0 100%;
+    .section-modules > section > button{
+     background-color: transparent;
+     border: none;
     }
-
-    .section-modules > div > p {
-        margin: 2%  0 0 5%;
+    .section-modules > section > button > img{
+        object-fit: contain;
+        width: 20%;
+       }
+       .section-modules > section > div > p{
+        margin: 15% 0 0 5%;
         background-color:#313131;
         border-radius: 15px;
-        width: 82%;
+        width: 461%;
         height: 20px;
         padding: 10px;
-    }
+        cursor: pointer;
+       }
+       .section-modules > section > div {
+        height: 80px;
+        margin-top: 10%;
+       }
+
     .section-modules > div {
         height: 5px;
         display: inline-block;
         cursor: pointer;
+
     }
+
+    

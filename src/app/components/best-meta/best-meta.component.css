@@ -30,7 +30,8 @@ h4 {
 .filter {
   display: grid;
   grid-template-columns: 30% 40% 30%;
-  margin: 5% 0 0 0;
+  margin: 5% 0 0 10%;
+  width: 95%;
 }
 
 .filter-carrete {
@@ -42,6 +43,24 @@ h4 {
   width: 80%;
 }
   
+.carrete-conteiner ::-webkit-scrollbar {
+  width: 8px; /* Ancho del scrollbar */
+  height: 5px;
+  margin: 10px;
+}
+
+.carrete-conteiner ::-webkit-scrollbar-track {
+  background: transparent; /* Color del track del scrollbar */
+}
+
+.carrete-conteiner ::-webkit-scrollbar-thumb {
+  background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);/* Color del thumb (manija) del scrollbar */
+  border-radius: 4px; /* Bordes redondeados del thumb */
+}
+
+.carrete-conteiner ::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color del thumb al pasar el mouse */
+}
 li{
   display: inline;
   margin: 0 0 0 10px;

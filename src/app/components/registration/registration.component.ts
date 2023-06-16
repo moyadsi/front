@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { EmailValidator, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClientsService } from '../../services/clients.service';
-import { Person } from '../../interface/Person'
+import { Person } from '../../interface/Person';
 
 @Component({
   selector: 'app-registration',
@@ -10,8 +10,7 @@ import { Person } from '../../interface/Person'
 })
 export class RegistrationComponent implements OnInit {
   form: FormGroup;
-
-  Person:Person=new Person;
+  Person: Person = new Person;
   password: string = '';
   showPassword: boolean = false;
   showRepeatPassword: boolean = false;
@@ -26,14 +25,14 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private clients: ClientsService) {
     this.form = this.fb.group({
-      Cedula:['',Validators.required],
+      Cedula: ['', Validators.required],
       Nombre: ['', Validators.required],
       Apellido: ['', Validators.required],
-      Celular: ['', Validators.required,Number],
-      Email: ['', Validators.required,EmailValidator],
+      Celular: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      Email: ['', Validators.required],
       Password: ['', Validators.required],
-      Rol:['User'],
-      RolAd:['']
+      Rol: ['User'],
+      RolAd: ['']
     });
   }
 
@@ -41,23 +40,20 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit() {
+    const PersonSave: Person = {
+      Cedula: this.form.get('Cedula')?.value,
+      Nombre: this.form.get('Nombre')?.value,
+      Apellido: this.form.get('Apellido')?.value,
+      Celular: this.form.get('Celular')?.value,
+      Email: this.form.get('Email')?.value,
+      Password: this.form.get('Password')?.value
+    };
 
-      const PersonSave:Person={
-        Cedula:this.form.get('Cedula')?.value,
-        Nombre: this.form.get('Nombre')?.value,
-        Apellido: this.form.get('Apellido')?.value,
-        Celular: this.form.get('Celular')?.value,
-        Email: this.form.get('Email')?.value,
-        Password: this.form.get('Password')?.value
-      }
+    this.clients.CreatePerson(PersonSave).subscribe(data => {
+      console.log(data);
+      console.log("User created");
+    });
 
-      this.clients.CreatePerson(PersonSave).subscribe(data=>{
-        console.log(data);
-        console.log("User created");
-
-      })
-
-      console.log(PersonSave);
-
+    console.log(PersonSave);
   }
 }

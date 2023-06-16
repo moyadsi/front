@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
-
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
@@ -31,10 +29,10 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       const credentials = {
-        email: this.form.get('Email')?.value,
-        Password: this.form.get('Password')?.value,
+        email: this.form.get('Email')?.value as string,
+        Password: this.form.get('Password')?.value as string,
       };
-
+  
       this.authService.login(credentials)
         .then(() => {
           console.log('Inicio de sesión exitoso');

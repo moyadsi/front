@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, distinctUntilChanged } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ClientsService } from './clients.service';
+import { catchError, map } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -69,6 +71,7 @@ export class AuthService {
       });
   }
 
+  // Agrega la segunda parte aquí
 
   setCourrentUser(user: string): void {
     localStorage.setItem('courrentUser', user);
@@ -106,5 +109,21 @@ export class AuthService {
 
   isAdmin(): Observable<boolean> {
     return this.admin.asObservable();
+  }
+
+  getUserId(): Observable<string | null> {
+    const token = this.getToken();
+    if (token) {
+      return this.http.post<any>('http://localhost:5000/api/Users/getUserId', { token })
+        .pipe(
+          map(response => response.userId),
+          catchError(error => {
+            console.error('Error al obtener el ID del usuario:', error);
+            return of(null);
+          })
+        );
+    } else {
+      return of(null);
+    }
   }
 }

@@ -28,6 +28,11 @@ export class DetailsCourseComponent implements OnInit {
   nombreProfeSeleccionado: any;
   experienciaSeleccionada: any;
   profesionSeleccionada: any;
+  detallesCurso: { Id: any; IdCourse: any; NameCourses: any; DescriptionCourses: any; Duration: any; UrlVideo: any; }[] | undefined;
+  contenidoCurso: { Id: any; IdCourse: any; NameCourses: any; DescriptionCourses: any; Duration: any; UrlVideo: any; }[] | undefined;
+  filesCurso: { Id: any; IdCourse: any; NameFile: any; UrlFile: any; }[] | undefined;
+  linksCurso: { Id: any; IdCourse: any; NameLink: any; UrlLink: any; }[] | undefined;
+  comentsCurso: { Id: any; IdCourse: any; comments: any; PersonFullName: any; likeComments:any }[] | undefined;
 
   ngOnInit(): void {
     this.obtenerAllcourses();
@@ -35,8 +40,11 @@ export class DetailsCourseComponent implements OnInit {
       const idCurso = params.get('idCurso');
       if (idCurso) {
         this.obtenerCursos(idCurso); // Llama a la función obtenerCursos con el ID del curso
+        this.obtenerDetallesCurso(idCurso);
+        this.obtenerFilesCurso(idCurso);
+        this.obtenerLinksCurso(idCurso);
+        this.obtenerComentariosCurso(idCurso);
       }
-      console.log(idCurso);
     });
   }
   
@@ -45,29 +53,22 @@ export class DetailsCourseComponent implements OnInit {
   obtenerCursos(idCurso: string) {
     this.cursosService.obtenerCursos(idCurso).subscribe(
       (response) => {
-        this.cursosCategoria = response.filter(curso => curso.Id === Number(idCurso)).map(curso => {
-          return {
-            id: curso.Id,
-            url: curso.Url,
-            tema: curso.NameCourse,
-            duracionCourse: curso.durationCourse,
-            lenguajeCourse: curso.Lenguaje,
-            courseValue: curso.ValueCourse,
-            descripcion: curso.DescriptionCourse,
-            idteacher: curso.IdTeacher
-          };
-        });
+        // Obtener los detalles del curso actual
+        const cursoActual = response.find(curso => curso.Id === Number(idCurso));
   
-        if (this.cursosCategoria.length > 0) {
-          const idTeacher = this.cursosCategoria[0].idteacher;
-          this.urlSeleccionada = this.cursosCategoria[0].url;
-          this.descripcionCurso = this.cursosCategoria[0].descripcion;
-          this.duracion = this.cursosCategoria[0].duracionCourse;
-          this.lenguaje = this.cursosCategoria[0].lenguajeCourse;
-          this.valueCourses = this.cursosCategoria[0].courseValue;
-          this.nameCurso = this.cursosCategoria[0].tema;
+        if (cursoActual) {
+          const idTeacher = cursoActual.IdTeacher;
+          this.urlSeleccionada = cursoActual.Url;
+          this.descripcionCurso = cursoActual.DescriptionCourse;
+          this.duracion = cursoActual.durationCourse;
+          this.lenguaje = cursoActual.Lenguaje;
+          this.valueCourses = cursoActual.ValueCourse;
+          this.nameCurso = cursoActual.NameCourse;
           this.obtenerProfesor(idTeacher);
   
+          // Obtener los detalles adicionales del curso
+          this.obtenerDetallesCurso(cursoActual.IdCourse);
+          this.obtenerDetallesCurso (idCurso);
         }
       },
       (error) => {
@@ -75,6 +76,97 @@ export class DetailsCourseComponent implements OnInit {
       }
     );
   }
+  
+  detallesCargados: boolean = false; // Variable para controlar la visibilidad de los detalles del curso
+
+  
+  obtenerDetallesCurso(idCurso: string) {
+    this.cursosService.obtenerDetailsCurso(idCurso).subscribe(
+      (response) => {
+        this.detallesCurso = response.map(({ Id, IdCourse, NameCourses, DescriptionCourses, Duration, UrlVideo }) => ({ Id, IdCourse, NameCourses, DescriptionCourses, Duration, UrlVideo }));
+  
+        // Obtener el ID del detalle del curso
+        const idDetalleCurso = this.detallesCurso[0]?.Id;
+  
+        // Llamar a la función obtenerContentCurso con el ID del detalle del curso
+        if (idDetalleCurso) {
+          this.obtenerContentCurso(idDetalleCurso);
+        }
+  
+        this.detallesCargados = true; // Establece detallesCargados a true una vez que los detalles se hayan cargado
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+  /* CONTENIDO DEL CURSO*/
+  obtenerContentCurso(idDetalleCurso: string) {
+    this.cursosService.obtenerContentCurso(idDetalleCurso).subscribe(
+      (response) => {
+        this.contenidoCurso = response.map(({ Id_Content, IdDetailsCourses, Duration, DescriptionClass, Url }) => ({
+          Id: Id_Content,
+          IdCourse: IdDetailsCourses,
+          NameCourses: null,
+          DescriptionCourses: DescriptionClass,
+          Duration,
+          UrlVideo: Url
+        }));
+  
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+  
+  obtenerFilesCurso(idCurso: string) {
+    this.cursosService.obtenerFilesCurso(idCurso).subscribe(
+      (response) => {
+        const cursoActual = response.find(filesCurso => filesCurso.IdCourse === parseInt(idCurso));
+        if(cursoActual){
+          this.filesCurso = response.map(({ Id, IdCourse, NameFile,  UrlFile }) => ({ Id, IdCourse, NameFile, UrlFile }));
+        }
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+  
+  obtenerLinksCurso(idCurso: string) {
+    this.cursosService.obtenerLinksCurso(idCurso).subscribe(
+      (response) => {
+        const cursoActual = response.find(filesCurso => filesCurso.IdCourse === parseInt(idCurso));
+        if (cursoActual){
+          this.linksCurso = response.map(({ Id, IdCourse, NameLink,  UrlLink }) => ({ Id, IdCourse, NameLink, UrlLink }));
+          console.log(response);
+        }
+        console.log("entro")
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+  
+  /*COMENTARIOS CURSO*/
+  obtenerComentariosCurso(idCurso: string) {
+    this.cursosService.obtenerComentsCurso(idCurso).subscribe(
+      (response) => {
+        const cursoActual = response.find(comentsCurso => comentsCurso.IdCourse === parseInt(idCurso));
+        if (cursoActual){
+          this.comentsCurso = response.map(({ Id, IdCourse, comments,  PersonFullName ,likeComments }) => ({ Id, IdCourse, comments, PersonFullName , likeComments }));
+          console.log(response);
+        }
+        console.log("entro")
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+  
   obtenerAllcourses() {
     this.cursosService.obtenerAllCursos().subscribe(
       (response) => {
@@ -86,7 +178,6 @@ export class DetailsCourseComponent implements OnInit {
 
         // Obtener los últimos 3 cursos
         this.ultimosCursos = this.cursos.slice(0, 4);
-        console.log(this.ultimosCursos)
 
  
       },
@@ -113,8 +204,7 @@ export class DetailsCourseComponent implements OnInit {
           this.experienciaSeleccionada = profesor.Experience;
           this.profesionSeleccionada = profesor.Profesion;
         } 
-  
-        console.log(this.profesores);
+
       },
       (error) => {
         console.error(error);
@@ -122,39 +212,50 @@ export class DetailsCourseComponent implements OnInit {
     );
   }
   toggleFavorite(index: number) {
-    if (this.counters[index] === 0) {
-      this.counters[index]++;
-      this.favoriteCount++;
-    } else {
-      this.counters[index]--;
-      this.favoriteCount--;
+    if (index !== this.activeCommentIndex) {
+      if (this.counters[index] === 0) {
+        this.counters[index]++;
+        this.favoriteCount++;
+      } else {
+        this.counters[index]--;
+        this.favoriteCount--;
+      }
     }
   }
+  activeCommentIndex: number = -1;
 
   setActiveSection(index: number) {
-    this.activeSectionIndex = index;
+    this.activeCommentIndex = index;
   }
   
-  getSafeVideoUrl(): SafeResourceUrl {
-    if (!this.urlSeleccionada) {
-      return ''; // O cualquier otro valor predeterminado en caso de que no haya URL seleccionada
-    }
-    const videoUrl = 'https://www.youtube.com/embed/' + this.urlSeleccionada;
-
-    return this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
+  
+getSafeVideoUrl(): SafeResourceUrl {
+  if (!this.urlSeleccionada) {
+    return '';
   }
-
-  currentSection: number = 0;
-
-  toggleSection(sectionNumber: number) {
-    if (this.currentSection === sectionNumber) {
-      this.currentSection = 0; // Si se hace clic en la misma sección, ocultar el div
-    } else {
-      this.currentSection = sectionNumber; // Mostrar el div correspondiente a la sección
-    }
-  }
+  const videoUrl = 'https://www.youtube.com/embed/' + this.urlSeleccionada;
+  return this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
 }
-function obtenerUrlDesdeServidor(parametro: string): any {
-  throw new Error('Function not implemented.');
+
+
+detalleCursoSeleccionado: any;
+mostrarClases = false;
+  toggleMostrarClases(idDetalleCurso: any) {
+    this.detalleCursoSeleccionado = idDetalleCurso;
+    this.mostrarClases = !this.mostrarClases;
+    if (this.mostrarClases) {
+      this.obtenerContentCurso(idDetalleCurso);
+    }
+  }
+
+  obtenerUrlVideo(clase: any) {
+    this.urlSeleccionada = clase.UrlVideo;
+  }
+  
+  getFileExtension(url: string): string {
+    const parts = url.split('.');
+    return parts[parts.length - 1];
+  }
+  
 }
 
