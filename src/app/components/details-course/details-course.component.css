@@ -54,7 +54,8 @@
     height: 65%;
     width: 80%;
     margin: 4% 0 0 10%;
-    overflow: scroll;
+    overflow-x: hidden; /* Mostrar scroll horizontal */
+    overflow-y: auto; /* Ocultar scroll vertical */
 }
 
 .module > section > h4 {
@@ -779,9 +780,29 @@ width: 97%;
       margin: 5% 0 8% 5%;
     }
     .section-modules  {
-        overflow-y: scroll;
+        overflow-x: hidden; /* Mostrar scroll horizontal */
+        overflow-y: auto; /* Ocultar scroll vertical */
         background-color: transparent;
     }
+
+    .section-modules::-webkit-scrollbar {
+        width: 8px; /* Ancho del scrollbar */
+        height: 5px;
+        margin: 10px;
+      }
+      
+      .section-modules::-webkit-scrollbar-track {
+        background: transparent; /* Color del track del scrollbar */
+      }
+      
+      .section-modules::-webkit-scrollbar-thumb {
+        background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);/* Color del thumb (manija) del scrollbar */
+        border-radius: 4px; /* Bordes redondeados del thumb */
+      }
+      
+      .section-modules::-webkit-scrollbar-thumb:hover {
+        background: #555; /* Color del thumb al pasar el mouse */
+      }
 
     .section-modules > section > label > h3{
       margin: 10% 0 0 -35%;

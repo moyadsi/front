@@ -70,6 +70,14 @@ margin: 0 0 0 10%;
   margin: 10% 0 0 2%;
 }
 
+.people > label > p > input{
+background-color: transparent;
+color: white;
+border: none;
+border-bottom: 1px #575755 solid;
+outline: none;
+}
+
 .people > section > button > img{
 object-fit: contain;
 width: 15%;
@@ -290,7 +298,7 @@ form > h6 {
 
 .professional-profile >section > div {
   display: inline-block;
-  width: 10%;
+  width: 15%;
   margin: 0 0 0 40%;
   background-color: #4d4d4da1;
   color: white;
@@ -310,6 +318,7 @@ form > h6 {
   width: 30%;
   margin-left: 10%;
 }
+
 .professional-profile >section >label > h3{
   font-size: 15px;
 }

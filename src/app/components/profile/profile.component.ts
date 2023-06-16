@@ -62,7 +62,7 @@ campoTexto: any;
           this.userId = userId;
           console.log('ID del usuario logueado:', userId);
         } else {
-          console.log('No se pudo obtener el ID del usuario logueado.');
+          console.log('No se pudo obtener el ID del usuario logueado.' , this.userId);
         }
         
       },

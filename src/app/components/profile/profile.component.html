@@ -9,12 +9,12 @@
       <a><hr></a>
       <p>Yo soy:</p>
       <button (click)="habilitarEdicion()">Editar</button>
-      <input type="text" [(ngModel)]="campoTexto" [disabled]="!campoHabilitado">
+      <input type="text" [(ngModel)]="campoTexto" [disabled]="!campoHabilitado" placeholder="Ingresa la informacion de tu perfil profesional">
       <button (click)="guardarCambios()" *ngIf="mostrarBotonGuardar">Guardar</button>
       
       <label>
         <img src="../../../assets/portafolio/ubicacion.png">
-        <p> {{city}}Medellin, Colombia</p>
+        <p> {{city}}<input type="text" placeholder="Ingresa tu ciudad"></p>
       </label>
       <section>
         <button>Arte digital <img src="../../../assets/portafolio/rojo.png"></button>

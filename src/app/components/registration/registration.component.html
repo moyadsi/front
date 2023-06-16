@@ -95,8 +95,8 @@
             <input type="password" formControlName="repeatPassword" placeholder="Confirma tu contraseña" class="input-large" />
             <button (click)="toggleRepeatPasswordVisibility()">{{ showRepeatPassword ? 'Ocultar' : 'Mostrar' }}</button>
           </div>
-        </div>        
-        <button type="submit" [routerLink]="[ '/login']">Continuar</button>
+        </div>   
+        <button type="submit" [disabled]="form.invalid">Continuar</button>
         <div class="termsAndConditions">
           <input type="checkbox" name="iAgree" id="" />
           <p>
