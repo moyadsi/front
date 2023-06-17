@@ -43,7 +43,7 @@
         <div class="box">
           <div class="uploadImage" id="uploadImage">
             <p>Nombre del curso : </p>
-            <input class="inputBox" name="courseName" placeholder="Nombre del curso" type="text">
+            <input class="inputBox" id="courseName" name="courseName" placeholder="Nombre del curso" type="text">
             <p>Subir portada : </p>
             <label for="file-upload" class="custom-file-upload">
               <i class="fa-solid fa-file-arrow-up"></i> Subir Imagen
@@ -52,15 +52,16 @@
           </div>
           <div class="infoCourse">
             <p>Categoria del curso : </p>
-            <select name="" id="">
+            <select name="" id="categorySelected">
               <option value="" disabled selected>Selecciona una categoria</option>
+              <option value="{{category.NameCategory}}" id="{{category.Id_Category}}" *ngFor="let category of categoryes">{{category.NameCategory}}</option>
             </select>
             <!-- <p>Nivel del curso : </p>
             <select name="" id="">
               <option value="" disabled selected>Selecciona una nivel</option>
             </select> -->
             <p>Descripción del curso : </p>
-            <textarea name="courseDescription" placeholder="Descripcion del curso" type="text"></textarea>
+            <textarea name="courseDescription" id="courseDescription" placeholder="Descripcion del curso" type="text"></textarea>
              <button (click)="nextStep()">Siguiente</button>
           </div>
         </div>
@@ -69,8 +70,8 @@
             <div class="modules" id="modules" >
               <input class="inputBox" type="text" *ngFor="let modulo of arrayModulos; let i = index" value="Modulo: {{modulo.nombreModulo}}" (click)="loadInfoCourse(i)" readonly>
             </div>
-            <input class="inputBox" type="text" name="" id="nameModule" placeholder="Ingresa el nombre del modulo">
-            <button (click)="saveModule()" >Agregar módulo</button>
+            <input (click)="clearClass()" class="inputBox" type="text" name="" id="nameModule" placeholder="Ingresa el nombre del modulo">
+            <button (click)="saveModule()" >Guardar módulo</button>
           </div>
           <div class="infoClass" id="infoClass">
             <div class="class">
