@@ -2,78 +2,87 @@
 <main>
   <div class="info-profile">
     <div class="people">
-      <img src="../../../assets/profile/Perfil.jpg">
+
+      <img [src]="'../../../assets/profile/' + imgPerfil ">
       <hr>
-      <h5>{{nameUsers}}</h5>
-      <h3>ARTISTA FREELANCE</h3>
-      <a><hr></a>
-      <p>Yo soy:</p>
       <button (click)="habilitarEdicion()">Editar</button>
-      <input type="text" [(ngModel)]="campoTexto" [disabled]="!campoHabilitado" placeholder="Ingresa la informacion de tu perfil profesional">
       <button (click)="guardarCambios()" *ngIf="mostrarBotonGuardar">Guardar</button>
-      
+      <h5><input type="text" [(ngModel)]="nameUsers" [disabled]="!campoHabilitado"></h5>
+      <h3><input type="text" [(ngModel)]="ocupacion" [disabled]="!campoHabilitado"></h3>
+      <p>Yo soy:</p>
+      <textarea [(ngModel)]="description" [disabled]="!campoHabilitado" placeholder="Ingresa la informacion de tu perfil profesional"></textarea>
       <label>
         <img src="../../../assets/portafolio/ubicacion.png">
-        <p> {{city}}<input type="text" placeholder="Ingresa tu ciudad"></p>
+        <input type="text" [(ngModel)]="city" [disabled]="!campoHabilitado">
       </label>
-      <section>
+      <!--<section>
         <button>Arte digital <img src="../../../assets/portafolio/rojo.png"></button>
         <button>Arte digital <img src="../../../assets/portafolio/azul.png"></button>
         <button>3d artista <img src="../../../assets/portafolio/rojo.png"></button>
-      </section>
+      </section> -->
     </div>
     <div class="project">
       <article>
         <h2>{{cantProjects}}</h2>
         <h4>Proyectos Creados</h4>
-        <h5>por <strong>Antonio J.Manzanedo</strong></h5>
+        <h5>por <strong>{{nameUsers}}</strong></h5>
         <button (click)="toggleComponent(0)">Software y herramientas utilizadas</button>
       </article>
       <section>
         <div class="tools" *ngIf="mostrarComponente[0]">
           <h6>Software y herramientas utilizadas:</h6>
-          <label>
+         <!--<label>
             <p><img src="../../../assets/portafolio/adobe.png">Adobe xd</p>
             <p><img src="../../../assets/portafolio/photoshop.png">Photoshop</p>
             <p><img src="">Blender</p>
             <p><img src="">Zbrush</p>
           </label>
+          --> 
           <label>
-            <h5>Otras herramientas:</h5>
-            <li>Autodesk maya</li>
-            <li>Figma</li>
-            <li>Subtance painter</li>
-            <li>Adobe ilustrator</li>
+            <li *ngFor="let tool of tools">{{ tool }}</li>
           </label>
         </div>
       </section>
     </div>
   <div class="info-person">
     <div class="person-details">
-    <h5>Antonio J. Manzanedo</h5>
+    <h5>{{nameUsers}}</h5>
     <section>
       <p><strong>{{likes}}</strong> likes</p>
       <p><strong>{{followers}}</strong> seguidores</p>
       <p><strong>{{followed}}</strong> seguidos</p>
     </section>
+    <!--
     <button id="seguir">+ Seguir</button>
     <button id="mensaje">Mensaje <img src="../../../assets/cursos/enviar.png"></button>
+    -->
     <button (click)="toggleComponent(1)">Redes y comentarios</button>
   </div>
   <section *ngIf="mostrarComponente[1]">
     <h6>Email y Telefonos</h6>
-    <form>
+    <section class="form" >
       <p>
-      <img src="../../../assets/profile/llamada.png"><input type="number">
+        <img src="../../../assets/profile/llamada.png">
+        <input type="number" [(ngModel)]="telefono">
       </p>
-    <p>
-      <img src="../../../assets/profile/mensaje.png"><input type="email"> 
-    </p>
+      <p>
+        <img src="../../../assets/profile/mensaje.png">
+        <input type="email" [(ngModel)]="email">
+      </p>
       <h6>Redes:</h6>
-      <p><img src="../../../assets/profile/facebook.png"><input type="text"></p>
-      <p><img src="../../../assets/profile/instagram.png"><input type="text"></p>
-      <p><img src="../../../assets/profile/youtube.png"><input type="text"></p>
-    </form>
+      <p>
+        <img src="../../../assets/profile/facebook.png">
+        <input type="text" [(ngModel)]="facebook">
+      </p>
+      <p>
+        <img src="../../../assets/profile/instagram.png">
+        <input type="text" [(ngModel)]="instagram">
+      </p>
+      <p>
+        <img src="../../../assets/profile/youtube.png">
+        <input type="text" [(ngModel)]="youtube">
+      </p>
+    </section>  
   </section>
   </div>
 </div>
@@ -119,6 +128,7 @@
   </div>
   </section>
 </div>
+<!--
 <div class="option">
 <button><img src="../../../assets/portafolio/seguidor.png">Siguiendo</button>
 <hr>
@@ -128,5 +138,6 @@
 <hr>
 <button id="filter"><img src="../../../assets/portafolio/filtro.png">Filtro</button>
 </div>
+-->
 </main>
 <app-footer></app-footer>

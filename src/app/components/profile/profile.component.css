@@ -23,24 +23,32 @@ margin: 5% 0 0 10%;
   border-color: #575755;
 }
 
-.people > h5{
-margin:  3% 0 0 10%;
+.people > h5 > input{
+  margin:  3% 0 0 10%;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-bottom: 1px #1d1d1d solid;
+  outline: none;
 }
 
-.people > h3{
-  width: 30%;
+.people > h3 > input{
+  width: 80%;
   margin:  3% 0 0 10%;
   font-size: 20px;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-bottom: 1px #1d1d1d solid;
+  outline: none;
 }
 
-.people > a > hr{
-  width: 80%;
-  margin: 3% 0 0 10% ;
-  border-color: #575755;
-}
 
-.people > input {
+.people > textarea  {
   width: 80%;
+  height: 20%;
   margin: 3% 0 0 10% ;
   background-color: transparent;
   border: none;
@@ -49,13 +57,14 @@ margin:  3% 0 0 10%;
   color: white;
 }
 .people > button{
-  margin: 2% 0 0 80%;
+  margin: 0 0 2% 80%;
   background: linear-gradient(167deg, rgba(28,178,162,1) 0%, rgba(104,184,100,1) 100%);
   border-radius: 10px;
   width: 13%;
   height: 5%;
   color: white;
 }
+
 .people > p {
     margin: 3% 0 0 10% ;
 }
@@ -65,19 +74,16 @@ vertical-align: middle;
 width: 3%;
 margin: 0 0 0 10%;
 }
-.people > label > p{
-  display: inline-block;
-  margin: 10% 0 0 2%;
-}
-
-.people > label > p > input{
+.people > label  > input{
 background-color: transparent;
 color: white;
 border: none;
 border-bottom: 1px #575755 solid;
 outline: none;
+margin: 5% 0 20% 2%;
 }
 
+/*
 .people > section > button > img{
 object-fit: contain;
 width: 15%;
@@ -94,7 +100,7 @@ width: 15%;
 }
 .people > section {
   margin: 2% 0 0 8%;
-}
+} */
 
 .project > article{
   background-color:#2e2e2ebb;
@@ -156,21 +162,11 @@ li{
   width: 80%;
   list-style: none;
   border-bottom: 1px #575755 solid;
-  margin: 0 0 5% 5%;
+  margin: 5% 0 5% 5%;
   padding-bottom: 3%;
 }
 
-.tools > label > h5{
-  margin: -20% 0 8% 5%;
-}
-.tools > label > p{
-  background-color: #575755;
-  margin: 3% 0 0 5%;
-  width: 80%;
-  height: 20%;
-  border-radius: 10px;
-  padding: 3% 0 0 5%;
-}
+
 .tools > label > p > img{
   object-fit: contain;
   width: 15%;
@@ -186,7 +182,8 @@ li{
 }
 
 .info-person > div > h5{
-text-align: center;
+text-align: center;  
+text-transform: uppercase;
 }
 .info-person > div > section {
 display: grid;
@@ -204,8 +201,8 @@ margin: -5% 0 0 7%;
   border: 2px #616160 solid;
   border-radius: 10px;
   height: 30px;
-  width: 30%;
-  margin: 0 0 0 5%;
+  width: 40%;
+  margin: 0 0 5% 30%;
   font-size: 15px;
   cursor: pointer;
 }
@@ -246,7 +243,7 @@ margin: -5% 0 0 7%;
   margin: 5% 0 0 5%;
 }
 
-form > p > input{
+.form > p > input{
 background-color: transparent;
 border: none;
 border-bottom: 1px #575755 solid;
@@ -254,14 +251,14 @@ margin: 0 0 0 5%;
 color: white;
 }
 
-form > p > img {
+.form > p > img {
   object-fit: contain;
   width: 5%;
   vertical-align: middle;
   margin-left: 10%;
 }
 
-form > h6 {
+.form > h6 {
   margin: 0 0 0 5%;
 }
 

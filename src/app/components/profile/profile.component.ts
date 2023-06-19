@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,10 +10,23 @@ import { AuthService } from 'src/app/services/auth.service';
 export class ProfileComponent implements OnInit {
   campoHabilitado: boolean | undefined;
   mostrarBotonGuardar: boolean | undefined;
-campoTexto: any;
-  userId: string | undefined;
+  campoTexto: any;
+  token: string | null | undefined;
+  userId: string | null | undefined;
+  usuarioDetails: { Id: any; IdPerson: any; DescriptionPerson: any; Ocupation: any; telefono: any; Facebook: any; Instagram: any; Youtube: any; Likes: any; Followers: any; Followed: any; 
+  PersonFullName: any; NameCities: any; ImgPerfil :any ; Email: any; Tools: any}[] | undefined;
+  youtube: any;
+  instagram: any;
+  facebook: any;
+  telefono: any;
+  ocupacion: any;
+  imgPerfil: any;
+  email: any;
+  tools: string[] = [];
 
-  constructor(private authService: AuthService) { }
+
+  constructor(private authService: AuthService , private usuario: UsersService) { }
+
 
   /*variables*/
   cantProjects: number = 0 
@@ -55,21 +68,90 @@ campoTexto: any;
     this.mostrarBotonGuardar = false;
   }
   
+
   ngOnInit() {
-    this.authService.getUserId().subscribe(
-      (userId) => {
-        if (userId) {
-          this.userId = userId;
-          console.log('ID del usuario logueado:', userId);
-        } else {
-          console.log('No se pudo obtener el ID del usuario logueado.' , this.userId);
+    // Obtener el token del almacenamiento local
+    this.token = localStorage.getItem('token');
+
+    // Obtener el ID del usuario del almacenamiento local
+    this.userId = localStorage.getItem('userId') ?? '';
+    this.obtenerDetailsPerson(this.userId);
+
+  }
+  /*
+  onSubmit() {
+    // Obtén los valores del formulario y crea un objeto con ellos
+    const details = {
+      DescriptionPerson: this.form.get('DescriptionPerson')?.value,
+      Ocupation: this.form.get('Ocupation')?.value,
+      telefono: this.form.get('telefono')?.value,
+      Ubication: this.form.get('Ubication')?.value,
+      Facebook: this.form.get('Facebook')?.value,
+      Instagram: this.form.get('Instagram')?.value,
+      Youtube: this.form.get('Youtube')?.value,
+      Likes: this.form.get('Likes')?.value,
+      Followers: this.form.get('Followers')?.value,
+      Followed: this.form.get('Followed')?.value
+    };
+  
+    const id = '123'; // Reemplaza con el ID correcto
+  
+    this.usuario.insertdetailsUsers(id, details)
+      .subscribe(
+        response => {
+          console.log('User modified successfully', response);
+          // Realiza las acciones necesarias después de la modificación exitosa
+        },
+        error => {
+          console.error('Error modifying user:', error);
+          // Realiza las acciones necesarias en caso de error
         }
-        
+      );
+  }
+  */
+  
+  obtenerDetailsPerson(userId: string) {
+    this.usuario.obtenerDetailsPerson(userId).subscribe(
+      (response) => {
+        this.usuarioDetails = response.map(({ Id, IdPerson, DescriptionPerson, Ocupation, telefono, Facebook, Instagram , Youtube ,Likes,
+          Followers,Followed , PersonFullName , NameCities,ImgPerfil, Email, Tools }) => ({
+          Id: Id,
+          IdPerson: IdPerson,
+          DescriptionPerson: DescriptionPerson,
+          Ocupation: Ocupation,
+          telefono: telefono,
+          Facebook: Facebook,
+          Instagram: Instagram,
+          Youtube: Youtube,
+          Likes: Likes,
+          Followers:Followers,
+          Followed: Followed,
+          PersonFullName: PersonFullName,
+          NameCities: NameCities,
+          ImgPerfil : ImgPerfil,
+          Email : Email,
+          Tools: JSON.parse(Tools) // Convertir la cadena JSON a un arreglo
+        }));
+        console.log(this.usuarioDetails)
+        this.description = this.usuarioDetails[0].DescriptionPerson;
+        this.city = this.usuarioDetails[0].NameCities;
+        this.likes = this.usuarioDetails[0].Likes;
+        this.followers = this.usuarioDetails[0].Followers;
+        this.followed = this.usuarioDetails[0].Followed;
+        this.nameUsers = this.usuarioDetails[0].PersonFullName;
+        this.ocupacion = this.usuarioDetails[0].Ocupation;
+        this.telefono = this.usuarioDetails[0].telefono;
+        this.facebook = this.usuarioDetails[0].Facebook;
+        this.instagram = this.usuarioDetails[0].Instagram;
+        this.youtube = this.usuarioDetails[0].Youtube;
+        this.imgPerfil = this.usuarioDetails[0].ImgPerfil;
+        this.email = this.usuarioDetails[0].Email;
+        this.tools = this.usuarioDetails[0].Tools;
       },
       (error) => {
-        console.error('Error al obtener el ID del usuario:', error);
+        console.error(error);
       }
     );
   }
-
+  
 }

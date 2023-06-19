@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, distinctUntilChanged } from 'rxjs';
+import { BehaviorSubject, Observable, distinctUntilChanged, from } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ClientsService } from './clients.service';
 import { catchError, map } from 'rxjs/operators';
@@ -28,49 +28,61 @@ export class AuthService {
   }
 
   private checkLoginStatus(): void {
-    if (this.checkToken()) {
-      this.isLogin.next(true);
-      this.fetchUserRole().then((role) => {
-        if (role === 'admin') {
-          this.admin.next(true);
-        } else if (role === 'profecional') {
-          this.profecional.next(true);
-        } else if (role === 'estudiante') {
-          this.estudiante.next(true);
-        } else if (role === 'empresa') {
-          this.empresa.next(true);
-        }
-      }).catch((error) => {
-        console.error('Error al obtener el rol del usuario:', error);
-      });
+    const isLoggedIn = this.checkToken();
+    this.isLogin.next(isLoggedIn);
+    
+    if (isLoggedIn) {
+      this.fetchUserRole()
+        .then(role => {
+          this.admin.next(role === 'admin');
+          this.profecional.next(role === 'profecional');
+          this.estudiante.next(role === 'estudiante');
+          this.empresa.next(role === 'empresa');
+        })
+        .catch(error => {
+          console.error('Error al obtener el rol del usuario:', error);
+        });
     } else {
-      this.isLogin.next(false);
+      this.admin.next(false);
+      this.profecional.next(false);
+      this.estudiante.next(false);
+      this.empresa.next(false);
     }
   }
+  
 
   private fetchUserRole(): Promise<string> {
     const token = localStorage.getItem('token');
+    if (!token) {
+      return Promise.reject('No se encontró ningún token');
+    }
+  
     return this.http.post<any>('http://localhost:5000/api/Users/getUserRole', { token })
       .toPromise()
       .then(response => response.role)
       .catch(error => {
+        console.error('Error al obtener el rol del usuario:', error);
         throw error;
       });
   }
-
-  login(credentials: { email: string, Password: string }): Promise<void> {
+  
+  login(credentials: { email: string, Password: string }): Promise<{ token: string, id: number }> {
     return this.clientsService.login(credentials)
       .toPromise()
       .then(response => {
-        const token = response.token;
-        localStorage.setItem('token', token);
-        this.checkLoginStatus();
+        console.log(response);
+        const token = response?.Token;
+        const id = response?.Id?.[0]?.Id;
+        if (!token || !id) {
+          throw new Error('La respuesta de inicio de sesión es inválida');
+        }
+        return { token, id }; // Devuelve el token y el ID del usuario en la respuesta
       })
       .catch(error => {
         throw error;
       });
   }
-
+  
   // Agrega la segunda parte aquí
 
   setCourrentUser(user: string): void {
@@ -94,13 +106,14 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('userId'); // Eliminar el ID del usuario
     this.deleteCourrentUser();
     this.isLogin.next(false);
     this.admin.next(false);
     this.profecional.next(false);
     this.estudiante.next(false);
     this.empresa.next(false);
-    console.log('Sesion Cerrada');
+    console.log('Sesión cerrada');
   }
 
   isLoggedIn(): Observable<boolean> {
@@ -110,11 +123,12 @@ export class AuthService {
   isAdmin(): Observable<boolean> {
     return this.admin.asObservable();
   }
+  
 
-  getUserId(): Observable<string | null> {
-    const token = this.getToken();
-    if (token) {
-      return this.http.post<any>('http://localhost:5000/api/Users/getUserId', { token })
+  getUserId(userId: string): Observable<string | null> {
+    if (userId) {
+      const url = `http://localhost:5000/api/Users/${userId}`; // Modificar la URL para incluir el parámetro de ID
+      return this.http.get<any>(url)
         .pipe(
           map(response => response.userId),
           catchError(error => {
@@ -126,4 +140,5 @@ export class AuthService {
       return of(null);
     }
   }
+  
 }

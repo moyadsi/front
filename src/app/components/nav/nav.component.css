@@ -154,6 +154,12 @@ img {
   margin: -20px 0 0 0;
 }
 
+.loguin > div > ul > li >section  >img{
+  object-fit: cover;
+  width: 10%;
+  border-radius: 50%;
+
+}
 .loguin > div > ul > li > section {
   background-color:#2d2d2d;
   width: 75%;

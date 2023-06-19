@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-
   onSubmit() {
     if (this.form.valid) {
       const credentials = {
@@ -34,9 +33,15 @@ export class LoginComponent implements OnInit {
       };
   
       this.authService.login(credentials)
-        .then(() => {
-          console.log('Inicio de sesión exitoso');
-          this.router.navigate(['dashboard']);
+        .then(response => {
+          const token = response.token;
+          const id = response.id.toString(); // Convierte el ID a string
+          localStorage.setItem('token', token);
+          localStorage.setItem('userId', id); // Almacena el ID del usuario en el almacenamiento local como string          
+          console.log('Inicio de sesión exitoso', response);
+          this.router.navigate(['dashboard']).then(() => {
+            location.reload();
+          });
         })
         .catch(error => {
           console.error('Error al iniciar sesión:', error);

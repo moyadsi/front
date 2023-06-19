@@ -3,6 +3,8 @@ import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
+import { distinctUntilChanged } from 'rxjs/operators';
+import { UsersService } from 'src/app/services/users.service';
 
 
 
@@ -15,7 +17,13 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 
-  constructor(public auth: AuthService, private router: Router, private elementReF: ElementRef){
+  isLoggedIn$: Observable<boolean>;
+  usuarioDetails: { Id: any; IdPerson: any; ImgPerfil: any }[] | undefined;
+  imgPerfil: any;
+  userId: string | null = null; // Declaración de la variable userId
+
+  constructor(public auth: AuthService, private router: Router, private elementReF: ElementRef, private usuario: UsersService){
+    this.isLoggedIn$ = this.auth.isLoggedIn(); // Obtén el Observable del estado de inicio de sesión
   }
 
   isLoggedIn(): Observable<boolean> {
@@ -38,6 +46,29 @@ export class NavComponent implements OnInit {
   activeSection: string = 'inicio';
 
   ngOnInit(): void {
+    // Obtener el ID del usuario del almacenamiento local
+    this.userId = localStorage.getItem('userId');
+    if (this.userId) {
+      this.obtenerDetailsPerson(this.userId);
+    }
+  }
+  
 
+  obtenerDetailsPerson(userId: string) {
+    this.usuario.obtenerDetailsPerson(userId).subscribe(
+      (response) => {
+        this.usuarioDetails = response.map(({ Id, IdPerson, ImgPerfil }) => ({
+          Id: Id,
+          IdPerson: IdPerson,
+          ImgPerfil : ImgPerfil,
+
+        }));
+        this.imgPerfil = this.usuarioDetails[0].ImgPerfil;
+        console.log('nav', this.imgPerfil)
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 }
