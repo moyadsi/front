@@ -78,37 +78,42 @@ export class ProfileComponent implements OnInit {
     this.obtenerDetailsPerson(this.userId);
 
   }
-  /*
-  onSubmit() {
-    // Obtén los valores del formulario y crea un objeto con ellos
-    const details = {
-      DescriptionPerson: this.form.get('DescriptionPerson')?.value,
-      Ocupation: this.form.get('Ocupation')?.value,
-      telefono: this.form.get('telefono')?.value,
-      Ubication: this.form.get('Ubication')?.value,
-      Facebook: this.form.get('Facebook')?.value,
-      Instagram: this.form.get('Instagram')?.value,
-      Youtube: this.form.get('Youtube')?.value,
-      Likes: this.form.get('Likes')?.value,
-      Followers: this.form.get('Followers')?.value,
-      Followed: this.form.get('Followed')?.value
-    };
   
-    const id = '123'; // Reemplaza con el ID correcto
-  
-    this.usuario.insertdetailsUsers(id, details)
-      .subscribe(
-        response => {
-          console.log('User modified successfully', response);
-          // Realiza las acciones necesarias después de la modificación exitosa
-        },
-        error => {
-          console.error('Error modifying user:', error);
-          // Realiza las acciones necesarias en caso de error
-        }
-      );
+  sendDetailsToServer(): void {
+    if (this.userId && this.city && !isNaN(parseInt(this.city))) {
+      let ubicationValue: number | null = parseInt(this.city);
+    
+      const userDetails = {
+        id: parseInt(this.userId), // Convertir a entero
+        DescriptionPerson: this.description,
+        Ocupation: this.ocupacion,
+        telefono: this.telefono,
+        Ubication: ubicationValue,
+        Facebook: this.facebook,
+        Instagram: this.instagram,
+        Youtube: this.youtube,
+        Likes: this.likes,
+        Followers: this.followers,
+        Followed: this.followed
+      };
+      
+      console.log('Condiciones cumplidas. Enviando detalles al servidor:', userDetails);
+      
+      this.usuario.insertdetailsUsers(this.userId!, userDetails)
+        .then(() => {
+          // Manejar la respuesta del servidor si es necesario
+          // Realizar acciones adicionales después de enviar los datos
+        })
+        .catch(error => {
+          // Manejar el error si ocurriera
+        });
+    } else {
+      console.log('No se cumplen las condiciones necesarias para enviar los detalles al servidor.');
+      console.log('this.userId:', this.userId);
+      console.log('this.city:', this.city);
+    }
   }
-  */
+  
   
   obtenerDetailsPerson(userId: string) {
     this.usuario.obtenerDetailsPerson(userId).subscribe(
