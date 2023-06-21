@@ -72,15 +72,13 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     // Obtener el token del almacenamiento local
     this.token = localStorage.getItem('token');
-
     // Obtener el ID del usuario del almacenamiento local
     this.userId = localStorage.getItem('userId') ?? '';
     this.obtenerDetailsPerson(this.userId);
-
   }
   
   sendDetailsToServer(): void {
-    if (this.userId && this.city && !isNaN(parseInt(this.city))) {
+    if (this.userId && this.token && this.city && !isNaN(parseInt(this.city))) {
       let ubicationValue: number | null = parseInt(this.city);
     
       const userDetails = {
@@ -99,7 +97,7 @@ export class ProfileComponent implements OnInit {
       
       console.log('Condiciones cumplidas. Enviando detalles al servidor:', userDetails);
       
-      this.usuario.insertdetailsUsers(this.userId!, userDetails)
+      this.usuario.insertdetailsUsers(this.userId!, this.token)
         .then(() => {
           // Manejar la respuesta del servidor si es necesario
           // Realizar acciones adicionales después de enviar los datos

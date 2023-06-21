@@ -44,6 +44,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
+    useHash: true,
     scrollPositionRestoration: 'enabled',
     anchorScrolling: 'enabled',
     scrollOffset: [0, 64], // Ajusta este valor según la altura de tu barra de navegación

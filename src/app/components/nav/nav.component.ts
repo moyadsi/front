@@ -64,7 +64,6 @@ export class NavComponent implements OnInit {
 
         }));
         this.imgPerfil = this.usuarioDetails[0].ImgPerfil;
-        console.log('nav', this.imgPerfil)
       },
       (error) => {
         console.error(error);
