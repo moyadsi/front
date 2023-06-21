@@ -19,7 +19,7 @@ export class UsersService {
     console.log('Datos enviados al servidor:', details); // Imprimir los datos antes de enviarlos
 
     const url = `${this.apiUrl}/users/UpdateDetailsUser/${id}`;
-    return this.http.put(url, details)
+    return this.http.put(url, details )
       .toPromise()
       .then(response => {
         console.log('Detalles del usuario modificados con éxito:', response);
