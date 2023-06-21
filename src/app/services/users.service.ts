@@ -15,7 +15,7 @@ export class UsersService {
     const url = `${this.apiUrl}/users/details/${userId}`;
     return this.http.get<any[]>(url);
   }
-  insertdetailsUsers(id: string, details: any) {
+  insertdetailsUsers(id: string, token: string , details: any) {
     console.log('Datos enviados al servidor:', details); // Imprimir los datos antes de enviarlos
 
     const url = `${this.apiUrl}/users/UpdateDetailsUser/${id}`;

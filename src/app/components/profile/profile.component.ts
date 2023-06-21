@@ -83,6 +83,7 @@ export class ProfileComponent implements OnInit {
     
       const userDetails = {
         id: parseInt(this.userId), // Convertir a entero
+        token: this.token,
         DescriptionPerson: this.description,
         Ocupation: this.ocupacion,
         telefono: this.telefono,
@@ -94,10 +95,8 @@ export class ProfileComponent implements OnInit {
         Followers: this.followers,
         Followed: this.followed
       };
-      
       console.log('Condiciones cumplidas. Enviando detalles al servidor:', userDetails);
-      
-      this.usuario.insertdetailsUsers(this.userId!, this.token)
+      this.usuario.insertdetailsUsers(this.userId!, this.token, userDetails)
         .then(() => {
           // Manejar la respuesta del servidor si es necesario
           // Realizar acciones adicionales después de enviar los datos
